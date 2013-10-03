@@ -1,0 +1,22 @@
+#ignore editor-files
+*.bak
+*.swp
+*.swo
+*~
+
+#ignore latex buildfiles
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.bbl
+*.blg
+*.lof
+
+#ignore pdf-files 
+*.pdf
+
+# ignore dolphin-directory-file
+*.directory

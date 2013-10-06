@@ -1,0 +1,139 @@
+\subsection{Trees and Forests}
+
+\subsubsection*{Def:}
+\begin{tabular}{l l}
+forest:		& unidirected graph w/o cycles \\
+tree:		& connected forest \\
+rooted tree: 	& one special node named root \\
+plane tree:	& tree embedded into the plain. left and right order does matter \\
+\end{tabular}
+
+$G$, $H$ isomorphic ($ G \cong H$) if 
+\begin{itemize}
+	\item $\exists \varphi : V(G) \rightarrow V(H)$
+	\item $\varphi$ bijective 
+	\item $vw \in E(G) \iff \varphi(v)\varphi(w) \in E(H)$
+\end{itemize}
+
+\subsubsection*{Lemma:}
+non rooted tree $T$, $|V(T)| \geq 2 \Rightarrow$ $T$ has at least 2 leaves\\
+
+leaf \ldots vertex of degree 1
+
+\subsubsection*{Proof:}
+\begin{itemize}
+	\item T of size 2
+	\item T of at least 3 nodes, $|V(T)| \geq 3$
+	\begin{itemize}
+		\item Case 1:\\
+			$|V(T)| = k+1 \Rightarrow |V(T)| = k$ \\
+			$\Rightarrow_{imp} T'$ has 2 leaves $\Rightarrow T$ has at least 2 leaves
+		\item Case 2: \\
+			first node is no leaf, $T'$ and $T''$ each have at least 2 leaves each
+
+	\end{itemize}
+\end{itemize}
+
+
+\subsubsection*{Theorem:}
+The following 5 statements are equivalent
+\begin{enumerate}
+	\item $T$ is a tree
+	\item $\forall v,w \in V(T) \exists !$ (exists exactly one)  path from v to w
+	\item $T$ connected and $|V| = |E| + 1$ 
+	\item $T$ minimal connected graph (every edge is a bridge)
+	\item $T$ maximal acyclic graph
+\end{enumerate}
+
+\subsubsection*{Proof of 1. $\Rightarrow$ 3.} 
+induction on $n = \alpha_0=|V(T)|$
+
+\begin{tabular}{l l}
+	$n = 1:$	& trivial, $\cdot$ \\
+	$n \rightarrow n+1:$	& Choose leaf $v$ of $T$, $T' = T \backslash \{v\}$ \\
+							 &	
+	$\begin{array}{ll}
+	|V(T')| = |E(T')| + 1 \\
+		|V(T')+1 = |E(T')+1 +1 \\
+		substitution	& |V(T)| = |V(T')| +1 \\
+			& |E(T)| = |E(T')| +1 \\
+		|V(T)| = |E(T)| + 1
+	\end{array}$
+\end{tabular}
+
+
+\subsubsection{Spanning Subgraphs:}
+\subsubsection*{Def:}
+$G=(V,E)$ undirected graph
+
+$F$ spanning forest of $G$: $\iff$
+\begin{enumerate}
+	\item $V(F) = V(G), E(F) \subseteq E(G)$
+	\item $F$ forest
+	\item $F$ same connected components as $G$
+\end{enumerate}
+
+If $F$ is connected $\rightarrow$ spanning tree
+
+\subsubsection*{Example}
+
+\begin{equation*}
+\begin{array}{ll}
+	\tilde A = \begin{pmatrix}
+		0 & a & d & e \\
+		a & 0 & 0 & b \\
+		d & 0 & 0 & c \\
+		e & b & c & 0 
+	\end{pmatrix}
+	&
+	\tilde D = \begin{pmatrix}
+		a+d+e \\
+		& a+b \\
+		& & c+d \\
+		& & & b+c+e \\
+	\end{pmatrix}
+\end{array} 
+\end{equation*}
+\begin{equation*}
+	\tilde D - \tilde A = \begin{pmatrix}
+		\tikzmark{topA}a+\tikzmark{topA2}d+e & -a & -d & -\tikzmark{topB}e \\
+		 -a & a+b & 0 & -b \\
+		-d & 0 & c+d & -c \\
+		-\tikzmark{botA}e & -b & -c & b+c+e \\
+	\end{pmatrix}
+\end{equation*}
+\DrawLineHorizontal[red, thick, opacity=0.5]{topA}{topB}
+\DrawLine[red, thick, opacity=0.5]{topA2}{botA}
+
+\begin{equation*}
+\begin{array}{ll}
+\begin{vmatrix}
+	a+b & 0 & -b \\
+	0 & c+d & -c \\
+	-b & -c & b+c+e
+\end{vmatrix} 
+& = (a+b)(c+d)(b+c+e)-b^2(c+d)-c^2(a+b) \\
+& = bcd + abc+ abd +acd + ace + ade + bce + bde \\
+& \text{every term represents a spanning tree}
+\end{array}
+\end{equation*}
+
+if we set $a=b=c=d=1$ then
+
+\begin{itemize}
+	\item $\tilde A \rightarrow A$
+	\item $\tilde D \rightarrow D = 
+		\begin{pmatrix}3 \\ & 2 \\ & & 2 \\ & & & 3 \\ \end{pmatrix}$
+	\item $det(D-A) = 8$
+\end{itemize}
+
+\subsubsection*{Matrix Tree Theorem (Kirchhoff)}
+$G$ unidirected connected graph, $V = \{v_1, v_2, \ldots ,v_n\}$
+
+$A$ \ldots adj matrix, $D = diag(d(v_1), d(v_2), \ldots , d(v_n))$ \ldots degree matrix
+
+$\Rightarrow |det((D-A)') | $ (determinant of array with one row and column removed) $ = \#$ spanning trees of $G$
+
+If $G$ not connectd: Do it for each component, then multiply $\rightarrow \#$ sp forests
+
+

@@ -1,6 +1,6 @@
 
 MAIN_TEX = main
-DOCUMENT = VO_01
+DOCUMENT = VO_Discrete_Mathematics_2013WS
 all: $(MAIN_TEX).tex
 	pdflatex $(MAIN_TEX).tex
 	pdflatex $(MAIN_TEX).tex
@@ -18,7 +18,7 @@ clean:
 	rm -f *.blg
 	rm -f *.lof
 
-document: all clean
+document: clean all
 	cp $(MAIN_TEX).pdf ../$(DOCUMENT).pdf
 
 .PHONY: all

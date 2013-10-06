@@ -132,4 +132,51 @@ $V_i \ldots $ connected components of G
 
 
 
+\subsection{VO 02}
+
+Directed Graph:
+
+G strongly connected if $\forall vw : vSw$
+
+$H \subseteq G: $ H strogly connected component if H max, str. con.
+
+\subsubsection*{Rem:}
+G strongly connected $\iff$ it has only 1 strongly connected component
+
+G directed, H is the Graph G w/o (without) directions. then 
+H \ldots shadow of G
+
+G is weakly connected $\iff$ H connected
+
+\subsubsection*{Def:}
+$G$ directed, simple graph, 
+
+
+$G_R = (V_R, E_R)$, reduction of $G$ \\
+$V_R = \{K_1, K_2, \ldots , K_m\}$ set of str. con. comp. of $G$ \\
+$E_r = \{ (K_i, K_j) | \exists v \in V(K_i) \exists w \in (K_j) : (v,w) \in E \}$
+
+\subsubsection*{Rem:}
+$G_R$ is always acyclic
+$G$ strongly connected, then $G_R = ( \{ \bullet \}, \emptyset )$
+
+\subsubsection*{Def: node base:}
+$G=(V,E) $ directed, B \ldots node base, if:
+\begin{enumerate}
+\item $B \subseteq V$ 
+\item $\forall v \in V \exists w \in B : wSv$
+\item $B$ minimal w.r.t. $\subseteq$
+\end{enumerate}
+
+\subsubsection*{Rem: }
+\begin{itemize}
+\item node base of $G$ can be const from the node base of $G_R$ \\
+	$\{K_1, \ldots , K_l\} $ node base of $G_R$ $\Rightarrow$ 
+	$\{\{b_1, \ldots , b_l | b_i \in V(K_i)\}\}$ \ldots set of all node bases of $G$
+
+\item node base of $G_R$ is $\{K \in V_R | d_{G_R}^{-}(K) = 0 \}$ of any acyclic graph
+\end{itemize}
+
+\input{Trees_and_Forests}
+
 

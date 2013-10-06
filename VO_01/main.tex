@@ -4,9 +4,25 @@
 %\usepackage[ngerman]{babel}
 \usepackage{graphicx}
 \usepackage{latexsym}
-\title{Discrete Mathematics
-VO 01}
-\author{Reinhold GSCHWEICHER}
+\usepackage{amsmath}
+
+\usepackage{tikz}
+\newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,baseline] \node [anchor=base] (#1) {$#2$};}
+
+\newcommand{\DrawLineHorizontal}[3][]{%
+	\begin{tikzpicture}[overlay,remember picture]
+		\draw[#1] (#2.west) -- (#3.east);
+	\end{tikzpicture}
+}
+\newcommand{\DrawLine}[3][]{%
+	\begin{tikzpicture}[overlay,remember picture]
+		\draw[#1] (#2.north) -- (#3.south);
+	\end{tikzpicture}
+}
+
+\title{VO Discrete Mathematics
+WS 2013}
+\author{NeroBurner}
 
 \setlength\parindent{0pt} 
 
@@ -21,15 +37,8 @@ VO 01}
 Course held by Gittenberger, \\
 Thursday, Friday from 8:15 to 10:00 am
 
-\[
-f_{\mathrm{x}}(x) = \frac{1}{\sqrt{2 \pi \sigma_{\mathrm{x}}^2}} 
-e^{-\frac{(x - \mu_{\mathrm{x}})^2}{2\sigma_{\mathrm{x}^2}}}
-\]
-
-
 \include{01_graph_theory}
 
-\section{Random Vectors}
 
 
 \end{document}

@@ -6,12 +6,17 @@ Graph:& $G = (V,E)$ \\
 
 directed:& $ e \in E,$ \\
 	& $ e = (v,w) \neq e=(w,v)$ \\
+	& \includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_edge.pdf}\\
 
 undirected:& $ e = {v,w} = {w,v}, e = vw$\\
+	& \includegraphics[scale=.5]{01_graph_theory/pics/graph_edge.pdf} \\
 
 loop \\
+	& \includegraphics[scale=.5]{01_graph_theory/pics/graph_loop.pdf} \\
 
 multiple Edges \\
+	& \includegraphics[scale=.5]{01_graph_theory/pics/graph_multiple-edges.pdf} \\
+
 
 simple Graph: & if there are no loops, no multiple edges \\
 
@@ -20,7 +25,9 @@ simple Graph: & if there are no loops, no multiple edges \\
 
 graph corresponds to a relation on V $(\leq V \times V)$
 
-unidirectional graph $\equiv$ symmetrix relation
+unidirectional graph $\equiv$ symmetrix relation \\
+\includegraphics[scale=.5]{01_graph_theory/pics/graph_edge.pdf} $\equiv$ 
+\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_multiple-edges.pdf} \\
 
 \subsubsection*{Notations:}
 $V = V(G), E = E(G), \alpha_0 = |V|, \alpha_1 = |E|$ 
@@ -40,10 +47,33 @@ $\Gamma^-(v)$ & set of predecessors \\
 
 \end{tabular}
 
+\begin{figure}[htb]
+\centering
+\subfigure[vertex $v$ with degree $d(v)=6$]{
+	\includegraphics[scale=.5]{01_graph_theory/pics/graph_degree.pdf}
+}
+\subfigure[vertex $v$ with in-degree $d^{-}(v)=3$ and out-degree $d^{+}(v)=3$]{
+	\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_indegree-outdegree.pdf}
+}
+\caption{vertex-degrees}
+\end{figure}
+\FloatBarrier
 
 \subsubsection*{Hand Shaking Lemma (simple graphs)}
 $\sum_{v \in V} d(v) = 2 |E|$\\
 $\sum_{v \in V} d^+(v) = d^-(v) = |E|$
+
+\begin{figure}[htb]
+\centering
+\subfigure[undirected graph, each edge is counted twice]{
+	\includegraphics[scale=.5]{01_graph_theory/pics/graph_degree_handshaking-lemma.pdf}
+}
+\subfigure[directed graph, each edge is counted only once]{
+	\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_degree_handshaking-lemma.pdf}
+}
+\caption{Hand Shaking Lemma in undirected and directed graphs}
+\end{figure}
+\FloatBarrier
 
 \subsubsection*{Example: n-Hypercube:}
 $G = ({0,1}^n, E)$
@@ -59,6 +89,21 @@ $a_0 = 2^n$ \\
 $a_1 = \frac{1}{2} \sum_{v \in V} d(v) = 2^{n-1} * n$
 
 $d(v) = n \Rightarrow $ regular Graph
+\begin{figure}[htb]
+\centering
+\subfigure[1D-hypercube]{
+	\includegraphics[scale=.4]{01_graph_theory/pics/1D-cube.pdf}
+}
+\subfigure[2D-hypercube]{
+	\includegraphics[scale=.4]{01_graph_theory/pics/2D-cube.pdf}
+}
+\subfigure[3D-hypercube]{
+	\includegraphics[scale=.4]{01_graph_theory/pics/3D-cube.pdf}
+}
+\caption{n-Hypercubes}
+\end{figure}
+\FloatBarrier
+
 
 \subsubsection*{Def:}
 if $e = vw \in E$: vw are adjacent, e and v (or w) are incident
@@ -88,9 +133,25 @@ per Definition $A^0 := I$ \\
 
 number of connetctions between $v_i$ and $v_j$ in k steps
 
+\begin{figure}[htb]
+\centering
+\subfigure[adjacency $k = 1$]{
+	\includegraphics[scale=.5]{01_graph_theory/pics/adjacency_k-1.pdf}
+}
+\subfigure[adjacency $k = 2$]{
+	\includegraphics[scale=.5]{01_graph_theory/pics/adjacency_k-2.pdf}
+}
+\subfigure[adjacency via induction]{
+	\includegraphics[scale=.5]{01_graph_theory/pics/adjacency_k-induction.pdf}
+}
+\caption{adjaceny}
+\end{figure}
+\FloatBarrier
+
 \subsubsection*{Def:}
 \begin{tabular}{l l}
 Walk \\
+	& \includegraphics[scale=.5]{01_graph_theory/pics/walk.pdf}\\
 
 Trail	& no edge repeated \\
 
@@ -130,9 +191,24 @@ $ H \leq G$  connected component of G if H connected, H maximal and connected
 $V = V_1 \cap V_2 \cap \ldots \cap V_k$ \\
 $V_i \ldots $ connected components of G
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=.5]{01_graph_theory/pics/components.pdf}
+	\caption{Graph with 2 components}
+\end{figure}
+\FloatBarrier
 
 
-\subsection{VO 02}
+\subsubsection*{$G$ directed}
+$vSw : \implies \exists$ walk $v \leadsto w$ and walk from $w \leadsto v$
+
+$S$ \ldots equivalent Relation $\Rightarrow$ $S$ induces a partition on $V$
+
+\subsubsection*{Def:}
+$G$ strongly connected $\implies \forall v,w \in V: vSw$ 
+
+
+\subsection*{VO 02}
 
 Directed Graph:
 
@@ -147,6 +223,13 @@ G directed, H is the Graph G w/o (without) directions. then
 H \ldots shadow of G
 
 G is weakly connected $\iff$ H connected
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=.5]{01_graph_theory/pics/strongly-connected_component.pdf}
+	\caption{3 strongly connected components}
+\end{figure}
+\FloatBarrier
 
 \subsubsection*{Def:}
 $G$ directed, simple graph, 

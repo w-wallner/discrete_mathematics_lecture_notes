@@ -1,51 +1,81 @@
-\subsection{Trees and Forests}
+%%%  04.10.2013  %%%
+%%%  VO 02
+\section{Trees and Forests}
 
-\subsubsection*{Def:}
-\begin{tabular}{l l}
-forest:		& unidirected graph w/o cycles \\
-tree:		& connected forest \\
-rooted tree: 	& one special node named root \\
-plane tree:	& tree embedded into the plain. left and right order does matter \\
-\end{tabular}
+\begin{definition}
+\index{forest}
+A \dt{forest} is an undirected acyclic graph.
+\end{definition}
 
-$G$, $H$ isomorphic ($ G \cong H$) if 
-\begin{itemize}
-	\item $\exists \varphi : V(G) \rightarrow V(H)$
-	\item $\varphi$ bijective 
-	\item $vw \in E(G) \iff \varphi(v)\varphi(w) \in E(H)$
-\end{itemize}
+\begin{definition}
+\index{tree}
+A \dt{tree} is a connected forest.
+\end{definition}
 
-\subsubsection*{Lemma:}
-non rooted tree $T$, $|V(T)| \geq 2 \Rightarrow$ $T$ has at least 2 leaves\\
+\begin{definition}
+\index{tree!rooted}
+\index{root}
+A \dt{rooted tree} is a tree with one special node designated as the \dt{root}.
+\end{definition}
 
-leaf \ldots vertex of degree 1
+\begin{definition}
+\index{tree!plane}
+A \dt{plane tree} is a tree embedded into the plane, i.\,e. the order of
+children matters. Two trees may be isomorphic, but not equivalent when regarded
+as plane trees.
+\end{definition}
 
-\subsubsection*{Proof:}
-\begin{itemize}
+In Computer Science, trees are often plane and rooted, e.\,g.\ binary search trees.
+
+\begin{definition}
+\index{isomorphism}
+Two graphs $G$ and $H$ are \dt{isomorphic} ($G \cong H$) if there is a function
+\[ \varphi: V(G)\mapsto V(H)\quad\text{$\varphi$ bijective} \]
+so that
+\[ vw \in E(G) \iff \varphi(v)\varphi(w) \in E(H). \]
+\end{definition}
+
+\begin{definition}
+\index{leaf}
+A \dt{leaf} is a node with degree 1. 
+\end{definition}
+
+\textbf{Lemma.}
+A non rooted tree $T$ has at least 2 leaves. \\
+$|V(T)| \geq 2$
+
+\textbf{Proof.} \TODO add images \\
+\begin{compactitem}
 	\item T of size 2
 	\item T of at least 3 nodes, $|V(T)| \geq 3$
-	\begin{itemize}
+	\begin{compactitem}
 		\item Case 1:\\
 			$|V(T)| = k+1 \Rightarrow |V(T)| = k$ \\
 			$\Rightarrow_{imp} T'$ has 2 leaves $\Rightarrow T$ has at least 2 leaves
 		\item Case 2: \\
 			first node is no leaf, $T'$ and $T''$ each have at least 2 leaves each
 
-	\end{itemize}
-\end{itemize}
+	\end{compactitem}
+\end{compactitem}
 
 
-\subsubsection*{Theorem:}
-The following 5 statements are equivalent
-\begin{enumerate}
-	\item $T$ is a tree
-	\item $\forall v,w \in V(T) \exists !$ (exists exactly one)  path from v to w
-	\item $T$ connected and $|V| = |E| + 1$ 
-	\item $T$ minimal connected graph (every edge is a bridge)
-	\item $T$ maximal acyclic graph
-\end{enumerate}
+\begin{definition}
+\index{bridge}
+A \dt{bridge} is an edge whose removal would increase the number of connected components.
+\end{definition}
 
-\subsubsection*{Proof of 1. $\Rightarrow$ 3.} 
+
+\textbf{Theorem.} The following statements are equivalent:
+\begin{compactenum}[(1)]
+  \item $T$ is a tree.
+  \item $\forall v,w\in V(T)$ $\exists$ unique path from $v$ to $w$
+  \item $T$ connected, $|V(T)|=|E(T)|+1$
+  \item $T$ minimal connected (every edge is a bridge)
+  \item $T$ maximal acyclic
+\end{compactenum}
+\null\par
+
+\textbf{Proof of 1. $\implies$ 3.} \\
 induction on $n = \alpha_0=|V(T)|$
 
 \begin{tabular}{l l}
@@ -61,22 +91,21 @@ induction on $n = \alpha_0=|V(T)|$
 	\end{array}$
 \end{tabular}
 
+\subsection*{Spanning Subgraphs}
 
-\subsubsection{Spanning Subgraphs:}
-\subsubsection*{Def:}
-$G=(V,E)$ undirected graph
+\begin{definition}
+\index{spanning forest}
+\index{spanning tree}
+Let $G=(V,E)$ be an undirected graph. $F$ is a \dt{spanning forest} of $G$ if and only if:
+\begin{compactitem}
+  \item $V(F) = V(G)$, $E(F)\subseteq E(G)$,
+  \item $F$ is a forest, and
+  \item $F$ has the same connected components as $G$.
+\end{compactitem}
+If $F$ is connected, we call it a \dt{spanning tree}.
+\end{definition}
 
-$F$ spanning forest of $G$: $\iff$
-\begin{enumerate}
-	\item $V(F) = V(G), E(F) \subseteq E(G)$
-	\item $F$ forest
-	\item $F$ same connected components as $G$
-\end{enumerate}
-
-If $F$ is connected $\rightarrow$ spanning tree
-
-\subsubsection*{Example}
-
+\textbf{Example introducing matrix-tree theorem}\\
 \begin{equation*}
 \begin{array}{ll}
 	\tilde A = \begin{pmatrix}
@@ -127,13 +156,18 @@ if we set $a=b=c=d=1$ then
 	\item $det(D-A) = 8$
 \end{itemize}
 
-\subsubsection*{Matrix Tree Theorem (Kirchhoff)}
-$G$ unidirected connected graph, $V = \{v_1, v_2, \ldots ,v_n\}$
+\textbf{Theorem (Kirchhoff's Matrix-Tree Theorem).}
+Let
+\begin{align*}
+G &&& \text{undirected connected graph,} \\
+A &&& \text{adjacency matrix,} \\
+diag(d(v_1),\ldots,d(v_n)) = D &&& \text{degree matrix,} \\
+(D-A)' &&& \text{$D-A$ with one row and one column removed.}
+\end{align*}
+Then $|\det{(D-A)'}|$ is the number of spanning trees of $G$.
 
-$A$ \ldots adj matrix, $D = diag(d(v_1), d(v_2), \ldots , d(v_n))$ \ldots degree matrix
-
-$\Rightarrow |det((D-A)') | $ (determinant of array with one row and column removed) $ = \#$ spanning trees of $G$
-
-If $G$ not connectd: Do it for each component, then multiply $\rightarrow \#$ sp forests
+\textbf{Remark.} If $G$ is not connected, the number of spanning trees can be
+found for each connected component. Multiply results to get the number
+of possible combinations.
 
 

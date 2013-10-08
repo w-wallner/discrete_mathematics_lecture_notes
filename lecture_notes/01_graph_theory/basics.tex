@@ -1,51 +1,92 @@
+%%%  03.10.2013  %%%
+%%%  VO 01
+\section{Basics}
 
-\subsection{Basics}
+\begin{definition}
+\index{graph}
+\index{vertex set}
+\index{edge set}
+A structure \dt{$G=(V,E)$} is called a \dt{graph}.
+$V=\{v_1, v_2, \ldots, v_n\}$ is the \emph{vertex set} of $G$. $E$ is the
+\emph{edge set} of $G$.
+\end{definition}
 
-\begin{tabular}{l l}
-Graph:& $G = (V,E)$ \\
+\begin{definition}
+\index{graph!directed}
+\index{edge}
+A \dt{directed graph} $G$ has directed edges $e\in E$ of the form
+$e=(v,w)$. $e$ is a pair, in particular $(v,w)\ne (w,v)$. $v,w\in V$.
+\end{definition}
 
-directed:& $ e \in E,$ \\
-	& $ e = (v,w) \neq e=(w,v)$ \\
-	& \includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_edge.pdf}\\
+\begin{definition}
+\index{graph!undirected}
+\index{edge}
+An \dt{undirected graph} $G$ has undirected edges $e\in E$ of the form
+$e=\{v,w\}$. $e$ is a set, in particular $e=\{v,w\}=\{w,v\}=vw$. $vw$ is a
+shorthand notation.
+\end{definition}
 
-undirected:& $ e = {v,w} = {w,v}, e = vw$\\
-	& \includegraphics[scale=.5]{01_graph_theory/pics/graph_edge.pdf} \\
+\index{loop}
+A \dt{loop} is an edge from a vertex to itself.
 
-loop \\
-	& \includegraphics[scale=.5]{01_graph_theory/pics/graph_loop.pdf} \\
+Graphs can have \textbf{multiple edges}, in which case $E$ is a multiset.
 
-multiple Edges \\
-	& \includegraphics[scale=.5]{01_graph_theory/pics/graph_multiple-edges.pdf} \\
+\begin{figure}[htb]
+\centering
+\begin{tabular}{c c}
+\subfigure[directed graph] {
+	\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_edge.pdf}
+} &
+\subfigure[undirected graph] {
+	\includegraphics[scale=.5]{01_graph_theory/pics/graph_edge.pdf}
+} \\
+\subfigure[loop] {
+	\includegraphics[scale=.5]{01_graph_theory/pics/graph_loop.pdf}
+} &
+\subfigure[multiple edges] {
+	\includegraphics[scale=.5]{01_graph_theory/pics/graph_multiple-edges.pdf}
+}
+\end{tabular}
+\caption{different graphs}
+\end{figure}
+\FloatBarrier
+
+\begin{definition}
+\index{graph!simple}
+A graph is \dt{simple} when it has
+\begin{compactitem}
+\item no loops and 
+\item no multiple edges.
+\end{compactitem}
+\end{definition}
+
+Unless otherwise stated, we assume simple, finite graphs throughout this
+lecture.
+
+A graph corresponds to a \emph{relation} on $V$. In case of undirected graphs,
+this relation is symmetric.
 
 
-simple Graph: & if there are no loops, no multiple edges \\
-
-
+Notation: \\[\medskipamount]
+\begin{tabular}{ll}
+  $V$, $V(G)$ & vertice set \\
+  $E$, $E(G)$ & edge set \\
+  $\alpha_0 = |V|$ & number of vertices \\
+  $\alpha_1 = |E|$ & number of edges \\
 \end{tabular}
 
-graph corresponds to a relation on V $(\leq V \times V)$
-
-unidirectional graph $\equiv$ symmetrix relation \\
-\includegraphics[scale=.5]{01_graph_theory/pics/graph_edge.pdf} $\equiv$ 
-\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_multiple-edges.pdf} \\
-
-\subsubsection*{Notations:}
-$V = V(G), E = E(G), \alpha_0 = |V|, \alpha_1 = |E|$ 
-
-\subsubsection*{Def:}
-
-\begin{tabular}{l l}
-$v \in V$ : \\
-$d(v)$		& \# edges which are incident to v \\
-
-$d^+(v)$	& \# edges of the form $(v,w)$, out degree \\
-$d^-(v)$	& \# edges of the form $(w,v)$, in degree \\
-
-$\Gamma(v)$ & set of neighbours \\
-$\Gamma^+(v)$ & set of successors \\
-$\Gamma^-(v)$ & set of predecessors \\
-
-\end{tabular}
+\begin{definition}
+\index{degree}
+Let $v\in V$. For undirected graphs, 
+\begin{compactitem}
+  \item the \dt{degree} $d(v)$ is the number of edges \emph{incident} to $v$.
+\end{compactitem}
+For directed graphs,
+\begin{compactitem}
+  \item the \dt{out-degree} $d^{+}(v)$ is the number of outgoing edges, i.e. edges of the form $(v,w)$, and
+  \item the \dt{in-degree} $d^{-}(v)$ is the number of incoming edges, i.e. edges of the form $(w,v)$.
+\end{compactitem}
+\end{definition}
 
 \begin{figure}[htb]
 \centering
@@ -59,9 +100,29 @@ $\Gamma^-(v)$ & set of predecessors \\
 \end{figure}
 \FloatBarrier
 
-\subsubsection*{Hand Shaking Lemma (simple graphs)}
-$\sum_{v \in V} d(v) = 2 |E|$\\
-$\sum_{v \in V} d^+(v) = d^-(v) = |E|$
+\begin{definition}
+\index{neighbour}
+\index{successor}
+\index{predecessor}
+For undirected graphs,
+\begin{compactitem}
+\item $\Gamma(v)$ is the \dt{set of neighbours} of $v$.
+\end{compactitem}
+For directed graphs,
+\begin{compactitem}
+\item $\Gamma^{+}(v)$ is the \dt{set of successors} of $v$.
+\item $\Gamma^{-}(v)$ is the \dt{set of predecessors} of $v$.
+\end{compactitem}
+\end{definition}
+
+\index{handshaking lemma}
+\textbf{Lemma (Handshaking Lemma).} Let $G=(V,E)$ be a simple graph. Then
+\begin{align*}
+&\sum_{v\in V} d(v) = 2 |E| &&\text{($G$ undirected)} \\
+&\sum_{v\in V} d^{+}(v) = \sum{v\in V} d^{-}(v) = |E| &&\text{($G$ directed).} \\
+\end{align*}
+
+\textbf{Proof.} see Figure~\ref{fig:hand_shaking_lemma}
 
 \begin{figure}[htb]
 \centering
@@ -72,10 +133,11 @@ $\sum_{v \in V} d^+(v) = d^-(v) = |E|$
 	\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_degree_handshaking-lemma.pdf}
 }
 \caption{Hand Shaking Lemma in undirected and directed graphs}
+\label{fig:hand_shaking_lemma}
 \end{figure}
 \FloatBarrier
 
-\subsubsection*{Example: n-Hypercube:}
+\textbf{Example (Hypercube).} 
 $G = ({0,1}^n, E)$
 
 $vw \in E \Leftrightarrow \sum_{i=1}^{n} |v_i - w_i | = 1$ (only one switch in coordinates)
@@ -104,34 +166,27 @@ $d(v) = n \Rightarrow $ regular Graph
 \end{figure}
 \FloatBarrier
 
+\begin{definition}
+\index{adjacency}
+\index{incidence}
+Let $e=vw\in E$. Then we say that
+\begin{compactitem}
+\item $v$ and $w$ are \dt{adjacent} ($v\sim w$), and
+\item $e$ and $v$ are \dt{incident} (as well as $e$ and $w$).
+\end{compactitem}
+\end{definition}
 
-\subsubsection*{Def:}
-if $e = vw \in E$: vw are adjacent, e and v (or w) are incident
-
-\begin{tabular}{l l}
-adjacency matrix & $A = (a_{ij})_{i,j = 1, \ldots , n}$ \\
-	& $ V = \{v_1, v_2, \ldots , v_n \} $ \\
-	& $ a_{ij} = \left \{ \begin{array}{l l} 1 &, v_i \sim v_j  \\ 0 & , v_i \not\sim v_j \end{array} \right. $ \\
-
-\end{tabular}
-
-\paragraph*{Rem:}
-G unidirected $\Rightarrow$ A symmetric
-
-\vspace{12pt}
-
-\begin{tabular}{l l}
-$A^k = (a_{ij}^{[k]})_{i,j = 1,\ldots , n}$ &
-
-$A^k =A * A^{k-1}$ \\
-
-$a_{ij}^{[k]} = \sum_{l=1}^n a_{il} * a_{lj}^{[k-1]} $ \\
-
-per Definition $A^0 := I$ \\
-
-\end{tabular}
-
-number of connetctions between $v_i$ and $v_j$ in k steps
+\begin{definition}
+\index{adjacency!matrix}
+Let $V=\{v_1,\ldots,v_n\}.$ The \dt{adjacency matrix} $A =
+(a_{ij})_{i,j=1,\ldots,n}$ consists of entries
+\[
+  a_{ij} = \begin{cases}
+    1 & v_i\sim v_j\text{ ($v_i$ and $v_j$ adjacent)} \\
+    0 & v_i\not\sim v_j
+  \end{cases}
+\]
+\end{definition}
 
 \begin{figure}[htb]
 \centering
@@ -148,48 +203,74 @@ number of connetctions between $v_i$ and $v_j$ in k steps
 \end{figure}
 \FloatBarrier
 
-\subsubsection*{Def:}
-\begin{tabular}{l l}
-Walk \\
-	& \includegraphics[scale=.5]{01_graph_theory/pics/walk.pdf}\\
+\textbf{Remark.} If $G$ is undirected, $A$ is symmetric.
 
-Trail	& no edge repeated \\
+\textbf{Remark.} Consider
+\begin{align*}
+A^k &= (a_{ij}^{[k]})_{i,j=1,\ldots,n} = A\cdot A^{k-1} \\
+a_{ij}^{[k]} &= \sum_{l=1}^n a_{il}^{\vphantom{[k-1]}}\cdot a_{lj}^{[k-1]}.
+\end{align*}
+The entries $a_{ij}^{[k]}$ of $A^k$ give the number of ways to get from $v_i$ to $v_j$ in exactly $k$ steps.
 
-closed trail	& = circuit \\
+\begin{definition}
+\index{walk}
+A \dt{walk} in a graph $G$ is a sequence of edges, where successive edges have
+a vertex in common. Edges can appear multiple times.
+\end{definition}
 
-$G=(V,E)$ \\
-Subgraph $ H = (V',E')$	& s.t. $V' \subseteq V$, $E' \subseteq E$ \\
-$H \subseteq G$ \\
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=.5]{01_graph_theory/pics/walk.pdf}
+\caption{Example of a walk through a graph}
+\end{figure}
+\FloatBarrier
 
-\end{tabular}
+\begin{definition}
+\index{trail}
+\index{circuit}
+A \dt{trail} is a walk without repeated edges. A \dt{closed trail} or
+\dt{circuit} starts and ends at the same vertex.
+\end{definition}
 
-\vspace{12pt}
+\begin{definition}
+\index{subgraph}
+Let $G=(V,E)$. $H=(V',E')$ is a \dt{subgraph} of $G$ ($H \leq G$) if
+\begin{compactitem}
+\item $H$ is a graph,
+\item $V' \subseteq V$, and
+\item $E' \subseteq E$.
+\end{compactitem}
+$E'$ only contains edges between vertices in $V'$, this is implied by the requirement that $H$ is a graph.
+\end{definition}
 
-\begin{tabular}{l l}
-$\sim$ : adjacent relation \\
+\begin{definition}
+\index{connectivity}
+\index{relation!connectivity relation}
+For undirected graphs, we define the \dt{connectivity relation} $\operatorname{R}$ as follows:
+\[ v \operatorname{R} w \text{ ($v$ connected to $w$)} \iff \exists\text{ walk from $v$ to $w$}. \]
+\end{definition}
 
-v connected to w ($vRw$) \\
+Let
+\[ C = \sum_{k=0}^L A^k = (c_{ij})\qquad L = \min(|E|, |V|-1) \]
+where $c_{ij}$ gives the number of walks from $v_ii$ to $v_j$ of length $\leq
+L$. Now $M = \operatorname{sgn} C$ shows us which vertices are connected.
 
-$C = \sum_{k=0}^L A ^k$ 	& $ L = min(|E|, |V| -1)$ \\
-$C=(c_{ij}) $ \\
-$C = $\# walks of length $\leq$ L, $v_i \leadsto v_j$ \\
+We observe that
+\begin{compactitem}
+\item $\forall v\in V: v \operatorname{R} v$,
+\item $\forall v,w\in V: v \operatorname{R} v \implies w \operatorname{R} v$, and
+\item $\forall v,w,u\in V: v \operatorname{R} v \wedge w \operatorname{R} v \implies v \operatorname{R} u$.
+\end{compactitem}
+\index{relation!equivalence relation}
+Thus $\operatorname{R}$ is an \emph{equivalence relation} on $V$.
 
-$M = sign(C)$ (connectivity matrix\\
-
-$\forall v \in V: vRv$ \\
-$\forall v,w \in V: vRw = wRv$ & R \ldots equivalence relation\\
-$\forall v,w,u \in V: vRw \cap wRu \Rightarrow vRu$ & $ \Rightarrow$ R induces Partition of V \\
-
-\end{tabular}
-
-
-\subsubsection*{Def:}
-G is connected if $\forall v,w: vRw$
-
-\subsubsection*{Def:}
-$ H \leq G$  connected component of G if H connected, H maximal and connected
-$V = V_1 \cap V_2 \cap \ldots \cap V_k$ \\
-$V_i \ldots $ connected components of G
+As an equivalence relation, $\operatorname{R}$ induces a partition of V.
+\begin{gather*}
+V = V_1 \cup\cdots\cup V_k \\
+V_i \cap V_k = \varnothing\quad i\neq j
+\end{gather*}
+\index{connected component}%
+$V_i$ are the \dt{connected components} of $G$.
 
 \begin{figure}[htb]
 	\centering
@@ -198,64 +279,102 @@ $V_i \ldots $ connected components of G
 \end{figure}
 \FloatBarrier
 
+\begin{definition}
+\index{graph!connected}
+$G$ is \dt{connected} if it has only one component. This means that $\forall v,w: v\operatorname{R} w$.
+\end{definition}
 
-\subsubsection*{$G$ directed}
-$vSw : \implies \exists$ walk $v \leadsto w$ and walk from $w \leadsto v$
+\begin{definition}
+\index{connected component}
+$H\leq G$ is a \dt{connected component} of $G$ if $H$ is connected and $H$
+is maximal with regard to the subgraph relation, i.\,e. no vertices or edges can
+be added to $H$ so that is still connected: $\nexists H': H < H' \leq G, H'\text{ connected}.$
+\end{definition}
 
-$S$ \ldots equivalent Relation $\Rightarrow$ $S$ induces a partition on $V$
+\begin{definition}
+\index{connectivity}
+\index{relation!connectivity relation}
+For directed graphs, we define the \dt{connectivity relation} $\operatorname{S}$ as follows:
+\begin{align*}
+v \operatorname{R} w \text{ ($v$ connected to $w$)} \iff \null
+&\text{$\exists$ walk from $v$ to $w$\quad\emph{and}} \\
+&\text{$\exists$ walk from $w$ to $v$.}
+\end{align*}
+Like $\operatorname{R}$, $\operatorname{S}$ is an equivalence relation.
+\end{definition}
 
-\subsubsection*{Def:}
-$G$ strongly connected $\implies \forall v,w \in V: vSw$ 
+\begin{definition}
+\index{graph!connected!strongly}
+$G$ is \dt{strongly connected} $\iff \forall v,w\in V: v \operatorname{S} w$.
+\end{definition}
 
-
-\subsection*{VO 02}
-
-Directed Graph:
-
-G strongly connected if $\forall vw : vSw$
-
-$H \subseteq G: $ H strogly connected component if H max, str. con.
-
-\subsubsection*{Rem:}
-G strongly connected $\iff$ it has only 1 strongly connected component
-
-G directed, H is the Graph G w/o (without) directions. then 
-H \ldots shadow of G
-
-G is weakly connected $\iff$ H connected
+\begin{definition}
+\index{connected component!strongly}
+$H\leq G$ is a \dt{strongly connected component} of $G$ if $H$ is maximal strongly connected.
+\end{definition}
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=.5]{01_graph_theory/pics/strongly-connected_component.pdf}
-	\caption{3 strongly connected components}
+	\caption{graph with 3 strongly connected components}
 \end{figure}
 \FloatBarrier
 
-\subsubsection*{Def:}
-$G$ directed, simple graph, 
+
+%%%  04.10.2013  %%%
+%%%  VO 02
+
+\begin{definition}
+\index{shadow}
+Let $G$ be a directed graph. The \dt{shadow} $H$ of $G$ is the undirected graph
+that results when we ignore edge directions on $G$.
+\end{definition}
+
+\begin{definition}
+\index{graph!connected!weakly}
+$G$ is \dt{weakly connected} if its shadow $H$ is connected.
+\end{definition}
+
+\begin{definition}
+\def\Gr{\ensuremath{G_\text{R}}}
+\def\Vr{\ensuremath{V_\text{R}}}
+\def\Er{\ensuremath{E_\text{R}}}
+Let $G=(V,E)$ be a directed graph. Let
+\[ K_1=\{v_1,\ldots\},K_2,\ldots,K_M \]
+be the strongly connected components of $G$. Let $\Gr=(\Vr,\Er)$ with
+\begin{align*}
+\Vr &= \{K_1,\ldots,K_M\} \\
+\Er &= \left\{(K_i,K_j) \mid \exists v\in V(K_i)\,\exists w\in V(K_j): (v,w)\in E\right\}.
+\end{align*}
+\index{reduction}%
+Then we call $\Gr$ the \dt{reduction} of $G$.
+\end{definition}
+
+\textbf{Remark.} $G_\text{R}$ is always acyclic.
+
+\begin{definition}
+\index{node base}
+Let $G$ be a directed graph. $B$ is a \dt{node base} of $G$ if:
+\begin{compactitem}
+\item $B\subseteq V$,
+\item $\forall v\in V\,\exists w\in B: w \operatorname{S} v$, and
+\item $B$ minimal w.\,r.\,t. $\subseteq$.
+\end{compactitem}
+\end{definition}
+
+\index{node base}
+\textbf{Remark.} The node base of $G$ can easily be constructed from a node
+base of $G_\text{R}$. Let $\{K_1,\ldots,K_L\}\subseteq V_\text{R}$ be a node
+base of $G_\text{R}$. Then
+\[ \left\{\{b_1,\ldots,b_l\mid b_i\in V(K_i)\}\right\} \]
+is the set of all node bases of $G$.
+
+\index{node base}
+$G_\text{R}$ has a single unique node base.
+
+\index{node base}
+\textbf{Remark.} The node base of $G_\text{R}$ (or acyclic graphs in general) is
+\[ \{K\in V_\text{R}\mid d_{G_\text{R}}^{-}(K) = 0\}. \]
 
 
-$G_R = (V_R, E_R)$, reduction of $G$ \\
-$V_R = \{K_1, K_2, \ldots , K_m\}$ set of str. con. comp. of $G$ \\
-$E_r = \{ (K_i, K_j) | \exists v \in V(K_i) \exists w \in (K_j) : (v,w) \in E \}$
 
-\subsubsection*{Rem:}
-$G_R$ is always acyclic
-$G$ strongly connected, then $G_R = ( \{ \bullet \}, \emptyset )$
-
-\subsubsection*{Def: node base:}
-$G=(V,E) $ directed, B \ldots node base, if:
-\begin{enumerate}
-\item $B \subseteq V$ 
-\item $\forall v \in V \exists w \in B : wSv$
-\item $B$ minimal w.r.t. $\subseteq$
-\end{enumerate}
-
-\subsubsection*{Rem: }
-\begin{itemize}
-\item node base of $G$ can be const from the node base of $G_R$ \\
-	$\{K_1, \ldots , K_l\} $ node base of $G_R$ $\Rightarrow$ 
-	$\{\{b_1, \ldots , b_l | b_i \in V(K_i)\}\}$ \ldots set of all node bases of $G$
-
-\item node base of $G_R$ is $\{K \in V_R | d_{G_R}^{-}(K) = 0 \}$ of any acyclic graph
-\end{itemize}

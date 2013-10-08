@@ -1,15 +1,64 @@
-\documentclass{article}
-
+\documentclass[10pt,a4paper,titlepage,oneside,final]{book}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-%\usepackage[ngerman]{babel}
-\usepackage{graphicx}
-\usepackage{pdfpages}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,textwidth=345pt,textheight=598pt,hmarginratio=1:1]{geometry}
+\usepackage[final]{graphicx}
 \usepackage{subfigure}
-\usepackage{placeins}
-\usepackage{latexsym}
-\usepackage{amsmath}
-
+\usepackage[intlimits]{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{cleveref}
+%\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{ragged2e}
+\usepackage{soul}
+\usepackage{theorem}
+%\usepackage{pgfplots}
+%\usepackage{nameref}
 \usepackage{tikz}
+%\usetikzlibrary{shapes,calc,automata}
+%\usepackage{rotating}
+%\usepackage{listings}
+%\usepackage{nicefrac}
+\usepackage{makeidx}
+\usepackage{paralist}
+
+\usepackage{placeins}
+
+\makeatletter
+
+\captionsetup{format=hang,justification=justified,labelfont=bf,labelsep=colon,font=small}
+\long\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+
+\author{Patrik Fimml, NeroBurner}
+\title{Lecture Notes 2013W\\ 104.271 Discrete Mathematics VO\\ (Gittenberger)}
+
+\makeindex
+\gdef\th@custom{%
+  \th@plain%
+  \def\@begintheorem##1##2{%
+    \item[\hskip\labelsep \theorem@headerfont ##1\ ##2.]}}%
+\theoremstyle{custom}
+\theorembodyfont{\normalfont}
+\newtheorem{definition}{Definition}
+
+\def\thechapter{\Roman{chapter}}
+
+\parindent=0pt
+\parskip=\medskipamount
+
+\pltopsep=-5pt
+\plpartopsep=0pt
+
+\def\TODO{\fbox{TODO}}
+
+
 \newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,baseline] \node [anchor=base] (#1) {$#2$};}
 
 \newcommand{\DrawLineHorizontal}[3][]{%
@@ -23,25 +72,22 @@
 	\end{tikzpicture}
 }
 
-\title{VO Discrete Mathematics
-WS 2013}
-\author{NeroBurner}
-
-\setlength\parindent{0pt} 
-
 \begin{document}
+% "defined term"
+\def\dt#1{\textbf{#1}}
+
+\def\remark{\noindent \textbf{Remark.}}
+
+
+
 \maketitle
-%\tableofcontents
+\tableofcontents
 %\listoffigures
-
-%\newpage
-
-\section*{Introduction}
-Course held by Gittenberger, \\
-Thursday, Friday from 8:15 to 10:00 am
-
+asdf \index{asdf}
+% include the chapters here:
 \include{01_graph_theory}
+%\include{02_the_next_chapter}
 
-
+\printindex
 
 \end{document}

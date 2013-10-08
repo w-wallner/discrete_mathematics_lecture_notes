@@ -4,6 +4,7 @@ DOCUMENT = VO_Discrete_Mathematics_2013WS
 all: $(MAIN_TEX).tex
 	pdflatex $(MAIN_TEX).tex
 	pdflatex $(MAIN_TEX).tex
+	makeindex $(MAIN_TEX)
 	pdflatex $(MAIN_TEX).tex
 
 clean:

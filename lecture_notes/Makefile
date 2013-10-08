@@ -18,6 +18,9 @@ clean:
 	rm -f *.bbl
 	rm -f *.blg
 	rm -f *.lof
+	rm -f *.idx
+	rm -f *.ilg
+	rm -f *.ind
 
 document: clean all
 	cp $(MAIN_TEX).pdf ../$(DOCUMENT).pdf

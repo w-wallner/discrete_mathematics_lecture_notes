@@ -30,180 +30,28 @@
 }
 \subfigure
 {
-	\begin{tabular}{cccc}
-	\begin{tikzpicture}
-
-	\node (n1) at (0,0) {};
-	\node (n2) at (1,0) {};
-	\node (n3) at (1,1) {};
-	\node (n4) at (0,1) {};
-
-	\foreach \i in {1,...,4}
-	{
-		\fill (n\i) circle [radius=2pt];
-	};
-
-	\foreach \i / \j in {2/3, 3/4, 4/1}
-	{
-		\path (n\i.center) edge (n\j.center);
-	};
-	\end{tikzpicture}
-	&
-	\begin{tikzpicture}
-
-	\node (n1) at (0,0) {};
-	\node (n2) at (1,0) {};
-	\node (n3) at (1,1) {};
-	\node (n4) at (0,1) {};
-
-	\foreach \i in {1,...,4}
-	{
-		\fill (n\i) circle [radius=2pt];
-	};
-
-	\foreach \i / \j in {
-	1/2, 
-	%2/3, 
-	3/4,
-	4/1}
-	{
-		\path (n\i.center) edge (n\j.center);
-	};
-	\end{tikzpicture}
-	&
-	\begin{tikzpicture}
-
-	\node (n1) at (0,0) {};
-	\node (n2) at (1,0) {};
-	\node (n3) at (1,1) {};
-	\node (n4) at (0,1) {};
-
-	\foreach \i in {1,...,4}
-	{
-		\fill (n\i) circle [radius=2pt];
-	};
-
-	\foreach \i / \j in {
-	1/2, 
-	2/3, 
-	%3/4,
-	4/1}
-	{
-		\path (n\i.center) edge (n\j.center);
-	};
-	\end{tikzpicture}
-	&
-	\begin{tikzpicture}
-
-	\node (n1) at (0,0) {};
-	\node (n2) at (1,0) {};
-	\node (n3) at (1,1) {};
-	\node (n4) at (0,1) {};
-
-	\foreach \i in {1,...,4}
-	{
-		\fill (n\i) circle [radius=2pt];
-	};
-
-	\foreach \i / \j in {
-	1/2, 
-	2/3, 
-	3/4}
-	%4/1}
-	{
-		\path (n\i.center) edge (n\j.center);
-	};
-	\end{tikzpicture}
-	\\
-	\begin{tikzpicture}
-
-	\node (n1) at (0,0) {};
-	\node (n2) at (1,0) {};
-	\node (n3) at (1,1) {};
-	\node (n4) at (0,1) {};
-
-	\foreach \i in {1,...,4}
-	{
-		\fill (n\i) circle [radius=2pt];
-	};
-	\foreach \i / \j in {
-	1/2, 
-	%2/3, 
-	3/4,
-	%4/1,
-	1/3}
-	{
-		\path (n\i.center) edge (n\j.center);
-	};
-	\end{tikzpicture}
-	&
-	\begin{tikzpicture}
-
-	\node (n1) at (0,0) {};
-	\node (n2) at (1,0) {};
-	\node (n3) at (1,1) {};
-	\node (n4) at (0,1) {};
-
-	\foreach \i in {1,...,4}
-	{
-		\fill (n\i) circle [radius=2pt];
-	};
-	\foreach \i / \j in {
-	%1/2, 
-	2/3, 
-	%3/4,
-	4/1,
-	1/3}
-	{
-		\path (n\i.center) edge (n\j.center);
-	};
-	\end{tikzpicture}
-	&
-	\begin{tikzpicture}
-
-	\node (n1) at (0,0) {};
-	\node (n2) at (1,0) {};
-	\node (n3) at (1,1) {};
-	\node (n4) at (0,1) {};
-
-	\foreach \i in {1,...,4}
-	{
-		\fill (n\i) circle [radius=2pt];
-	};
-	\foreach \i / \j in {
-	%1/2, 
-	2/3, 
-	3/4,
-	%4/1,
-	1/3}
-	{
-		\path (n\i.center) edge (n\j.center);
-	};
-	\end{tikzpicture}
-	&
-	\begin{tikzpicture}
-
-	\node (n1) at (0,0) {};
-	\node (n2) at (1,0) {};
-	\node (n3) at (1,1) {};
-	\node (n4) at (0,1) {};
-
-	\foreach \i in {1,...,4}
-	{
-		\fill (n\i) circle [radius=2pt];
-	};
-	\foreach \i / \j in {
-	1/2, 
-	%2/3, 
-	%3/4,
-	4/1,
-	1/3}
-	{
-		\path (n\i.center) edge (n\j.center);
-	};
-	\end{tikzpicture}
-
-	\end{tabular}
+  \def\graph#1{%
+    \begin{tikzpicture}
+    \node (n1) at (0,0) {};
+    \node (n2) at (1,0) {};
+    \node (n3) at (1,1) {};
+    \node (n4) at (0,1) {};
+    \foreach \i in {1,...,4}
+       \fill (n\i) circle [radius=2pt];
+    \foreach \i / \j in {#1}
+        \path (n\i.center) edge (n\j.center);
+    \end{tikzpicture}%
+  }
+  \begin{tabular}{cccc}
+    \graph{2/3, 3/4, 4/1} &
+    \graph{1/2, 3/4, 4/1} &
+    \graph{1/2, 2/3, 4/1} &
+    \graph{1/2, 2/3, 3/4} \\
+    \graph{1/2, 3/4, 1/3} &
+    \graph{2/3, 4/1, 1/3} &
+    \graph{2/3, 3/4, 1/3} &
+    \graph{1/2, 4/1, 1/3} \\
+  \end{tabular}
 }
 \caption{Graph $G$ and all its spanning trees}
 \end{figure}

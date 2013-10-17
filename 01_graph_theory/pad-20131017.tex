@@ -1,15 +1,48 @@
 % Discrete Mathematics Lecture Notes 17.10.2013
 
 % (Last week)
-Flow network: G = (V,E,w,s,t)
-V ... vertex set
-E ... edge set
-w ... weight function
-s ... sourcee
-t ... sink
 
-Flow function $\phi$
-size (valuation of $\phi$): $v(\phi)$
+\subsection*{Maximal Flows}
+
+\def\dminus{\ensuremath{d^{-}}}
+\def\dplus{\ensuremath{d^{+}}}
+\def\real{\mathbb{R}}
+\def\natural{\mathbb{N}}
+\def\Gammaplus{\ensuremath{\Gamma^{+}}}
+\def\Gammaminus{\ensuremath{\Gamma^{-}}}
+
+\begin{definition}
+\index{flow network}
+Let $G=(V,E,w)$ be a directed network with
+\begin{compactitem}
+\item a weight function $w: E\mapsto \real_0^{+}$,
+\item a source $s: \dminus(s) = 0$ and
+\item a sink $t: \dplus(t) = 0$.
+\end{compactitem}
+Then $(V, E, w, s, t)$ is a \dt{flow network}.
+\end{definition}
+
+\begin{definition}
+\index{flow}
+$\phi: E\mapsto \real$ is a \dt{flow} on $G$ if
+\begin{align*}
+  &\forall e\in E: 0 ≤ \phi(e) ≤ w(e)
+     &&\text{feasability condition} \\
+  &\forall x\in V\setminus\{s,t\}:
+     \underbrace{\sum_{y\in \Gammaminus(x)} \phi(yx)}_{\text{in-flow}} =
+     \underbrace{\sum_{y\in \Gammaplus(x)} \phi(xy)}_{\text{out-flow}}
+     &&\text{flow conservation condition} \\
+\end{align*}
+\end{definition}
+
+\begin{definition}
+$v(\phi)$ is \dt{size} or \dt{valuation} of $\phi$, with
+\[
+  v(\phi) = \sum_{y\in \Gammaplus(s)} \phi(sy).
+\]
+\end{definition}
+
+\TODO Lemma+Proof out-flow of source = in-flow of sink
 
 % new content
 

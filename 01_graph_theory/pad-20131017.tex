@@ -1,0 +1,192 @@
+% Discrete Mathematics Lecture Notes 17.10.2013
+
+% (Last week)
+Flow network: G = (V,E,w,s,t)
+V ... vertex set
+E ... edge set
+w ... weight function
+s ... sourcee
+t ... sink
+
+Flow function $\phi$
+size (valuation of $\phi$): $v(\phi)$
+
+% new content
+
+\begin{definition}
+Cut of G is a partition of $V=S \cup T$ ($S\cap T=0$) such that
+$s \in S,t \in T$
+\end{definition}
+
+
+Capacity $c(S,T)$ of a cut:
+\[ c(S,T) = \sum_{x,y x\in S, y\in T} w(xy) \]
+
+Cut $(S,T)$ is minimal if all cuts $(S',T')$ satisfy:
+\[ c(S', T') \geq c(S,T) \]
+
+
+Lemma: Let G flow network, $\phi$ flow on $G$, $(S,T)$ cut of G. Then
+\[
+v(\phi) = \sum_{xy: x\in S, y\in T} \phi(xy)
+        - \sum_{xy: x\in T, y\in S} \phi(xy)
+\leq c(S,T)
+\]
+(flow forward minus flow backwards)
+in particular: $\max_{\phi flow} v(\phi)\leq min_{(S,T) cut} c(S,T)$
+
+Proof.
+\[
+    v(\phi) = \sum{v\in S} (
+        \sum_{x\in \Gamma^+(v)} \phi(vx)
+      - \sum_{y\in \Gamma^-(v)} \phi(yv)
+    )
+\]
+For each vertex, count outgoing edge with positive and incoming edge with negative sign.
+
+3 cases:
+* Flow with both endpoints in S; outgoing and ingoing cancel each other
+    \TODO: add picture of edge
+* Flow with starting point in S and end point in T, counted positive
+* Flow with starting point in T and end point in S, counted negative
+
+Thus, we can rewrite $v(\phi)$:
+\[
+    v(\phi) = \sum_{x,y: x\in S, y\in T} \phi(xy)
+            - \sum_{x,y: x\in T, y\in S} \phi(xy)
+\]
+Second sum is nonnegative, $0 \leq \phi (xy) \leq c(S,T)$
+First sum: <= w(x,y), $\phi (xy) \leq w(xy)$
+
+Thus
+\[
+    v(\phi) \leq c(S,T).
+\]
+
+
+
+\begin{definition}
+A path $P$ $s\rightarrow t$ (edge, or walk without repeated edges, irrespective of edge direction) is called \dt{augmenting path} with respect to a flow $\phi$ if $\phi(e) < w(e)$ on every forward edge of $P$ and $\phi(e) > 0$ on every backward edge.
+\end{definition}
+
+\textbf{Theorem.}
+Let $G$ flow network, $\phi$ flow on $G$. Then $\phi$ maximal with respect to the size ($v(\phi)$ max) $\Leftrightarrow \nexists$ augmenting path (w.r.t. $\phi$).
+
+\textbf{Proof:}
+"$\Rightarrow$"
+Suppose there is an augmenting path $P$. Then we choose
+\begin{align*}
+    \delta' &= min_{e \in P, forward} w(e) - \phi(e) > 0 \\
+    \delta'' &= min_{e\in P, backward} \phi(e) > 0 \\
+    \delta &= min(\delta', \delta'') > 0
+\end{align*}
+
+Define
+\[
+    \tilde\phi := \begin{cases}
+        \phi(e) + \delta &\text{if $e$ forward edge of $P$} \\
+        \phi(e) - \delta &\text{if $e$ backward edge of $P$} \\
+        \phi(e) &\text{otherwise}.
+    \end{cases}
+\]
+
+$\tilde\phi$ is a flow on $G$.
+
+Because we take the minimum of all the flows $\delta$, $\tilde\phi$ does not become negative on backward edges.
+
+Because we increase the flow on the augmenting path by $\delta$,
+\[
+    v(\tilde\phi) = v(\phi) + \delta > v(\phi)
+\]
+
+"$\Leftarrow$" Assume there is no augmenting path.
+\[
+    S = \{v\in V | \exists augmenting path s\rightarrow v\}
+\]
+There is no augmenting path $s\rightarrow t$, thus $t \notin S$.
+Thus $(S, T = V\setminus S)$ is a cut.
+Each edge $xy$ with $x\in S, y\in T$ must be saturated: otherwise it would be possible to find an augmenting path.
+
+\TODO add picture of S patch x edgy y in T
+
+Each edge $xy$ with $x\in T, y\in S$ must be void ($\phi(xy) = 0$). Thus
+\[
+    v(\phi) = c(S,T) - 0.
+\]
+
+Therefore $\phi$ must be maximal.
+
+\textbf{Theorem.} $G$ is a flow network such that
+\[
+    \forall e\in E': w(e)\in \mathbf{N} \implies \exists \text{maximal flow}.
+\]
+
+\textbf{Proof.} $ \phi_{0}(e) \equiv O$, if $\phi_{0}$ not max $\implies \exists$ augmenting path with $\delta \in \mathbf{N^{+}}$
+
+Construct $\phi_1$ according to previous proof ($\tilde\phi$). We know that $v(\phi_1) ≥ 1$. Now we iterate and get $\phi_2, v(\phi_2) ≥ 2$,~\ldots After finitely many steps, we reach a flow $\phi_{\text{max}}$ where we cannot find an augmenting path anymore.
+
+\textbf{Corollary.} If $G$ is a flow network, weight function $w: E\mapsto \mathbf{Q}$, this implies $\exists$ maximal flow.
+
+\textbf{Remark.}
+If weights are real, it can be shown that a maximal flow exists (but you need a different proof strategy).
+
+\textbf{Theorem (Max-flow/min-cut theorem).}
+Let $G$ be a flow network $\implies \exists$ max. flow and $v(\phi_{\text{max}})= \min_{(S,T) cut} c(S,T)$
+
+% slides: Algorithm of Ford-Fulkerson
+
+
+\section{Special Graph Classes}
+
+\subsection{Eulerian Graphs}
+
+\begin{definition}
+A \dt{Eulerian trail}, which can be open or closed (\dt{Eulerian tour}), is a trail where no edge is repeated and every edge is used. Closed: start = end
+\end{definition}
+
+\begin{definition}
+A graph is called \dt{Eulerian} if there is an Eulerian tour.
+\end{definition}
+
+\textbf{Theorem.}
+Let $G=(V,E)$ be an undirected, connected multigraph. Then $G$ is Eulerian $\iff \forall x\in V: d(x)\text{ even}$.
+
+There is an \emph{open} Eulerian trail $\iff$ exactly two vertices have odd degree.
+
+\textbf{Proof.}
+% "<==" direction
+Proof by induction on $\alpha_1(G) =: m$.
+
+$m = 0$: Trivial, only one vertex.
+
+$m ≥ 1$: construct a tour $W$. You can always find a tour because degrees are even, thus every time you enter a vertice you can certainly find an edge where you can leave it.
+
+Two cases:
+a) $W$ is an Eulerian tour
+b) $W$ is not an Eulerian tour
+
+Then remove $W$, resulting in a graph $G'$ with connected components $G'_1$,~\ldots Then
+\[
+    \forall x\in V(G'_{i}): d_{G'}(x)\text{ is still even}
+\]
+
+Since all $G'_{i}$ are smaller than $G$, we can apply the induction hypothesis. This means $G'_{i}$ must be Eulerian (with Eulerian tours $W_{i}$.
+
+$\forall i: W_i$ and $W$ have common vertex. Thus you can construct an Eulerian tour for the whole graph.
+
+% Slides: Eulerian tour (started at 09:57... :)
+
+% "==>" direction
+
+Walk on an Eulerian tour. 
+
+
+
+
+
+
+
+
+
+
+

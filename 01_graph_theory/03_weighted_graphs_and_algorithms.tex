@@ -1,6 +1,5 @@
-% Discrete Mathematics Lecture Notes 17.10.2013
-
-% (Last week)
+\section{Weighted Graphs and Algorithms}
+\TODO{Missing parts from second week}
 
 \subsection*{Maximal Flows}
 
@@ -172,61 +171,3 @@ If weights are real, it can also be shown that a maximal flow exists (but you ne
 Let $G$ be a flow network $\implies \exists$ max. flow and $v(\phi_{\text{max}})= \min_{(S,T) cut} c(S,T)$
 
 % slides: Algorithm of Ford-Fulkerson
-
-\section{Special Graph Classes}
-
-\subsection*{Eulerian Graphs}
-
-\begin{definition}
-A \dt{Eulerian trail}, which can be open or closed, is a trail where no edge is repeated and every edge is used. In a closed trail or \dt{Eulerian tour}, start = end.
-\end{definition}
-
-\begin{definition}
-A graph is called \dt{Eulerian} if there is an Eulerian tour.
-\end{definition}
-
-\textbf{Theorem.}
-Let $G=(V,E)$ be an undirected, connected multigraph. Then
-\[
-  G\text{ is Eulerian} \iff \forall x\in V: d(x)\text{ even}.
-\]
-
-There is an \emph{open} Eulerian trail $\iff$ exactly two vertices have odd degree.
-
-\textbf{Proof.}
-% "<==" direction
-Proof by induction on $\alpha_1(G) =: m$.
-
-$m = 0$: Trivial, only one vertex.
-
-$m ≥ 1$: construct a tour $W$. You can always find a tour because degrees are even, thus every time you enter a vertice you can certainly find an edge where you can leave it.
-
-Two cases:
-a) $W$ is an Eulerian tour
-b) $W$ is not an Eulerian tour
-
-Then remove $W$, resulting in a graph $G'$ with connected components $G'_1$,~\ldots Then
-\[
-    \forall x\in V(G'_{i}): d_{G'}(x)\text{ is still even}
-\]
-
-Since all $G'_{i}$ are smaller than $G$, we can apply the induction hypothesis. This means $G'_{i}$ must be Eulerian (with Eulerian tours $W_{i}$.
-
-$\forall i: W_i$ and $W$ have common vertex. Thus you can construct an Eulerian tour for the whole graph.
-
-% Slides: Eulerian tour (started at 09:57... :)
-
-% "==>" direction
-
-Walk on an Eulerian tour. 
-
-
-
-
-
-
-
-
-
-
-

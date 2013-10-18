@@ -105,6 +105,9 @@
 
 \isodash{--}
 
+\def\@path#1,{#1\@ifnextchar\relax{}{\text{---}\@path}}
+\def\path#1{\ensuremath{\@path#1,\relax}}
+
 \maketitle
 \tableofcontents
 %\listoffigures

@@ -4,10 +4,8 @@
 \lecturedate[\baselineskip]{2013-10-18}
 
 \begin{definition}
-\[
-    \text{$G$ is \dt{Hamiltonian}} \iff \exists \text{Hamiltonian cycle}
-\]
 In a \dt{Hamiltonian cycle}, each vertex is visited exactly once (except start/end).
+$\text{$G$ is \dt{Hamiltonian}} \iff \exists\;\text{Hamiltonian cycle}.$
 \end{definition}
 
 Finding a Hamiltonian cycle in a graph is an NP-complete problem.
@@ -17,35 +15,31 @@ Let $G=(V,E)$ be a graph.
 \[
 \forall v,w\in V : d(v)+d(w) ≥ |V| \rightarrow\text{add $vw$ to $E$}\leadsto \tilde E
 \]
-Then
-\[
-    [G] = (V,\tilde E)
-\]
-is called the \dt{closure} of $G$.
+Then $[G] = (V,\tilde E)$ is called the \dt{closure} of $G$.
 \end{definition}
 
-\Theorem.
-\[
-    G\text{ Hamiltonian} \iff [G]\text{ Hamiltonian}
-\]
+\Theorem.  $G\text{ Hamiltonian} \iff [G]\text{ Hamiltonian}.$
 
 \ProofForward.
 Trivial.
 
 \ProofBackward.
-Choose $v,w\in V: vw \not\in E(G), d(v)+d(w) ≥ |V|$.
-Let $H=(V,E\cup \{vw\})$. Assume $H$ is Hamiltonian and $G$ is not.
+Choose
+\begin{gather*}
+  v,w\in V: vw \not\in E(G),\;d(v)+d(w) ≥ |V| \\
+  H=(V,E\cup \{vw\})
+\end{gather*}
+Assume $H$ is Hamiltonian and $G$ is not.
 This means that $\exists\;\text{Hamiltonian cycle in $H$}$ and it must contain $vw$.
-In $H$ containing $vw$, say $v=x_1,\ldots,x_n=w,x_1$ 
-$n=|V|$
-
+In $H$ containing $vw$, say
+\[ v=x_1,x_2,x_3,\ldots,x_n=w,x_1 \qquad(n=|V|)\]
 Let
 \begin{align*}
-    X &=\{x_i \mid x_{i-1}\in \Gamma_G(w), 3 ≤ i ≤ n-1 \} &&\text{ and} \\
+    X &=\{x_i \mid x_{i-1}\in \Gamma_G(w), 3 ≤ i ≤ n-1 \}\quad\text{and} \\
     Y &=\{x_i \mid x_i\in \Gamma_G(v), 3 ≤ i ≤ n-1 \}.
 \end{align*}
 
-$v -- x_2 -- x_3 -- \ldots -- x_{n-1} -- w$ is a path in $G$.
+\path{v, x_2, x_3, \ldots, x_{n-1}, w} is a path in $G$.
 
 $v \not\in \Gamma_G(w) \implies |X| = d_G(w) - 1$
 because exactly one neighbour is excluded, all the others are counted. $x_1= v$ is not a neighbour by our assumption.
@@ -57,10 +51,10 @@ $|Y| = d_G(v) - 1$.
 
 Thus $|X| + |Y| \geq n-2$.
 
-Therefore, $\exists i: 3 ≤ i ≤ n-1$ such that
+Therefore, $\exists\,i: 3 ≤ i ≤ n-1$ such that
 $x_{i-1}\in \Gamma_G(w), x_i\in\Gamma_G(v)$, because we iterate over $n-3$ values.
 
-$\implies v=x_1 -- x_i -- x_{i+1} -- \ldots -- x_{n-1} -- w=x_n -- x_{i-1} -- x_{i-2} -- \ldots -- x_2 -- v=x_1$
+$\implies \path{v=x_1, x_i, x_{i+1}, \ldots, x_{n-1}, w=x_n, x_{i-1}, x_{i-2}, \ldots, x_2, v=x_1}$
 
 But this is a Hamiltonian cycle in $G$ (contradiction).
 
@@ -92,6 +86,7 @@ A graph $G$ is \dt{planar} if there is an isomorphic graph $H$ embedded in the p
 % square with diagonals (planar) ≅ square with second diagonal non-intersecting
 % K_5 (non-planar)
 % bipartite graph K_{3,3} (non-planar)
+
 $K_5$ is the smallest non-planar complete graph, $K_{3,3}$ is the smallest non-planar complete bipartite graph.
 %These are respectively the smallest possible non-planar complete $K_n$ / $K_{n,m}$.
 
@@ -108,7 +103,7 @@ In the $K_4$, we get
 \begin{align*}
     \alpha_0 &= 4 \\
     \alpha_1 &= 6 \\
-    \alpha_2 &= 4 &&\text{number of faces}
+    \alpha_2 &= 4\quad\text{number of faces}
 \end{align*}
 
 

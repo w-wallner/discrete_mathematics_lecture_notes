@@ -13,7 +13,8 @@ Finding a Hamiltonian cycle in a graph is an NP-complete problem.
 \begin{definition}
 Let $G=(V,E)$ be a graph.
 \[
-\forall v,w\in V : d(v)+d(w) ≥ |V| \rightarrow\text{add $vw$ to $E$}\leadsto \tilde E
+%\forall v,w\in V :  \rightarrow\text{add $vw$ to $E$}\leadsto \tilde E
+\tilde E = E\cup \{vw \mid v,w\in V,\; d(v)+d(w) ≥ |V|\}
 \]
 Then $[G] = (V,\tilde E)$ is called the \dt{closure} of $G$.
 \end{definition}

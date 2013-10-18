@@ -156,7 +156,7 @@ if we set $a=b=c=d=1$ then
 	\item $\tilde A \rightarrow A$
 	\item $\tilde D \rightarrow D = 
 		\begin{pmatrix}3 \\ & 2 \\ & & 2 \\ & & & 3 \\ \end{pmatrix}$
-	\item $det(D-A) = 8$
+	\item $\det{(D-A)'} = 8$
 \end{itemize}
 
 \textbf{Theorem (Kirchhoff's Matrix-Tree Theorem).}
@@ -164,7 +164,7 @@ Let
 \begin{align*}
 G &&& \text{undirected connected graph,} \\
 A &&& \text{adjacency matrix,} \\
-diag(d(v_1),\ldots,d(v_n)) = D &&& \text{degree matrix,} \\
+\operatorname{diag}(d(v_1),\ldots,d(v_n)) = D &&& \text{degree matrix,} \\
 (D-A)' &&& \text{$D-A$ with one row and one column removed.}
 \end{align*}
 Then $|\det{(D-A)'}|$ is the number of spanning trees of $G$.

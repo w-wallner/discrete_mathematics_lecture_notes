@@ -1,0 +1,310 @@
+%%% EtherPad for Discrete Mathematics VO
+%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
+%%% Past pads:
+%%%     * 2013-10-17: committed by patrikf
+%%%     * 2013-10-18: committed by patrikf
+%%%     * 2013-10-24: committed by patrikf
+
+% Discrete Mathematics Lecture Notes 2013-10-25
+
+\chapter{Higher Combinatorics}
+
+\section{Enumerative Combinatorics}
+
+$A$ finite set, $|A|$ = ?
+
+$(A_n)_{n ≥ 0}$ system of finite sets, $a_n = |A_n|$, what is the \dt{counting sequence} $(a_n)_{n ≥ 0}$
+
+The goal might be to find
+\begin{compactitem}
+\item a closed formula (often impossible),
+\item a recursion,
+\item a generating function (e.g. $\sum_{n >= 0}[a_n z^n]$),
+\item asymptotic estimates, $a_n$ symptotically similar to $b_n$:
+    $a_n \sim b_n \iff \lim_{n\towards\inf} \frac{a_n}{b_n} = 1$
+\end{compactitem}
+
+
+\Example.
+\begin{align*}
+A_n &= \{permutations of 1,2, \ldots, n\}, |A_n| = n! \\
+a_1 &= 1, a_n = n a_{n-1} \\
+a_n \sim (\frac{n}{e})^n \sqrt{2\pi n}
+\end{align*}
+
+
+\subsection{Counting principles}
+
+Elementary counting principles:
+% TODO make subsubsections out of this
+\begin{compactenum}
+\item Sum principle:
+    $A\cap B = \varnothing \implies |A\cup B| = |A| + |B|$
+\item Product principle:
+    $|A\times B| = |A| * |B|$
+\item Bijection principle:
+    $f: A\mapsto B, \text{bijective}\implies |A| = |B|$
+\end{compactenum}
+
+\textbf{Example.}
+What is the number of two-digit positive integers?
+$|\{10,\ldots,99\}| = 90$
+
+\begin{gather*}
+xy\quad x\in X=\{1,2,\ldots ,9\}, y\inY = \{0,1,\ldots ,9\} \\
+|X\times Y| = |X| \cdot |Y| = 9\cdot 10 = 90
+    \qquad\text{(product principle)}
+\end{gather*}
+
+\textbf{Example.}
+We choose a password with 4 to 10 digits. How many passwors are possible?
+
+\begin{align*}
+    A_i & \text{set of passwords with $i$ digits} \\
+    Y &= Y = \{0,1,\ldots ,9\}
+    A_i &= Y^i, |Y| = 10, |A_i| = {10}^i
+        &&\text{(product principle)} \\
+    \text{total number} &= 10^4 + 10^5 + \ldots + 10^10
+        &&\text{(sum principle)}
+\end{align*}
+
+\textbf{Example.}
+There is a Thief, which saw me using a bank-card, and afterwards stole this card. He saw the code starts with $0$ and contains an $8$. How many possibilities for the password?
+
+4 Digits ($0 \ldots$), with the product principle we get $10^3$ options. 
+
+Using the sum principle we can subtract codes the containing $8$.
+
+\begin{align*}
+|A| &= |A\cup B| - |B|
+    &&\text{(sum principle, reversed)}
+\text{\# possibilities}
+    &= {10}^3 - \text{\# codes not containing 8} \\
+    &= {10}^3 - 9^3 = 271.
+\end{align*}
+
+\textbf{Example.}
+Take a set $A = \{a_1, a_2, \ldots , a_n}$ and its power set $2^A = \{X \mid X \subseteq A\}$. $|2^A| = ?$
+
+\begin{align*}
+    B &\subseteq A \\
+    i_k &\quad\text{indices chosen from A} \\
+    B &=\{a_{i_1}, a_{i_2},\ldots, a_{i_k}\} \\
+    k &\leq n, 1 \leq i_1 < i_2 < \ldots i_k \leq n
+    B &\mapsto
+        (b_1, b_2 \ldots  b_n) \in \{0,1\}^n \\
+    b_i &= \begin{cases}
+        1 &\text{a_i\in B} \\
+        0 &\text{a_i\not\in B}
+    \end{cases} \\
+    f: 2^A &\mapsto \{0,1\}^n &&\text{bijective mapping} \\
+    |2^A| &= |\{0, 1\}^n| = 2^n
+        &&\text{(bijection principle) \\
+\end{align*}
+
+\subsubsection{Double counting}
+A = \{a_1,a_2,\ldots,a_m\}
+B = \{b_1,b_2,\ldots,b_n\}
+R\subseteq A \times B
+
+%Set R_{i,0} = \{b \in B \mid (a_i,b) \in R\}
+Set R_{i,0} = \{b \in B \mid a_i\operatorname{R} b\}
+
+R_{0,i} = \{ a \in A \mid a\operatorname{R} b_i \}
+
+(subscript 0 just means that this part is fixed)
+
+\implies |R| =
+    \sum_{i=1}^m |R_{i,0}| =
+    \sum_{j=1}^n |R_{0,j}|
+
+\textbf{Proof.}
+define matrix $(x_{ij})_{i = 1,\ldots,m; j = 1,\ldots ,n}
+
+x_{ij} = \begin{cases}
+        1 & a_i\operatorname{R} b_j \\
+        0 &\text{otherwise}
+    \end{cases}
+
+The first sum is the row-wise sum, the second sum column-wise. Of course, summing up all the elements of the matrix, you get the same result. In some problems, this equivalence may be helpful, because one of the sums is easier to compute than the other.
+
+
+\textbf{Example.}
+\begin{gather*}
+    \tau(n) = \text{average number of divisors of an integer k} \\
+    1 ≤ k ≤ n \\
+    d(n) = \text{ number of divisors of n} \\
+    \tau(n) = \frac{d(1)+\ldots+d(n)}{n}
+        = \frac1n\sum_{i=1}^n d(i)
+\end{gather}
+
+\begin{tabular}{r|ccccccccc}
+\toprule
+$n$    &1&2&3&4&5&6&7&8&9 \\
+$d(n)$ &1&2&2&3&2&4&2&4&3
+\bottomrule
+\end{tabular}
+
+$\text{E.g.: } n = 6, \tau(6) = \frac{7}{3}$
+
+A = B = \{1,\ldots,n\}
+R\subseteq A\times B :\ a\operatorname{R} b\iff a|b \text{ ($a$ divides $b$)}
+
+You can write down $\operatorname{R}$ as a matrix.
+
+\begin{align*}
+\text{$n$ prime}
+    &\implies d(n) = 2 \\
+n = p^e, p\in \mathbb{P}, e\in \mathbb{N}^{+}
+    &\implies d(n) = e+1 \\
+n = \prod_{i=1}^k p_i^{e_i}
+    &\implies d(n) = \prod_{i=1}^k (e_i+1)
+\end{align}
+
+l | n \iff l = \prod_{i=1}^k p_i^{f_i},
+f_i ≤ e_i
+
+l is defined by (f_1,\ldots,f_k)
+
+\tau(n) = \frac{1}{n}\sum_{i=1}^n d(i)
+    = \frac{1}{n}\sum_{j=1}^n |R_{0,j}|
+    (sum of columns) \\
+    = \frac{1}{n}\sum_{i=1}^n |R_{i,0}
+    (sum of rows)
+
+R_{0,j} = \{a \mid a \operatorname{R} j\} = d(j)
+
+R_{i,0} = \{b \mid i\operatorname{R} b\}
+    = \text{sum of the number of multiples of $i$ in $b$\}
+    
+\tau(n) = ... =
+    \frac{1}{n} \sum_{i=1}^n \lfloor\frac{n}{i}\rfloor =
+    \frac{1}{n} \sum_{i=1}^n (\frac{n}{i} - 
+        \underbrace{\{\frac ni\}}_{\text{fractional part}} =
+    \sum_{i=1}^n \frac1i -
+        \frac1n\sum_{i=1}^n
+            \underbrace{\{\frac ni\}}_{≤ 1} =
+    H_n + O(1) =
+        \log n + e_n (e ... error)
+
+    -1 < e_n < 1
+
+H_n ... harmonic numbers
+H_n\sim \log n
+
+
+\subsubsection{Pigeon hole principle}
+
+$A_1, \ldots , A_k$ finite pairwise disjoint set,
+$|A_1 \cup \ldots \cup A_k| > k\cdot r$
+$\implies \exists i : |A_i| > r$
+
+If $r=1$, you can also say that
+\[
+    f: A\mapsto B, |A| > |B| \implies \exists b \in B :
+    |\underbrace{f^{-1}(b)}_{\text{set of preimages of b}}|
+        ≥ 2 ,
+        \text{i.e. f is not injective}
+\]
+
+
+\textbf{Example.}
+Claim: There are 2 people living in Austria who are born in the same hour of the same day in the same year. 
+
+Possible hours: $365\cdot 24\cdot 200 < 2\cdot 10^6$;
+the population is bigger than that.
+
+
+\textbf{Example.}
+Claim: $\forall q\text{ odd} \exists i: q | 2^i-1 =: a_i$.
+
+\textbf{Proof.}
+If $\exists i: a_i \cong 0 \mod q$, we are done.
+
+Consider $a_1, a_2,\ldots, a_q \mod q$.
+Either $\exists i: a_i \cong 0 \mod q$,
+or $\exists i,j: i < j, a_i \cong a_j \mod q$
+by the pigeon hole principle (without 0, only $q-1$ residue classes left)
+
+\implies
+a_i - a_j &= q\cdot a, a\in\mathbb{Z} \\
+2^i(1 - 2^{j-1}) &= q\cdot a \\
+
+Since q is odd, gcd(2^i, q)=1. Therefore $q | 2^{j-1} - 1$. But in this case, $a_{j-i}\cong 0$!
+
+
+\textbf{Example (Interpreting the pigeon hole principle as a colouring).}
+$A$ set, $|A| = n$,
+$l_1, l_2, \ldots, l_k ≥ 1 and n > l_1 + l_2 + \ldots + l_k - k$
+
+By the pigeon hole principle, for each coloring of the elements of $A$ with colours 1 to $k$, there is an $i$ such that $l_i$ elements have the colour $i$.
+
+\textbf{Proof.}
+\[
+    f: A\mapsto \{1,2,\ldots,k\}
+\]
+Assume
+    $|f^{-1}(i)| = \text{\#elements having colour $i$} < l_i
+    \quad\forall i$.
+n = |A| = \sum_{i=1}^k |f^{-1}(i)| ≤ l_1 +\ldots + l_k - k
+Contradiction!
+
+
+\subsubsection{Principle of Inclusion and Exclusion}
+
+With pairwise disjoint sets, we know that
+|A_1\cup \cdots\cup A_n| = |A_1| + \ldots + |A_n|.
+
+|A_1\cup \cdots\cup A_n| =
+    \sum_{\varnothing\neq I\subseteq\{1,\ldots,n\}}
+        (-1)^{|I|+1}
+        \left|
+            \BigCap_{i\in I} A_i
+        \right|
+
+If we have a universe $A$ such that
+\[
+    A_1,\ldots,A_n \subseteq A
+\], then
+
+|A\setminus \Cup_{i=1}^m A_i| =
+|A| + 
+    \sum_{\varnothing\neq I\subseteq\{1,\ldots,n\}}
+        (-1)^{|I|}
+        \left| \BigCap_{i\in I} A_i \right|
+=
+\sum_{I\subseteq\{1,\ldots,n\}}
+    (-1)^{|I|}
+    \left| \BigCap_{i\in I} A_i \right|
+
+... if you presume that "the intersection of nothing" is "everything" (A)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

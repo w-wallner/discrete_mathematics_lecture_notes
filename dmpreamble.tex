@@ -1,0 +1,112 @@
+% Preamble for the DM notes.
+% This is shared between main.tex and the temporary document we use on
+% writelatex.com.
+\documentclass[10pt,a4paper,titlepage,oneside,final]{book}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{lmodern}
+\usepackage[a4paper,textwidth=345pt,textheight=598pt,hmarginratio=1:1]{geometry}
+\usepackage[final]{graphicx}
+\usepackage{subfigure}
+\usepackage[intlimits]{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{cleveref}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{ragged2e}
+\usepackage{soul}
+\usepackage{theorem}
+\usepackage{tikz}
+\usepackage{makeidx}
+\usepackage{paralist}
+\usepackage[iso,german,english]{isodate}
+\usepackage{placeins}
+
+\makeatletter
+
+\captionsetup{format=hang,justification=justified,labelfont=bf,labelsep=colon,font=small}
+\long\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+
+\author{Patrik Fimml\and NeroBurner\and emptyvi\and fbr\and gsp}
+\title{Lecture Notes 2013W\\ 104.271 Discrete Mathematics VO\\ (Gittenberger)}
+\def\@thanks{%
+  \vfill%
+  \textbf{Collaborate!} This document is edited collaboratively. We take notes
+  during the lecture using EtherPad, and maintain them afterwards using Git.
+  Join us! \mbox{\href
+    {http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01&p=809709&viewfull=1\#post809709}
+    {\nolinkurl{http://informatik-forum.at/showthread.php?104454-Notes-2013WS}}}
+}
+
+\makeindex
+\gdef\th@custom{%
+  \th@plain%
+  \def\@begintheorem##1##2{%
+    \item[\hskip\labelsep \theorem@headerfont ##1\ ##2.]}}%
+\theoremstyle{custom}
+\theorembodyfont{\normalfont}
+\newtheorem{definition}{Definition}
+
+\def\thechapter{\Roman{chapter}}
+
+\parindent=0pt
+\parskip=\medskipamount
+
+\pltopsep=-5pt
+\plpartopsep=0pt
+
+\def\TODO#1{\fbox{TODO: #1}}
+
+\newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,baseline] \node [anchor=base] (#1) {$#2$};}
+
+\newcommand{\DrawLineHorizontal}[3][]{%
+	\begin{tikzpicture}[overlay,remember picture]
+		\draw[#1] (#2.west) -- (#3.east);
+	\end{tikzpicture}
+}
+\newcommand{\DrawLine}[3][]{%
+	\begin{tikzpicture}[overlay,remember picture]
+		\draw[#1] (#2.north) -- (#3.south);
+	\end{tikzpicture}
+}
+
+% "defined term"
+\def\dt#1{\textbf{#1}}
+
+\def\Remark.{\noindent \textbf{Remark.}}
+\def\Lemma.{\noindent \textbf{Lemma.}}
+\def\Theorem.{\noindent \textbf{Theorem.}}
+\def\Proof.{\noindent \textbf{Proof.}}
+\def\ProofForward.{\noindent \textbf{Proof (``$\Rightarrow$'').}}
+\def\ProofBackward.{\noindent \textbf{Proof (``$\Leftarrow$'').}}
+
+\newcommand\lecturedate[2][0pt]{%
+  \marginpar{%
+    \raisebox{2pt+#1}{%
+      \vbox{%
+        \rule{5em}{.4pt} \\[0pt]%
+        \hspace*{1pt}%
+        \scriptsize%
+        \printdate{#2}%
+      }%
+    }%
+  }%
+  \ignorespaces%
+}
+
+\def\missingdate#1{%
+  \par\strut\lecturedate{#1}%
+  \TODO{Missing content from \printdate{#1}}%
+  \par%
+}
+
+\isodash{--}
+
+\def\@path#1,{#1\@ifnextchar\relax{}{\text{---}\@path}}
+\def\path#1{\ensuremath{\@path#1,\relax}}

@@ -1,0 +1,38 @@
+% this file contains tikz-makros
+
+% counter for numbering the nodes
+\newcounter{nodecount}
+% #1 ... list of degrees, where the nodes are placed
+% #2 ... radius of the node-placement
+\def \fullyConnectedGraph #1#2{%
+  \setcounter{nodecount}{0}
+  \foreach \x in {#1} 
+  {
+    \stepcounter{nodecount}
+    \node (n\the\value{nodecount}) at (\x:#2) {};
+  };
+  \foreach \i in {1,...,\the\value{nodecount}} 
+  {
+    \fill (n\i) circle(2pt);
+    \foreach \j in {\i,...,\the\value{nodecount}}
+    {
+      \path (n\i) edge (n\j);
+    };
+  };%
+}
+
+% draw a graph
+% #1 ... list of x/y coordinates for the nodes
+% #2 ... list of pahtes between nodes, beginning with 1
+\def \drawGraph #1#2{%
+  \setcounter{nodecount}{0}
+  \foreach \x/\y in {#1} {
+    \stepcounter{nodecount}
+    \node (n\the\value{nodecount}) at (\x,\y) {};
+    \fill (n\the\value{nodecount}) circle(2pt);
+  };
+  \foreach \i/\j in {#2} {
+    \path (n\i) edge (n\j);
+  };
+}
+

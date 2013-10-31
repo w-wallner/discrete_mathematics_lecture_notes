@@ -1,0 +1,18 @@
+\begin{figure}[htb] % K4 with the 4 faces labeled
+  \centering
+  \begin{tikzpicture}
+    \fullyConnectedGraph{90,-30,180+30}{2cm}
+    \node (n0) at (0,0) {};
+    \fill (n0) circle(2pt);
+    \foreach \i in {1,...,\the\value{nodecount}} {
+      \path (n0) edge (n\i);
+    };
+    \node at (90+45:0.5cm) {I};
+    \node at (45:0.5cm) {II};
+    \node at (-90:0.5cm) {III};
+    \node at (45:1.5cm) {IV};
+  \end{tikzpicture}
+  \caption{Faces of $K_4$}
+\end{figure}
+
+

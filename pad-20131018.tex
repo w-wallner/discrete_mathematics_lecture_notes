@@ -82,23 +82,21 @@ The generalization of this problem, where you want to find an optimal Hamiltonia
 A graph $G$ is \dt{planar} if there is an isomorphic graph $H$ embedded in the plane ($= \mathbb{R}^2$) such that no two edges intersect.
 \end{definition}
 
-\TODO{Examples}
+\textbf{Examples for planar and non-planar Graphs}
+\input{01_graph_theory/04_fig_ex_planar_graphs}
 % triangle (planar)
 % square with diagonals (planar) ≅ square with second diagonal non-intersecting
 % K_5 (non-planar)
 % bipartite graph K_{3,3} (non-planar)
 
 $K_5$ is the smallest non-planar complete graph, $K_{3,3}$ is the smallest non-planar complete bipartite graph.
-%These are respectively the smallest possible non-planar complete $K_n$ / $K_{n,m}$.
-
-% K_4 with (straight) line segments
 
 \begin{definition}
 The edges of the graph (which have to be \emph{Jordan curves}) divide the plane into regions. These are the \dt{faces} of the planar graph.
 \end{definition}
 
-\TODO{Figure: $K_4$}
 % Faces of K_4 - Inner: I, II, III, Outer: IV
+\input{01_graph_theory/04_fig_ex_K4_faces}
 
 In the $K_4$, we get
 \begin{align*}
@@ -107,12 +105,11 @@ In the $K_4$, we get
     \alpha_2 &= 4\quad\text{number of faces}
 \end{align*}
 
-
 \begin{definition}
 $H$ is a \dt{subdivision} of $G$ if $H$ is obtained by replacing every edge of $G$ by a path.
 \end{definition}
-\TODO{Figure}
 % graph with 4 v and its graph with pathes
+\input{01_graph_theory/04_fig_def_K4_subdivision}
 
 % Kuratovski's theorem?
 \Theorem.

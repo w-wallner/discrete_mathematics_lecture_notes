@@ -6,31 +6,36 @@
 
 % Discrete Mathematics Lecture Notes 2013-10-24
 
+\def \GammaPlus {\Gamma^{+}}
+
 % clarification of last week
 
 $G$ planar multigraph
-$G*= (V*, E*), V*= F$
-$E*: $ for every edge $e \in E$ set $e* = f_1 f_2$ if $f_1$, $f_2$ are the facs "left" and "right" of $e$
+$G^*= (V^*, E*), V^*= F$
+$E^*: $ for every edge $e \in E$ set $e^* = f_1 f_2$ if $f_1$, $f_2$ are the facs "left" and "right" of $e$
 
 \TODO{ G}
 %plot
 
 \textbf{Remark:}
-1) |E| = |E*|
-2) In general |G*| is a multigraph
-3) $G_1, G_2$ are duals of $G \Rightarrow G_1 \cong G_2$
+\begin{compactenum}
+  \item $|E| = |E^*|$
+  \item In general $|G^*|$ is a multigraph
+  \item $G_1, G_2$ are duals of $G \Rightarrow G_1 \cong G_2$
+\end{compactenum}
 
-$A \subeq E$    
-$A$ cycle in $G \iff A*$ minimal cut
+$A \subseteq E$    
+$A$ cycle in $G \iff A^*$ minimal cut
 
-If G is not necessarily planar: define $G*$ by (*)
+If G is not necessarily planar: define $G^*$ by (*)
 This Graph is uniqe, if it exists (combinor
 
 \textbf{Theorem (Witness Theorem).} \\
-If G is not necessarily planar: define $G**$ by (*)
-* $G$ planar $\Rightarrow G** \cong G*$
-* $G$ non planar $\not\exists G**$
-
+If G is not necessarily planar: define $G^{**}$ by (*)
+\begin{compactitem}
+  \item $G$ planar $\Rightarrow G^{**} \cong G^*$
+  \item $G$ non planar $\not\exists G^{**}$
+\end{compactitem}
 % end of last weeks-corrections
 
 
@@ -114,8 +119,10 @@ A coloring is \dt{feasible} if $vw\in E\implies c(v)≠c(w)$.
 
 \Remark. Edge coloring $\bar{c}: E\mapsto C$, feasible if edges with a common vertex have different colors.
 
-\bar{G} = (\bar V, \bar E), \bar V = E
-e_1 e_2\in \bar E \iff e_1,e_2\text{ share common vertex}
+\[
+  \bar{G} = (\bar V, \bar E), \bar V = E
+  e_1 e_2\in \bar E \iff e_1,e_2\text{ share common vertex}
+\]
 
 \Remark. Similarly, face colorings of a planar graph (think of a map of countries) can be 
 
@@ -159,76 +166,68 @@ $\dmin ≤ 5$.
 
 Assume $\dmin ≥ 6$.
 Then
-$2\alpha_1 = \sum_{x\in V} d(x) ≥ 6\alpha_0$
-\alpha_1 ≥ \alpha_0.
-
-2\alpha_1 ≥
-\sum_{\text{faces}} \text{number of boundary edges} ≥
-3\alpha_2 =
-3 (2 - \alpha_0 + \alpha_1)
-
-\alpha_1 ≤ 3\alpha_0 - 6
+\[
+  2\alpha_1 = \sum_{x\in V} d(x) ≥ 6\alpha_0
+  \alpha_1 ≥ \alpha_0.
+\]
+\[
+  2\alpha_1 ≥
+  \sum_{\text{faces}} \text{number of boundary edges} ≥
+  3\alpha_2 =
+  3 (2 - \alpha_0 + \alpha_1)
+\]
+\[
+  \alpha_1 ≤ 3\alpha_0 - 6
+\]
 
 But $\alpha_1 ≥ 3\alpha_0$! Contradiction.
 
-Case 1:
-$\dmin \leq 4$. Pick $x_0$ so that $d(x_0) \leq 4$.
+Cases: \\
+\begin{compactenum}
+%Case 1:
+  \item $\dmin \leq 4$. Pick $x_0$ so that $d(x_0) \leq 4$.
 Take $G' = G \setminus \{x_0\}$. Assume $\chi(G')=5$. Then, since $x_0$ has at most $4$ neighbors, you can color $x_0$ with the remaining color. By induction, $\chi(G)=5$.
 
-Case 2:
-$d_{\text{min}}=5$.
+%Case 2:
+  \item $d_{\text{min}}=5$.
 We have a vertex $v$ with exactly 5 neighbours $\{a,b,c,d,e\}$.
 $c(a) = 1, c(b) = 2,\ldots$.
-
+\\
 $G_a = \{x\in V\mid \exists 1--3--1--3--\ldots path a \leadsto x\}$.
 Similar for $G_c$.
-Case 2.1: If $G_a\cap G_c =\varnothing$, we can recolor $G_a$ by switching colors 1 and 3. Then we can color $v$ with $c(v) = 1$.
+  \begin{compactenum}
+%Case 2.1: 
+    \item If $G_a\cap G_c =\varnothing$, we can recolor $G_a$ by switching colors 1 and 3. Then we can color $v$ with $c(v) = 1$.
 
-Case 2.2: If $G_a\cap G_c ≠\varnothing$, then $G_a = $G_c$.
-Case 2.2.1: If $G_b\cap G_d =\varnothing$, then recolor $G_b$ by switching 2 and 4, and $c(v) = 2.
-Case 2.2.2: If $G_b\cap G_d ≠\varnothing$, then $G_b = G_d$. Contradiction! (planar graph - the paths $G_a=G_c$ and $G_b=G_d$ cannot cross each other)
-
+%Case 2.2: 
+    \item If $G_a\cap G_c ≠ \varnothing$, then $G_a = G_c$.
+%Case 2.2.1:
+    \begin{compactenum}
+      \item If $G_b\cap G_d =\varnothing$, then recolor $G_b$ by switching 2 and 4, and $c(v) = 2$.
+%Case 2.2.2: 
+      \item If $G_b\cap G_d ≠\varnothing$, then $G_b = G_d$. Contradiction! (planar graph - the paths $G_a=G_c$ and $G_b=G_d$ cannot cross each other)
+    \end{compactenum}
+  \end{compactenum}
+\end{compactenum}
 
 \subsection*{Ramsey Theory}
 
 \textbf{Example.} Every 2-edge coloring of $K_6$ has a monochromatic $K_3$.
 
-\TODO{format figure $K_6$ $K_3$}
-% \begin{figure}
-\begin{tikzpicture}
-  \node (n1) at (0,1) {};
-  \node (n2) at (1,2) {};
-  \node (n3) at (2,2) {};
-  \node (n4) at (3,1) {};
-  \node (n5) at (2,0) {};
-  \node (n6) at (1,0) {};
-
-  \foreach \i in {1,...,6}
-  {
-    \fill (n\i) circle(2pt);
-    \foreach \j in {\i,...,6}
-    {
-      \path (n\i) edge (n\j);
-    };
-  };
-\end{tikzpicture}
-
-\begin{tikzpicture}
-  \node (n1) at (0,0) {};
-  \node (n2) at (1,1) {};
-  \node (n3) at (2,0) {};
-
-  \foreach \i in {1,...,3}
-  {
-    \fill (n\i) circle(2pt);
-    \foreach \j in {\i,...,3}
-    {
-      \path (n\i) edge (n\j);
-    };
-  };
-\end{tikzpicture}
-
-% \end{figure}
+\begin{figure}[htb]
+  \centering
+  \subfigure[$K_6$]{
+    \begin{tikzpicture}
+      \fullyConnectedGraph{90-30, 90+30, 0, 180, 270-30,270+30}{1cm}
+    \end{tikzpicture}
+  }
+  \subfigure[$K_3$]{
+    \begin{tikzpicture}
+      \fullyConnectedGraph{90+30, 270-30,0}{1cm}
+    \end{tikzpicture}
+  }
+  \caption{$K_6$ and one $K_3$}
+\end{figure}
 
 \TODO{Proof (graphical).}
 
@@ -242,24 +241,33 @@ The Ramsey number $R(r,s)$ is
 
 By our example, $R(3,3) ≤ 6$. We can even show that $R(3,3) = 6$.
 
-\TODO{figure $K_5$}
+\TODO{figure out a good caption for Figure $K_5$}
+\begin{figure}[htb]
+  \centering
+  \begin{tikzpicture}
+    \fullyConnectedGraph{90, 30, 180-30, -90-45, -90+45}{1.25cm}
+  \end{tikzpicture}
+  \caption{$K_5$}
+\end{figure}
 
-Lemma. R(r,s) ≤ R(r-1, s) + R(r, s-1)
+Lemma. $R(r,s) ≤ R(r-1, s) + R(r, s-1)$
 
-Proof. n = R(r-1, s) + R(r, s-1)
+Proof. $n = R(r-1, s) + R(r, s-1)$
 Partition $K_n$. Take a vertex $v$. All neighbours connected by a red edge are in $M$; all neighbours connected by a red edge are in $N$.
 n = |M|+|N|+1. Thus
 |M| ≥ R(r-1, s) or |N| ≥ R(R, s-1).
 
-Case 1: \exists blue K_s in M or \exists red K_{r-1} in M.
-Case 2: \exists blue K_{s-1} or red K_r in N.
+\begin{tabular}{ll}
+  Case 1: & $\exists$ blue $K_s$ in $M$ or $\exists$ red $K_{r-1}$ in $M$. \\
+  Case 2: & $\exists$ blue $K_{s-1}$ or red $K_r$ in $N$.
+\end{tabular}
 
-We wanted to show that \exists blue K_s or \exists red K_r.
-In both cases, \emph{together with $v$}, we can always find a blue K_s or a red K_r.
+We wanted to show that $\exists$ blue $K_s$ or $\exists$ red $K_r$.
+In both cases, \emph{together with $v$}, we can always find a blue $K_s$ or a red $K_r$.
 
-\Corollary. R(r,s) ≤ \choose{r+s-2}{r-1} ≤ 2^{r+s-2}
+\textbf{Corollary.} $R(r,s) ≤ \choose{r+s-2}{r-1} ≤ 2^{r+s-2}$
 
-\Proof. R(2,n) = R(n,2) = n ≤ \choose{n}{1}. From there, apply induction, Pascal's triangle, and the above lemma.
+\Proof. $R(2,n) = R(n,2) = n ≤ \choose{n}{1}$. From there, apply induction, Pascal's triangle, and the above lemma.
 
 \begin{definition}
 \[

@@ -78,15 +78,16 @@ In particular,
       - \sum_{y\in \Gamma^-(v)} \phi(yv)
     \right)
 \]
-\TODO{add picture of edge}
 
-For each vertex, we count flow on outgoing edges with positive and flow on
-incoming edges with negative sign. We have the following cases:
+For each vertex, we count flow on outgoing edges positive and flow on
+incoming edges negative. We have the following cases:
 \begin{itemize}
-\item Flow with both endpoints in $S$; outgoing and ingoing cancel each other
-\item Flow with starting point in $S$ and end point in $T$, counted positive
-\item Flow with starting point in $T$ and end point in $S$, counted negative
+  \item Flow with both endpoints in $S$; outgoing and ingoing cancel each other
+  \item Flow with starting point in $S$ and end point in $T$, counted positive
+  \item Flow with starting point in $T$ and end point in $S$, counted negative
 \end{itemize}
+
+\input{01_graph_theory/03_fig_edges_3cases.tex}
 
 Thus, we can rewrite $v(\phi)$:
 \[
@@ -147,7 +148,7 @@ There is no augmenting path $s\rightarrow t$, thus $t \notin S$.
 Thus $(S, T = V\setminus S)$ is a cut.
 Each edge $xy$ with $x\in S, y\in T$ must be saturated: otherwise it would be possible to find an augmenting path.
 
-\TODO{add picture of S patch x edgy y in T}
+\input{01_graph_theory/03_fig_flownetwork.tex}
 
 Each edge $xy$ with $x\in T, y\in S$ must be void ($\phi(xy) = 0$). Thus
 \[

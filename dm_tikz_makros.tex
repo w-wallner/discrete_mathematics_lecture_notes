@@ -36,3 +36,18 @@
   };
 }
 
+% draw a directed graph
+% #1 ... list of x/y coordinates for the nodes
+% #2 ... list of pahtes between nodes, beginning with 1
+\def \drawDirGraph #1#2{%
+  \setcounter{nodecount}{0}
+  \foreach \x/\y in {#1} {
+    \stepcounter{nodecount}
+    \node (n\the\value{nodecount}) at (\x,\y) {};
+    \fill (n\the\value{nodecount}) circle(2pt);
+  };
+  \foreach \i/\j in {#2} {
+    \path (n\i) edge[->] (n\j);
+  };
+}
+

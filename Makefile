@@ -10,8 +10,8 @@ ifdef RUBBER_INSTALLED
 else
 
 	pdflatex $(MAIN_TEX).tex
-	pdflatex $(MAIN_TEX).tex
 	makeindex $(MAIN_TEX)
+	pdflatex $(MAIN_TEX).tex
 	pdflatex $(MAIN_TEX).tex
 	@echo "=============================="
 	@echo "= consider installing rubber ="	

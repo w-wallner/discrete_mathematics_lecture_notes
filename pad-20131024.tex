@@ -51,10 +51,10 @@ Theorem: There is a feasible marriage iff
         ≥ |W_0|
 \]
 
-if you have a feasable marriage, every woman gets a partner.
+If you have a feasable marriage, every woman gets a partner.
 The Set of friends is at least this large
 
-\textbf{Proof.}
+\Proof.
 Consider the network source $s$ $\rightarrow_{w=1}$ women $\rightarrow_{w=|W|+|M|+1}$ men $\rightarrow_{w=1}$ sink $t$.
 Since all weights are integer, $\exists$ maximal flow with integer weight.
 
@@ -66,7 +66,7 @@ is a minimal cut ($c(S) = |W|$).
 Assume $\exists S': c(S') < c(s)$. Then $S'$ has no edge $wm$ with $w\in W, m\in M$.
 
 \[
-S' = (V_1,V_2) ^=
+S' = (V_1,V_2) \hat{=}
     \{sw\mid w \in \widetilde{W} \subseteq W \} \cup
     \{mt | m \in \widetilde{M} \subset M \}
 \]
@@ -257,9 +257,9 @@ n = |M|+|N|+1. Thus
 We wanted to show that $\exists$ blue $K_s$ or $\exists$ red $K_r$.
 In both cases, \emph{together with $v$}, we can always find a blue $K_s$ or a red $K_r$.
 
-\textbf{Corollary.} $R(r,s) ≤ \choose{r+s-2}{r-1} ≤ 2^{r+s-2}$
+\textbf{Corollary.} $R(r,s) ≤ {r+s-2 \choose r-1} ≤ 2^{r+s-2}$
 
-\Proof. $R(2,n) = R(n,2) = n ≤ \choose{n}{1}$. From there, apply induction, Pascal's triangle, and the above lemma.
+\Proof. $R(2,n) = R(n,2) = n ≤ {n \choose 1}$. From there, apply induction, Pascal's triangle, and the above lemma.
 
 \begin{definition}
 \[

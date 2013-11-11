@@ -123,11 +123,11 @@ $G=(V,E)$ graph. The \dt{chromatic number} $\chi(G)$ is the minimal number of co
 \end{definition}
 
 Examples:
-$\chi(K_n) = n$
-
-$\chi(K_{n,m}) = 2$
-
-$\chi(T) = 2$ if $T$ tree, $|V| ≥ 1$.
+\begin{align*}
+  &\chi(K_n) = n \\
+  &\chi(K_{n,m}) = 2 \\
+  &\chi(T) = 2 \text{ if $T$ tree, } |V| ≥ 1 
+\end{align*}
 
 \Theorem.
 \[
@@ -185,7 +185,7 @@ Take $G' = G \setminus \{x_0\}$. Assume $\chi(G')=5$. Then, since $x_0$ has at m
 We have a vertex $v$ with exactly 5 neighbours $\{a,b,c,d,e\}$.
 $c(a) = 1, c(b) = 2,\ldots$.
 \\
-$G_a = \{x\in V\mid \exists 1--3--1--3--\ldots path a \leadsto x\}$.
+$G_a = \{x\in V\mid \exists 1--3--1--3--\ldots \text{path a} \leadsto x\}$.
 Similar for $G_c$.
   \begin{compactenum}
 %Case 2.1: 
@@ -220,14 +220,16 @@ Similar for $G_c$.
   }
   \caption{$K_6$ and one $K_3$}
 \end{figure}
+\FloatBarrier
 
 \TODO{Proof (graphical).}
 
 \begin{definition}
 The Ramsey number $R(r,s)$ is
 \[
-    R(r,s) =
-        min \{n\mid \text{every red-blue coloring of $K_n$ contains a red $K_r$ or a blue $K_s$}\}.
+  R(r,s) =
+    min \{n\mid \text{every} \underbrace{\text{2-edge}}_{\text{red/blue}} 
+    \text{coloring of $K_n$ containing a red $K_r$ or a blue $K_s$}\}.
 \]
 \end{definition}
 
@@ -245,13 +247,16 @@ By our example, $R(3,3) ≤ 6$. We can even show that $R(3,3) = 6$.
 Lemma. $R(r,s) ≤ R(r-1, s) + R(r, s-1)$
 
 Proof. $n = R(r-1, s) + R(r, s-1)$
-Partition $K_n$. Take a vertex $v$. All neighbours connected by a red edge are in $M$; all neighbours connected by a red edge are in $N$.
-n = |M|+|N|+1. Thus
-|M| ≥ R(r-1, s) or |N| ≥ R(R, s-1).
+Partition $K_n$. Take a vertex $v$. All neighbours connected by a red edge are in $M$; all neighbours connected by a blue edge are in $N$.
+
+$n = |M|+|N|+1$. Thus
+\[
+  |M| ≥ R(r-1, s) \text{ or } |N| ≥ R(r, s-1).
+\]
 
 \begin{tabular}{ll}
   Case 1: & $\exists$ blue $K_s$ in $M$ or $\exists$ red $K_{r-1}$ in $M$. \\
-  Case 2: & $\exists$ blue $K_{s-1}$ or red $K_r$ in $N$.
+  Case 2: & $\exists$ blue $K_{s-1}$ in $M$ or red $K_r$ in $N$.
 \end{tabular}
 
 We wanted to show that $\exists$ blue $K_s$ or $\exists$ red $K_r$.
@@ -262,13 +267,12 @@ In both cases, \emph{together with $v$}, we can always find a blue $K_s$ or a re
 \Proof. $R(2,n) = R(n,2) = n ≤ {n \choose 1}$. From there, apply induction, Pascal's triangle, and the above lemma.
 
 \begin{definition}
-\[
-    R(n_1,n_2,\ldots,n_r) =
-    \min \{ n \mid
-        \text{all r-edge colorings of $K_n$
-        (colors $c_1,\ldots,c_r$) have a
-        $c_j$-colored $K_j$ for some j}
-\]
+\begin{align*}
+  R(n_1,n_2,\ldots,n_r) = \min \{ n \mid
+    &\text{ all r-edge colorings of $K_n$
+      (colors $c_1,\ldots,c_r$)} \\
+    & \text{ have a $c_j$-colored $K_j$ for some j}\}
+\end{align*}
 \end{definition}
 
 

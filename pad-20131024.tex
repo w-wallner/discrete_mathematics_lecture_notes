@@ -6,48 +6,22 @@
 
 % Discrete Mathematics Lecture Notes 2013-10-24
 
-\def \GammaPlus {\Gamma^{+}}
-
-\Remark.
-\begin{compactenum}
-  \item $|E| = |E^*|$
-  \item In general $|G^*|$ is a multigraph
-  \item $G_1, G_2$ are duals of $G \Rightarrow G_1 \cong G_2$
-\end{compactenum}
-
-$A \subseteq E$    
-$A$ cycle in $G \iff A^*$ minimal cut
-
-If G is not necessarily planar: define $G^*$ by (*).
-This Graph is unique, if it exists.
-
-\textbf{Theorem (Witness Theorem).} \\
-If G is not necessarily planar: define $G^{**}$ by (*)
-\begin{compactitem}
-  \item $G$ planar $\Rightarrow G^{**} \cong G^*$
-  \item $G$ non planar $\not\exists G^{**}$
-\end{compactitem}
-% end of last weeks-corrections
-
-
-\subsection*{Matchings and Bipartite Graphs}
-
 \strut\lecturedate{2013-10-24}
 \textbf{Theorem (Hall's marriage theorem).}
 $W, M$ (women, men) vertex set of a bipartite graph
-($V=W\cup M$, $wm \in E \iff wFm$). $W,M$ finite, nonempty, $W\cap M=\varnothing$.
+($V=W\cup M$, $wm \in E \iff w\operatorname{F}m$). $W,M$ finite, nonempty, $W\cap M=\varnothing$.
 
 Friendship relation $F\subseteq W\times M$.
 
 Feasible marriage: complete matching $F_1\subseteq F$, i.e.
-\[ \forall x\in W: \exists! y\in M\text{ s.t. }x\operatorname{F} y \]
+\[ \forall x\in W: \exists!\;y\in M\text{ s.t. }x\operatorname{F} y \]
 
 Theorem: There is a feasible marriage iff
 \[
-    \forall W_0\subseteq W:
+    \forall W_0\subseteq W:\;
         \underbrace{
             |\{y\in M\mid \exists x\in W_0: x\operatorname{F} y\}|
-        }_{\Cup_{w\in W_0} \Gamma(w)}
+        }_{\bigcup\limits_{w\in W_0} \Gamma(w)}
         ≥ |W_0|
 \]
 
@@ -70,6 +44,8 @@ S' = (V_1,V_2) \hat{=}
     \{sw\mid w \in \widetilde{W} \subseteq W \} \cup
     \{mt | m \in \widetilde{M} \subset M \}
 \]
+
+\def\GammaPlus{\Gamma^{+}}
 
 We claim that
 \[

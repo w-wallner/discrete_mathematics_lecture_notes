@@ -16,9 +16,9 @@ A \dt{counting set} is a set $A = \{1, 2, \ldots, n\}$
 
 \begin{enumerate}
   \item number of permutations: $n!$
-  \item number of $k$-subsets: ${n}\choose{k}$
-  \item number of ordered $k$-subsets: $k! {n}\choose{k}$
-  \item number of $k$-multisets: $b_1, \ldots, b_k \in A$, the order doesn't matter, but we are allowed to choose a element several times $\implies$ ${n +k-1}\choose{k}
+  \item number of $k$-subsets: ${n\choose k}$
+  \item number of ordered $k$-subsets: $k! {n\choose k}$
+  \item number of $k$-multisets: $b_1, \ldots, b_k \in A$, the order doesn't matter, but we are allowed to choose a element several times $\implies$ ${n +k-1 \choose k}$
 \end{enumerate}
 
 There is a mapping $f$ that maps the
@@ -35,7 +35,7 @@ to the
 \]
 
 \begin{enumerate} %TODO start with 5
-  \item number of arrangements of a multiset: $\{b_1, b_1, \ldots , b_2, b_2,\ldots, b_2, \ldots, b_m, b_m, \ldots b_m\} 
+  \item number of arrangements of a multiset: $\{b_1, b_1, \ldots , b_2, b_2,\ldots, b_2, \ldots, b_m, b_m, \ldots b_m\}$ 
 \end{enumerate}
 
 $b_1$ appears $k_1$ times, ...; $n$ in total
@@ -50,25 +50,25 @@ $\frac{n!}{k_1! k_2! \ldots k_m!}$
 
 Remember:
 \begin{compactitem}
-\item $\sum_{k=0}^n n\choose k = 2^n$
-\item Pascal's triangle
-\item $n\choose k + n\choose{k+1} = {n+1}\choose{k+1}$
-\item $\sum_{m=0}^n m\choose k = {n+1}\choose{k+1}$
-\item $\sum_{k=0}^n {m+k}\choose k = {m+n+1}\choose n$
+  \item $\sum_{k=0}^n {n\choose k} = 2^n$
+  \item Pascal's triangle
+  \item ${n\choose k} + {n\choose k+1} = {n+1 \choose k+1}$
+  \item $\sum_{m=0}^n {m\choose k} = {n+1 \choose k+1}$
+  \item $\sum_{k=0}^n {m+k \choose k} = {m+n+1 \choose n}$
 \end{compactitem}
 
 \[
   \forall x,y\in \mathbb{C}
   \forall n\in \mathbb{N}
-  (x+y)^n = \sum_{k=0}^n n\choose k x^k y^{n-k}
+  (x+y)^n = \sum_{k=0}^n {n\choose k} x^k y^{n-k}
 \]
 
-$b_1, \ldots, b_k$ \; {n}\choose{k} = \frac{n(n-1) \ldots (n-k+1)}{k!}$
+$b_1, \ldots, b_k$ \; ${n \choose k} = \frac{n(n-1) \ldots (n-k+1)}{k!}$
 
 \textbf{Definition (Extension to complex numbers).}
 Let $x\in \mathbb{C}, k\in\mathbb{N}$. Then we can define
 \[
-  x\choose k = \frac{
+  {x\choose k} = \frac{
     x (x-1) \ldots (x-k+1)
   }{
     k!
@@ -78,21 +78,21 @@ Let $x\in \mathbb{C}, k\in\mathbb{N}$. Then we can define
 \Lemma.
 \[
   \forall k \in \mathbb{Z}, \forall x\in \mathbb{C}:
-  x\choose k = {x-1}\choose{k-1} + {x-1}\choose{k}
+  {x\choose k} = {x-1 \choose k-1} + {x-1 \choose k}
 \]
-(with $x\choose k = 0$ for $k < 0$).
+(with ${x \choose k} = 0$ for $k < 0$).
 
-\Theorem (Vandermonde's theorem).
+\Theorem. (Vandermonde's theorem).
 \[
-  {x+y}\choose{n} = \sum_{k=0}^{n} x\choose k y\choose{n-k},
-  \forall n \in \bathbb{N}, \forall x,y in \mathbb{C}
+  {x+y \choose n} = \sum_{k=0}^{n} {x\choose k} {y\choose n-k},
+  \forall n \in \mathbb{N}, \forall x,y in \mathbb{C}
 \]
 
 \Proof.
 Assume $x,y\in mathbb{N}$. $X,Y$ sets: $X\cap Y=\varnothing, |X|=x, |Y|=y$.
 
 Then the left-hand side
-${x+y}\choose n$
+${x+y \choose n}$
 is the number of $n$-subsets of $X\cup Y$.
 
 Choose any $n$-subset $A\subseteq X\cup Y$.
@@ -102,10 +102,10 @@ Then $A$ can be decomposed like this:
   |A\cap X| = k, |A\cap Y| = n-k
 \end{gather*}
 
-number of unions of shape right hand side of (*) $(={x+y}\choose n )$
+number of unions of shape right hand side of (*) $(={x+y \choose n} )$
 
 \[
-  \sum_{k=0}^n x\choose{k} y\choose{n-k}
+  \sum_{k=0}^n {x\choose k} {y\choose n-k}
 \]
 
 left hand side: 
@@ -126,7 +126,7 @@ Assume we have a set $A = \{1,2,3, \ldots ,n\}$
 , permutation $\pi\in S_n$.
 $S_n$ is the symmetric group; $|S_n| = n!$
 
-We can represent \pi as follows:
+We can represent $\pi$ as follows:
 \[
   \begin{pmatrix}
     1&2&3&\cdots&n \\
@@ -177,11 +177,11 @@ Then $s_{n,k}$ are the \dt{Stirling numbers of the first kind}.
 \Remark.
 \begin{gather*}
   s_{n,1} = (n-1)! \\
-  s_{n,n-1} = n\choose 2 \\
+  s_{n,n-1} = {n\choose 2} \\
   s_{n,n} = 1 \\
-  s_{n,0} = {s_0,k} = 0 \quad $n,k ≥ 1$ \\
+  s_{n,0} = s_{k,0} = 0 \quad n,k ≥ 1 \\
   s_{0,0} := 1 \\
-  \sum_{k=0}^{n} s_{n,k} = n!
+  \sum_{k=0}^{n} s_{n,k} = n! 
 \end{gather*}
 
 It doesn't matter where we start the cycle, just the order of the cycle needs to stay. $(3 2 6 5 7 1 4) = (6 5 7 1 4 3 2)$
@@ -215,7 +215,7 @@ and decompose it such that
 \[
   A = A_1 \cup A_2 \cup \cdots\cup A_k
   \quad
-  \forall i\neq j: A_i \cap A_j = \varnothing$
+  \forall i\neq j: A_i \cap A_j = \varnothing
 \]
 Then
 \[
@@ -227,17 +227,17 @@ are the \dt{Stirling numbers of the second kind}.
 \textbf{Example.}
 Set $A = \{1,2,3,4\}$
 \begin{align*}
-  \text{number of 1-partitions }= 1 &= $S_{4,1}$\\
-  \text{number of 2-partitions }= 7 &= $S_{4,2}$\\
-  \text{number of 3-partitions }= 6 &= $S_{4,3}$\\
-  \text{number of 4-partitions }= 1 &= $S_{4,4}$
+  \text{number of 1-partitions }= 1 &= S_{4,1}\\
+  \text{number of 2-partitions }= 7 &= S_{4,2}\\
+  \text{number of 3-partitions }= 6 &= S_{4,3}\\
+  \text{number of 4-partitions }= 1 &= S_{4,4}
 \end{align*}
 
 \Remark.
 \begin{align*}
   S_{n,1} &= S_{n,n} = 1 \\
   S_{n,2} &= 2^{n-1}-1 \\
-  S_{n,n-1} &= n\choose 2 \\
+  S_{n,n-1} &= {n\choose 2} \\
   S_{0,0} &:= 1 \\
   S_{n,0} &= S_{0,k} = 0
     \quad\forall n,k ≥ 1
@@ -287,7 +287,7 @@ basis change:
   &= \sum_{k=0}^{n-1} (-1)^{n-1+k} s_{n-1,k} x^{k+1} 
     + (n-1)\sum_{k=0}^{n-1} (-1)^{n+k} s_{n-1,k} x^k \\
   &= \sum_{k=1}^n (-1)^{n+k} s_{n-1,k-1} x^k
-    + (n-1)\sum_{k=0}^{n-1} (-1)^{n+k} s_{n-1,k} x^k \\
+    \quad + (n-1)\sum_{k=0}^{n-1} (-1)^{n+k} s_{n-1,k} x^k \\
   &= \sum_{k=0}^n (-1)^{n+k}
     (s_{n-1,k-1} + (n-1)s_{n-1,k}) x^k \\
   &= \sum_{k=0}^n (-1)^{n+k} s_{n,k} x^k \\

@@ -10,7 +10,7 @@
 
 \subsection{Counting sets}
 \lecturedate{2013-11-08}
-Finite Set $\{a_1, \ldots, a_n\} = A$, $n$-element set or $n$-set
+Finite Set $A = \{a_1, \ldots, a_n\}$, $n$-element-set or $n$-set
 
 A \dt{counting set} is a set $A = \{1, 2, \ldots, n\}$
 
@@ -34,7 +34,8 @@ to the
   b_1 < b_2+1 < \ldots < b_k+k-1.
 \]
 
-\begin{enumerate} %TODO start with 5
+\begin{enumerate} 
+  \setcounter{enumi}{4}
   \item number of arrangements of a multiset: $\{b_1, b_1, \ldots , b_2, b_2,\ldots, b_2, \ldots, b_m, b_m, \ldots b_m\}$ 
 \end{enumerate}
 
@@ -44,7 +45,8 @@ Permutations of this multiset:
 $\frac{n!}{k_1! k_2! \ldots k_m!}$
 
 \begin{enumerate}
-  \item number of ordered $k$-multisets over $A$: $n^k$
+  \setcounter{enumi}{5}
+  \item number of ordered $k$-multisets over $A$: $n^k$ \\
   (we take a fixed number of positions $k$ and for each position choose any element from $A$)
 \end{enumerate}
 
@@ -193,14 +195,17 @@ It doesn't matter where we start the cycle, just the order of the cycle needs to
 \]
 
 \Proof.
-Take a permutation $\pi = (1 \ldots )(ldots) \ldots (\ldots) \in S_n, k \text{ cycles}$.
+Take a permutation 
+$\pi = (1 \ldots )(\ldots) \ldots (\ldots) \in S_n \text{, with $k$ cycles}$.
 
 How many such permutations are there?
 
-If $1$ is a fixed point: $s_{n-1, k-1}$.
+\begin{compactitem}
+  \item If $1$ is a fixed point: $s_{n-1, k-1}$.
 
-If $1$ is not a fixed point, start with a permutation of $n-1$ elements and add the element $1$ to one of the cycles. We can insert it before any of the $n-1$ elements, thus we get
+  \item If $1$ is not a fixed point, start with a permutation of $n-1$ elements and add the element $1$ to one of the cycles. We can insert it before any of the $n-1$ elements, thus we get
 $(n-1) s_{n-1,k}$ possibilities.
+\end{compactitem}
 
 \Remark.
 Signed Stirling numbers of the first kind:
@@ -262,7 +267,7 @@ If $\{1\}$ is not a block, it has to be element of one of the $k$ blocks:
 $\forall x\in \mathbb{C} \forall n ≥ 0:$
 \begin{gather*}
   (x)_n
-    := x(x-1)(x-2) ldots(x-n+1)
+    := x(x-1)(x-2) \ldots(x-n+1)
     = \sum_{k=0}^{n} (-1)^{n+k} s_{n,k} x^k \quad ((x)_0:=1)
     \\
   x^n = \sum_{k=0}^{n} S_{n,k} (x)_k

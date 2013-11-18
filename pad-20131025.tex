@@ -18,19 +18,19 @@ $(A_n)_{n ≥ 0}$ system of finite sets, $a_n = |A_n|$, what is the \dt{counting
 
 The goal might be to find
 \begin{compactitem}
-\item a closed formula (often impossible),
-\item a recursion,
-\item a generating function (e.g. $\sum_{n >= 0}[a_n z^n]$),
-\item asymptotic estimates, $a_n$ symptotically similar to $b_n$:
-    $a_n \sim b_n \iff \lim_{n \to \inf} \frac{a_n}{b_n} = 1$
+  \item a closed formula (often impossible),
+  \item a recursion,
+  \item a generating function (e.g. $\sum_{n \geq 0}[a_n z^n]$),
+  \item asymptotic estimates, $a_n$ symptotically similar to $b_n$:\\
+    $a_n \sim b_n \iff \lim_{n \to \infty} \frac{a_n}{b_n} = 1$
 \end{compactitem}
 
 
-\textbf{example}
+\textbf{Example.}
 \begin{align*}
-A_n &= \{permutations of 1,2, \ldots, n\}, |A_n| = n! \\
-a_1 &= 1, a_n = n a_{n-1} \\
-a_n \sim (\frac{n}{e})^n \sqrt{2\pi n}
+  A_n &= \{permutations of 1,2, \ldots, n\}, |A_n| = n! \\
+  a_1 &= 1, a_n = n a_{n-1} \\
+  a_n &\sim \left(\frac{n}{e} \right)^n \sqrt{2\pi n}
 \end{align*}
 
 
@@ -40,11 +40,11 @@ Elementary counting principles:
 % TODO make subsubsections out of this
 \begin{compactenum}
 \item Sum principle:
-    $A\cap B = \varnothing \implies |A\cup B| = |A| + |B|$
+  $A\cap B = \varnothing \implies |A\cup B| = |A| + |B|$
 \item Product principle:
-    $|A\times B| = |A| * |B|$
+  $|A\times B| = |A| * |B|$
 \item Bijection principle:
-    $f: A\mapsto B, \text{bijective}\implies |A| = |B|$
+  $f: A\mapsto B, \text{bijective}\implies |A| = |B|$
 \end{compactenum}
 
 \textbf{Example.}
@@ -52,8 +52,8 @@ What is the number of two-digit positive integers?
 $|\{10,\ldots,99\}| = 90$
 
 \begin{gather*}
-xy\quad x\in X=\{1,2,\ldots ,9\}, y\in Y = \{0,1,\ldots ,9\} \\
-|X\times Y| = |X| \cdot |Y| = 9\cdot 10 = 90
+  xy, \quad x\in X=\{1,2,\ldots ,9\}, y\in Y = \{0,1,\ldots ,9\} \\
+  |X\times Y| = |X| \cdot |Y| = 9\cdot 10 = 90
     \qquad\text{(product principle)}
 \end{gather*}
 
@@ -61,11 +61,11 @@ xy\quad x\in X=\{1,2,\ldots ,9\}, y\in Y = \{0,1,\ldots ,9\} \\
 We choose a password with 4 to 10 digits. How many passwors are possible?
 
 \begin{align*}
-    A_i &&& \text{set of passwords with $i$ digits} \\
-    Y &= \{0,1,\ldots ,9\} \\
-    A_i &= Y^i, |Y| = 10, |A_i| \\
+  A_i &&& \text{set of passwords with $i$ digits} \\
+  Y &= \{0,1,\ldots ,9\} \\
+  A_i &= Y^i, |Y| = 10, |A_i| \\
     &= {10}^i  && \text{(product principle)} \\
-    \text{total number} &= 10^4 + 10^5 + \ldots + 10^10 && \text{(sum principle)}
+  \text{total number} &= 10^4 + 10^5 + \ldots + 10^{10} && \text{(sum principle)}
 \end{align*}
 
 \textbf{Example.}
@@ -77,7 +77,7 @@ Using the sum principle we can subtract codes the containing $8$.
 
 \begin{align*}
 |A| &= \text{\# possibilities} \\
-	&= \underbrace{|A\cup B| - |B|}_{\text{(sum principle, reversed)}} \\
+    &= \underbrace{|A\cup B| - |B|}_{\text{(sum principle, reversed)}} \\
     &= {10}^3 - \text{\# codes not containing 8} \\
     &= {10}^3 - 9^3 = 271.
 \end{align*}
@@ -87,75 +87,76 @@ Take a set $A = \{a_1, a_2, \ldots , a_n\}$ and its power set $2^A = \{X \mid X
 \subseteq A\}$. $|2^A| = ?$
 
 \begin{align*}
-    B &\subseteq A \\
-    i_k &\quad\text{indices chosen from A} \\
-    B &=\{a_{i_1}, a_{i_2},\ldots, a_{i_k}\} \\
-    k &\leq n, 1 \leq i_1 < i_2 < \ldots i_k \leq n
-        B &\mapsto
-        (b_1, b_2 \ldots  b_n) \in \{0,1\}^n \\
-    b_i &=
-    \begin{cases}
-        1 & a_i\in B \\
-        0 & a_i\not\in B
-    \end{cases} \\
-    f: 2^A &\mapsto \{0,1\}^n &&\text{bijective mapping} \\
-    |2^A| &= |\{0, 1\}^n| = 2^n
-        &&\text{(bijection principle)} \\
+  B &\subseteq A \\
+  i_k &\quad\text{indices chosen from A} \\
+  B &=\{a_{i_1}, a_{i_2},\ldots, a_{i_k}\} \\
+  k &\leq n, 1 \leq i_1 < i_2 < \ldots i_k \leq n
+    B &\mapsto
+    (b_1, b_2 \ldots  b_n) \in \{0,1\}^n \\
+  b_i &=
+  \begin{cases}
+    1 & a_i\in B \\
+    0 & a_i\not\in B
+  \end{cases} \\
+  f: 2^A &\mapsto \{0,1\}^n &&\text{bijective mapping} \\
+  |2^A| &= |\{0, 1\}^n| = 2^n
+    &&\text{(bijection principle)} \\
 \end{align*}
 
 \subsubsection{Double counting}
 If:
 \begin{align*}
-	A &= \{a_1,a_2,\ldots,a_m\} \\
-	B &= \{b_1,b_2,\ldots,b_n\} \\
-	R & \subseteq A \times B \\
-	\text{Set } R_{i,0} &= \{b \in B \mid a_i\operatorname{R} b\}  && \text{(subscript 0 just means}\\
-	\text{Set } R_{0,i} &= \{ a \in A \mid a\operatorname{R} b_i \}  && \text{that this part is fixed)}
+  A &= \{a_1,a_2,\ldots,a_m\} \\
+  B &= \{b_1,b_2,\ldots,b_n\} \\
+  R & \subseteq A \times B \\
+  \text{Set } R_{i,0} &= \{b \in B \mid a_i\operatorname{R} b\}  && \text{(subscript 0 just means}\\
+  \text{Set } R_{0,i} &= \{ a \in A \mid a\operatorname{R} b_i \}  && \text{that this part is fixed)}
 \end{align*}
 	
 
 %Set R_{i,0} = \{b \in B \mid (a_i,b) \in R\}
 Then:
 \begin{align*}
-	|R| &= \sum_{i=1}^m |R_{i,0}|\\
-     &= \sum_{j=1}^n |R_{0,j}|
+  |R| &= \sum_{i=1}^m |R_{i,0}|\\
+    &= \sum_{j=1}^n |R_{0,j}|
 \end{align*}
 
 \textbf{Proof.}
 Define matrix $(x_{ij})_{i = 1,\ldots,m; j = 1,\ldots ,n}$ with
 
 \[x_{ij} = \begin{cases}
-        1 & a_i\operatorname{R} b_j \\
-        0 &\text{otherwise}
-    \end{cases}\]
+    1 & a_i\operatorname{R} b_j \\
+    0 &\text{otherwise}
+  \end{cases}
+\]
 
 The first sum is the row-wise sum, the second sum column-wise. Of course, summing up all the elements of the matrix, you get the same result. In some problems, this equivalence may be helpful, because one of the sums is easier to compute than the other.
 
 
 \textbf{Example.}
 \begin{align*}
-    \tau(n) &= \text{average number of divisors of an integer k}, 1 ≤ k ≤ n \\
-    d(n) &= \text{ number of divisors of n} \\
-    \tau(n) &= \frac{d(1)+\ldots+d(n)}{n} \\
-        &= \frac1n\sum_{i=1}^n d(i)
+  \tau(n) &= \text{average number of divisors of an integer k}, 1 ≤ k ≤ n \\
+  d(n) &= \text{ number of divisors of n} \\
+  \tau(n) &= \frac{d(1)+\ldots+d(n)}{n} \\
+    &= \frac1n\sum_{i=1}^n d(i)
 \end{align*}
 
 \bigskip
 \begin{table}[H]
-\begin{center}
-\begin{tabular}{r|ccccccccc}
-\toprule
-$n$    &1&2&3&4&5&6&7&8&9 \\
-$d(n)$ &1&2&2&3&2&4&2&4&3 \\
-\bottomrule
-\end{tabular}
-\caption{The number of divisors for every number from $1$ to $9$. $\text{E.g.: } n = 6, \tau(6) = \frac{7}{3}$}
-\end{center}
+  \begin{center}
+    \begin{tabular}{r|ccccccccc}
+      \toprule
+      $n$    &1&2&3&4&5&6&7&8&9 \\
+      $d(n)$ &1&2&2&3&2&4&2&4&3 \\
+      \bottomrule
+    \end{tabular}
+    \caption{The number of divisors for every number from $1$ to $9$. $\text{E.g.: } n = 6, \tau(6) = \frac{7}{3}$}
+    \end{center}
 \end{table}
 
 \begin{align*}
-A &= B = \{1,\ldots,n\} \\
-R & \subseteq A\times B :\ a\operatorname{R} b\iff a|b && \text{ ($a$ divides $b$)}
+  A &= B = \{1,\ldots,n\} \\
+  R & \subseteq A\times B :\ a\operatorname{R} b\iff a|b && \text{ ($a$ divides $b$)}
 \end{align*}
 \bigskip
 
@@ -202,12 +203,12 @@ R_{i,0} &= \{b \mid i\operatorname{R} b\}
 
 \begin{align*}
 \tau(n) = ... &=
-    \frac{1}{n} \sum_{i=1}^n \lfloor\frac{n}{i}\rfloor \\
+    \frac{1}{n} \sum_{i=1}^n \left\lfloor\frac{n}{i}\right\rfloor \\
     &= \frac{1}{n} \sum_{i=1}^n (\frac{n}{i} -
-        \underbrace{\{\frac ni\}}_{\text{fractional part}} \\
+        \underbrace{\left\{ \frac ni \right\} }_{\text{fractional part}} \\
     &= \sum_{i=1}^n \frac1i -
         \frac1n\sum_{i=1}^n
-            \underbrace{\{\frac ni\}}_{≤ 1} \\
+            \underbrace{\left\{ \frac ni \right\} }_{≤ 1} \\
     &=  \underbrace{H_n}_{\begin{matrix}harmonic \\ numbers\end{matrix}} + O(1) =
         \log n + e_n (e ... error), -1 < e_n < 1 && H_n\sim \log n
 \end{align*}
@@ -237,7 +238,7 @@ the population is bigger than that.
 
 
 \textbf{Example.}
-Claim: $\forall q\text{ odd} \exists i: q | 2^i-1 =: a_i$.
+Claim: $\forall q\text{ odd } \exists i: q \mid 2^i-1 =: a_i$.
 
 \textbf{Proof.}
 If $\exists i: a_i \cong 0 \mod q$, we are done.

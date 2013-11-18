@@ -39,12 +39,12 @@ The goal might be to find
 Elementary counting principles:
 % TODO make subsubsections out of this
 \begin{compactenum}
-\item Sum principle:
-  $A\cap B = \varnothing \implies |A\cup B| = |A| + |B|$
-\item Product principle:
-  $|A\times B| = |A| * |B|$
-\item Bijection principle:
-  $f: A\mapsto B, \text{bijective}\implies |A| = |B|$
+  \item Sum principle:
+    $A\cap B = \varnothing \implies |A\cup B| = |A| + |B|$
+  \item Product principle:
+    $|A\times B| = |A| * |B|$
+  \item Bijection principle:
+    $f: A\mapsto B, \text{bijective}\implies |A| = |B|$
 \end{compactenum}
 
 \textbf{Example.}
@@ -112,7 +112,7 @@ If:
   \text{Set } R_{i,0} &= \{b \in B \mid a_i\operatorname{R} b\}  && \text{(subscript 0 just means}\\
   \text{Set } R_{0,i} &= \{ a \in A \mid a\operatorname{R} b_i \}  && \text{that this part is fixed)}
 \end{align*}
-	
+  
 
 %Set R_{i,0} = \{b \in B \mid (a_i,b) \in R\}
 Then:
@@ -151,7 +151,7 @@ The first sum is the row-wise sum, the second sum column-wise. Of course, summin
       \bottomrule
     \end{tabular}
     \caption{The number of divisors for every number from $1$ to $9$. $\text{E.g.: } n = 6, \tau(6) = \frac{7}{3}$}
-    \end{center}
+  \end{center}
 \end{table}
 
 \begin{align*}
@@ -163,26 +163,26 @@ The first sum is the row-wise sum, the second sum column-wise. Of course, summin
 One may write down $\operatorname{R}$ as a matrix:
 
 \begin{table}[H]
-	\begin{center}
-		\begin{tabular}{l|cccccc}
-			& \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} \\
-			\hline \textbf{1} & 1 & 1 & 1 & 1 &  1 & 1 \\
-			\textbf{2} & 0 & 1 & 0 & 1 &  0 & 1 \\
-			\textbf{3} & 0 & 0 & 1 & 0 &  0 & 1 \\
-			\textbf{4} & 0 & 0 & 0 & 1 &  0 & 0 \\
-			\textbf{5} & 0 & 0 & 0 & 0 &  1 & 0 \\
-			\textbf{6} & 0 & 0 & 0 & 0 &  0 & 1
-		\end{tabular}
-		\caption{Table of relations ``a divides b'' for the numbers 1 to 6.}
-	\end{center}
+  \begin{center}
+    \begin{tabular}{l|cccccc}
+      & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} \\
+      \hline \textbf{1} & 1 & 1 & 1 & 1 &  1 & 1 \\
+      \textbf{2} & 0 & 1 & 0 & 1 &  0 & 1 \\
+      \textbf{3} & 0 & 0 & 1 & 0 &  0 & 1 \\
+      \textbf{4} & 0 & 0 & 0 & 1 &  0 & 0 \\
+      \textbf{5} & 0 & 0 & 0 & 0 &  1 & 0 \\
+      \textbf{6} & 0 & 0 & 0 & 0 &  0 & 1
+    \end{tabular}
+    \caption{Table of relations ``a divides b'' for the numbers 1 to 6.}
+  \end{center}
 \end{table}
 
 \begin{align*}
-\text{$n$ prime}
+  \text{$n$ prime}
     &\implies d(n) = 2 \\
-n = p^e, p\in \mathbb{P}, e\in \mathbb{N}^{+}
+  n = p^e, p\in \mathbb{P}, e\in \mathbb{N}^{+}
     &\implies d(n) = e+1 \\
-n = \prod_{i=1}^k p_i^{e_i}
+  n = \prod_{i=1}^k p_i^{e_i}
     &\implies d(n) = \prod_{i=1}^k (e_i+1)
 \end{align*}
 
@@ -190,19 +190,19 @@ n = \prod_{i=1}^k p_i^{e_i}
 f_i ≤ e_i$, l is defined by $(f_1,\ldots,f_k)$.)
 
 \begin{align*}
-\tau(n) &= \frac{1}{n}\sum_{i=1}^n d(i)\\
+  \tau(n) &= \frac{1}{n}\sum_{i=1}^n d(i)\\
     &= \frac{1}{n}\sum_{j=1}^n |R_{0,j}| && \text{(sum of columns)} \\
     &= \frac{1}{n}\sum_{i=1}^n |R_{i,0} && \text{(sum of rows)}
 \end{align*}
 
 \begin{align*}
-R_{0,j} &= \{a \mid a \operatorname{R} j\} = d(j) \\
-R_{i,0} &= \{b \mid i\operatorname{R} b\}
+  R_{0,j} &= \{a \mid a \operatorname{R} j\} = d(j) \\
+  R_{i,0} &= \{b \mid i\operatorname{R} b\}
     = \text{sum of the number of multiples of $i$ in $b$}
 \end{align*}
 
 \begin{align*}
-\tau(n) = ... &=
+  \tau(n) = ... &=
     \frac{1}{n} \sum_{i=1}^n \left\lfloor\frac{n}{i}\right\rfloor \\
     &= \frac{1}{n} \sum_{i=1}^n (\frac{n}{i} -
         \underbrace{\left\{ \frac ni \right\} }_{\text{fractional part}} \\
@@ -222,10 +222,10 @@ $\implies \exists i : |A_i| > r$
 
 If $r=1$, you can also say that
 \[
-    f: A\mapsto B, |A| > |B| \implies \exists b \in B :
-    |\underbrace{f^{-1}(b)}_{\text{set of preimages of b}}|
-        ≥ 2 ,
-        \text{i.e. f is not injective}
+  f: A\mapsto B, |A| > |B| \implies \exists b \in B :
+  |\underbrace{f^{-1}(b)}_{\text{set of preimages of b}}|
+    ≥ 2 ,
+    \text{i.e. f is not injective}
 \]
 
 
@@ -251,8 +251,8 @@ by the pigeon hole principle (without 0, only $q-1$ residue classes left)
 Let's assume $i < j$, than:
 
 \begin{align*}
-a_i - a_j &= q\cdot a, a\in\mathbb{Z} \\
-2^i(1 - 2^{j-1}) &= q\cdot a
+  a_i - a_j &= q\cdot a, a\in\mathbb{Z} \\
+  2^i(1 - 2^{j-1}) &= q\cdot a
 \end{align*}
 
 Since q is odd, $gcd(2^i, q)=1$. Therefore $q | 2^{j-1} - 1$. But in this case, $a_{j-i}\cong 0$!
@@ -266,13 +266,13 @@ By the pigeon hole principle, for each coloring of the elements of $A$ with colo
 
 \textbf{Proof.}
 \[
-    f: A\mapsto \{1,2,\ldots,k\}
+  f: A\mapsto \{1,2,\ldots,k\}
 \]
 Assume
-    $|f^{-1}(i)| = \text{\#elements having colour $i$} < l_i
-    \quad\forall i$.
+  $|f^{-1}(i)| = \text{\#elements having colour $i$} < l_i
+  \quad\forall i$.
 \[
-	n = |A| = \sum_{i=1}^k |f^{-1}(i)| ≤ l_1 +\ldots + l_k - k
+  n = |A| = \sum_{i=1}^k |f^{-1}(i)| ≤ l_1 +\ldots + l_k - k
 \]
 Contradiction!
 
@@ -286,99 +286,69 @@ is only true for disjoint sets. Given two overlapping sets, one will count the e
 $A \cap B$ twice:
 
 \begin{figure}[htb]
-	\centering
-	\includegraphics[scale=.5]{02_higher_combinatorics/pics/a_cut_b.pdf}
-	\caption{When adding $|A|$ and $|B|$, the elements of $A \cap B$ will be counted twice.}
-\end{figure}                                                                                                                                                                                                                                                        
+  \centering
+  \includegraphics[scale=.5]{02_higher_combinatorics/pics/a_cut_b.pdf}
+  \caption{When adding $|A|$ and $|B|$, the elements of $A \cap B$ will be counted twice.}
+\end{figure}
 
 In order to calcucate the cardinality of $|A \cup B|$ correctly we have to substract
 $|A \cap B|$ from $|A| + |B|$:
 \[
-	|A \cup B| = |A| + |B| - |A \cap B|
+  |A \cup B| = |A| + |B| - |A \cap B|
 \]
 
 Now let's consider 3 overlapping sets $A$, $B$ and $C$. By simply adding up the cardinalities
 $|A \cup B \cup C| = |A| + |B| + |C|$ once again many elements are double- or triple-counted:
 
 \begin{figure}[htb]
-	\centering
-	\includegraphics[scale=.5]{02_higher_combinatorics/pics/a_cut_b_cut_c.pdf}
-	\caption{The numbers state, how often a certain area of $A \cup B \cup C$ has been counted by simply adding up $|A| + |B| + |C|$.}
+  \centering
+  \includegraphics[scale=.5]{02_higher_combinatorics/pics/a_cut_b_cut_c.pdf}
+  \caption{The numbers state, how often a certain area of $A \cup B \cup C$ has been counted by simply adding up $|A| + |B| + |C|$.}
 \end{figure}
 
 By substracting the number of elements of the cuts that were counted twice (namly $A \cap B$, $B \cap C$ and $C \cap A$) from $|A| + |B| + |C|$
 we observe, that we now neglect the cut $A \cap B \cap C$ (because it had been counted 3 times before and we substract it's elements three times):
 
 \begin{figure}[htb]
-	\centering
-	\includegraphics[scale=.5]{02_higher_combinatorics/pics/a_cut_b_cut_c_2.pdf}
-	\caption{The numbers state, how often a certain area of $A \cup B \cup C$ has been counted by using the equation $|A| + |B| + |C| - |A \cap B| - |B \cap C| - |C \cap A|.$}
+  \centering
+  \includegraphics[scale=.5]{02_higher_combinatorics/pics/a_cut_b_cut_c_2.pdf}
+  \caption{The numbers state, how often a certain area of $A \cup B \cup C$ has been counted by using the equation $|A| + |B| + |C| - |A \cap B| - |B \cap C| - |C \cap A|.$}
 \end{figure}
 
 So we have to add the number of elements of this cut again to get the correct number of elements in $A \cup B \cup C$.
 All in all we get:
 
 \[
-	|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |B \cap C| - |C \cap A| + |A \cap B \cap C|
+  |A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |B \cap C| - |C \cap A| + |A \cap B \cap C|
 \]
 
 
 With pairwise disjoint sets, we know that
 
 \begin{align*}
-|A_1\cup \cdots\cup A_n| &= |A_1| + \ldots + |A_n|.\\
-|A_1\cup \cdots\cup A_n| &=
+  |A_1\cup \cdots\cup A_n| &= |A_1| + \ldots + |A_n|.\\
+  |A_1\cup \cdots\cup A_n| &=
     \sum_{\varnothing\neq I\subseteq\{1,\ldots,n\}}
-            (-1)^{|I|+1}
-            \left|
-            \bigcap_{i\in I} A_i
-        \right|
+      (-1)^{|I|+1}
+      \left|
+        \bigcap_{i\in I} A_i
+      \right|
 \end{align*}
 
 If we have a universe $A$ such that
 \[
-    A_1,\ldots,A_n \subseteq A
+  A_1,\ldots,A_n \subseteq A
 \]then
 
 \begin{align*}
-|A\setminus \bigcup\limits_{i=1}^m A_i| &=
-|A| +
-    \sum_{\varnothing\neq I\subseteq\{1,\ldots,n\}}
-        (-1)^{|I|}
-        \left| \bigcap_{i\in I} A_i \right| \\
-&=
-\sum_{I\subseteq\{1,\ldots,n\}}
+  |A\setminus \bigcup\limits_{i=1}^m A_i| &=
+  |A| + \sum_{\varnothing\neq I\subseteq\{1,\ldots,n\}}
+    (-1)^{|I|}
+    \left| \bigcap_{i\in I} A_i \right| \\
+  &= \sum_{I\subseteq\{1,\ldots,n\}}
     (-1)^{|I|}
     \left| \bigcap_{i\in I} A_i \right| \\
 \end{align*}
 ... if you presume that "the intersection of nothing" is "everything" (A)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

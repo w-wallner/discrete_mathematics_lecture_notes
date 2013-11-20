@@ -58,23 +58,21 @@ $|\{10,\ldots,99\}| = 90$
 \end{gather*}
 
 \textbf{Example.}
-We choose a password with 4 to 10 digits. How many passwors are possible?
-
+We choose a password between 4 and 10 digits. How large is the number of possible passwords?
 \begin{align*}
   A_i &&& \text{set of passwords with $i$ digits} \\
   Y &= \{0,1,\ldots ,9\} \\
-  A_i &= Y^i, |Y| = 10, |A_i| \\
-    &= {10}^i  && \text{(product principle)} \\
+  A_i &= Y^i, |Y| = 10 \\
+  |A_i| &= {10}^i  && \text{(product principle)} \\
   \text{total number} &= 10^4 + 10^5 + \ldots + 10^{10} && \text{(sum principle)}
 \end{align*}
 
 \textbf{Example.}
-There is a Thief, which saw me using a bank-card, and afterwards stole this card. He saw the code starts with $0$ and contains an $8$. How many possibilities for the password?
+There is a Thief, which saw me using a bank-card, and afterwards stole this card. He saw the code starts with $0$ and contains an $8$. How large is the number of possible passwords?
 
-4 Digits ($0 \ldots$), with the product principle we get $10^3$ options. 
+4 Digits ($0 \ldots$), with the product principle we get $10^3$ options.
 
-Using the sum principle we can subtract codes the containing $8$.
-
+Using the sum principle we can subtract the number of codes which do not contain the digit $8$.
 \begin{align*}
 |A| &= \text{\# possibilities} \\
     &= \underbrace{|A\cup B| - |B|}_{\text{(sum principle, reversed)}} \\
@@ -112,7 +110,7 @@ If:
   \text{Set } R_{i,0} &= \{b \in B \mid a_i\operatorname{R} b\}  && \text{(subscript 0 just means}\\
   \text{Set } R_{0,i} &= \{ a \in A \mid a\operatorname{R} b_i \}  && \text{that this part is fixed)}
 \end{align*}
-  
+
 
 %Set R_{i,0} = \{b \in B \mid (a_i,b) \in R\}
 Then:
@@ -192,7 +190,7 @@ f_i ≤ e_i$, l is defined by $(f_1,\ldots,f_k)$.)
 \begin{align*}
   \tau(n) &= \frac{1}{n}\sum_{i=1}^n d(i)\\
     &= \frac{1}{n}\sum_{j=1}^n |R_{0,j}| && \text{(sum of columns)} \\
-    &= \frac{1}{n}\sum_{i=1}^n |R_{i,0} && \text{(sum of rows)}
+    &= \frac{1}{n}\sum_{i=1}^n |R_{i,0}| && \text{(sum of rows)}
 \end{align*}
 
 \begin{align*}
@@ -202,15 +200,14 @@ f_i ≤ e_i$, l is defined by $(f_1,\ldots,f_k)$.)
 \end{align*}
 
 \begin{align*}
-  \tau(n) = ... &=
+  \tau(n) = … &=
     \frac{1}{n} \sum_{i=1}^n \left\lfloor\frac{n}{i}\right\rfloor \\
-    &= \frac{1}{n} \sum_{i=1}^n (\frac{n}{i} -
-        \underbrace{\left\{ \frac ni \right\} }_{\text{fractional part}} \\
+    &= \frac{1}{n} \sum_{i=1}^n \left(\frac{n}{i} - \underbrace{\left\{ \frac ni \right\}}_{\text{fractional part}}\right) \\
     &= \sum_{i=1}^n \frac1i -
         \frac1n\sum_{i=1}^n
             \underbrace{\left\{ \frac ni \right\} }_{≤ 1} \\
-    &=  \underbrace{H_n}_{\begin{matrix}harmonic \\ numbers\end{matrix}} + O(1) =
-        \log n + e_n (e ... error), -1 < e_n < 1 && H_n\sim \log n
+    &=  \underbrace{H_n}_{\begin{matrix}\text{harmonic} \\ \text{numbers}\end{matrix}} + ~O(1) =
+        \log n + e_n (e … \text{error}), -1 < e_n < 1 && H_n\sim \log n
 \end{align*}
 
 
@@ -223,7 +220,7 @@ $\implies \exists i : |A_i| > r$
 If $r=1$, you can also say that
 \[
   f: A\mapsto B, |A| > |B| \implies \exists b \in B :
-  |\underbrace{f^{-1}(b)}_{\text{set of preimages of b}}|
+  |\underbrace{f^{-1}(b)}_{\begin{matrix}\text{set of pre} \\ \text{-images of $b$}\end{matrix}}|
     ≥ 2 ,
     \text{i.e. f is not injective}
 \]
@@ -248,8 +245,7 @@ Either $\exists i: a_i \cong 0 \mod q$,
 or $\exists i,j: i < j, a_i \cong a_j \mod q$
 by the pigeon hole principle (without 0, only $q-1$ residue classes left)
 
-Let's assume $i < j$, than:
-
+Let's assume $i < j$, then:
 \begin{align*}
   a_i - a_j &= q\cdot a, a\in\mathbb{Z} \\
   2^i(1 - 2^{j-1}) &= q\cdot a
@@ -260,7 +256,7 @@ Since q is odd, $gcd(2^i, q)=1$. Therefore $q | 2^{j-1} - 1$. But in this case, 
 
 \textbf{Example (Interpreting the pigeon hole principle as a colouring).}
 $A$ set, $|A| = n$,
-$l_1, l_2, \ldots, l_k ≥ 1 and n > l_1 + l_2 + \ldots + l_k - k$
+$l_1, l_2, \ldots, l_k ≥ 1 \text{ and } n > l_1 + l_2 + \ldots + l_k - k$
 
 By the pigeon hole principle, for each coloring of the elements of $A$ with colours 1 to $k$, there is an $i$ such that $l_i$ elements have the colour $i$.
 
@@ -349,6 +345,6 @@ If we have a universe $A$ such that
     (-1)^{|I|}
     \left| \bigcap_{i\in I} A_i \right| \\
 \end{align*}
-... if you presume that "the intersection of nothing" is "everything" (A)
+\dots if you presume that the intersection of ``nothing'' is ``everything'' (A)
 
 

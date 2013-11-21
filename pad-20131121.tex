@@ -35,7 +35,7 @@ if $b_0 ≠ 0$, you can also divide
 
 \[
     \sum_{n≥0} a_n t^n
-    = \lim_{n \upto? a} \sum_{k=0}^{n} a_k z^k = *
+    = \lim_{n \to a} \sum_{k=0}^{n} a_k z^k = *
 \]
 
 \textbf{If $(*)$ is convergent:}
@@ -64,10 +64,10 @@ a)
 \]
 b)
 \[
-    |z - z_0| > R \implies \text{$f(z) divergent}
+    |z - z_0| > R \implies \text{$f(z)$ divergent}
 \]
 
-\Examples.
+\textbf{Examples.}
 \begin{gather*}
     \sum_{n≥0} z^n =
         \frac1{1-z}\quad\text{for $|z|<1$, } R = 1 \\
@@ -83,11 +83,10 @@ Inside the disk of convergence, we even have \emph{uniform convergence} (allows 
     = (\frac1{1-z})'
     = (\sum_{n>=0} z^n)'
     = \sum_{n≥1} n z^{n-1}, \\
-    
     \log\frac{1}{1-z} = \sum_{n≥1} \frac{z^n}{n}
 \end{gather*}
 
-\Theorem (Identity theorem for power series).
+\Theorem. (Identity theorem for power series).
 Let
 \[
     f(z) = \sum_{n≥0} a_n (z-z_0)^n,
@@ -137,8 +136,8 @@ $(b_n)_{n>=0} \text{corresponds to} B(z)$
 \Remark.
 \begin{align*}
     \hat{A}(z) = \sum a_n \frac{z^n}{n1}, \\
-    \hat{B}...
-    
+    \hat{B} ...
+    ...
     (\sum_{k=0}^n n\choose k a_k b_{n-k})_{n≥0}
         ↔ \hat A(z)\hat B(z)
 \end{align*}
@@ -154,27 +153,27 @@ $(b_n)_{n>=0} \text{corresponds to} B(z)$
         &↔ z A'(z)
 \end{align*}
 
-\Example.
+\textbf{Example.}
 \[
     \sum_{n≥0} (-1)^n z^n
     = \frac{1}{1+z} \quad\text{for $|z| < 1$}.
 \]
 
-\Example.
+\textbf{Example.}
 \[
     \sum_{n≥0} n z^n
     = \frac{z}{(1-z)^2}
     = z (\frac1{1-z})'.
 \]
 
-\Example.
+\textbf{Example.}
 \[
     \sum_{n≥0} a\choose n z^n
     = (1+z)^\alpha
     \quad\forall\alpha\in\mathbb{C}
 \]
 
-\Example.
+\textbf{Example.}
 \begin{align*}
     a_n = \sum_{k≥0}^n k:\;
     \sum_n a_n z^n
@@ -205,22 +204,20 @@ Sketch of proof:
 
 \subsection*{Recurrence relations}
 
-\Example.
+\textbf{Example.}
 Consider the Towers of Hanoi problem with $n$ disk. How many steps are needed to move the disks?
 %\TODO{small graphic of Tower of Hanoi}
 
 \begin{align*}
-a_0 = 0
-a_1 = 1
-
-\text{For the $n+1$-th step, put $n$ disks to a temporary location, move the $n+1$-th disk, move the $n$ disks again.}
-
-a_{n+1} = 2 a_n + 1, a_n = 2^n - 1
+  a_0 = 0 \\
+  a_1 = 1 \\
+  \text{For the $n+1$-th step, put $n$ disks to a temporary location, move the $n+1$-th disk, move the $n$ disks again.}\\
+  a_{n+1} = 2 a_n + 1, a_n = 2^n - 1
 \end{align*}
 
-A(z) = sum_{n \geq 0} a_n z^n
+$A(z) = sum_{n \geq 0} a_n z^n$
 
-multiply both sides with z^n and sum up over n
+multiply both sides with $z^n$ and sum up over $n$
 
 \begin{align*}
 \sum_{n≥0} a_{n+1} z^n &= 2 \sum_{n \geq 0} a_n z^{n+1} + \sum_{n\geq 0} z^{n+1} \\
@@ -237,49 +234,53 @@ A(z) &= \frac{z}{(1-z)(1-2z)}
 \end{align*}
 
 \TODO{Check completeness of example}
-\Example.
-\[
+\textbf{Example.}
+\begin{align*}
     F_0 = 0, F_1 = 1, F_{n+2} = F_{n+1} + F_n \\
     F(z) &= \sum_{n≥0} F_n z^n : \\
-    F(z) - \not{F_0} - F_1 z &= z \left F(t) - \not{F_0} \right + F(z)
+    F(z) - \not{F_0} - F_1 z &= z \left( F(t) - \not{F_0} \right) + F(z)
         \implies F(z) = \frac{z}{1-z-z^2} \\
-    F(z) = \frac{-z}{(z-z1) (z-z2)}, 
+    F(z) &= \frac{-z}{(z-z1) (z-z2)}, 
         \quad z_{1,2} = \frac{-1 \pm \sqrt{5}}{2} \\
-    
-    F(z) = \frac1{\sqrt{5}} \frac1{1 - \frac{1 + \sqrt{5}}{2} z} - ... \text{TODO (See Patrik's notes)} \\
-    \implies F_n = \frac{1}{sqrt{5} \left( \left( \frac{1+ \sqrt 5}{2} \right) ^n - \left( frac{1-\sqrt{5}}{2} \right) ^n \right)
-\]
+    F(z) &= \frac1{\sqrt{5}} - \frac{1 + \sqrt{5}}{2} z - ... \text{TODO (See Patrik's notes)} \\
+    \implies F_n &= \frac{1}{sqrt{5}} 
+		\left( \left( \frac{1+ \sqrt 5}{2} \right)^n 
+		- \left( frac{1-\sqrt{5}}{2} \right)^n 
+		\right)
+\end{align*}
 
 
 In general:
 \[
     a_{n+k} + q_1 a_{n+k-1} + \ldots + q_k a_n = 0
     \quad (*) for n ≥ 0
-
+\]
 (*) is unique if the first k elements are given
 
 $a_0, ..., a_{k-1}$ given, $q_i$ are given constants
 
-A(z) = \sum_{n\geq 0} a_n z^n
-\sum_{n\geq 0} a_n{n+k} z^{n+k} + q_1 \sum_{n\geq 0}  a_n{n+k-1}z^{n+k} + \ldots + q_k \sum_{n\geq 0} a_k z^{n+k} = 0
+$A(z) = \sum_{n\geq 0} a_n z^n
+\sum_{n\geq 0} a_n{n+k} z^{n+k} + q_1 \sum_{n\geq 0}  a_n{n+k-1}z^{n+k} + \ldots + q_k \sum_{n\geq 0} a_k z^{n+k} = 0$
 
-
+\begin{align*}
 A(z) - a_0 - a_1 z - \ldots - a_{k-1} z^{k-1} + q_1 z ( A(z) - \sum_{i=0}^{k-z} a_i z^i ) + \ldots + q_k z^k A(z) = 0
 A(z) = \frac{ p(z) }{ 1 + q_1 z + q_2 z^2 + \ldots + q_k z^k } = \frac{p(z)}{q(z)} = \frac{p(z)}{\prod_{i=1}^{r} (z - z_i)^{\lambda_i}}
+\end{align*}
 
 % A(z) = \frac{p(x)}{1+ q_1 z + q_2 z^2 + \ldots q_k z^k}
 % = \frac{p(z)}{q(z)} = \frac{p(z)}{\Pi_{i=1}^{
 
-Use ansatz: \frac{p(z)}{q(z)} = \sum_{i=1}^{r} sum_{j=1}^{\lambda} \frac{A_{ij}}{(z-z_i=j}
-= \frac{A_{11}}{z-z_n} + \frac{A_{12}}{(z-z_n)^2} + \ldots + 
-
-\frac{}{(1-z)(1-2z) = \frac{\alpha}{1-z} + \frac{\beta}{1-2z} + \frac{\gamma}{(1-2z)^2} + \frac{\delta}{(1-2z)^3}
-
+Use ansatz: 
+\begin{align*}
+\frac{p(z)}{q(z)} = \sum_{i=1}^{r} sum_{j=1}^{\lambda} \frac{A_{ij}}{(z-z_i=j} \\
+= \frac{A_{11}}{z-z_n} + \frac{A_{12}}{(z-z_n)^2} + \ldots + \\
+\frac{}{(1-z)(1-2z)} = \frac{\alpha}{1-z} + \frac{\beta}{1-2z} + \frac{\gamma}{(1-2z)^2} + \frac{\delta}{(1-2z)^3}
+\end{align*}
 \TODO{check the previous formulas for completeness}
 \TODO{Complement with Patrik's notes}
 
-\Example.
-\[
+\textbf{Example.}
+\begin{align*}
     a_{n+2} - 4 a_{n+1} - 4 a_n = 0 \quad n ≥ 0; a_0, a_1 given \\
     A(z) = \sum a_n z^n \\
     A(z) - a_0 - a_1 z - 4z (A(z)-a_0) + 4z^2 A(z) = 0 \\
@@ -290,11 +291,10 @@ Use ansatz: \frac{p(z)}{q(z)} = \sum_{i=1}^{r} sum_{j=1}^{\lambda} \frac{A_{ij}}
     [z^0]: a_0 = C+D \\
     [z^1]: a_1 - 4a_0 = -C \\
     \implies C, D \\
-    
-    \ldots = C * \sum 2^n z^n + D * \sum_n (n+1) *2^n z^n 
-    = \sum_n \left(2^n *C + (n+1)* 2^n D\right) z^n
-    = \sum_n \left(a_n) z^n
-\]
+    \ldots = C * \sum 2^n z^n + D * \sum_n (n+1) *2^n z^n \\
+    = \sum_n \left(2^n *C + (n+1)* 2^n D\right) z^n \\
+    = \sum_n (a_n) z^n 
+\end{align*}
 
 \TODO{add inhomogeneous recurrence relation to above example, i.e., $0$ on the rhs of the initial equation is replaced by $f(n)$}
 
@@ -302,7 +302,7 @@ Use ansatz: \frac{p(z)}{q(z)} = \sum_{i=1}^{r} sum_{j=1}^{\lambda} \frac{A_{ij}}
 
 \subsection*{Unlabelled Combinatorial Structures}
 
-\Example.
+\textbf{Example.}
 Binary tree (complete), (without cycles, plane, rooted, either no further children (external nodes, leaves) or 2 children (internal nodes))
 
 \TODO{ graph of complete Binary tree}
@@ -327,11 +327,11 @@ $k$ in range $0$ to $n$
     A(z) - 1 &= z A(z)^2
         \quad \text{(Cauchy-Product)} \\
     A(z) &= \frac{1 \pm \sqrt{1-4z}}{2z}
-        &= \frac{1 \pm (1-4z)^{\frac1{2}}{2z} \\
+        &= \frac{1 \pm (1-4z)^\frac1{2}}{2z} \\
     \text{$+$ is not a viable option, so we use the $-$} \\
-    ...
+    ... \\
     (1 + z)^\alpha &= \sum_n {\alpha \choose n} z^n \\
-    &= - \sum_{n\geq 0} \frac{\frac12 (-\frac12) (-\frac32) \ldots (\frac12 - n+1))}{n!} * (-4)^n z^n
+    &= - \sum_{n\geq 0} \frac{\frac12 (-\frac12) (-\frac32) \ldots (\frac12 - n+1))}{n!} * (-4)^n z^n \\
     \sum_{n\geq 0} \frac{1}{n+1} {2n \choose n} z^n
     \text{Catalan numbers}
 \end{align*}

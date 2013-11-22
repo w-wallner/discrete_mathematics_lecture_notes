@@ -21,7 +21,7 @@ two power series can be added
 $\sum_{n≥0} (a_n + b_n) z^n$,
 
 multiplied (Cauchy product)
-$\sum_{n≥0}\sum_{k=0}^n a_k b{n-k} z^n$
+$\sum_{n≥0}\sum_{k=0}^n a_k b_{n-k} z^n$
 
 if $b_0 ≠ 0$, you can also divide
 \[
@@ -42,7 +42,7 @@ if $b_0 ≠ 0$, you can also divide
 
 Domain of convergence: disk with center (0,0) and the radius of convergence $R$
 \[
-    R = \frac1{\lim \sqrt[n]{|a_n|}}
+    R = \frac1{\overline{\lim} \sqrt[n]{|a_n|}}
     \in [0, \inf]
 \]
 
@@ -51,7 +51,7 @@ Let
 \[
     f(z) = \sum a_n (z-z_0)^n,
     a_i\in \mathbb{C},
-    R = \frac{1}{\lim \sqrt[n]{|a_n|}}
+    R = \frac{1}{\overline{\lim} \sqrt[n]{|a_n|}}
 \].
 
 Then
@@ -80,8 +80,8 @@ Inside the disk of convergence, we even have \emph{uniform convergence} (allows 
 
 \begin{gather*}
     \frac1{(1-z)^2}
-    = (\frac1{1-z})'
-    = (\sum_{n>=0} z^n)'
+    = \left(\frac1{1-z}\right)'
+    = \left(\sum_{n>=0} z^n\right)'
     = \sum_{n≥1} n z^{n-1}, \\
     \log\frac{1}{1-z} = \sum_{n≥1} \frac{z^n}{n}
 \end{gather*}
@@ -110,8 +110,8 @@ $f(z)$ is the \emph{Taylor series}.
 Since $f(z)$ generates the sequence $(a_n)$ by continued differentiation and evaluation, we call $f(z)$ the \dt{generating function}. In particular,
 
 \begin{align*}
-\sum a_n z^n & \text{ordinary generating function} \\
-\sum a_n \frac{z^n}{n!} & \text{exponential generating function.}
+\sum a_n z^n & \text{ ordinary generating function} \\
+\sum a_n \frac{z^n}{n!} & \text{ exponential generating function.}
 \end{align*}
 
 
@@ -120,38 +120,43 @@ Since $f(z)$ generates the sequence $(a_n)$ by continued differentiation and eva
 sequence $(a_n)_{n≥0}$ corresponding to generating function
 $\sum_{n≥0} a_n z^n = A(z)$,
 
-$(b_n)_{n>=0} \text{corresponds to} B(z)$
+$(b_n)_{n>=0} \text{ corresponds to } B(z)$
 
+\begin{itemize}
+\item Addition
 \begin{align*}
     (\alpha a_n + \beta b_n)_{n≥0}
-        &↔ \alpha A(z) + \beta B(z)
-        &&\forall \alpha, \beta in \mathbb{C}
-        \quad\text{(linearity)} \\
-    (\sum_{k_0}^{n} a_k b_{n-k} )
-        &↔ A(z) B(z),
-        \text{in particular:}
-        (\sum_{k=0}^n a_k)_{n≥0} ↔ \frac{1}{1-z} A(z)
+        &\leftrightarrow \alpha A(z) + \beta B(z)
+        &&\forall \alpha, \beta \in \mathbb{C}
+        \quad\text{(linearity)} 
+\end{align*}
+\item Multiplication
+\begin{align*}
+    \left(\sum_{k_0}^{n} a_k b_{n-k} \right)
+        &\leftrightarrow A(z) B(z),
+        \text{ in particular: }
+        \left(\sum_{k=0}^n a_k\right)_{n≥0} \leftrightarrow \frac{1}{1-z} A(z)
 \end{align*}
 
 \Remark.
 \begin{align*}
-    \hat{A}(z) = \sum a_n \frac{z^n}{n1}, \\
-    \hat{B} ...
-    ...
-    (\sum_{k=0}^n n\choose k a_k b_{n-k})_{n≥0}
-        ↔ \hat A(z)\hat B(z)
+    \hat{A}(z) = \sum_{n \geq n} a_n \frac{z^n}{n!}, \\
+    \hat{B}(z) = \sum_{n \geq n} b_n \frac{z^n}{n!}, \\
+    \left(\sum_{k=0}^n \binom{n}{ k} a_k b_{n-k}\right)_{n \geq 0}
+        \leftrightarrow \hat A(z)\hat B(z)
 \end{align*}
 
-\begin{align*}
+\item $
     (a_n \gamma^n)_{n≥0} 
-        &↔ A(\gamma z) \\
-    (a_{n-1})_{n≥1}
-        &↔ z A(z),
+        ↔ A(\gamma z) $
+\item $ (a_{n-1})_{n≥1}↔ z A(z)$
+\begin{align*}
         (a_{n+1})_{n≥0} ↔ \frac{A(z)-a_0}z,
         EGF: (a_{n+1})_{n≥0} ↔ \hat A'(z) \\
-    (n a_n)_{n≥0}
-        &↔ z A'(z)
 \end{align*}
+\item $(n a_n)_{n≥0}↔ z A'(z)$
+
+\end{itemize}
 
 \textbf{Example.}
 \[
@@ -163,12 +168,12 @@ $(b_n)_{n>=0} \text{corresponds to} B(z)$
 \[
     \sum_{n≥0} n z^n
     = \frac{z}{(1-z)^2}
-    = z (\frac1{1-z})'.
+    = z \left(\frac1{1-z}\right)'.
 \]
 
 \textbf{Example.}
 \[
-    \sum_{n≥0} a\choose n z^n
+    \sum_{n≥0} \binom{a}{n} z^n
     = (1+z)^\alpha
     \quad\forall\alpha\in\mathbb{C}
 \]
@@ -186,19 +191,19 @@ $(b_n)_{n>=0} \text{corresponds to} B(z)$
     = \frac z2 \sum_{n≥2} n(n-1) z^{n-2}
     = \frac z2 \sum_{n≥0} n(n-1) z^{n-2}
     = \sum_{n≥0} \frac{(n+1)n}{2} z^n
-    = \sum_{n≥0} {{n+1}\choose 2} z^n
+    = \sum_{n≥0} {\binom{n+1}{2}} z^n
 \end{align*}
 
 \Lemma.
 \begin{gather*}
-    \sum_{n≥0} {{n+k-1}\choose{k-1}} z^n
+    \sum_{n≥0} {\binom{n+k-1}{k-1}} z^n
     = \frac1{(1-z)^k} \\
-    (1 + z)^\alpha = \sum {a \choose n} z^n \\
+    (1 + z)^\alpha = \sum {\binom{a}{n}} z^n \\
 \end{gather*}
 
 Sketch of proof:
 \[
-    {{n+k-1}\choose {k-1}} = \ldots = (-1)^k{{-k}\choose n}
+    {\binom{n+k-1} {k-1}} = \ldots = (-1)^k{\binom{-k}{n}}
 \]
 
 
@@ -211,26 +216,27 @@ Consider the Towers of Hanoi problem with $n$ disk. How many steps are needed to
 \begin{align*}
   a_0 = 0 \\
   a_1 = 1 \\
-  \text{For the $n+1$-th step, put $n$ disks to a temporary location, move the $n+1$-th disk, move the $n$ disks again.}\\
+\end{align*}
+For the $n+1$-th step, put $n$ disks to a temporary location, move the $n+1$-th disk, move the $n$ disks again.
+\begin{align*}
   a_{n+1} = 2 a_n + 1, a_n = 2^n - 1
+  A(z) = \sum_{n \geq 0} a_n z^n
 \end{align*}
 
-$A(z) = sum_{n \geq 0} a_n z^n$
-
-multiply both sides with $z^n$ and sum up over $n$
+multiply both sides with $z^{n+1}$ and sum up over $n$
 
 \begin{align*}
-\sum_{n≥0} a_{n+1} z^n &= 2 \sum_{n \geq 0} a_n z^{n+1} + \sum_{n\geq 0} z^{n+1} \\
+\sum_{n≥0} a_{n+1} z^{n+1} &= 2 \sum_{n \geq 0} a_n z^{n+1} + \sum_{n\geq 0} z^{n+1} \\
 A(z) - \not{a_0}    &= 2z A(z) + \frac{z}{1-z}
 \end{align*}
 
 \begin{align*}
-A(z) &= 2 z A(z) + \frac{z}{1-z}
-A(z) &= \frac{z}{(1-z)(1-2z)} 
-    &= \frac{\alpha}{1-z} + \frac{\beta} {1-2z}
-    &= \frac{-1}{1-z} + \frac{1}{1-2z} 
-    &= -\sum_{n\geq 0} z^n + \sum_{n\geq 0} 2^n z^n
-    &= \sum_{n\geq 0} (2^n-1) z^n
+A(z) &= 2 z A(z) + \frac{z}{1-z}\\
+A(z) &= \frac{z}{(1-z)(1-2z)} \\
+    &= \frac{\alpha}{1-z} + \frac{\beta} {1-2z}\\
+    &= \frac{-1}{1-z} + \frac{1}{1-2z} \\
+    &= -\sum_{n\geq 0} z^n + \sum_{n\geq 0} 2^n z^n\\
+    &= \sum_{n\geq 0} (2^n-1) z^n\\
 \end{align*}
 
 \TODO{Check completeness of example}
@@ -240,30 +246,34 @@ A(z) &= \frac{z}{(1-z)(1-2z)}
     F(z) &= \sum_{n≥0} F_n z^n : \\
     F(z) - \not{F_0} - F_1 z &= z \left( F(t) - \not{F_0} \right) + F(z)
         \implies F(z) = \frac{z}{1-z-z^2} \\
-    F(z) &= \frac{-z}{(z-z1) (z-z2)}, 
+    F(z) &= \frac{-z}{(z-z_1) (z-z_2)}, 
         \quad z_{1,2} = \frac{-1 \pm \sqrt{5}}{2} \\
-    F(z) &= \frac1{\sqrt{5}} - \frac{1 + \sqrt{5}}{2} z - ... \text{TODO (See Patrik's notes)} \\
-    \implies F_n &= \frac{1}{sqrt{5}} 
+    F(z) &= \frac1{\sqrt{5}} \cdot \frac{1}{1- \frac{1 + \sqrt{5}}{2} \cdot z} - \frac{1}{\sqrt{5}} \cdot \frac{1}{1- \frac{1 - \sqrt{5}}{2} \cdot z}  \\
+    \implies F_n &= \frac{1}{\sqrt{5}} 
 		\left( \left( \frac{1+ \sqrt 5}{2} \right)^n 
-		- \left( frac{1-\sqrt{5}}{2} \right)^n 
+		- \left( \frac{1-\sqrt{5}}{2} \right)^n 
 		\right)
 \end{align*}
 
 
 In general:
 \[
-    a_{n+k} + q_1 a_{n+k-1} + \ldots + q_k a_n = 0
-    \quad (*) for n ≥ 0
+    a_{n+k} + q_1 a_{n+k-1} + \cdots + q_k a_n = 0
+    \quad  \text{ (*) for }n \geq 0
 \]
-(*) is unique if the first k elements are given
+(*) is unique if the first $k$ elements are given
 
 $a_0, ..., a_{k-1}$ given, $q_i$ are given constants
 
-$A(z) = \sum_{n\geq 0} a_n z^n
-\sum_{n\geq 0} a_n{n+k} z^{n+k} + q_1 \sum_{n\geq 0}  a_n{n+k-1}z^{n+k} + \ldots + q_k \sum_{n\geq 0} a_k z^{n+k} = 0$
+\begin{align*}
+A(z) = \sum_{n\geq 0} a_n z^n
+\end{align*}
+\begin{align*}
+\sum_{n\geq 0} a_{n+k} z^{n+k} + q_1 \sum_{n\geq 0}  a_{n+k-1}z^{n+k} + \ldots + q_k \sum_{n\geq 0} a_k z^{n+k} = 0
+\end{align*}
 
 \begin{align*}
-A(z) - a_0 - a_1 z - \ldots - a_{k-1} z^{k-1} + q_1 z ( A(z) - \sum_{i=0}^{k-z} a_i z^i ) + \ldots + q_k z^k A(z) = 0
+A(z) - a_0 - a_1 z - \ldots - a_{k-1} z^{k-1} + q_1 z \left( A(z) - \sum_{i=0}^{k-z} a_i z^i \right) + \ldots + q_k z^k A(z) = 0\\
 A(z) = \frac{ p(z) }{ 1 + q_1 z + q_2 z^2 + \ldots + q_k z^k } = \frac{p(z)}{q(z)} = \frac{p(z)}{\prod_{i=1}^{r} (z - z_i)^{\lambda_i}}
 \end{align*}
 
@@ -272,9 +282,10 @@ A(z) = \frac{ p(z) }{ 1 + q_1 z + q_2 z^2 + \ldots + q_k z^k } = \frac{p(z)}{q(z
 
 Use ansatz: 
 \begin{align*}
-\frac{p(z)}{q(z)} = \sum_{i=1}^{r} sum_{j=1}^{\lambda} \frac{A_{ij}}{(z-z_i=j} \\
-= \frac{A_{11}}{z-z_n} + \frac{A_{12}}{(z-z_n)^2} + \ldots + \\
-\frac{}{(1-z)(1-2z)} = \frac{\alpha}{1-z} + \frac{\beta}{1-2z} + \frac{\gamma}{(1-2z)^2} + \frac{\delta}{(1-2z)^3}
+\frac{p(z)}{q(z)} &= \sum_{i=1}^{r} \sum_{j=1}^{\lambda} \frac{A_{ij}}{(z-z_i)^j} \\
+&= \frac{A_{11}}{z-z_n} + \frac{A_{12}}{(z-z_n)^2} + \cdots + \frac{A_{1\gamma_i}}{(1-z)(1-2z)} + \cdots \\
+&= \sum_i\sum_j \frac{B_{ij}}{\left(1-\frac{z}{z_i}\right)^j}= \sum_i\sum_j B_{ij} \cdot \binom {n+j-1}{j-1} \cdot z_i^{-n}\\
+&= \frac{\alpha}{1-z} + \frac{\beta}{1-2z} + \frac{\gamma}{(1-2z)^2} + \frac{\delta}{(1-2z)^3}
 \end{align*}
 \TODO{check the previous formulas for completeness}
 \TODO{Complement with Patrik's notes}
@@ -330,9 +341,9 @@ $k$ in range $0$ to $n$
         &= \frac{1 \pm (1-4z)^\frac1{2}}{2z} \\
     \text{$+$ is not a viable option, so we use the $-$} \\
     ... \\
-    (1 + z)^\alpha &= \sum_n {\alpha \choose n} z^n \\
+    (1 + z)^\alpha &= \sum_n {\binom{\alpha}{ n}} z^n \\
     &= - \sum_{n\geq 0} \frac{\frac12 (-\frac12) (-\frac32) \ldots (\frac12 - n+1))}{n!} * (-4)^n z^n \\
-    \sum_{n\geq 0} \frac{1}{n+1} {2n \choose n} z^n
+    \sum_{n\geq 0} \frac{1}{n+1} {\binom{2n}{n}} z^n
     \text{Catalan numbers}
 \end{align*}
 

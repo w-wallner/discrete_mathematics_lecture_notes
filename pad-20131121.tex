@@ -182,14 +182,14 @@ $(b_n)_{n>=0} \text{ corresponds to } B(z)$
 \begin{align*}
     a_n = \sum_{k≥0}^n k:\;
     \sum_n a_n z^n
-    = \sum_{n≥0}
-        \left(\sum_{k=0}^n k)\right) z^n
+    &= \sum_{n≥0}
+        \left(\sum_{k=0}^n k\right) z^n
     = \sum_{n≥0} \left(\sum_{k=0}^n  k\cdot 1\right) z^n
-        = \left( \sum_{n≥0} n z^n \right) \left( \sum_{n≥0} 1 \cdot z^n \right)
-    = \frac{z}{(1-z)^3}
+        = \left( \sum_{n≥0} n z^n \right) \left( \sum_{n≥0} 1 \cdot z^n \right)\\
+    &= \frac{z}{(1-z)^3}
     = \frac12 z \left(\frac{1}{1-z}\right)''
-    = \frac z2 \sum_{n≥2} n(n-1) z^{n-2}
-    = \frac z2 \sum_{n≥0} n(n-1) z^{n-2}
+    = \frac z2 \sum_{n≥2} n(n-1) z^{n-2}\\
+    &= \frac z2 \sum_{n≥0} n(n-1) z^{n-2}
     = \sum_{n≥0} \frac{(n+1)n}{2} z^n
     = \sum_{n≥0} {\binom{n+1}{2}} z^n
 \end{align*}
@@ -291,19 +291,25 @@ Use ansatz:
 \TODO{Complement with Patrik's notes}
 
 \textbf{Example.}
+\[
+    a_{n+2} - 4 a_{n+1} - 4 a_n = 0 \quad n ≥ 0;  a_0, a_1 \text{ given} 
+\]
+\[
+    A(z) = \sum a_n z^n 
+\]
 \begin{align*}
-    a_{n+2} - 4 a_{n+1} - 4 a_n = 0 \quad n ≥ 0; a_0, a_1 given \\
-    A(z) = \sum a_n z^n \\
-    A(z) - a_0 - a_1 z - 4z (A(z)-a_0) + 4z^2 A(z) = 0 \\
-    (1-4z + 4z^2) A(z) = a_0 + a_1 z - 4a_0 z \\
-    A(z) = \frac{a_0 + (a1 - 4a_0)z}{1- 4z + + 4z^2} = \frac{a_0 + (a1 - 4a_0)z}{(1-2z)^2}
-    = \frac{C}{1-2z} + \frac{D}{(1-2z)^2} \\
-    \implies a_0 + (a_1 - 4a_0)z = C (1-2z) + D \\
-    [z^0]: a_0 = C+D \\
-    [z^1]: a_1 - 4a_0 = -C \\
-    \implies C, D \\
-    \ldots = C * \sum 2^n z^n + D * \sum_n (n+1) *2^n z^n \\
-    = \sum_n \left(2^n *C + (n+1)* 2^n D\right) z^n \\
+    A(z) - a_0 - a_1 z - 4z (A(z)-a_0) + 4z^2 A(z) &= 0 \\
+    (1-4z + 4z^2) A(z) &= a_0 + a_1 z - 4a_0 z \\
+    A(z) = \frac{a_0 + (a1 - 4a_0)z}{1- 4z + + 4z^2} &= \frac{a_0 + (a1 - 4a_0)z}{(1-2z)^2}
+    = \frac{C}{1-2z} + \frac{D}{(1-2z)^2} = (*)\\
+    \implies a_0 + (a_1 - 4a_0)z &= C (1-2z) + D \\
+    [z^0]: a_0 &= C+D \\
+    [z^1]: a_1 - 4a_0 &= -C \\
+    \implies C, D 
+\end{align*}
+\begin{align*}
+    (*) = C \cdot \sum_n 2^n z^n + D \cdot \sum_n (n+1) \cdot 2^n z^n \\
+    = \sum_n \left(2^n \cdot C + (n+1)\cdot 2^n D\right) z^n \\
     = \sum_n (a_n) z^n 
 \end{align*}
 
@@ -337,14 +343,15 @@ $k$ in range $0$ to $n$
         \quad | \cdot z^{n+1} | \sum \\
     A(z) - 1 &= z A(z)^2
         \quad \text{(Cauchy-Product)} \\
-    A(z) &= \frac{1 \pm \sqrt{1-4z}}{2z}
-        &= \frac{1 \pm (1-4z)^\frac1{2}}{2z} \\
+    A(z) &= \frac{1 \pm \sqrt{1-4z}}{2z}\\
+        &= \frac{1 \pm (1-4z)^\frac1{2}}{2z} \qquad
     \text{$+$ is not a viable option, so we use the $-$} \\
-    ... \\
+     \\
     (1 + z)^\alpha &= \sum_n {\binom{\alpha}{ n}} z^n \\
-    &= - \sum_{n\geq 0} \frac{\frac12 (-\frac12) (-\frac32) \ldots (\frac12 - n+1))}{n!} * (-4)^n z^n \\
-    \sum_{n\geq 0} \frac{1}{n+1} {\binom{2n}{n}} z^n
-    \text{Catalan numbers}
+    (1-4z)^\frac1{2} &= \sum_{n \geq 0} \binom{\frac12}{n} \cdot (-4)^n \cdot z^n\\
+	&= - \sum_{n\geq 0} \frac{\frac12 (-\frac12) (-\frac32) \ldots (\frac12 - n+1))}{n!} \cdot (-4)^n z^n \\
+    &\sum_{n\geq 0} \frac{1}{n+1} {\binom{2n}{n}} z^n \dotsc
+    \text{ Catalan numbers}
 \end{align*}
 
 % Up next:

@@ -10,7 +10,8 @@
 
 % Discrete Mathematics Lecture Notes 2013-11-22
 
-Binary tree of even size has a number of internal nodes $a_n$ = \frac{1}{n+1) {2n \choose n}$
+
+Binary tree of even size has a number of internal nodes $a_n = \frac{1}{n+1} {2n \choose n}$
 $A(z) = 1 + zA(z)^2$
 
 if we look at the set of Binary trees $B$ the tree is either a leaf with size 0, or a node with two binary trees
@@ -24,7 +25,7 @@ We now ask for ne number of combinations with n balls, whith the given constrain
 
 Assume we introduce a variable for each color, $r,b,y$. And we count by the exponent. So our function is:
 \[
-    1*r^2 + r^3,  1+y, b + b^2 + \ldots = \frac{b}{1-b}
+    1\cdot r^2 + r^3,  1+y, b + b^2 + \ldots = \frac{b}{1-b}
 \]
 
 we now have 2 configurations:
@@ -36,27 +37,26 @@ we now have 2 configurations:
 
 This leads to or formula
 \[
-    (r^2  z^2+ r^3 z^3) (1+zy) (\frac{bz}{1-bz}) 
+    (r^2  z^2+ r^3 z^3) (1+zy) \left(\frac{bz}{1-bz}\right) 
     = \sum a_{lmkn} r^l b^m y^k z^n
 \]
 
 The coeffizient $a_{lmkn}$ is the number of configurations with l red, m blue, k yellow and total number equal to n balls
 
 We are not interested in the number of blue,... balls but the total number of used balls, so we can set $r=b=y=1$ and we can simplify the formula to:
-\[
-    (z^2 + z^3)(1+z) \frac{z}{1-z} 
-    \implies \text{# comb} 
-    = [z^n] \frac{z^3(1+z)^2}{1-z}
-    = [z^{n-3}] \frac{1+2z +z^2}{1-z}
-    = [z^{n-3}] \frac{1}{1-z} + 2[z^{n-4} \frac{1}{1-z} + [n^{n-5}] \frac{1}{1-z} 
-    = 4
-\]
+\begin{align*}
+    (z^2 + z^3)&(1+z) \frac{z}{1-z} \\
+    \implies \text{\# comb} 
+    &= \left[z^n\right] \frac{z^3(1+z)^2}{1-z} \\
+    &= \left[z^{n-3}\right] \frac{1+2z +z^2}{1-z}+ 2\left[z^{n-4}\right] \frac{1}{1-z} + \left[n^{n-5}\right] \frac{1}{1-z} \\
+    &= 4
+\end{align*}
 
 \textbf{Example.} 
-Number of combination w/o repetition of a set $M = \{1,2, \ldots ,N\}$. We now want to know the number of combinations of size $k = {N \choose k}.
+Number of combination w/o repetition of a set $M = \{1,2, \ldots ,N\}$. We now want to know the number of combinations of size $k = {N \choose k}$.
 
 \[
-    a_1, \ldots , a_n \hat{=} different balls \hat{=} elemets of M
+    a_1, \ldots , a_n \mathrel{\hat{=}} \text{different balls} \mathrel{\hat{=}} \text{elemets of } M
 \]
 
 \[
@@ -71,60 +71,63 @@ We now need to consider the size of the set
 
 If we allow repetition: 
 \[
-    \Pi _{i=1}^N (1+a_i + a_i^2 + \ldots) = \Pi _{i=1}^N \frac{1}{1-a_i} \quad a_i = x
+    \prod _{i=1}^N (1+a_i + a_i^2 + \ldots) = \prod _{i=1}^N \frac{1}{1-a_i} \quad a_i = x
 \]
 
 \[
-    f(x) = \Pi _{i=1}^N \frac{1}{1-x} = frac{1}{(1-x)^N} 
+    f(x) = \prod _{i=1}^N \frac{1}{1-x} = \frac{1}{(1-x)^N} 
     = (1-x)^{-N} 
     = \sum _{k \geq 0} {-N \choose k} (-1)^k x^k
     = \sum _{k \geq 0} {N + k-1 \choose k} x^k
 \]
 
 \subsection{Combinatorial construction}
-$mathbb{A}$ is a combinatrial class, which is a set of objects. 
-Furthermore there is a size-function $w: mathbb{A} \rightarrow \mathbb{N}$. 
+$\mathcal{A}$ is a combinatrial class, which is a set of objects. 
+Furthermore there is a size-function $w: \mathcal{A} \rightarrow \mathbb{N}$. 
 
 \[
-a_n = \left(\text{number of objects x} \in mathbb{A} \text{such that w(x) = n\right) < \infty \forall n \in mathbb{N}
+a_n = \left(\text{number of objects } x\in \mathcal{A}\right) \text{ such that }w(x) = n < \infty,  \forall n \in \mathbb{N}
 \]
 
-generating function of $(mathbb{A}, w) 
+generating function of $(\mathcal{A}, w)$ 
 \[
     A(z) = \sum_{n\geq 0 } a_n z^n
 \]
 
 We now create combinatorial classes from combinatorial classes.
-(mathbb{A}, w_A) , (mathbb{B}, w_b)
+$(\mathcal{A}, w_A) , (\mathcal{B}, w_b)$
 
-1) combinatorial sum $mathbb{A} + mathbb{B}$:
-    we assume that $mathbb{A} \cap mathbb{B} = \varnothing$
-    \[
-        mathbb{A} + mathbb{B} = (mathbb{A} \cup mathbb{B} , w), 
-        w(x) = \choice
-            {w_A(x) \quad x \in mathbb{A}}
-            {w_B(x) \quad x \in mathbb{B}}
-        c_n a_n + b_ \implies C(z) = A(z) + B(z)
-    \]
-2) 
-    \begin{aligh*}
-        $mathbb{A} \times mathbb{B} 
-        := (mathbb{A} \times mathbb{B}, w) \\
-        \text{with } w((x,y)) = w_a(x) + w_b(y) x\in mathbb{A}, y\in mathbb{B}\\
-        c_n = \sum_{k=0}^n a_kb_{n-k}\\
-        C(z) = A(z)B(z)
+\begin{enumerate}[1)]
+\item combinatorial sum $\mathcal{A} + \mathcal{B}$:
+    we assume that $\mathcal{A} \cap \mathcal{B} = \varnothing$
+    \begin{align*}
+        \mathcal{A} + \mathcal{B} &= (\mathcal{A} \cup \mathcal{B} , w), \\
+        w(x) &= \begin{cases}
+            {w_A(x) \quad x \in \mathcal{A}}\\
+            {w_B(x) \quad x \in \mathcal{B}}
+			\end{cases}\\
+        c_n &= a_n + b_ n\rightarrow C(z) = A(z) + B(z)
+    \end{align*}
+\item 
+    \begin{align*}
+        \mathcal{A} \times \mathcal{B} 
+        &:= (\mathcal{A} \times \mathcal{B}, w) 
+        \qquad \text{with } w((x,y)) = w_a(x) + w_b(y), x\in \mathcal{A}, y\in \mathcal{B}\\
+        c_n &= \sum_{k=0}^n a_kb_{n-k}\\
+        C(z) &= A(z)B(z)
     \end{align*}
 
-3)
+\item
     \begin{align*}
-        seq(mathbb{A}) = \{ (x_1, x_2, \ldots x_k) \mid k \in mathbb{N} x_i \in \mathbb{A}\}\\
-        k = 0 \hat{0} \epsilon \ldots \text{empty sequence}\\
-        w((x_1, x_2, \ldots x_k) ) = \sum_{i=1}}^{k} w_A(x_i) \\
-        \mathbb{C} = seq(\mathbb{A} = \{\epsilon\} \cup \mathbb{A} \cup \mathbb{A}\times\mathbb{A} \cup \ldots \\
-        C(z) = 1 + A(z) + A(z)^2 + \ldots = \frac{1}{1-A(z)} \\
+        \seq(\mathcal{A}) &= \{ (x_1, x_2, \ldots x_k) \mid k \in \mathbb{N}_0, x_i \in \mathcal{A}\}
+        \qquad k = 0 \mathrel{\hat{=}} \epsilon \ldots \text{empty sequence}\\
+        &w((x_1, x_2, \ldots x_k) ) = \sum_{i=1}^{k} w_A(x_i) \\
+        \mathcal{C} &= \seq(\mathcal{A} = \{\epsilon\} \cup \mathcal{A} \cup \mathcal{A}\times\mathcal{A} \cup \ldots )\\
+        C(z) &= 1 + A(z) + A(z)^2 + \ldots = \frac{1}{1-A(z)} \\
     \end{align*}
     
     Assumtion $a_0 = 0$
+\end{enumerate}
 
 \textbf{Example.}
 Integer paritions:
@@ -134,34 +137,34 @@ Decomposition of an integer into a sum of smaller integers ($5 = 3+1+1= 1+3+1 = 
 If the order matters, then we speak of \dt{compositions} of an integer
 
 \begin{align*}
-    \mathbb{C} \ldots \text{compositions of an integer }\in \mathbb{N}^{+} \\
-    \mathbb{C} = \text{seq}(\mathbb{A}) \\
-    && \mathbb{A} = \mathbb{N}^{+}, w_A(x) = x\\
-    && \underline{x} = (x_1, x_2, \ldots x_k) \in \mathbb{C}
-    &&& \underline{x} \hat{=} x_1 + x_2 + \ldots x_k
-    &&& w(\underline{x}) = x_1 + x_2 + \ldots x_k
-    \mathbb{A}=seq( \{\dot \})\backslash \{\epsilon\}) \\
-    A(z) = \frac{1}{1-z} - 1 = \frac{z}{1-z} \\
-    C(z) = \frac{1}{1-A(z)} = \frac{1}{1-\frac{z}{1-z} }
-        = \frac{1-z}{1-2z} 
-        = 1 + \sum_{n\geq 1} 2^{n-1} z^n \\
-    P(z) = \Pi_{i\geq 1} \frac{1}{1-x^i} \\
-        &&\quad \mathbb{P} = seq(\{1\}) \times seq(\{2\}) \times \ldots \\
-\end{align*}
+    \mathcal{C} &\ldots \text{compositions of an integer }\in \mathbb{N}^{+} \\
+    \mathcal{C} &= \seq(\mathcal{A}) \\
+     \mathcal{A} &= \mathbb{N}^{+}, w_A(x) = x\\
+	\underline{x} &= (x_1, x_2, \ldots x_k) \in \mathcal{C}\\
+    \underline{x} &\mathrel{\hat{=}} x_1 + x_2 + \cdots + x_k\\
+    w(\underline{x}) &= x_1 + x_2 + \ldots x_k\\
+    \mathcal{A}&=\seq( \{ 0 \})\setminus \{\epsilon\}) \\
+    A(z) &= \frac{1}{1-z} - 1 = \frac{z}{1-z} \\
+    C(z) &= \frac{1}{1-A(z)} = \frac{1}{1-\frac{z}{1-z} }
+         = \frac{1-z}{1-2z} 
+         = 1 + \sum_{n\geq 1} 2^{n-1} z^n \\
+    P(z) &= \prod_{i\geq 1} \frac{1}{1-x^i}\\
+	\mathcal{P} &= \seq(\{1\}) \times \seq(\{2\}) \times \cdots \\
+\end{align*}	 
 
 \text{Example.}
 Strings composed of $\cdot, --$. 
 $\cdot$ has length 1 and $--$ has length 2.
 We want to compute the number of strings of length $n$
 \begin{align*}
-    \mathbb{A} = \{\cdot\} \leftrightarrow z\\
-    \mathbb{V} = \{\ -- \} \hat{=} \mathbb{A} \times \mathbb{A} \leftrightarrow z^2 \\
-
+    \mathcal{A} = \{\cdot\} \leftrightarrow z\\
+    \mathcal{V} = \{\ -- \} \mathrel{\hat{=}} \mathcal{A} \times \mathcal{A} \leftrightarrow z^2 
+\end{align*}
 \textbf{Example.}
 Binary trees, as explained before
 \begin{align*}
-    \mathbb{B} = \{ \Box\} + \{ \circ\} \times \mathbb{B} \times \mathbb{B}$
-    B(z) = 1 + z * B(z) * B(z)
+    \mathcal{B} = \{ \Box\} + \{ \circ\} \times \mathcal{B} \times \mathcal{B}\\
+    B(z) = 1 + z \cdot B(z) \cdot B(z)
 \end{align*}
 
 \subsection{Labelled constructions}
@@ -170,7 +173,7 @@ permutations, $a_k = n!$
 
 $A(z) = \sum_{n\geq 0} n! z^n$
 
-cyclic permutations: $(p_1 p_2 \ldots p_n) \hat{=} (p_3 p_4 \ldots p_n p_1 p_2)$
+cyclic permutations: $(p_1 p_2 \ldots p_n) \mathrel{\hat{=}} (p_3 p_4 \ldots p_n p_1 p_2)$
 
 so the number of cyclic permutations is $(n-1)!$
 
@@ -180,61 +183,70 @@ With the generating function:
 \end{align*}
 
 \begin{definition}
-We define a \dt{labelld structure} $\mathbb{A} in the following way: Each object of size n is composed of n atomc objects. The atoms are numbered with numbers from $1$ to $n$. 
-
-$A \leftrightarrow \text{generating function} \hat{A}(z) = \sum_{n\geq 0} a_n \frac{z^n}{n!}$
+We define a \dt{labelled structure} $\mathcal{A}$ in the following way: Each object of size n is composed of n atomc objects. The atoms are numbered with numbers from $1$ to $n$. 
+\end{definition}
+$A \leftrightarrow \text{generating function } \hat{A}(z) = \sum_{n\geq 0} a_n \frac{z^n}{n!}$
 
 \begin{align*}
-    \mathbb{C} = \mathbb{A}+\mathbb{B}: \\
-        & w(x) = \choice{
-                w_a(x) \quad x\in \mathbb{A}
-                w_B(x) \quad x\in \mathbb{B}}
-    \hat{C}(z) = \sum_{n\geq 0} (a_n+b_n) \frac{z^n}{n!}
+    \mathcal{C} &= \mathcal{A}+\mathcal{B}: \\
+         w(x) &= \begin{cases}
+                w_a(x) \quad x\in \mathcal{A}\\
+                w_B(x) \quad x\in \mathcal{B}
+				\end{cases}\\
+    \hat{C}(z) &= \sum_{n\geq 0} (a_n+b_n) \frac{z^n}{n!}
         = \hat{A}(z) + \hat{B}(z)
-\end{definition}
+\end{align*}
 
-\TODO{complete the definition from notes, $\mathbb{A}*\mathbb{B}$ etc}
-}
+\begin{definition}
+
+$\mathcal{A} * \mathcal{B}$ \dt{partitional product}\\
+\begin{align*}
+\mathcal{A} * \mathcal{B} = \{ (x,y) | x \in \mathcal(A), y \in \mathcal{B}, &\text{ atomas are labelled in order preserving way }\\
+ &\text{s.t. the labels are } 1,2, \dotsc , w_A(x) + w_B(y) \}
+\end{align*}
+
+
+\end{definition}
 
 \begin{align*}
     c_n = \sum_{k=0}^{n} {n \choose k} a_k b_{n-k}
 \end{align*}
 
-\TODO{figure of $k$ elements $\in \mathbb{A}$}
+\TODO{figure of $k$ elements $\in \mathcal{A}$}
 
 \begin{align*}
     \frac{c_n}{n!} &= \sum{k=0}^{n} \frac{1}{k!(n-k)!} a_k b_{n-k}\\
     &= \sum{k=0}^{n} \frac{a_k}{k!} \frac{b_{n-k}}{(n-k)!} \\
-    [z^n] \hat{A}(z)\hat{B}(z) 
+    &[z^n] \hat{A}(z)\hat{B}(z) 
         \quad [z^k] \hat{A}(z) 
         \quad [z^{n-k}] \hat{B}(z) \\
-    \implies \hat{C}(z) = \hat{A}(z) \hat{B}(z) \\
+    &\implies \hat{C}(z) = \hat{A}(z) \hat{B}(z) \\
 \end{align*}
 
 \begin{align*}
-    seq(\mathbb{A}) = \{\epsilon\} \times \mathbb{A} \times \mathbb{A}*\mathbb{A} \times \ldots \\
-    \hat{C}(z) = \frac{1}{1-\hat{A}(z)} \
-    set(\mathbb{A}) "\tilde{=}" \{\varnothing\} 
-        \times \mathbb{A} 
-        \times \frac{1}{2}\mathbb{A} * \mathbb{A} + \frac{1}{3!}\mathbb{A}*\mathbb{A}*\mathbb{A} \\
-        \implies \hat{C}(z) = e^{\hat{A}(z)
+    \seq(\mathcal{A}) &= \{\epsilon\} \times \mathcal{A} \times \mathcal{A}*\mathcal{A} \times \ldots \\
+    \hat{C}(z) &= \frac{1}{1-\hat{A}(z)} \\
+    \set(\mathcal{A}) &\mathrel{"\cong"} \{\varnothing\} 
+        \times \mathcal{A} 
+        \times \frac{1}{2}\mathcal{A} * \mathcal{A} + \frac{1}{3!}\mathcal{A}*\mathcal{A}*\mathcal{A} \\
+        \implies \hat{C}(z) &= e^{\hat{A}(z)}
 \end{align*}
 
 sideremark: in the unlabelled case: 
 \begin{align*}
-    set(\mathbb{A}): C(z) = \exp{A(z) - \frac{A(z^2)}{2} + \frac{A(z^3)}{3} + \ldots }
+    \set(\mathcal{A}): C(z) = \exp{A(z) - \frac{A(z^2)}{2} + \frac{A(z^3)}{3} + \ldots }
 \end{align*}
 
-cycle of \mathbb{A}
+cycle of $\mathcal{A}$
 \begin{align*}
-    cyc(\mathbb{A}) \tilde{=} \mathbb{A} + \frac{1}{2}\mathbb{A} * A + \frac{1}{3}\mathbb{A}*\mathbb{A} + \mathbb{A} + \mathbb{A} + \ldots \frac{1}{k}\mathbb{A}^k \\
-    \hat{C}(z) = \log\frac{1}{1-\hat{A}(z)}
+    \cyc(\mathcal{A}) &\cong \mathcal{A} + \frac{1}{2}\mathcal{A} * A + \frac{1}{3}\mathcal{A}*\mathcal{A} + \mathcal{A} + \mathcal{A} + \ldots \frac{1}{k}\mathcal{A}^k \\
+    \hat{C}(z) &= \log\frac{1}{1-\hat{A}(z)}
 \end{align*}
 
 \textbf{Example.}
 Permutations. 
 \begin{align*}
-    \mathbb{P} &= set(cyc(\{ \circ \} )) \\
+    \mathcal{P} &= \text{set}(\text{cyc}(\{ \circ \} )) \\
     \hat{p}(z) &= e^{log \frac{1}{1-z}} = \frac{1}{1-z} \\
         &= \sum_{n\geq 0} n! * \frac{z^n}{n!}
 \end{align*}

@@ -17,6 +17,8 @@
 *.idx
 *.ilg
 *.ind
+*.fls
+*.fdb*
 
 #ignore pdf-files 
 *.pdf

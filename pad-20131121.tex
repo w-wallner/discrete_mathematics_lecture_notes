@@ -55,39 +55,31 @@ Let
     f(z) = \sum a_n (z-z_0)^n,
     a_i\in \mathbb{C},
     R = \frac{1}{\overline{\lim} \sqrt[n]{|a_n|}}
-\].
-
+\]
 Then
-a)
-\[
-    |z - z_0| < R \implies
-    \text{$f(z)$ absolutely convergent,
-    i.e.
-    $\sum |a_n| (z-z_0)^n$ convergent}
-\]
-b)
-\[
-    |z - z_0| > R \implies \text{$f(z)$ divergent}
-\]
+\begin{enumerate}[a)]
+	\item $|z - z_0| < R \implies f(z)$ absolutely convergent, i.e.
+	      $\sum |a_n| (z-z_0)^n$ convergent
+
+	\item $|z - z_0| > R \implies f(z)$ divergent
+\end{enumerate}
 
 \textbf{Examples.}
-\begin{gather*}
-    \sum_{n≥0} z^n =
+\begin{align*}
+    &\sum_{n≥0} z^n =
         \frac1{1-z}\quad\text{for $|z|<1$, } R = 1 \\
-    \sum_{n≥0} \frac{z^n}{n!} =
-        e^z, R = \inf \\
-    \sum_{n≥0} n! z^n, R = 0
-\end{gather*}
-
+    &\sum_{n≥0} \frac{z^n}{n!} =
+        e^z, ~R = ∞ \\
+    &\sum_{n≥0} n! z^n, ~R = 0
+\end{align*}
 Inside the disk of convergence, we even have \emph{uniform convergence} (allows interchange of limits).
-
-\begin{gather*}
+\begin{align*}
     \frac1{(1-z)^2}
-    = \left(\frac1{1-z}\right)'
+    &= \left(\frac1{1-z}\right)'
     = \left(\sum_{n>=0} z^n\right)'
-    = \sum_{n≥1} n z^{n-1}, \\
-    \log\frac{1}{1-z} = \sum_{n≥1} \frac{z^n}{n}
-\end{gather*}
+    = \sum_{n≥1} n z^{n-1} \\
+    \log\frac{1}{1-z} &= \sum_{n≥1} \frac{z^n}{n}
+\end{align*}
 
 \Theorem. (Identity theorem for power series).
 Let

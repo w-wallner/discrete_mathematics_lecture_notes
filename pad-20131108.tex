@@ -34,9 +34,9 @@ to the
   b_1 < b_2+1 < \ldots < b_k+k-1.
 \]
 
-\begin{enumerate} 
+\begin{enumerate}
   \setcounter{enumi}{4}
-  \item number of arrangements of a multiset: $\{b_1, b_1, \ldots , b_2, b_2,\ldots, b_2, \ldots, b_m, b_m, \ldots b_m\}$ 
+  \item number of arrangements of a multiset: $\{b_1, b_1, \ldots , b_2, b_2,\ldots, b_2, \ldots, b_m, b_m, \ldots b_m\}$
 \end{enumerate}
 
 $b_1$ appears $k_1$ times, ...; $n$ in total
@@ -111,7 +111,7 @@ number of unions of shape right hand side of (*) $\left(={x+y \choose n} \right)
   \sum_{k=0}^n {x\choose k} {y\choose n-k}
 \]
 
-left hand side: 
+left hand side:
 \[
   \sum_{i\in I} p_i (x) y^i
   = \sum \widetilde p_i (x) y^i
@@ -119,7 +119,7 @@ left hand side:
 
 lets assume $x\in \mathbb{N}$ and is fixed, then
 \[
-  Q_1(y) = Q_2(y) \; forall y \in \mathbb{N} 
+  Q_1(y) = Q_2(y) \; \forall y \in \mathbb{N}
   \implies \forall y\in \mathbb{C}
   p_i(x) = \widetilde p_i(x) \; \forall x \in \mathbb{N}
 \]
@@ -163,7 +163,7 @@ Every $\pi\in S_n$ can be written as a product of cycles, even as a product of t
 e.g. $(14)(2657) = (14)(27)(25)(26)$.
 
 Of course, the order within a cycles does not matter:
-$(2652)=(5726)$.
+$(2657)=(5726)$.
 
 Canonical representation: generated from 2-line representation, smallest element comes first.
 If additionally you start with the cycle with the largest last element first, you could even omit parentheses.
@@ -184,7 +184,7 @@ Then $s_{n,k}$ are the \dt{Stirling numbers of the first kind}.
   s_{n,n} = 1 \\
   s_{n,0} = s_{k,0} = 0 \quad n,k ≥ 1 \\
   s_{0,0} := 1 \\
-  \sum_{k=0}^{n} s_{n,k} = n! 
+  \sum_{k=0}^{n} s_{n,k} = n!
 \end{gather*}
 
 It doesn't matter where we start the cycle, just the order of the cycle needs to stay. $(3 2 6 5 7 1 4) = (6 5 7 1 4 3 2)$
@@ -196,7 +196,7 @@ It doesn't matter where we start the cycle, just the order of the cycle needs to
 \]
 
 \Proof.
-Take a permutation 
+Take a permutation
 $\pi = (1 \ldots )(\ldots) \ldots (\ldots) \in S_n \text{, with $k$ cycles}$.
 
 How many such permutations are there?
@@ -215,7 +215,7 @@ Signed Stirling numbers of the first kind:
 \]
 
 \begin{definition}
-Set partitions: 
+Set partitions:
 Take a set $A=\{1,2, \ldots, n\}$
 and decompose it such that
 \[
@@ -279,9 +279,9 @@ $V_n = \{a_0 + a_1 x + \ldots + a_n x^n \mid a_i \in \mathbb{C} \}$ \\
 $\{1,x,x^2, \ldots , x^n\}, \{1,(x)_1, (x)_2, \ldots ,(x)_n\}$ are bases of $V_n$ \\
 $(V_n, +, \mathbb{C})$ vector space dim $V_n = n+1$
 
-basis change: 
+basis change:
 \[
-  (S_{m,k})_{m,k= 0, \ldots,n} 
+  (S_{m,k})_{m,k= 0, \ldots,n}
     ((-1)^{m+k} s_{m,k})_{m,k= 0, \ldots,n}
 \]
 
@@ -290,7 +290,7 @@ basis change:
   (x)_n
   &= (x)_{n-1} (x-n+1) \\
   &= (x-n+1) \sum_{k=0}^{n-1} (-1)^{n-1+k} s_{n-1,k} x^k \\
-  &= \sum_{k=0}^{n-1} (-1)^{n-1+k} s_{n-1,k} x^{k+1} 
+  &= \sum_{k=0}^{n-1} (-1)^{n-1+k} s_{n-1,k} x^{k+1}
     + (n-1)\sum_{k=0}^{n-1} (-1)^{n+k} s_{n-1,k} x^k \\
   &= \sum_{k=1}^n (-1)^{n+k} s_{n-1,k-1} x^k
     \quad + (n-1)\sum_{k=0}^{n-1} (-1)^{n+k} s_{n-1,k} x^k \\

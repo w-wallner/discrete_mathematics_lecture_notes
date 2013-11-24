@@ -11,39 +11,41 @@
 
 \section{Generating Functions}
 
-= tool for coping with combinatorial enumeration problems
-
-sequence $(a_n)_{n≥0}$,
-formal power series $\sum_{n≥0} a_n z^n$ = encoding of the sequence
-(this is just a different way of writing down the sequence!)
-
-two power series can be added
-$\sum_{n≥0} (a_n + b_n) z^n$,
-
-multiplied (Cauchy product)
-$\sum_{n≥0}\sum_{k=0}^n a_k b_{n-k} z^n$
-
-if $b_0 ≠ 0$, you can also divide
+Generating functions provide a tool for coping with combinatorial enumeration problems. The ordinary generating function defines the sum of a sequence $a_n$:
 \[
-    \frac{
-        \sum a_n z^n
-    }{
-        \sum b_n z^n
-    } =
-        \sum c_n z^n
+	(a_n)_{n≥0} = \sum_{n≥0} a_n z^n \text{, formal power series}
+\]
+\paragraph{Operations on generating functions:}
+\begin{itemize}
+	\item Two power series can be added:
+	\[
+		\sum_{n≥0} (a_n + b_n) z^n \text{,}
+	\]
+
+	\item multiplied:
+	\[
+		\sum_{n≥0}\sum_{k=0}^n a_k b_{n-k} z^n \qquad \text{(Cauchy product),}
+	\]
+
+	\item and if $b_0 ≠ 0$, we can also divide a power series by another power series:
+	\[
+	    \frac{
+	        \sum a_n z^n
+	    }{
+	        \sum b_n z^n
+	    } =
+	        \sum c_n z^n
+	\]
+\end{itemize}
+
+If we have
+\[
+    (*) = \sum_{n≥0} a_n z^n = \lim_{n \to ∞} \sum_{k=0}^{n} a_k z^k
 \]
 
+and $(*)$ is convergent, then the domain of convergence is a disk with center (0,0) and the radius of convergence is $R$:
 \[
-    \sum_{n≥0} a_n t^n
-    = \lim_{n \to a} \sum_{k=0}^{n} a_k z^k = *
-\]
-
-\textbf{If $(*)$ is convergent:}
-
-Domain of convergence: disk with center (0,0) and the radius of convergence $R$
-\[
-    R = \frac1{\overline{\lim} \sqrt[n]{|a_n|}}
-    \in [0, \inf]
+    R = \frac1{\overline{\lim} \sqrt[n]{|a_n|}} \in [0, \inf]
 \]
 
 \Theorem.
@@ -128,7 +130,7 @@ $(b_n)_{n>=0} \text{ corresponds to } B(z)$
     (\alpha a_n + \beta b_n)_{n≥0}
         &\leftrightarrow \alpha A(z) + \beta B(z)
         &&\forall \alpha, \beta \in \mathbb{C}
-        \quad\text{(linearity)} 
+        \quad\text{(linearity)}
 \end{align*}
 \item Multiplication
 \begin{align*}
@@ -147,7 +149,7 @@ $(b_n)_{n>=0} \text{ corresponds to } B(z)$
 \end{align*}
 
 \item $
-    (a_n \gamma^n)_{n≥0} 
+    (a_n \gamma^n)_{n≥0}
         ↔ A(\gamma z) $
 \item $ (a_{n-1})_{n≥1}↔ z A(z)$
 \begin{align*}
@@ -246,12 +248,12 @@ A(z) &= \frac{z}{(1-z)(1-2z)} \\
     F(z) &= \sum_{n≥0} F_n z^n : \\
     F(z) - \not{F_0} - F_1 z &= z \left( F(t) - \not{F_0} \right) + F(z)
         \implies F(z) = \frac{z}{1-z-z^2} \\
-    F(z) &= \frac{-z}{(z-z_1) (z-z_2)}, 
+    F(z) &= \frac{-z}{(z-z_1) (z-z_2)},
         \quad z_{1,2} = \frac{-1 \pm \sqrt{5}}{2} \\
     F(z) &= \frac1{\sqrt{5}} \cdot \frac{1}{1- \frac{1 + \sqrt{5}}{2} \cdot z} - \frac{1}{\sqrt{5}} \cdot \frac{1}{1- \frac{1 - \sqrt{5}}{2} \cdot z}  \\
-    \implies F_n &= \frac{1}{\sqrt{5}} 
-		\left( \left( \frac{1+ \sqrt 5}{2} \right)^n 
-		- \left( \frac{1-\sqrt{5}}{2} \right)^n 
+    \implies F_n &= \frac{1}{\sqrt{5}}
+		\left( \left( \frac{1+ \sqrt 5}{2} \right)^n
+		- \left( \frac{1-\sqrt{5}}{2} \right)^n
 		\right)
 \end{align*}
 
@@ -280,7 +282,7 @@ A(z) = \frac{ p(z) }{ 1 + q_1 z + q_2 z^2 + \ldots + q_k z^k } = \frac{p(z)}{q(z
 % A(z) = \frac{p(x)}{1+ q_1 z + q_2 z^2 + \ldots q_k z^k}
 % = \frac{p(z)}{q(z)} = \frac{p(z)}{\Pi_{i=1}^{
 
-Use ansatz: 
+Use ansatz:
 \begin{align*}
 \frac{p(z)}{q(z)} &= \sum_{i=1}^{r} \sum_{j=1}^{\lambda} \frac{A_{ij}}{(z-z_i)^j} \\
 &= \frac{A_{11}}{z-z_n} + \frac{A_{12}}{(z-z_n)^2} + \cdots + \frac{A_{1\gamma_i}}{(1-z)(1-2z)} + \cdots \\
@@ -292,10 +294,10 @@ Use ansatz:
 
 \textbf{Example.}
 \[
-    a_{n+2} - 4 a_{n+1} - 4 a_n = 0 \quad n ≥ 0;  a_0, a_1 \text{ given} 
+    a_{n+2} - 4 a_{n+1} - 4 a_n = 0 \quad n ≥ 0;  a_0, a_1 \text{ given}
 \]
 \[
-    A(z) = \sum a_n z^n 
+    A(z) = \sum a_n z^n
 \]
 \begin{align*}
     A(z) - a_0 - a_1 z - 4z (A(z)-a_0) + 4z^2 A(z) &= 0 \\
@@ -305,12 +307,12 @@ Use ansatz:
     \implies a_0 + (a_1 - 4a_0)z &= C (1-2z) + D \\
     [z^0]: a_0 &= C+D \\
     [z^1]: a_1 - 4a_0 &= -C \\
-    \implies C, D 
+    \implies C, D
 \end{align*}
 \begin{align*}
     (*) = C \cdot \sum_n 2^n z^n + D \cdot \sum_n (n+1) \cdot 2^n z^n \\
     = \sum_n \left(2^n \cdot C + (n+1)\cdot 2^n D\right) z^n \\
-    = \sum_n (a_n) z^n 
+    = \sum_n (a_n) z^n
 \end{align*}
 
 \TODO{add inhomogeneous recurrence relation to above example, i.e., $0$ on the rhs of the initial equation is replaced by $f(n)$}
@@ -329,12 +331,12 @@ Binary tree is a plane structure
 
 $a_n$ = number of binary trees with $n$ internal nodes
 
-If there are n internal nodes, then there are n+1 leaves. The number of vertices in a binary tree is always odd ($n + (n+1)$). 
+If there are n internal nodes, then there are n+1 leaves. The number of vertices in a binary tree is always odd ($n + (n+1)$).
 
 We try to describe the btree recursively:
 
 Binary tree with size $n+1$,
-left child has size $k$ and the right child has size $n-k$. 
+left child has size $k$ and the right child has size $n-k$.
 $k$ in range $0$ to $n$
 
 \begin{align*}

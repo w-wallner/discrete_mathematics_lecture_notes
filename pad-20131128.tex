@@ -1,0 +1,240 @@
+%%% EtherPad for Discrete Mathematics VO
+%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
+%%% Past pads:
+%%%     * 2013-10-17: committed by patrikf
+%%%     * 2013-10-18: committed by patrikf
+%%%     * 2013-10-24: committed by patrikf
+%%%     * 2013-10-25: committed by patrikf
+%%%     * 2013-11-08: committed by neroburner
+%%%     * 2013-11-21: committed by neroburner
+%%%     * 2013-11-22: committed by neroburner
+
+% Discrete Mathematics Lecture Notes 2013-11-29
+% raw data written by only neroburner...
+
+\lecturedate[\baselineskip]{2013-11-29}
+
+\textbf{Wiederholung}
+labelled structure set $\mathbb{A} = (A,w)$, the atomic object can be enumerated. 
+
+\begin{align*}
+\mathbb{A}+\mathbb{B} &\leftrightarrow \hat{A}(z) + \hat{B}(z) \\
+\mathbb{A}*\mathbb{B} &\leftrightarrow \hat{A}(z) \hat{B}(z) \\
+\seq \mathbb{A} &\leftrightarrow \frac{1}{1 - \hat{A}(z)}\\
+\set \mathbb{A} &\leftrightarrow e \hat{A}(z) \\
+\cyc \mathbb{A} &\leftrightarrow \log \frac{1}{1 - \hat{A}(z)}\\
+\end{align*}
+
+% end of repetition
+
+\TODO{ first example}
+
+\textbf{Example.}
+we got set partitions $M = M_1 \cup M_2 \cup lots \cup M_k$ with $M_i \neq \varnothing, M_i \cap M_j = \varnothing$
+
+\begin{align*}
+  \mathbb{\mathbb{P} = \set( \set( (\mathbb{A} \backslash \{\varnothing\} )) \\
+  \hat{p}(z) = exp(exp((z) = 1) \\
+  [z^n] e^{e^z - 1} = \sum_{k\geq 0 } S_{n,k} \\
+\end{align*}
+
+\subsection{Exponential Generating functions and ordered structures}
+
+Ordereed n-tuples $(q_1,q_2, \ldots, q_n), q_i \in \{1,2, \ldots, N\}$, no repetition
+
+$a_n = $ is number of such n-tuples
+
+$Q = \{\epsilon,1\} * \{\epsilon,2\} * \ldots * \{\epsilon,N\} $
+\begin{align*}
+  \sum_{n\geq 0} a_n \frac{z^n}{n!} &= \\
+    (1+z)^N \\
+    &= \sum_{n=0} ^{N} {N \choose n} z^n \\
+    &= \frac{N!}{(N-n)!} 
+\end{align*}
+
+with repetition: 
+$(1+z+ \frac{z^2}{2!} + \ldots) ^N = e^{zN = \sum_{n\geq 0} N^n \frac{z^n}{n!}$
+
+\section{Combinatories on posest}
+Recall $A, \leq \subseteq A \times A$. Instead of $(a,b) \in \leq$ we use $a \leq b$. So $\leq$ is a partial order.
+
+1) \leq reflexive: $\forall x \in A: x \leq x$
+2) \leq transitive $\forall x,y,z \in A: x \leq y \and y \leq z \implies x\leq z
+3) \leq antisymmetric: if $x \leq y \and y \leq x$, then $x = y$
+
+$(A,\leq) is a poset.
+
+A poset (A,\leq) is linearly ordered if $\forall x,y, in A: x \leq y \and y \leq x$
+
+\textbf{Examples.}
+$(\mathbb{N}, \leq)$ is a poset. It is even a linearly ordered poset.
+
+$(\mathbb{R}, \leq)$
+
+$(\mathbb{N}^[+}, \mid)$: $a \mid a, a\mid b, b \mid c \implies a\mid c, a\mid b \and b\mid a \implies a = b$
+
+$(2^A, \subseteq)$: $ B \subseteq B, B \subseteq C \subseteq D, B\subseteq C \and C \subseteq B \iplies B = C$, if $|A|\leq 1$ then it is even a linear ordered poset. 
+
+\begin{definition}
+Given a poset $(A, \leq)$. 
+An element $x \in A$ is a minimal element if $y \leq x \implies x=y$. 
+Each poset can be visualised by a Hasse diagram
+\TODO{draw Hasse-Diagram, first which edges are not drawn, then a diagram showing the minimal elements}
+
+An element $x \in A$ is a maximal element if $y \geq x \implies x=y$. 
+
+An element $x \in A$ is the 0 element if $\forall y in A : x \leq y$. 
+Every 0-element is minimal. 
+
+An element $x \in A$ is the 1 element if $\forall y in A : x \geq y$.
+
+Intervall $[x,y] = \{z \in A \mid x \leq z \leq y\}$
+
+$(A, \leq)$ is locally finite if $\forall x,y \in A: | [x,y]| < \infty$. 
+\end{definition}
+
+\textbf{Example.}
+$(\mathbb{N}, \leq)$, 0, $\nexists$ 1-element, locally finite. 
+
+$(\mathbb{N}^{+}, \mid)$, loc. finite, 0-element = 1. 
+
+$(\mathbb{N}, \mid)$, 1-element = 0
+
+$(\mathbb{R}, \leq)$, not locally finite
+
+\textbf{Assumtions.}
+Let $(\mathbb{P}, \leq)$ be a locally finite poset. And we have a map $f \rightarrow \mathbb{R}, some function $S_f(x) = \sum_{z \leq x} f(z)$
+
+\textbf{Example.}
+
+1) $(\mathbb{N}, \leq)$, 
+    $f \leftrightarrow (a_n)
+    $S_f \leftrightarrow \sum_{k\leq n} a_k$
+    
+2) \TODO {Diagram }
+    $S_f(x) = f(0) + f(a) + f(b) + f(x)$
+    $a_n = \sum_{k \leq n} a_k - \sum_{k \leq n-1} a_k = S_f(n) - S_f(n-1)$
+
+\textbf{Problem.}
+given $S_f$, find $f$
+
+\begin{definition}
+$(P, \leq)$ is a locally finite poset with a 0-element. 
+We have a Möbius function of P $\mu: P\times P \rightarrow \mathbb{R}$
+if $\forall x,y \in P: \sum_{z\in[xy]} \mu (z,y) = \delta_{x,y} = \choices{1 if x= y \\ 0 \quad otherwise}$
+\end{definition}
+
+\Remark.
+\mu uniquely determined, $x \not{\leq} y \implies \mu(x,y) = 0$
+
+\textbf{Example.}
+$[x,x] = \{x\}, \mu(x,x) = 1$
+
+$[x,y] = \{x,y\} \implies \mu(x,y) + \mu(y,y) = 0 \\
+                \mu(y,y) = 1 \implies \mu(x,y) = -1) \\
+
+\textbf{Example.}
+$(\mathbb{N}, \leq)$: $\mu(n,n) = 1, \mu(n,n+1) = -1$
+
+$[n,n+2] = \{n,n+1, n+2\}:
+\begin{align*}
+    \mu(n,n+2) + \mu(n+1,n+2) + \mu(n+2, n+2) &= 0 \\
+    0 -1 1 &= 0
+\end{align*}
+
+$ m \geq n+2$ \implies \mu(n,m) = 0$
+
+\textbf{Example.}
+\TODO{hasse diagram of a partial order, x,y, a,b,c,d}
+
+\begin{gather*}
+    \mu(x,x) = \mu(a,a) = \mu(b,b) = \mu(c,c) = \mu(d,d) = \mu(y,y) =  = 1\\
+    \mu(x,a) = \mu(x,c) = \mu(x,d) = \mu(a,b) = \mu(b,y) = \mu(c,y) = \mu(d,y) = -1\\
+    \mu(x,b) = 0, \mu(a,y) = 0, \mu(x,y) \\
+\end{gather*}
+
+\begin{align*}
+    \mu(x,y)&: \mu(x,y) + \mu(a,y) + \mu(b,y) + \mu(c,y) + \mu(d,y) + \mu(y,y) = \delta_{x,y} &= 0 \\
+        &: 2 +0 -1 -1 -1 +1 &= 0
+\end{align*}
+
+
+\Theorem.
+$(P_1, \leq_1), (P_2, \leq_2), loc. f. poset, with 0-element. 
+And we define $(P, \leq): P = P_1 times P_2, (x_1,x_2) \leq (y_1, y_2) :\implies x1 \leq_1 y_1 text{ and } x_2 \leq_2 y_2$
+
+\Rightarrow (P, \leq) is loc finite poset with 0-element (=(0_1, 0_2)) and Möbius function $mu: P\times P \rightarrow \mathbb{R}$
+
+\[
+    \mu ( (x_1, x_2), (y_1,y_2)) = \mu_1(x_1,y_1) * \mu_2(x_2,y_2) \\
+    (P, \leq) = (P_1, \leq_1) * (P_2, \leq_2)
+\]
+
+\begin{Example.}
+We have a Set $M = \{a_1, \ldots , a_n\}. We claim that $(2^M, \subseteq) \tilde{=} ( \{0,1\}, \leq)^n$
+
+E.g.: $n = 5: A = \{a_2,a_5\}, B= \{a_1, a_2, a_3, a_5\}, A, B \in 2^M$
+\[
+    A \hat{=} (0,1,0,0,1) \\
+    A \hat{=} (1,1,1,0,1) \\
+    A \subseteq B \hat{=} (0,1,0,0,1) \subseteq (1,1,1,0,1) \\
+    x \in A \rightarrow e_{x,A} = 1 \Rightarrow  e_{x,B} = 1 \implies x \in B\\
+\]
+
+Remark that: $e_{x,A} = 1 \Rightarrow  e_{x,B} = 1$ is equals to $e_{x,A} \leq e_{x,B}$ 
+
+\[
+    ( \{0,1\}, \leq): \mu(00) = \mu(1,1) = 1, \mu(0,1) = -1, mu(1,0) = 0
+\]
+\begin{align*}
+    \mu(A,B) &= \mu(01001, 11101) = \mu(0,1) \mu(1,1) \mu(0,1) \mu(0,0) \mu(1,1) \\
+    &= -1 +1 -1 +1 +1 \\
+    &= 1
+\end{align*}
+
+We see that: 
+$ A\not{\subseteq} B \Rightarrow \mu(A,B) = 0$, 
+$A\subseteq B \Rightarrow (-1) ^{|B| - |A|}$. 
+
+\Theorem.
+(Möbius inversion)
+$(P, \leq)$ is a loc, finite poset with a 0-element. 
+And $\mu: P \times P \rightarrow \mathbb{R}$ the Möbius function of $(P, \leq)$. 
+
+Let for $f: P \rightarrow \mathbb{}$ its sum function $S_f: P \rightarrow \mathbb{R}$ be given: $S_f(x) = \sum_{z in [0,x]} f(z)$. 
+
+$\Rightarrow$: $f(x) = \sum_{z in [0,x]} S_f(z) * \mu(z,x)$
+
+\textbf{Example.}
+$(\mathbb{N}, \leq), $f: \mathbb{N} \rightarrow \mathbb{R}$, $S_f(n) = \sum_{k=0}^{n} f(k)$
+
+\begin{align*}
+    f(n) = \sum_{k=0}^{n} s_f(k) \mu(k,n) = s_f(n) - S_f(n-1)
+\end{align*}
+
+\Proof. 
+\begin{align*}
+    \sum_{z in [0,x]} S_f(z) * \mu(z,x) \\
+    = \sum_{z in [0,x]} \sum_{u in [0,x]} f(u) \mu(z,x) \\
+    = \sum_{u in [0,x]} \sum_{z in [0,x]} f(u) \mu(z,x) \\
+    = \sum_{u in [0,x] f(u)} \sum_{z in [0,x]} \mu(z,x) \\
+    = \sum_{u in [0,x] f(u)} \delta_{u,x} \\
+    = f(x)
+\end{align*}
+
+\TODO{graph of rectangle halfed diagonally, one side colored} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

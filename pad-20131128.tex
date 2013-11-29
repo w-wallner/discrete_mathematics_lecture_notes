@@ -18,11 +18,11 @@
 labelled structure set $\mathbb{A} = (A,w)$, the atomic object can be enumerated. 
 
 \begin{align*}
-\mathbb{A}+\mathbb{B} &\leftrightarrow \hat{A}(z) + \hat{B}(z) \\
-\mathbb{A}*\mathbb{B} &\leftrightarrow \hat{A}(z) \hat{B}(z) \\
-\seq \mathbb{A} &\leftrightarrow \frac{1}{1 - \hat{A}(z)}\\
-\set \mathbb{A} &\leftrightarrow e \hat{A}(z) \\
-\cyc \mathbb{A} &\leftrightarrow \log \frac{1}{1 - \hat{A}(z)}\\
+  \mathbb{A}+\mathbb{B} &\leftrightarrow \hat{A}(z) + \hat{B}(z) \\
+  \mathbb{A}*\mathbb{B} &\leftrightarrow \hat{A}(z) \hat{B}(z) \\
+  seq \mathbb{A} &\leftrightarrow \frac{1}{1 - \hat{A}(z)}\\
+  set \mathbb{A} &\leftrightarrow e \hat{A}(z) \\
+  cyc \mathbb{A} &\leftrightarrow \log \frac{1}{1 - \hat{A}(z)}\\
 \end{align*}
 
 % end of repetition
@@ -30,10 +30,10 @@ labelled structure set $\mathbb{A} = (A,w)$, the atomic object can be enumerated
 \TODO{ first example}
 
 \textbf{Example.}
-we got set partitions $M = M_1 \cup M_2 \cup lots \cup M_k$ with $M_i \neq \varnothing, M_i \cap M_j = \varnothing$
+we got set partitions $M = M_1 \cup M_2 \cup \ldots \cup M_k$ with $M_i \neq \varnothing, M_i \cap M_j = \varnothing$
 
 \begin{align*}
-  \mathbb{\mathbb{P} = \set( \set( (\mathbb{A} \backslash \{\varnothing\} )) \\
+  \mathbb{P} = \set( \set( (\mathbb{A} \backslash \{\varnothing\} )) \\
   \hat{p}(z) = exp(exp((z) = 1) \\
   [z^n] e^{e^z - 1} = \sum_{k\geq 0 } S_{n,k} \\
 \end{align*}
@@ -42,9 +42,10 @@ we got set partitions $M = M_1 \cup M_2 \cup lots \cup M_k$ with $M_i \neq \varn
 
 Ordereed n-tuples $(q_1,q_2, \ldots, q_n), q_i \in \{1,2, \ldots, N\}$, no repetition
 
-$a_n = $ is number of such n-tuples
+$a_n $ is number of such n-tuples
 
 $Q = \{\epsilon,1\} * \{\epsilon,2\} * \ldots * \{\epsilon,N\} $
+
 \begin{align*}
   \sum_{n\geq 0} a_n \frac{z^n}{n!} &= \\
     (1+z)^N \\
@@ -53,40 +54,55 @@ $Q = \{\epsilon,1\} * \{\epsilon,2\} * \ldots * \{\epsilon,N\} $
 \end{align*}
 
 with repetition: 
-$(1+z+ \frac{z^2}{2!} + \ldots) ^N = e^{zN = \sum_{n\geq 0} N^n \frac{z^n}{n!}$
+\TODO{check this formula for correctnes} 
+\[
+  (1+z+ \frac{z^2}{2!} + \ldots)^N 
+    = e^{zN} = \sum_{n\geq 0} N^n \frac{z^n}{n!}
+\]
 
-\section{Combinatories on posest}
-Recall $A, \leq \subseteq A \times A$. Instead of $(a,b) \in \leq$ we use $a \leq b$. So $\leq$ is a partial order.
+\section{Combinatories on posets}
 
-1) \leq reflexive: $\forall x \in A: x \leq x$
-2) \leq transitive $\forall x,y,z \in A: x \leq y \and y \leq z \implies x\leq z
-3) \leq antisymmetric: if $x \leq y \and y \leq x$, then $x = y$
+Recall $(A, \leq) \subseteq A \times A$. 
+Instead of $(a,b) \in \leq$ we use the notation $a \leq b$. So $\leq$ is a partial order.
 
-$(A,\leq) is a poset.
+\begin{align*}
+  \text{1) $\leq$ reflexive: } &
+    \forall x \in A: x \leq x \\
+  \text{2) $\leq$ transitive: } &
+    \forall x,y,z \in A: x \leq y \land y \leq z \implies x \leq z \\
+  \text{3) $\leq$ antisymmetric: } &
+    \text{if } x \leq y \land y \leq x \text{, then } x = y \\
+\end{align*}
 
-A poset (A,\leq) is linearly ordered if $\forall x,y, in A: x \leq y \and y \leq x$
+$(A,\leq)$ is a poset.
+
+A poset $(A,\leq)$ is linearly ordered if 
+\[
+  \forall x,y, in A: x \leq y \land y \leq x
+\]
 
 \textbf{Examples.}
 $(\mathbb{N}, \leq)$ is a poset. It is even a linearly ordered poset.
 
 $(\mathbb{R}, \leq)$
 
-$(\mathbb{N}^[+}, \mid)$: $a \mid a, a\mid b, b \mid c \implies a\mid c, a\mid b \and b\mid a \implies a = b$
+$(\mathbb{N}^{+}, \mid)$: $a \mid a, a\mid b, b \mid c \implies a\mid c, a\mid b \land b\mid a \implies a = b$
 
-$(2^A, \subseteq)$: $ B \subseteq B, B \subseteq C \subseteq D, B\subseteq C \and C \subseteq B \iplies B = C$, if $|A|\leq 1$ then it is even a linear ordered poset. 
+$(2^A, \subseteq)$: $ B \subseteq B, B \subseteq C \subseteq D, B\subseteq C \land C \subseteq B \implies B = C$, if $|A|\leq 1$ then it is even a linear ordered poset. 
 
 \begin{definition}
 Given a poset $(A, \leq)$. 
-An element $x \in A$ is a minimal element if $y \leq x \implies x=y$. 
+An element $x \in A$ is a \dt{minimal element} if $y \leq x \implies x=y$. 
 Each poset can be visualised by a Hasse diagram
+
 \TODO{draw Hasse-Diagram, first which edges are not drawn, then a diagram showing the minimal elements}
 
-An element $x \in A$ is a maximal element if $y \geq x \implies x=y$. 
+An element $x \in A$ is a \dt{maximal element} if $y \geq x \implies x=y$. 
 
-An element $x \in A$ is the 0 element if $\forall y in A : x \leq y$. 
+An element $x \in A$ is the \dt{0-element} if $\forall y in A : x \leq y$. 
 Every 0-element is minimal. 
 
-An element $x \in A$ is the 1 element if $\forall y in A : x \geq y$.
+An element $x \in A$ is the \dt{1-element} if $\forall y in A : x \geq y$.
 
 Intervall $[x,y] = \{z \in A \mid x \leq z \leq y\}$
 
@@ -103,46 +119,57 @@ $(\mathbb{N}, \mid)$, 1-element = 0
 $(\mathbb{R}, \leq)$, not locally finite
 
 \textbf{Assumtions.}
-Let $(\mathbb{P}, \leq)$ be a locally finite poset. And we have a map $f \rightarrow \mathbb{R}, some function $S_f(x) = \sum_{z \leq x} f(z)$
+Let $(\mathbb{P}, \leq)$ be a locally finite poset. And we have a map $f \rightarrow \mathbb{R}$, and some function $S_f(x) = \sum_{z \leq x} f(z)$
 
 \textbf{Example.}
 
-1) $(\mathbb{N}, \leq)$, 
-    $f \leftrightarrow (a_n)
-    $S_f \leftrightarrow \sum_{k\leq n} a_k$
-    
-2) \TODO {Diagram }
-    $S_f(x) = f(0) + f(a) + f(b) + f(x)$
-    $a_n = \sum_{k \leq n} a_k - \sum_{k \leq n-1} a_k = S_f(n) - S_f(n-1)$
+\begin{align*}
+  \text{1)} 
+    & (\mathbb{N}, \leq) \\
+    & f \leftrightarrow (a_n) \\
+    & S_f \leftrightarrow \sum_{k\leq n} a_k \\
+  \text{2)} & \TODO{Diagram } \\
+    & S_f(x) = f(0) + f(a) + f(b) + f(x) \\
+    & a_n = \sum_{k \leq n} a_k - \sum_{k \leq n-1} a_k = S_f(n) - S_f(n-1)
+\end{align*}
 
 \textbf{Problem.}
 given $S_f$, find $f$
 
 \begin{definition}
 $(P, \leq)$ is a locally finite poset with a 0-element. 
-We have a Möbius function of P $\mu: P\times P \rightarrow \mathbb{R}$
-if $\forall x,y \in P: \sum_{z\in[xy]} \mu (z,y) = \delta_{x,y} = \choices{1 if x= y \\ 0 \quad otherwise}$
+We have a Möbius function of P $\mu: P\times P \rightarrow \mathbb{R}$. 
+if 
+\[
+  \forall x,y \in P: \sum_{z\in [xy]} \mu(z,y) = \delta_{x,y} = 
+    \begin{cases}
+      1 & if x = y \\ 
+      0 & \text{otherwise}
+    \end{cases}
+\]
 \end{definition}
 
 \Remark.
-\mu uniquely determined, $x \not{\leq} y \implies \mu(x,y) = 0$
+$\mu$ uniquely determined, $x \not{\leq} y \implies \mu(x,y) = 0$
 
 \textbf{Example.}
-$[x,x] = \{x\}, \mu(x,x) = 1$
-
-$[x,y] = \{x,y\} \implies \mu(x,y) + \mu(y,y) = 0 \\
-                \mu(y,y) = 1 \implies \mu(x,y) = -1) \\
+\begin{align*}
+  [x,x] & = \{x\}, \mu(x,x) = 1 \\
+  [x,y] &= \{x,y\} \implies \mu(x,y) + \mu(y,y) = 0 \\
+        &           \mu(y,y) = 1 \implies \mu(x,y) = -1) \\
+\end{align*}
 
 \textbf{Example.}
 $(\mathbb{N}, \leq)$: $\mu(n,n) = 1, \mu(n,n+1) = -1$
 
-$[n,n+2] = \{n,n+1, n+2\}:
+$[n,n+2] = \{n,n+1, n+2\}:$
+
 \begin{align*}
     \mu(n,n+2) + \mu(n+1,n+2) + \mu(n+2, n+2) &= 0 \\
     0 -1 1 &= 0
 \end{align*}
 
-$ m \geq n+2$ \implies \mu(n,m) = 0$
+$ m \geq n+2 \implies \mu(n,m) = 0$
 
 \textbf{Example.}
 \TODO{hasse diagram of a partial order, x,y, a,b,c,d}
@@ -160,18 +187,18 @@ $ m \geq n+2$ \implies \mu(n,m) = 0$
 
 
 \Theorem.
-$(P_1, \leq_1), (P_2, \leq_2), loc. f. poset, with 0-element. 
-And we define $(P, \leq): P = P_1 times P_2, (x_1,x_2) \leq (y_1, y_2) :\implies x1 \leq_1 y_1 text{ and } x_2 \leq_2 y_2$
+$(P_1, \leq_1), (P_2, \leq_2)$, loc. f. poset, with 0-element. 
+And we define $(P, \leq):$ $P = P_1 times P_2, (x_1,x_2) \leq (y_1, y_2) :\implies x1 \leq_1 y_1 text{ and } x_2 \leq_2 y_2$
 
-\Rightarrow (P, \leq) is loc finite poset with 0-element (=(0_1, 0_2)) and Möbius function $mu: P\times P \rightarrow \mathbb{R}$
+$\Rightarrow (P, \leq)$ is loc finite poset with 0-element ($=(0_1, 0_2)$) and Möbius function $mu: P\times P \rightarrow \mathbb{R}$
 
 \[
     \mu ( (x_1, x_2), (y_1,y_2)) = \mu_1(x_1,y_1) * \mu_2(x_2,y_2) \\
     (P, \leq) = (P_1, \leq_1) * (P_2, \leq_2)
 \]
 
-\begin{Example.}
-We have a Set $M = \{a_1, \ldots , a_n\}. We claim that $(2^M, \subseteq) \tilde{=} ( \{0,1\}, \leq)^n$
+\textbf{Example.}
+We have a Set $M = \{a_1, \ldots , a_n\}$. We claim that $(2^M, \subseteq) \tilde{=} ( \{0,1\}, \leq)^n$
 
 E.g.: $n = 5: A = \{a_2,a_5\}, B= \{a_1, a_2, a_3, a_5\}, A, B \in 2^M$
 \[
@@ -206,11 +233,11 @@ Let for $f: P \rightarrow \mathbb{}$ its sum function $S_f: P \rightarrow \mathb
 $\Rightarrow$: $f(x) = \sum_{z in [0,x]} S_f(z) * \mu(z,x)$
 
 \textbf{Example.}
-$(\mathbb{N}, \leq), $f: \mathbb{N} \rightarrow \mathbb{R}$, $S_f(n) = \sum_{k=0}^{n} f(k)$
+$(\mathbb{N}, \leq)$, $f: \mathbb{N} \rightarrow \mathbb{R}$, $S_f(n) = \sum_{k=0}^{n} f(k)$
 
-\begin{align*}
-    f(n) = \sum_{k=0}^{n} s_f(k) \mu(k,n) = s_f(n) - S_f(n-1)
-\end{align*}
+\[    
+  f(n) = \sum_{k=0}^{n} s_f(k) \mu(k,n) = s_f(n) - S_f(n-1)
+\]
 
 \Proof. 
 \begin{align*}

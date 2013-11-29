@@ -1,0 +1,225 @@
+%%% EtherPad for Discrete Mathematics VO
+%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
+%%% Past pads:
+%%%     * 2013-10-17: committed by patrikf
+%%%     * 2013-10-18: committed by patrikf
+%%%     * 2013-10-24: committed by patrikf
+%%%     * 2013-10-25: committed by patrikf
+%%%     * 2013-11-08: committed by neroburner
+%%%     * 2013-11-21: committed by neroburner
+%%%     * 2013-11-22: committed by neroburner
+%%%     * 2013-11-28: committed by neroburner
+
+% Discrete Mathematics Lecture Notes 2013-11-29
+
+\lecturedate[\baselineskip]{2013-11-29}
+
+\textbf{Example}.
+Sets $A_1, A_2, \ldots A_m \subseteq M$. We take the powerset of set of indices "(2^{\{1,2, \ldots , m\}}, \superseteq)$. Note that the Möbius Function only depends on the structure of the order. 
+
+\[
+    \mu (A,B) = \begin{cases} (-1)^{|B| - |A| &, A\superseteq B\\ 0 &, otherwise \end{cases}
+\]
+
+\[
+    I \subseteq \{ 1,2, \ldots, m}, f(I) = | \bigcap_{i\in I} A_i \cap \bigcap_{j \in \[1,\ldots,m\} \backslash I} \overline{A}_j |
+\]
+\begin{gather*}
+    S_f(I) = \sum_{J \superseteq I} f(J) = \left| \bigcap_{i\in I} A_i  \right| \\
+    \left[ S_f(x) = \sum_{z\leq x} f(z) \right]
+\end{gather*}
+
+\begin{gather*}
+    f(I) &= \sum_{J \superseteq I} S_f(I) \mu(J,I} \\
+        &= \sum_{J \superseteq I} (-1)^{|J| - |I|} * \left| \bigcap_{i\in I} A_i \right|
+    f(\varnothing) &= \left| \bigcap_{j \in \{1,\ldots m\}} \overline{A}_j} \right| \\
+        &= \sum_{j \in \{1,\ldots m\}} (-1)^{|J|} \left| \bigcap_{j \in J}A_j \right|
+\end{gather*}
+
+\textbf{Example.}
+Poset $(\mathbb{N}^{+}, \mid)$.
+We can say if n is a product $n = p_1^{g_1} \ldots p_r^{g_r}$ and m is a product $m = p_1^{f_1} \ldots p_r^{f_r}$. This implies 
+\[
+    m|n \iff \forall f_i \leq g_i
+\]
+
+The number theoretical number order $(\mathbb{N}^{+}, \mid)$ is isomorphic to $(\mathbb{N} \times \mathbb{N} \times \ldots , \leq)$
+
+\begin{align*}
+    \mu(n) = \mu_{|}(1,n) = \mu_{\leq}(0,g_1) \leq \mu_{\leq}(0,g_2) \ldots * \mu_{\leq}(0,g_r) \\
+    = \begin{cases} 
+        1 & \text{if } n=1 \\
+        (-1)^r & \text{if } n = p_1 p_2 \ldots p_r \text( square-free) \\
+         & \text{if } \exists p\in \mathbb{P}: p^2|n
+       \end{cases}
+    m \not{\mid} n:    &\mu(m,n) = 0 \\
+    m \mid n:    &\mu(m,n) = \mu(1, \frac{n}{m} \\
+\end{align*}
+
+\TODO{Hassediagram, [3,18], show when m|n we can divide}
+
+\begin{align*}
+    f: \mathbb{N}^{+} \rightarrow \mathbb{R}, \\
+    S_f(n) = \sum_{d\mid n} f(d) \Rightarrow f(n) = \sum_{d\mid n} S_f(d)\mu(\frac{n}{d}
+\end{align*}
+
+\subsection{Lattices}
+\begin{definition}
+Let $(P, \leq)$ be a poset, and $x,y,b \in P: a\leq x \leq b$. Furthermore say $a$ is a lower bound for $x$, and $b$ be an upper bound for $x$.
+
+The smallest common upper bound of $x,y \in P: x \vee y$ ("$x$ join $y$").
+
+The greatest common upper bound of $x,y \in P: x \wedge y$ ("$x$ meet $y$").
+
+\begin{align*}
+    X \subseteq P: &\bigvee_{x \in X} x \text{ join of } X, 
+        & \bigwedge_{x \in X} x \text{ meet of } X 
+\end{align*}
+\end{definition}
+
+\begin{definition}
+A poset $(L, \leq)$ is a \dt{lattice} if $\forall x,y \in L \exists x \wedge y, x \vee y$.
+
+If only $x \wedge y$ exists: meet-semilattice. 
+
+If only $x \vee y$ exists: join-semilattice. 
+
+\TODO{diagramm of lattice}
+
+If $\forall X \subseteq L : \bigwedge_{x \in X} x, \bigvee_{x \in X} x$ exist, $\rightarrow$ complete lattice
+\end{definition}
+
+\textbf{Example.}
+\begin{align*}
+    (2^M, \subseteq) \\
+    A\vee B = A \cap B, \\
+    A\wedge B = A \cup B
+\end{align*}
+
+\begin{align*}
+    (\mathbb{N}, \mid) \\
+    x \vee y = gcd(x,y), \\
+    x \vee y = lcm(x,y)
+\end{align*}
+
+\textbf{Remember.}
+$(L, \vee, \wedge): \vee, \wedge$ are both associative, commutative, idepotent ($a\wedge a = a$, $a\vee a = a$). 
+
+absorbtion laws: $a wedge(a \vee b) = a = a \vee ( a \wedge b)$, 0 \vee a = a$, $1 \wedge a = a$. 
+
+Furthermore we have semigroups $(L, \wedge)$ and $(L, \vee)$.
+
+\Lemma.
+If $L$ is a lattice, and $x,y,s,t, \in L$. And s is a common upper bound $x \leq s, y \leq s \Rightarrow x \vee y \leq s$. 
+And $x \geq t, y \geq t \Rightarrow x \wedge y \geq t$. 
+
+\Remark.
+\[
+    a \leq b \Rightleftarrow a \vee b = b \Rightleftarrow a \wedge b = a
+\]
+
+\Lemma.
+$L$ finite meet-semilattice with 1-element. Then $L$ is a lattice.
+
+\Proof.
+Assume $x,y \in L$, Set $B = \{u in L \mid x \leq u vedge y \leq u\}$. 
+
+\begin{align*}
+    x \leq 1, y \leq 1, 
+        \Rightarrow 1 \in B \Rightarrow \neq \varnothing, |B| < \infty \\
+    \Rightarrow B= \{u_1, u_2 \ldots , u_m\}: 
+        u:= u_1 \wedge u_2 \wedge \ldots \wedge u_m 
+    \Rightarrow u \in B \\
+    u_i geq x, u_i \geq y \Rightarrow u_i \geq x \wedge y
+\end{align*}
+
+
+\Lemma.
+\begin{align*}
+    x \leq s, y leq s \\
+    x \leq t, y \leq t \\
+    \Rightarrow x \leq s \wedge t, y \leq s \wedge t
+\end{align*}
+
+\Proof.
+$\s \wedge t$ greatest common lower bound of $s,t$. $ x,y are lower bounds of $s,t" $\Rightarrow$ $x \leq s \wedge t, y \leq s \wedge t$. 
+
+\textbf{Example.}
+$\Pi_n$ is the set of partitions of $\{1,2,..., n\}$. 
+\[
+    (\Pi_n, \leq): A leq B: \iff \text{$A$ is refinement of $B$}
+\]
+\TODO{Table of refinement of B with fancy coloring}
+
+We claim $(\Pi_n, \leq)$ is a lattice. 
+It is easy to show that $(\Pi_n, \leq)$ is a poset. 
+
+\begin{align*
+    \text{1-el}: & \text{1-block partition} \\
+    \text{0-el}: & \text{each block of size 1} \\
+    \alpha, \beta \in \Pi_n: & \alpha \wedge \beta: i,j \in \{1,2,\ldots,n\} \text{in the same block $\implies$ they are in the same block of both $\alpha$ and $\beta$ \\
+    \Rightarrow \Pi_n \text{ is a lattice}
+\end{align*}
+
+\Theorem.
+$L$ is a lattice with 0-element and 1 element, $\b in L\backslash \{1\}$
+\begin{align*}
+    \Rightarrow \mu(0,1) = -\sum_{x: x\wedge b = 0, x \neq 0} \mu(x,1) (*)
+\end{align*}
+
+\Proof.
+$(*) \equals \sum_{x: x\wedge b = 0} \mu(x,1) = 0$
+, since $0 \wedge b = 0$
+
+Let $y \leq b$, and we set $N(y) = \sum_{x: x\wedge b=y} \mu(x,1)$.
+
+\begin{align*}
+    S(b) &:= \sum_{y: y \leq b} N(y) \\
+        & = \sum_{y: y \leq b} \sum_{x: x\wedge b=y} \mu(x,1) \\
+        & = \sum_{x,y: x \wedge b = y} \mu(x,1)
+\end{align*}
+
+\textbf{Note.}
+\begin{align*}
+    \forall x \in L \exists ! y \in L : x \wedge b = y \\
+    \Rightarrow \forall x \in L: \mu(x,1) \text{occurs exactly once in $S(b)$} \\
+    \Rightarrow S(b) = \sum_{x \in L} \mu(x,1) = \sum_{x \in [0,1]} \mu(x,1) = delta_{0,1} = 0 \\
+    \Rightarrow \sum_{y in [0,b]} N(y) = 0 \\
+    \Rightarrow^{\text{MIF}} N(b) = \sum_{y \leq b} S(y) \mu(y,b) = 0\\
+    N(0) = 0, \text{ but } N(0) = \sum_{x:x \wedge b = 0} \mu(x,1) = 0 \\
+\end{align*}
+\TODO{replace $\Rightarrow^{\text{MIF}}$ with the text over the $\Rightarrow$}
+
+With the Note in mind, we can now compute for the previous example
+\[
+    \mu( 0_{\Pi_n}, 1_{\Pi_n}) = (-1)^{n-1} (n-1)!
+\]
+
+
+\Chapter{Number Theory}
+
+\section{Divisibility and Factorisation}
+
+\begin{definition}
+$a,b \in \mathbb{Z}: a\mid b: \Leftrightarrow \exits c \in \mathbb{Z}: a * c = b$
+
+More general: 
+$a,b \in R$, and $R$ is a ring (e.g. polynomials $R = \mathbb{Z}[x]$)
+    $a \mid b \Leftrightarrow \exists c \in R , a * c = b$
+\end{definition}
+
+\begin{definition}
+$a,b \in \mathbb{Z}$, $ d = gcd(a,b)
+\begin{align*}
+    \Leftrightarrow & \text{1) } d \mid a \wedge d \mid b \\
+    \leftrightarrow & \text{2) } t \mid a \wedge t \mid b \Rightarrow t \mid d \\
+\end{definition}
+
+\begin{definition}
+division with remainder
+
+$a,b \in \mathbb{Z}$, $b > 0  \exists q,r: a = b  + r, 0 \leq r < b$
+\end{definition}
+
+
+

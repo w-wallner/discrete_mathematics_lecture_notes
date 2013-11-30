@@ -15,26 +15,33 @@
 \lecturedate[\baselineskip]{2013-11-29}
 
 \textbf{Example}.
-Sets $A_1, A_2, \ldots A_m \subseteq M$. We take the powerset of set of indices "(2^{\{1,2, \ldots , m\}}, \superseteq)$. Note that the Möbius Function only depends on the structure of the order. 
+Sets $A_1, A_2, \ldots A_m \subseteq M$. We take the powerset of set of indices "$(2^{\{1,2, \ldots , m\}}, \supseteq)$. 
+Note that the Möbius Function only depends on the structure of the order. 
 
 \[
-    \mu (A,B) = \begin{cases} (-1)^{|B| - |A| &, A\superseteq B\\ 0 &, otherwise \end{cases}
+  \mu (A,B) = \begin{cases} 
+    (-1)^{|B| - |A|} &, A\supseteq B\\ 
+    0                & \text{, otherwise}
+  \end{cases}
 \]
 
 \[
-    I \subseteq \{ 1,2, \ldots, m}, f(I) = | \bigcap_{i\in I} A_i \cap \bigcap_{j \in \[1,\ldots,m\} \backslash I} \overline{A}_j |
+    I \subseteq \{ 1,2, \ldots, m\}, 
+    f(I) = | \bigcap_{i\in I} A_i \cap 
+      \bigcap_{j \in \{1,\ldots ,m\} \backslash I} \overline{A}_j |
 \]
-\begin{gather*}
-    S_f(I) = \sum_{J \superseteq I} f(J) = \left| \bigcap_{i\in I} A_i  \right| \\
-    \left[ S_f(x) = \sum_{z\leq x} f(z) \right]
-\end{gather*}
 
 \begin{gather*}
-    f(I) &= \sum_{J \superseteq I} S_f(I) \mu(J,I} \\
-        &= \sum_{J \superseteq I} (-1)^{|J| - |I|} * \left| \bigcap_{i\in I} A_i \right|
-    f(\varnothing) &= \left| \bigcap_{j \in \{1,\ldots m\}} \overline{A}_j} \right| \\
-        &= \sum_{j \in \{1,\ldots m\}} (-1)^{|J|} \left| \bigcap_{j \in J}A_j \right|
+  S_f(I) = \sum_{J \supseteq I} f(J) = \left\| \bigcap_{i\in I} A_i  \right\| \\
+  \left[ S_f(x) = \sum_{z\leq x} f(z) \right]
 \end{gather*}
+
+\begin{align*}
+  f(I) &= \sum_{J \supseteq I} S_f(I) \mu(J,I) \\
+    &= \sum_{J \supseteq I} (-1)^{|J| - |I|} * \left\| \bigcap_{i\in I} A_i \right\|
+  f(\varnothing) &= \left\| \bigcap_{j \in \{1,\ldots ,m\}} \overline{A}_j \right\| \\
+    &= \sum_{j \in \{1,\ldots ,m\}} (-1)^{|J|} \left\| \bigcap_{j \in J} A_j \right\|
+\end{align*}
 
 \textbf{Example.}
 Poset $(\mathbb{N}^{+}, \mid)$.
@@ -105,7 +112,7 @@ If $\forall X \subseteq L : \bigwedge_{x \in X} x, \bigvee_{x \in X} x$ exist, $
 \textbf{Remember.}
 $(L, \vee, \wedge): \vee, \wedge$ are both associative, commutative, idepotent ($a\wedge a = a$, $a\vee a = a$). 
 
-absorbtion laws: $a wedge(a \vee b) = a = a \vee ( a \wedge b)$, 0 \vee a = a$, $1 \wedge a = a$. 
+absorbtion laws: $a wedge(a \vee b) = a = a \vee ( a \wedge b)$, $0 \vee a = a$, $1 \wedge a = a$. 
 
 Furthermore we have semigroups $(L, \wedge)$ and $(L, \vee)$.
 
@@ -115,7 +122,7 @@ And $x \geq t, y \geq t \Rightarrow x \wedge y \geq t$.
 
 \Remark.
 \[
-    a \leq b \Rightleftarrow a \vee b = b \Rightleftarrow a \wedge b = a
+    a \leq b \Leftrightarrow a \vee b = b \Leftrightarrow a \wedge b = a
 \]
 
 \Lemma.
@@ -142,23 +149,26 @@ Assume $x,y \in L$, Set $B = \{u in L \mid x \leq u vedge y \leq u\}$.
 \end{align*}
 
 \Proof.
-$\s \wedge t$ greatest common lower bound of $s,t$. $ x,y are lower bounds of $s,t" $\Rightarrow$ $x \leq s \wedge t, y \leq s \wedge t$. 
+$s \wedge t$ greatest common lower bound of $s,t$. 
+$x,y$ are lower bounds of $s,t$ $\Rightarrow$ $x \leq s \wedge t, y \leq s \wedge t$. 
 
 \textbf{Example.}
 $\Pi_n$ is the set of partitions of $\{1,2,..., n\}$. 
 \[
-    (\Pi_n, \leq): A leq B: \iff \text{$A$ is refinement of $B$}
+    (\Pi_n, \leq): A \leq B: \iff \text{$A$ is refinement of $B$}
 \]
 \TODO{Table of refinement of B with fancy coloring}
 
 We claim $(\Pi_n, \leq)$ is a lattice. 
 It is easy to show that $(\Pi_n, \leq)$ is a poset. 
 
-\begin{align*
-    \text{1-el}: & \text{1-block partition} \\
-    \text{0-el}: & \text{each block of size 1} \\
-    \alpha, \beta \in \Pi_n: & \alpha \wedge \beta: i,j \in \{1,2,\ldots,n\} \text{in the same block $\implies$ they are in the same block of both $\alpha$ and $\beta$ \\
-    \Rightarrow \Pi_n \text{ is a lattice}
+\begin{align*}
+  \text{1-el}: & \text{1-block partition} \\
+  \text{0-el}: & \text{each block of size 1} \\
+  \alpha, \beta \in \Pi_n: & \alpha \wedge \beta: i,j \in \{1,2,\ldots,n\} 
+    \text{ in the same block }
+    & \implies \text{ they are in the same block of both $\alpha$ and $\beta$} \\
+  \Rightarrow \Pi_n \text{ is a lattice}
 \end{align*}
 
 \Theorem.
@@ -168,15 +178,15 @@ $L$ is a lattice with 0-element and 1 element, $\b in L\backslash \{1\}$
 \end{align*}
 
 \Proof.
-$(*) \equals \sum_{x: x\wedge b = 0} \mu(x,1) = 0$
+$(*) \Leftrightarrow \sum_{x: x\wedge b = 0} \mu(x,1) = 0$
 , since $0 \wedge b = 0$
 
 Let $y \leq b$, and we set $N(y) = \sum_{x: x\wedge b=y} \mu(x,1)$.
 
 \begin{align*}
-    S(b) &:= \sum_{y: y \leq b} N(y) \\
-        & = \sum_{y: y \leq b} \sum_{x: x\wedge b=y} \mu(x,1) \\
-        & = \sum_{x,y: x \wedge b = y} \mu(x,1)
+  S(b) &:= \sum_{y: y \leq b} N(y) \\
+    & = \sum_{y: y \leq b} \sum_{x: x\wedge b=y} \mu(x,1) \\
+    & = \sum_{x,y: x \wedge b = y} \mu(x,1)
 \end{align*}
 
 \textbf{Note.}
@@ -185,10 +195,9 @@ Let $y \leq b$, and we set $N(y) = \sum_{x: x\wedge b=y} \mu(x,1)$.
     \Rightarrow \forall x \in L: \mu(x,1) \text{occurs exactly once in $S(b)$} \\
     \Rightarrow S(b) = \sum_{x \in L} \mu(x,1) = \sum_{x \in [0,1]} \mu(x,1) = delta_{0,1} = 0 \\
     \Rightarrow \sum_{y in [0,b]} N(y) = 0 \\
-    \Rightarrow^{\text{MIF}} N(b) = \sum_{y \leq b} S(y) \mu(y,b) = 0\\
+    \stackrel{\text{MIF}}{\Rightarrow} N(b) = \sum_{y \leq b} S(y) \mu(y,b) = 0\\
     N(0) = 0, \text{ but } N(0) = \sum_{x:x \wedge b = 0} \mu(x,1) = 0 \\
 \end{align*}
-\TODO{replace $\Rightarrow^{\text{MIF}}$ with the text over the $\Rightarrow$}
 
 With the Note in mind, we can now compute for the previous example
 \[
@@ -196,12 +205,12 @@ With the Note in mind, we can now compute for the previous example
 \]
 
 
-\Chapter{Number Theory}
+\thechapter{Number Theory}
 
 \section{Divisibility and Factorisation}
 
 \begin{definition}
-$a,b \in \mathbb{Z}: a\mid b: \Leftrightarrow \exits c \in \mathbb{Z}: a * c = b$
+$a,b \in \mathbb{Z}: a\mid b: \Leftrightarrow \exists c \in \mathbb{Z}: a * c = b$
 
 More general: 
 $a,b \in R$, and $R$ is a ring (e.g. polynomials $R = \mathbb{Z}[x]$)
@@ -209,10 +218,11 @@ $a,b \in R$, and $R$ is a ring (e.g. polynomials $R = \mathbb{Z}[x]$)
 \end{definition}
 
 \begin{definition}
-$a,b \in \mathbb{Z}$, $ d = gcd(a,b)
+$a,b \in \mathbb{Z}$, $d = gcd(a,b)$
 \begin{align*}
     \Leftrightarrow & \text{1) } d \mid a \wedge d \mid b \\
     \leftrightarrow & \text{2) } t \mid a \wedge t \mid b \Rightarrow t \mid d \\
+\end{align*}
 \end{definition}
 
 \begin{definition}

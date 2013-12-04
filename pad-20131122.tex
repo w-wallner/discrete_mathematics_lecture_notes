@@ -96,7 +96,7 @@ generating function of $(\mathcal{A}, w)$
 \]
 
 We now create combinatorial classes from combinatorial classes.
-$(\mathcal{A}, w_A) , (\mathcal{B}, w_b)$
+$(\mathcal{A}, w_A) , (\mathcal{B}, w_B)$
 
 \begin{enumerate}[1)]
 \item combinatorial sum $\mathcal{A} + \mathcal{B}$:
@@ -123,7 +123,7 @@ $(\mathcal{A}, w_A) , (\mathcal{B}, w_b)$
         \seq(\mathcal{A}) &= \{ (x_1, x_2, \ldots x_k) \mid k \in \mathbb{N}_0, x_i \in \mathcal{A}\}
         \qquad k = 0 \mathrel{\hat{=}} \epsilon \ldots \text{empty sequence}\\
         &w((x_1, x_2, \ldots x_k) ) = \sum_{i=1}^{k} w_A(x_i) \\
-        \mathcal{C} &= \seq(\mathcal{A} = \{\epsilon\} \cup \mathcal{A} \cup \mathcal{A}\times\mathcal{A} \cup \ldots )\\
+        \mathcal{C} &= \seq(\mathcal{A} = \{\epsilon\} \cup \mathcal{A} \cup (\mathcal{A}\times\mathcal{A}) \cup \ldots )\\
         C(z) &= 1 + A(z) + A(z)^2 + \ldots = \frac{1}{1-A(z)} \\
     \end{align*}
     
@@ -153,19 +153,20 @@ If the order matters, then we speak of \dt{compositions} of an integer
 	\mathcal{P} &= \seq(\{1\}) \times \seq(\{2\}) \times \cdots \\
 \end{align*}	 
 
-\text{Example.}
+\textbf{Example.}
 Strings composed of $\cdot, --$. 
 $\cdot$ has length 1 and $--$ has length 2.
 We want to compute the number of strings of length $n$
 \begin{align*}
-    \mathcal{A} = \{\cdot\} \leftrightarrow z\\
-    \mathcal{V} = \{\ -- \} \mathrel{\hat{=}} \mathcal{A} \times \mathcal{A} \leftrightarrow z^2 
+  \mathcal{A} &= \{\cdot\} && \leftrightarrow z\\
+  \mathcal{V} &= \{\ -- \} \mathrel{\hat{=}} \mathcal{A} \times \mathcal{A} && \leftrightarrow z^2 
 \end{align*}
+
 \textbf{Example.}
 Binary trees, as explained before
 \begin{align*}
-    \mathcal{B} = \{ \Box\} + \{ \circ\} \times \mathcal{B} \times \mathcal{B}\\
-    B(z) = 1 + z \cdot B(z) \cdot B(z)
+  \mathcal{B} &= \{ \Box\} + \{ \circ\} \times \mathcal{B} \times \mathcal{B}\\
+  B(z) &= 1 + z \cdot B(z) \cdot B(z)
 \end{align*}
 
 \subsection{Labelled constructions}
@@ -184,7 +185,7 @@ With the generating function:
 \end{align*}
 
 \begin{definition}
-We define a \dt{labelled structure} $\mathcal{A}$ in the following way: Each object of size n is composed of n atomc objects. The atoms are numbered with numbers from $1$ to $n$. 
+We define a \dt{labelled structure} $\mathcal{A}$ in the following way: Each object of size $n$ is composed of $n$ atomc objects. The atoms are numbered with numbers from $1$ to $n$. 
 \end{definition}
 $A \leftrightarrow \text{generating function } \hat{A}(z) = \sum_{n\geq 0} a_n \frac{z^n}{n!}$
 
@@ -202,8 +203,9 @@ $A \leftrightarrow \text{generating function } \hat{A}(z) = \sum_{n\geq 0} a_n \
 
 $\mathcal{A} * \mathcal{B}$ \dt{partitional product}\\
 \begin{align*}
-\mathcal{A} * \mathcal{B} = \{ (x,y) | x \in \mathcal(A), y \in \mathcal{B}, &\text{ atomas are labelled in order preserving way }\\
- &\text{s.t. the labels are } 1,2, \dotsc , w_A(x) + w_B(y) \}
+  \mathcal{A} * \mathcal{B} = \{ (x,y) | x \in \mathcal(A), y \in \mathcal{B}, 
+    &\text{ atomas are labelled in order preserving way }\\
+    &\text{ s.t. the labels are } 1,2, \dotsc , w_A(x) + w_B(y) \}
 \end{align*}
 
 

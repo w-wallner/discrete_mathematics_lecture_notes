@@ -1,0 +1,321 @@
+%%% EtherPad for Discrete Mathematics VO
+%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
+%%% Past pads:
+%%%     * 2013-10-17: committed by patrikf
+%%%     * 2013-10-18: committed by patrikf
+%%%     * 2013-10-24: committed by patrikf
+%%%     * 2013-10-25: committed by patrikf
+%%%     * 2013-11-08: committed by neroburner
+%%%     * 2013-11-21: committed by neroburner
+%%%     * 2013-11-22: committed by neroburner
+%%%     * 2013-11-28: committed by neroburner
+%%%     * 2013-11-29: committed by neroburner
+
+% Discrete Mathematics Lecture Notes 2013-12-05
+
+\lecturedate[\baselineskip]{2013-12-05}
+
+
+\textbf{last time we did:}
+integers $a,b \in \mathbb{Z}, a|b, t = gcd(a,b), -t, a = b*q + r$
+
+\subsection{Euklidian algorithm}
+\begin{align*}
+  a = b q_0 +r \\
+  b = r_0*q_1 + r_1 \\
+  r_0 = r_1 + q_2 + r_2\\
+  r_{k-2} = r_{k-1} * q_k + r_k \\
+  r_{k-1} = r_{k} * q_{k+1} + Q \\
+\end{align*}
+
+all the previous formulas: $ b > r_0 > r_1 >> r2 > \ldots > r_k > 0$. From this follows $r_k = gcd(a,b)$
+
+\Proof.
+1) $r_k | r_{k-1} \implies r_k | r_{k-1} q_k + r_k = r_{k-2}$
+  $\implies \ldots \implies r_k | a, a_k | b$
+
+2) 
+\begin{align*}
+  r | a_1 \wedge t | b \implies^{??} t| r_k \\
+  \implies t | a-bq_0 \implies t | r_1 \implies \ldots t|r_k
+\end{align*}
+
+
+\Remark.
+\begin{align*}
+  r_j = r_j + 1 \underbrace{\geq 1}{q_{j+2}} + r_{j+2} \geq \underbrace{ > r_j+2}{r_{j+1}} + r_{j+2} \\
+  \forall j: r_{j+2} \geq \frac{r_j}{2}
+\end{align*}
+
+\Theorem.
+\[
+  d = gcd(a,b) \implies \exists e,f \in \mathbb{Z}: d = ae + bf
+\]
+
+\Proof.
+reverse Euklidian algorithm
+
+
+\begin{definition}
+$R$ is a commutative ring with $1$
+$(R,t)$ abelian group $\rightarrow 0$, inverse of $a$ is $-a$\\
+$(R,\cdot)$ semigroup group, if $\exists$ neutral element: $1$ \\
+distributibe laws
+
+$R$ \dt{integral domain} $\iff \nexists a,b \in R \backslash \{0\}: a-b = 0$
+\end{definition}
+
+\textbf{Example.}
+$(\mathbb{R}, +, \cdot)$, 
+$(\mathbb{Z}, + , \cdot), m \in P$
+
+$m\not\in \mathbb{P}: m = n \cdot k : \overline{n} \cdot \overline{k} = \overline{m} = \overline{0}$
+
+$\mathbb{Z}_6 : \overline{2} \cdot \overline{3} = \overline{0}$
+$\{a_0 + a_1 x + a_x x^2 \ldots a_n x^n \mid a_i \in \mathbb{Z}, n \in \mathbb{N} \}$
+
+\begin{definition}
+$R$ Euklidean ring if $R$ integral domain and there is a Euklidean function $n$:
+
+\[
+  n : R \rightarrow \mathbb{N} \text{s.t} \forall a,b \in R, b \neq 0, \exists q,r \in R:
+\]
+
+1) $a = bq + r$ with $r = 0$ or $n(r) > n(b)$ \\
+2) $\forall a,b \in R \backslash \{0\} : n(a) \leq n(ab)$
+\end{definition}
+
+\textbf{Example.}
+all natural numbers $\mathbb{Z}$, because $n(a) = |a|$
+
+$K$ is a field, and e look at $K[x] = 
+\{a_0 + a_1 x + a_x x^2 \ldots a_n x^n \mid a_i \in K, n \in \mathbb{N} \}
+,+, \cdot )$
+
+$K[x]$ is Eukledian ring:
+\begin{align*}
+  p(x) \in K[x] \\
+  n(p(x)) = deg(p(x))
+\end{align*}
+
+\begin{definition}
+a \dt{field} has a addition and a multiplication
+$(K, +, \cdot):$ 
+  $(K,+)$ abelean group (associativ 0, $\forall a \exists -a$) \\
+  $(K \backslash \{0\}, \cdot)$ abelean group \\
+  construction laws
+\end{definition}
+
+\textbf{Example.}
+\begin{align*}
+  (x^4 + 3x^3 - 3x^2 - 7x + 6) &: ( x^3 + x^2 - x + 15) = x+2 \\
+  -x^4 - x^3 + x^2 - 15 x \\
+  \hline 
+    2x^3 - 2x^2 - 22 x + 6 \\
+    2x^3 - 2x^2 - 2 x -30 \\ 
+    \hline
+      -4x^2 - 10 x - 24
+\end{align*}
+
+\begin{definition}
+$p>1$ is called a \dt{prime number} $\iff$ $\pm 1, \pm p$ are the only divisors.
+
+$\mathbb{P}$ set of primes
+\end{definition}
+
+\Theorem.
+\[
+  p\in \mathbb{P}, p|ab \implies p|a \vee p|b
+\]
+
+\Proof.
+Case 1) $p|a$, alleady true\\
+Case 2) $p \not\mid a$
+\begin{align*}
+  &\implies gcd(p,a) = 1 
+  &\implies \exists e,f \in \mathbb{Z}: ep + fa = 1 \\
+  &\implies b = b*1 = b e p + b f a \ldots \text{ multiple of p } \implies p|b
+\end{align*}
+
+\Theorem.
+\[
+  n \in \mathbb{N}^{+} \implies \exists p_1, \ldots ,p_r \in \mathbb{P}: n = p_1 \ldots p_r, (r \geq 0), (\prod_{i\in \varnothing} a_i = 1)
+\]
+
+\Remark.
+factorisation is unique up to order of the factors
+
+$\rightarrow$ $n = \prod_{p \in \mathbb{P}} p^{\nu_p(n)}$
+
+$\nu_p(n)$ \ldots multiplicity of $p$ in the factorisation of $n$
+
+\begin{align*}
+ p^{\nu_p(n)} | n, p^{\nu_p(n)+1} \not\mid n\\
+ gcd(a,b) = \prod_{p \in \mathbb{P}} p ^{min(\nu_p(a), \nu_p(b))} \\
+ lcd(a,b) = \prod_{p \in \mathbb{P}} p ^{max(\nu_p(a), \nu_p(b))} \\
+ a|b \iff \forall \p in \mathbb{P} : \nu_p(a) \leq \nu_p(b)
+\end{align*}
+
+\Theorem.
+\[
+  | \mathbb{P} | = \infty
+\]
+
+\Proof.
+\[
+  \mathbb{P} = \{p_1, \ldots , p_n\}, N = p_1 \ldots p_r + 1 = \prod_{i=1}^r p_i^{\nu_p(N)}
+\]
+Contradiction!
+
+\section{Congruence relations and residue classes}
+
+\begin{definition}
+$m \in \mathbb{N}^{+}$ modulus, 
+residue class: $a+m \mathbb{Z} = \overline{a}$ 
+\end{definition}
+
+\Remark.
+$a\in \bar{a}, \bar{a} = \bar{b} \iff m | a-b$
+\begin{align*}
+  a \equiv b mod m & :\iff m \mid a-b \\
+  a \equiv (m)     & :\iff \bar{a} = \bar{b}
+\end{align*}
+\[
+  \mathbb{Z}_m = \{ \bar{0},\bar{1},\bar{2}, \ldots, \bar{m-1}\} 
+  \bar{0} \cup \bar{1} \cup \bar{2} \cup  \ldots \cup \bar{m-1} = \mathbb{Z}
+\]
+
+
+\begin{definition}
+\[
+  \bar{a} + bar{b} := \bar{a+b}, \bar{a} \cdot \bar{b} := \bar{ab}
+\]
+\end{definition}
+
+\Remark.
+\[
+  a \equiv c(m), b \equiv d(m) \rightarrow 
+\]
+\begin{align*}
+  a+b \equiv c+d(m) \\
+  ab \equiv cd (m)
+\end{align*}
+
+\Theorem.
+$(\mathbb{Z}_m, + , \cdot)$ is a commutative ring with $1$
+
+\begin{definition}
+\[
+  \bar{a} \in \mathbb{Z}_m, \bar{x} \in \mathbb{Z}_m \text{ s.t }
+  \bar{x} \cdot \bar{a} = \bar{1} \implies \bar{x} = \bar{a}^{-1}
+\]
+\end{definition}
+
+\textbf{Example.}
+\[
+  m = 5: \bar{2}^{-1} = \bar{3} \\
+\]
+\TODO{finish example}
+
+\Theorem.
+$\exists \bar{a}^{-1} \text{ in } \mathbb{Z}_m \iff gcd(a,m) = 1$ ($a,m$ are co-prime)
+
+\Proof.
+"$\Rightarrow$": 
+  $\bar{a}\cdot bar{x} = bar{1} \Rightarrow k\in Z 
+  ax = 1 + km \Rightarrow ax - km = 1$
+
+  $d = gcd(a,m) \Rightarrow d \mid ax - km \Rightarrow d = 1$
+
+"$\Leftarrow$":
+  $gcd(a,m) = 1 \Rightarrow \exists e,f : ae + mf = 1$ \\
+  $\Rightarrow ae = 1 + (-f)m \Rightarrow \bar{a} \cdot \bar{e} = \bar{1} \Rightarrow \bar{e} = \bar{a}^{-1}$
+
+\begin{definition}
+\[
+  \mathbb{Z}_m^{*} = \{ \bar{a} \in \mathbb{Z}_m \mid gcd(a,m) = 1 \}
+\]
+set of prime redisue classes mod m
+\end{definition}
+
+\textbf{Example.}
+\[
+  \mathbb{Z}_5^{*} = \{ \bar{1}, \bar{2}, \bar{3}, \bar{4} \}, \mathbb{Z}_2^{*} = \{ \bar{1}, \bar{5} \}
+\]
+
+\subsection{group of units}
+
+\textbf{Example.}
+$ m = 17$, find $\bar{13}^{-1}$: $ 13 x \equiv 1 (17)$ $x \equiv 4 (17)$
+\begin{align*}
+  17 = 13 * 1 +4, 13 = 4*3 +1 
+\end{align*}
+\TODO{finish example}
+
+\textbf{Example.}
+\begin{align*}
+  3b \equiv 3c (5) | *2 \\
+  b \equiv c(5)
+\end{align*}
+
+\textbf{Example.}
+\begin{align*}
+  3b \equiv 3c (6) \\
+  3b = 3c + k*6 | /3 \\
+  b = c + k*2 \\
+  b \equiv c(5)
+\end{align*}
+
+\textbf{Example.}
+\begin{align*}
+  ab \equiv ac (am) \Rightarrow b \equiv  c (m) \\
+  ab \equiv ac (m) \Rightarrow b \equiv c (m)
+    \text{ if } ax = 1 (m) \text{ has a solution } \iff gcd(a,m) = 1
+\end{align*}
+
+\section{Systems of congruences}
+
+\Theorem.
+$m = m_1 m_2$, $gcd(m_1, m_2) = 1$. Then $x \equiv y (m) \iff \begin{cases} x \equiv y (m_1) \\ x \equiv y (m2) \end{cases}$
+
+\Proof.
+\ProofForward.
+\[
+  x \equiv y (m) \iff x = y + km \implies x = y + k m_1 m_2 \implies
+  \begin{cases}
+    x \equiv y (m_1) \\
+    x \equiv y (m_2) 
+  \end{cases}
+\]
+
+\ProofBackward.
+\[
+  \begin{cases}
+    x \equiv y (m_1) \\
+    x \equiv y (m_2) 
+  \end{cases}
+\]
+\[
+  \implies \exists l: x-y = l* m_1 \equiv 0 (m_2)\\
+  l \equiv 0 (m_2) \implies l = l * m_2 
+    \implies x-y = l* m_1 m_2
+    \implies x \equiv y (m)
+\]
+
+\textbf{Corollary.}
+$m = \prod_{i=1} m_i$, $ gcd(m_i, m_j) = 1 \forall i \neq j$
+
+Then $x \euqiv y (m) \iff \forall i = 1, \ldots, r : x \equiv y (m_i)$
+
+\subsection{Chinese remainder theorem}
+We are faced with a system of congruence equations
+\[
+  x \equiv a_i (m_i) \quad 1 \leq i \leq r (*)
+\]
+$i \neq j \implies gcd(m_i, m_j) = 1$
+
+$\implies$ $(*)$ has a unique solutiion mod $m = \prod_{i = 1}^r m_i$.
+
+and this is $x \equiv \sum_{j=1}^r \frac {m}{m_j} * b_j * a_j (m)$
+
+where $b_j = \left( \frac{m}{m_j} \right) ^{-1}$

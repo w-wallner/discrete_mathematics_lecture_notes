@@ -14,13 +14,12 @@
 
 % Discrete Mathematics Lecture Notes 2013-12-06
 
-\lecturedate[\baselineskip]{2013-12-05}
-
 \textbf{rembember from last time}
+\lecturedate[\baselineskip]{2013-12-05}
 \[
   x \equiv a_i (m_i), 1 \leq i \leq r (*)
 \]
-$\implies$ (*) has unique solution mod $m = \prod_{i = 1}^r m_i$. 
+$\implies$ $(*)$ has unique solution mod $m = \prod_{i = 1}^r m_i$. 
 
 \[
   x \equiv \sum_{j=1}^r \frac {m}{m_j} * b_j * a_j (m) \text{ where }
@@ -30,14 +29,14 @@ $\implies$ (*) has unique solution mod $m = \prod_{i = 1}^r m_i$.
 \textbf{Example.}
 System of two congruent relations.
 \begin{align*}
-  3x \equiv 2 (5) \\
-  2x \equiv 7 (11)
+  3x &\equiv 2 (5) \\
+  2x &\equiv 7 (11)
 \end{align*}
 
 The previous are equivalent to
 \begin{align*}
-  x \equiv 4 (5) \\
-  x \equiv 9 (11)
+  x &\equiv 4 (5) \\
+  x &\equiv 9 (11)
 \end{align*}
 
 \begin{align*}
@@ -53,22 +52,24 @@ The previous are equivalent to
 \end{align*}
 
 \Proof.
+
 1) x is a solution: $m_i, i = 1,2, \ldots, r$, are pairwise coprime 
 \[
-  \implies gcd(\frac{m}{m_j}) = 1 \implies \exists b_j
+  \implies gcd\left(\frac{m}{m_j}\right) = 1 \implies \exists b_j
 \]
 
 \begin{align*}
-  \frac{m}{m_j} \equiv 0 (m_j) \forall i \neq j 
-    \implies \sum_{j=1}^{r}\frac{m}{m_j} b_j * a_j \equiv 
-    \frac{m}{m_j} \underbrace{b_i}_{\left(\frac{m}{m_j}\right)^{-1} \mod m_i} a_i (m_i) \\
-    \equiv a_i (m_i)
+  \frac{m}{m_j} &\equiv 0 (m_j) \quad \forall i \neq j \\
+  \implies \sum_{j=1}^{r}\frac{m}{m_j} b_j * a_j &\equiv 
+    \frac{m}{m_j} \underbrace{b_i}_{(\frac{m}{m_j})^{-1} \mod m_i} a_i (m_i) \\
+  &\equiv a_i (m_i)
 \end{align*}
 
 2) x is unique mod m:
 \begin{align*}
-  x \equiv a_i(m_i) y \equiv a_i (m_i) \forall i = 1,\ldots, r \\
-  \implies x \equiv y (m_i) \forall i \implies x\equiv y (m)
+  & x \equiv a_i(m_i) \quad y \equiv a_i (m_i) \quad \forall i = 1,\ldots, r \\
+  \implies & x \equiv y (m_i) \quad \forall i \\
+  \implies & x \equiv y (m)
 \end{align*}
 
 \section{Eurler-Fermat theorem and RSA-Algorithm}
@@ -83,36 +84,44 @@ $(\mathbb{Z}_m^{*}, \cdot)$ is a group.
 
 E.g.: $\varphi(5) = 4, \varphi(6) = 2$
 
+Consider two cases. First case:
 \begin{align*}
-  &m \in \mathbb{P}: q(m) = m-1 \\
+  &m \in \mathbb{P}: \varphi(m) = m-1 \\
+\end{align*}
+
+Second case:
+\begin{align*}
   &m = p^e, p \in \mathbb{P}, e \geq 1 \\
   &\bar{a}\in \mathbb{Z}_m \implies gcd(a,p^e) = \begin{cases}
-    1 \text{ if $\bar{a} \in \mathbb{Z}_m^{*}$} \\
-    p^f \text{ $1 \leq f \leq e$} 
+    1   &\text{ if $\bar{a} \in \mathbb{Z}_m^{*}$} \\
+    p^f &\text{ $1 \leq f \leq e$} 
   \end{cases} \\
-  &\bar{a}\in \mathbb{Z}_m^{*} \Leftrightarrow p X a \\
+  &\bar{a}\in \mathbb{Z}_m^{*} \Leftrightarrow p \not|a \\
+  & 0,1,2, \ldots, p^e -1\\
   & p^e - p^{e-1} = \varphi(p^e) = p^{e-1}(p-1) \\
-  & m = m\left(1-\frac{1}{p}\right) 
+  & \varphi(m) = m\left(1-\frac{1}{p}\right) 
 \end{align*}
 
 \Theorem.
-\[
-  m = p_1^{e_1} p_2^{e_2} \ldots p_r^{e_r} \implies
-  \varphi(m) = m \left( 1-\frac{1}{p_1} \right) \left( 1-\frac{1}{p_2} \right) \ldots \left( 1-\frac{1}{p_r} \right)
-\]
+\begin{align*}
+  m &= p_1^{e_1} p_2^{e_2} \ldots p_r^{e_r} \\
+  \implies \varphi(m) &= m \left( 1-\frac{1}{p_1} \right) \left( 1-\frac{1}{p_2} \right) \ldots \left( 1-\frac{1}{p_r} \right)
+\end{align*}
 
 \Proof.
 Let $r=2: M = \{1,2, \ldots, m\},$ 
 \begin{align*}
-  A = \{ n \in M \mid p_1|n\} = \{p_1, 2p_1, 3_p1, \ldots m-p_1, m\} \\
-  B = \{ n \in M \mid p_2|n\} = \{p_2, 2p_2, 3_p2, \ldots m-p_2, m\} \\
+  A = \{ n \in M \mid p_1|n\} = \{p_1, 2p_1, 3p_1, \ldots m-p_1, m\} \\
+  B = \{ n \in M \mid p_2|n\} = \{p_2, 2p_2, 3p_2, \ldots m-p_2, m\} \\
 \end{align*}
 
 \begin{align*}
-  |M| = m, |A| = \frac{m}{p_1}, |B| = \frac{m}{p_2}, 
-  |A \cap B| = \frac{m}{p_1p_2}\\
-  \varphi(m) = | M \backslash(A\cup B) | = |M| - |A| - |B| ü | A cap B| 
-    = \left(m (1- \frac{1}{p_1} \right) \left(m (1- \frac{1}{p_2} \right)
+  |M| &= m, \; |A| = \frac{m}{p_1}, \; |B| = \frac{m}{p_2}, \;
+    |A \cap B| = \frac{m}{p_1p_2}\\
+  \varphi(m) 
+    &= | M \backslash(A\cup B) | \\
+    &= |M| - |A| - |B| + | A \cap B|\\
+    &= m \left(1- \frac{1}{p_1} \right) \left(1- \frac{1}{p_2} \right)
 \end{align*}
 
 \Theorem.
@@ -122,48 +131,48 @@ Therem of Euler-Fermat:
 \]
 In particular 
 \[
-  p \in \mathbb{P}, p \not\mid a \implies a^{p-1} \equiv 1 (p)
+  p \in \mathbb{P}, p \not| a \implies a^{p-1} \equiv 1 (p)
 \]
 (Fermat's little theorem)
 
 \Proof.
 \[
-  \mathbb{Z}_m^{*} = \{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k \}, k = \varphi(m)
+  \mathbb{Z}_m^{*} = \{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k \}, \;k = \varphi(m)
 \]
 \begin{align*}
-  \implies \mathbb{Z}_m^{*} \{\bar{a}\bar{a}_1, \bar{a}\bar{a}_2, \ldots, \bar{a}\bar{a}_k \}, 
-    \text{ since } \bar{a}\bar{a}_i = \bar{a}\bar{a}_j 
-    \implies \bar{a}_i = bar{a}_j \implies i = j
-    \implies \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
+  &\implies \mathbb{Z}_m^{*} \{\bar{a}\bar{a}_1, \bar{a}\bar{a}_2, \ldots, \bar{a}\bar{a}_k \}, \\
+  &\text{ since } \bar{a}\bar{a}_i = \bar{a}\bar{a}_j
+    \implies \bar{a}_i = \bar{a}_j \implies i = j \\
+  &\implies \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
         {\in \mathbb{Z}_m^{*}}
       = \bar{a}^k * \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
-        {\in \mathbb{Z}_m^{*}}
-      \implies \bar{a}^k = \bar{a}^{\varphi(m)} = \bar{1} 
+        {\in \mathbb{Z}_m^{*}} \\
+  &\implies \bar{a}^k = \bar{a}^{\varphi(m)} = \bar{1} 
 \end{align*}
 
 \Theorem.
 \[
-  p, \in \mathbb{P}, p,q odd, p \neq q
+  p \in \mathbb{P}, \quad p,q\; odd, \quad p \neq q
 \]
 \begin{align*}
-  m= pq, v = lcm(p-1, q-1) \\
-  \implies \forall a,k \in \mathbb{Z}: a ^{kv + 1} \equiv a(m)
+  m = pq, \quad v = lcm(p-1, q-1) \\
+  \implies \forall a,k \in \mathbb{Z}: a^{kv + 1} \equiv a(m)
 \end{align*}
 
 \Proof.
-To show: $pq \mid a ^{kv +1} - a$
+we have to show: $pq \mid a ^{kv +1} - a$. 
 \begin{align*}
-  &\Leftrightarrow p \mid a ^{kv +1} - a \land q \mid a ^{kv +1} - a
+  &\Leftrightarrow p \mid a ^{kv +1} - a \text{ and } q \mid a ^{kv +1} - a\\
   &\text{Case 1: } p \mid a \\
-  &\text{Case 2: } p\not\mid a: 
+  &\text{Case 2: } p\not| a: 
     a^{p-1} \equiv 1 (p) \implies a^{kv} \equiv 1(p)
 \end{align*}
 
 \subsection{RSA-Algorithm}
+Let $m = pq$ and $v = lcm(p-1, q-1)$ then 
 \[
-  m = pq, gcd(e,v) = 1 \implies \exists d : d *e \equiv 1 (v)
+  gcd(e,v) = 1 \implies \exists d : d *e \equiv 1 (v).
 \]
-$v = lcm(p-1, q-1)$
 
 We have a message $a_1, a_2, a_3, \ldots$ where $0 \leq a_i < m$
 
@@ -185,9 +194,9 @@ Check if this really works:
     & \equiv a_j (m) \\
 \end{align*}
 
-We can provide a public key $(m,e)$ and The private kay $d$.
+We can provide a public key $(m,e)$ and the private key $d$.
 
-If we want to compute the private key if we only know the public key the hard part is the factorisation $m = p*q$. This factorisation needs time exponential in the number of digits of $m$.
+If we want to compute the private key and we only know the public key the hard part is the factorisation $m = p*q$. This factorisation needs time exponential in the number of digits of $m$.
 
 \textbf{e-signature: } 
 $(e_j,d_j)$,
@@ -252,11 +261,11 @@ $\implies \mathbb{Z}_m^{*} = \{\bar{a}, \bar{a}^2, \bar{a}^3, \ldots, \bar{a}^{\
 
 \textbf{Example.}
 \begin{align*}
-  \mathbb{Z}_2^{*} = \{\bar{1}\} = \GroupGenBy{\bar{1}} \\
-  \mathbb{Z}_3^{*} = \{\bar{1}, \bar{2}\} = \GroupGenBy{\bar{2}} 
+  &\mathbb{Z}_2^{*} = \{\bar{1}\} = \GroupGenBy{\bar{1}} \\
+  &\mathbb{Z}_3^{*} = \{\bar{1}, \bar{2}\} = \GroupGenBy{\bar{2}} 
     = \{\bar{2}, \bar{2}^2 \}\\
-  \mathbb{Z}_4^{*} = \{\bar{1}, \bar{3}\} = \GroupGenBy{\bar{3}} \\
-  \mathbb{Z}_5^{*} = \{\bar{1}, \bar{2}, \bar{3}, \bar{4}\} 
+  &\mathbb{Z}_4^{*} = \{\bar{1}, \bar{3}\} = \GroupGenBy{\bar{3}} \\
+  &\mathbb{Z}_5^{*} = \{\bar{1}, \bar{2}, \bar{3}, \bar{4}\} 
     = \GroupGenBy{\bar{2}} = \GroupGenBy{\bar{3}} \neq \GroupGenBy{\bar{4}}
     = \{\bar{1}, \bar{4}\} \\
 \end{align*}
@@ -264,10 +273,12 @@ $\implies \mathbb{Z}_m^{*} = \{\bar{a}, \bar{a}^2, \bar{a}^3, \ldots, \bar{a}^{\
 \TODO{finish example}
 
 \Theorem.
-$\mathbb{Z}_m^{*}$ cyclic $\Leftrightarrow$ $\exists$ prim. root mod m 
+$\mathbb{Z}_m^{*}$ cyclic  
 \begin{align*}
   \Leftrightarrow 
-    m \in \{2,4\} \cup \{ p^e mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \} \cup \{ 2p^e mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \}
+    &\exists \text{ primitive root mod m} \\
+  \Leftrightarrow 
+    &m \in \{2,4\} \cup \{ p^e \mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \} \cup \{ 2p^e \mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \}
 \end{align*}
 
 \Proof.
@@ -275,10 +286,10 @@ Let $g$ be a primitive rot mod $p$. Then $g$ or $g+p$ is a primitive root mod $p
 
 
 \textbf{Claim.}
-$g^{p-1} \not{\equiv} 1 (p^2)$ or $(g+p)^{p-1} \not\equiv 1 (p^2)$
+$g^{p-1} \not\equiv 1 (p^2)$ or $(g+p)^{p-1} \not\equiv 1 (p^2)$
 
 \textbf{Note.}
-$\varphi(p^2) = p(p-1)$, assume that $p-1 = k*l (k, l < p-1)$
+$\varphi(p^2) = p(p-1)$, assume that $p-1 = k*l$ where $(k, l < p-1)$
 
 $ord_{\mathbb{Z_p^2}}^{*}(g) = p*l \implies g^{pl} \equiv 1 (p^2)$
 

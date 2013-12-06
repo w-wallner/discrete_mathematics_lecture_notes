@@ -1,0 +1,289 @@
+%%% EtherPad for Discrete Mathematics VO
+%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
+%%% Past pads:
+%%%     * 2013-10-17: committed by patrikf
+%%%     * 2013-10-18: committed by patrikf
+%%%     * 2013-10-24: committed by patrikf
+%%%     * 2013-10-25: committed by patrikf
+%%%     * 2013-11-08: committed by neroburner
+%%%     * 2013-11-21: committed by neroburner
+%%%     * 2013-11-22: committed by neroburner
+%%%     * 2013-11-28: committed by neroburner
+%%%     * 2013-11-29: committed by neroburner
+%%%     * 2013-12-05: committed by neroburner
+
+% Discrete Mathematics Lecture Notes 2013-12-06
+
+\lecturedate[\baselineskip]{2013-12-05}
+
+\textbf{rembember from last time}
+\[
+  x \equiv a_i (m_i), 1 \leq i \leq r (*)
+\]
+$\implies$ (*) has unique solution mod $m = \prod_{i = 1}^r m_i$. 
+
+\[
+  x \equiv \sum_{j=1}^r \frac {m}{m_j} * b_j * a_j (m) \text{ where }
+  b_j = \left( \frac{m}{m_j} \right) ^{-1} \mod m_j
+\]
+
+\textbf{Example.}
+System of two congruent relations.
+\begin{align*}
+  3x \equiv 2 (5) \\
+  2x \equiv 7 (11)
+\end{align*}
+
+The previous are equivalent to
+\begin{align*}
+  x \equiv 4 (5) \\
+  x \equiv 9 (11)
+\end{align*}
+
+\begin{align*}
+  &m_1 = 4, m_2 = 11, m = 55 \\
+  &a_1 = 4, a_2 = 9 \\
+  \hline
+  &b_1 * 11 = 1 (5)  \implies b_1 = 1 \\
+  &b_2 *5 = 1 (11) \implies b_2 = 9 \\
+  \hline
+  & x \equiv 11 * 1 * 4 + 5 *9 *9 \mod 55\\
+  & x \equiv 449 mod 55 \\
+  & x \equiv 9 (55)
+\end{align*}
+
+\Proof.
+1) x is a solution: $m_i, i = 1,2, \ldots, r$, are pairwise coprime 
+\[
+  \implies gcd(\frac{m}{m_j}) = 1 \implies \exists b_j
+\]
+
+\begin{align*}
+  \frac{m}{m_j} \equiv 0 (m_j) \forall i \neq j 
+    \implies \sum_{j=1}^{r}\frac{m}{m_j} b_j * a_j \equiv 
+    \frac{m}{m_j} \underbrace{b_i}_{\left(\frac{m}{m_j}\right)^{-1} \mod m_i} a_i (m_i) \\
+    \equiv a_i (m_i)
+\end{align*}
+
+2) x is unique mod m:
+\begin{align*}
+  x \equiv a_i(m_i) y \equiv a_i (m_i) \forall i = 1,\ldots, r \\
+  \implies x \equiv y (m_i) \forall i \implies x\equiv y (m)
+\end{align*}
+
+\section{Eurler-Fermat theorem and RSA-Algorithm}
+
+\Theorem.
+$(\mathbb{Z}_m^{*}, \cdot)$ is a group.
+\begin{align*}
+  &|\mathbb{Z}_m| = m, \\
+  &|\mathbb{Z}_m^{*}| = \varphi(m) \\
+  &\varphi \ldots \text{ Euler's totient function}
+\end{align*}
+
+E.g.: $\varphi(5) = 4, \varphi(6) = 2$
+
+\begin{align*}
+  &m \in \mathbb{P}: q(m) = m-1 \\
+  &m = p^e, p \in \mathbb{P}, e \geq 1 \\
+  &\bar{a}\in \mathbb{Z}_m \implies gcd(a,p^e) = \begin{cases}
+    1 \text{ if $\bar{a} \in \mathbb{Z}_m^{*}$} \\
+    p^f \text{ $1 \leq f \leq e$} 
+  \end{cases} \\
+  &\bar{a}\in \mathbb{Z}_m^{*} \Leftrightarrow p X a \\
+  & p^e - p^{e-1} = \varphi(p^e) = p^{e-1}(p-1) \\
+  & m = m\left(1-\frac{1}{p}\right) 
+\end{align*}
+
+\Theorem.
+\[
+  m = p_1^{e_1} p_2^{e_2} \ldots p_r^{e_r} \implies
+  \varphi(m) = m \left( 1-\frac{1}{p_1} \right) \left( 1-\frac{1}{p_2} \right) \ldots \left( 1-\frac{1}{p_r} \right)
+\]
+
+\Proof.
+Let $r=2: M = \{1,2, \ldots, m\},$ 
+\begin{align*}
+  A = \{ n \in M \mid p_1|n\} = \{p_1, 2p_1, 3_p1, \ldots m-p_1, m\} \\
+  B = \{ n \in M \mid p_2|n\} = \{p_2, 2p_2, 3_p2, \ldots m-p_2, m\} \\
+\end{align*}
+
+\begin{align*}
+  |M| = m, |A| = \frac{m}{p_1}, |B| = \frac{m}{p_2}, 
+  |A \cap B| = \frac{m}{p_1p_2}\\
+  \varphi(m) = | M \backslash(A\cup B) | = |M| - |A| - |B| ü | A cap B| 
+    = \left(m (1- \frac{1}{p_1} \right) \left(m (1- \frac{1}{p_2} \right)
+\end{align*}
+
+\Theorem.
+Therem of Euler-Fermat:
+\[
+  gcd(a,m) = 1 \implies a ^{\varphi(m)} \equiv 1 (m)
+\]
+In particular 
+\[
+  p \in \mathbb{P}, p \not\mid a \implies a^{p-1} \equiv 1 (p)
+\]
+(Fermat's little theorem)
+
+\Proof.
+\[
+  \mathbb{Z}_m^{*} = \{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k \}, k = \varphi(m)
+\]
+\begin{align*}
+  \implies \mathbb{Z}_m^{*} \{\bar{a}\bar{a}_1, \bar{a}\bar{a}_2, \ldots, \bar{a}\bar{a}_k \}, 
+    \text{ since } \bar{a}\bar{a}_i = \bar{a}\bar{a}_j 
+    \implies \bar{a}_i = bar{a}_j \implies i = j
+    \implies \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
+        {\in \mathbb{Z}_m^{*}}
+      = \bar{a}^k * \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
+        {\in \mathbb{Z}_m^{*}}
+      \implies \bar{a}^k = \bar{a}^{\varphi(m)} = \bar{1} 
+\end{align*}
+
+\Theorem.
+\[
+  p, \in \mathbb{P}, p,q odd, p \neq q
+\]
+\begin{align*}
+  m= pq, v = lcm(p-1, q-1) \\
+  \implies \forall a,k \in \mathbb{Z}: a ^{kv + 1} \equiv a(m)
+\end{align*}
+
+\Proof.
+To show: $pq \mid a ^{kv +1} - a$
+\begin{align*}
+  &\Leftrightarrow p \mid a ^{kv +1} - a \land q \mid a ^{kv +1} - a
+  &\text{Case 1: } p \mid a \\
+  &\text{Case 2: } p\not\mid a: 
+    a^{p-1} \equiv 1 (p) \implies a^{kv} \equiv 1(p)
+\end{align*}
+
+\subsection{RSA-Algorithm}
+\[
+  m = pq, gcd(e,v) = 1 \implies \exists d : d *e \equiv 1 (v)
+\]
+$v = lcm(p-1, q-1)$
+
+We have a message $a_1, a_2, a_3, \ldots$ where $0 \leq a_i < m$
+
+Encryption: 
+\[
+  E(a_j) = b_j := a_j^e \mod m
+\]
+
+Decryption: 
+\[
+  D(b_j) = a_j := b_j^d \mod m
+\]
+
+Check if this really works:
+\begin{align*}
+  b_j^d &\equiv (a_j^e)^d \mod m \\
+    & \equiv a_j^{e*d} \mod m \\
+    & \equiv a_j^{kv+1} (m) \\
+    & \equiv a_j (m) \\
+\end{align*}
+
+We can provide a public key $(m,e)$ and The private kay $d$.
+
+If we want to compute the private key if we only know the public key the hard part is the factorisation $m = p*q$. This factorisation needs time exponential in the number of digits of $m$.
+
+\textbf{e-signature: } 
+$(e_j,d_j)$,
+
+$e_j$ is public $\hat{=} E_j, D_j$
+
+User i sends to user j:
+\[
+  E_j(D_i(x)) = x^{d_i e_j} (m)
+\]
+User j checks with his private key:
+\[
+  D_j (E_J(D_i(x))) = D_j(x)
+\]
+then $E_i$ afterwards:
+\[
+  E_i(D_i(x)) = x
+\]
+
+\textbf{Caveat. (Warning)}
+$E(x)$ may have many fixed points. 
+If the order is low then it is possible to find the $x$. 
+
+\textbf{Recall.}
+If $G$ is a group and $x\in G$:
+\[
+  org_G(x) = min\{ i\in \mathbb{N}^{+} \mid x^i = e \}
+\]
+\[
+  e^1 = e \implies ord_G(e) = 1, a \neq e \implies ord_G(a) > 1
+\]
+
+\textbf{Cyclic group.}
+the group generated by $x$:
+\[
+  \{ e, x, x^2, x^3, \ldots \} = \left\langle x \right\rangle
+\]
+
+G is finite:
+\begin{align*}
+  U \leq  G \implies |U| \mid |G|, 
+  & \left\langle x \right\rangle = \{ e, x, x^2, x^3, \ldots x^{ord_G(x) -1}\}
+    &\implies |\left\langle x \right\rangle| = ord_G(x) \\
+    &\implies ord_G(x) | \underbrace{|G|}_{text{order of the group}} \\
+\end{align*}
+
+G is cyclic
+\begin{align*}
+  & \Leftrightarrow \exists x \in G: \left\langle x \right\rangle = G \\
+  & \Leftrightarrow \exists x \in G: ord_G(x) = |G|
+\end{align*}
+%  \left\langle    \right\rangle
+
+\begin{definition}
+  \[
+    \bar{a} \in \mathbb{Z}_m^{*} \text{ s.t. } \left\langle \bar{x} \right\rangle = \mathbb{Z}_m^{*} 
+\]
+is called \dt{primitive root mod m}
+
+$\bar{a}$ primitive root mod m 
+$\implies \mathbb{Z}_m^{*} = \{\bar{a}, \bar{a}^2, \bar{a}^3, \ldots, \bar{a}^{\varphi{m)}} \}$
+\end{definition}
+
+\def\GroupGenBy#1{\left\langle #1 \right\rangle}
+
+\textbf{Example.}
+\begin{align*}
+  \mathbb{Z}_2^{*} = \{\bar{1}\} = \GroupGenBy{\bar{1}} \\
+  \mathbb{Z}_3^{*} = \{\bar{1}, \bar{2}\} = \GroupGenBy{\bar{2}} 
+    = \{\bar{2}, \bar{2}^2 \}\\
+  \mathbb{Z}_4^{*} = \{\bar{1}, \bar{3}\} = \GroupGenBy{\bar{3}} \\
+  \mathbb{Z}_5^{*} = \{\bar{1}, \bar{2}, \bar{3}, \bar{4}\} 
+    = \GroupGenBy{\bar{2}} = \GroupGenBy{\bar{3}} \neq \GroupGenBy{\bar{4}}
+    = \{\bar{1}, \bar{4}\} \\
+\end{align*}
+
+\TODO{finish example}
+
+\Theorem.
+$\mathbb{Z}_m^{*}$ cyclic $\Leftrightarrow$ $\exists$ prim. root mod m 
+\begin{align*}
+  \Leftrightarrow 
+    m \in \{2,4\} \cup \{ p^e mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \} \cup \{ 2p^e mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \}
+\end{align*}
+
+\Proof.
+Let $g$ be a primitive rot mod $p$. Then $g$ or $g+p$ is a primitive root mod $p^2$.
+
+
+\textbf{Claim.}
+$g^{p-1} \not{\equiv} 1 (p^2)$ or $(g+p)^{p-1} \not\equiv 1 (p^2)$
+
+\textbf{Note.}
+$\varphi(p^2} = p(p-1)$, assume that $p-1 = k*l (k, l < p-1)$
+
+$ord_{\mathbb{Z_p^2}}^{*}(g) = p*l \implies g^{pl} \equiv 1 (p^2)$
+
+
+

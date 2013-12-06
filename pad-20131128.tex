@@ -99,10 +99,10 @@ Each poset can be visualised by a Hasse diagram
 
 An element $x \in A$ is a \dt{maximal element} if $y \geq x \implies x=y$. 
 
-An element $x \in A$ is the \dt{0-element} if $\forall y in A : x \leq y$. 
+An element $x \in A$ is the \dt{0-element} if $\forall y \in A : x \leq y$. 
 Every 0-element is minimal. 
 
-An element $x \in A$ is the \dt{1-element} if $\forall y in A : x \geq y$.
+An element $x \in A$ is the \dt{1-element} if $\forall y \in A : x \geq y$.
 
 Intervall $[x,y] = \{z \in A \mid x \leq z \leq y\}$
 
@@ -156,7 +156,7 @@ $\mu$ uniquely determined, $x \not{\leq} y \implies \mu(x,y) = 0$
 \begin{align*}
   [x,x] & = \{x\}, \mu(x,x) = 1 \\
   [x,y] &= \{x,y\} \implies \mu(x,y) + \mu(y,y) = 0 \\
-        &           \mu(y,y) = 1 \implies \mu(x,y) = -1) \\
+        &           \mu(y,y) = 1 \implies \mu(x,y) = -1 \\
 \end{align*}
 
 \textbf{Example.}
@@ -166,7 +166,7 @@ $[n,n+2] = \{n,n+1, n+2\}:$
 
 \begin{align*}
     \mu(n,n+2) + \mu(n+1,n+2) + \mu(n+2, n+2) &= 0 \\
-    0 -1 1 &= 0
+    0 -1 +1 &= 0
 \end{align*}
 
 $ m \geq n+2 \implies \mu(n,m) = 0$
@@ -175,7 +175,7 @@ $ m \geq n+2 \implies \mu(n,m) = 0$
 \TODO{hasse diagram of a partial order, x,y, a,b,c,d}
 
 \begin{gather*}
-    \mu(x,x) = \mu(a,a) = \mu(b,b) = \mu(c,c) = \mu(d,d) = \mu(y,y) =  = 1\\
+    \mu(x,x) = \mu(a,a) = \mu(b,b) = \mu(c,c) = \mu(d,d) = \mu(y,y) = 1\\
     \mu(x,a) = \mu(x,c) = \mu(x,d) = \mu(a,b) = \mu(b,y) = \mu(c,y) = \mu(d,y) = -1\\
     \mu(x,b) = 0, \mu(a,y) = 0, \mu(x,y) \\
 \end{gather*}
@@ -188,9 +188,9 @@ $ m \geq n+2 \implies \mu(n,m) = 0$
 
 \Theorem.
 $(P_1, \leq_1), (P_2, \leq_2)$, loc. f. poset, with 0-element. 
-And we define $(P, \leq):$ $P = P_1 times P_2, (x_1,x_2) \leq (y_1, y_2) :\implies x1 \leq_1 y_1 text{ and } x_2 \leq_2 y_2$
+And we define $(P, \leq):$ $P = P_1 \times P_2, (x_1,x_2) \leq (y_1, y_2) :\implies x1 \leq_1 y_1 \text{ and } x_2 \leq_2 y_2$
 
-$\Rightarrow (P, \leq)$ is loc finite poset with 0-element ($=(0_1, 0_2)$) and Möbius function $mu: P\times P \rightarrow \mathbb{R}$
+$\Rightarrow (P, \leq)$ is loc finite poset with 0-element ($=(0_1, 0_2)$) and Möbius function $\mu: P\times P \rightarrow \mathbb{R}$
 
 \[
     \mu ( (x_1, x_2), (y_1,y_2)) = \mu_1(x_1,y_1) * \mu_2(x_2,y_2) \\
@@ -201,17 +201,17 @@ $\Rightarrow (P, \leq)$ is loc finite poset with 0-element ($=(0_1, 0_2)$) and M
 We have a Set $M = \{a_1, \ldots , a_n\}$. We claim that $(2^M, \subseteq) \tilde{=} ( \{0,1\}, \leq)^n$
 
 E.g.: $n = 5: A = \{a_2,a_5\}, B= \{a_1, a_2, a_3, a_5\}, A, B \in 2^M$
-\[
+\begin{align*}
     A \hat{=} (0,1,0,0,1) \\
     A \hat{=} (1,1,1,0,1) \\
     A \subseteq B \hat{=} (0,1,0,0,1) \subseteq (1,1,1,0,1) \\
     x \in A \rightarrow e_{x,A} = 1 \Rightarrow  e_{x,B} = 1 \implies x \in B\\
-\]
+\end{align*}
 
 Remark that: $e_{x,A} = 1 \Rightarrow  e_{x,B} = 1$ is equals to $e_{x,A} \leq e_{x,B}$ 
 
 \[
-    ( \{0,1\}, \leq): \mu(00) = \mu(1,1) = 1, \mu(0,1) = -1, mu(1,0) = 0
+    ( \{0,1\}, \leq): \mu(00) = \mu(1,1) = 1, \mu(0,1) = -1, \mu(1,0) = 0
 \]
 \begin{align*}
     \mu(A,B) &= \mu(01001, 11101) = \mu(0,1) \mu(1,1) \mu(0,1) \mu(0,0) \mu(1,1) \\

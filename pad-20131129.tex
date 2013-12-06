@@ -110,9 +110,9 @@ If $\forall X \subseteq L : \bigwedge_{x \in X} x, \bigvee_{x \in X} x$ exist, $
 \end{align*}
 
 \textbf{Remember.}
-$(L, \vee, \wedge): \vee, \wedge$ are both associative, commutative, idepotent ($a\wedge a = a$, $a\vee a = a$). 
+$(L, \vee, \wedge): \vee, \wedge$ are both associative, commutative, idempotent ($a\wedge a = a$, $a\vee a = a$). 
 
-absorbtion laws: $a wedge(a \vee b) = a = a \vee ( a \wedge b)$, $0 \vee a = a$, $1 \wedge a = a$. 
+absorbtion laws: $a \wedge(a \vee b) = a = a \vee ( a \wedge b)$, $0 \vee a = a$, $1 \wedge a = a$. 
 
 Furthermore we have semigroups $(L, \wedge)$ and $(L, \vee)$.
 
@@ -129,7 +129,7 @@ And $x \geq t, y \geq t \Rightarrow x \wedge y \geq t$.
 $L$ finite meet-semilattice with 1-element. Then $L$ is a lattice.
 
 \Proof.
-Assume $x,y \in L$, Set $B = \{u in L \mid x \leq u vedge y \leq u\}$. 
+Assume $x,y \in L$, Set $B = \{u \in L \mid x \leq u \wedge y \leq u\}$. 
 
 \begin{align*}
     x \leq 1, y \leq 1, 
@@ -137,13 +137,13 @@ Assume $x,y \in L$, Set $B = \{u in L \mid x \leq u vedge y \leq u\}$.
     \Rightarrow B= \{u_1, u_2 \ldots , u_m\}: 
         u:= u_1 \wedge u_2 \wedge \ldots \wedge u_m 
     \Rightarrow u \in B \\
-    u_i geq x, u_i \geq y \Rightarrow u_i \geq x \wedge y
+    u_i \geq x, u_i \geq y \Rightarrow u_i \geq x \wedge y
 \end{align*}
 
 
 \Lemma.
 \begin{align*}
-    x \leq s, y leq s \\
+    x \leq s, y \leq s \\
     x \leq t, y \leq t \\
     \Rightarrow x \leq s \wedge t, y \leq s \wedge t
 \end{align*}
@@ -166,7 +166,7 @@ It is easy to show that $(\Pi_n, \leq)$ is a poset.
   \text{1-el}: & \text{1-block partition} \\
   \text{0-el}: & \text{each block of size 1} \\
   \alpha, \beta \in \Pi_n: & \alpha \wedge \beta: i,j \in \{1,2,\ldots,n\} 
-    \text{ in the same block }
+    \text{ in the same block } \\
     & \implies \text{ they are in the same block of both $\alpha$ and $\beta$} \\
   \Rightarrow \Pi_n \text{ is a lattice}
 \end{align*}

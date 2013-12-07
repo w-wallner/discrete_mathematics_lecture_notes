@@ -12,9 +12,9 @@
 
 % Discrete Mathematics Lecture Notes 2013-11-29
 
-\lecturedate[\baselineskip]{2013-11-29}
 
 \textbf{Example}.
+\lecturedate[\baselineskip]{2013-11-29}
 Sets $A_1, A_2, \ldots A_m \subseteq M$. We take the powerset of set of indices "$(2^{\{1,2, \ldots , m\}}, \supseteq)$. 
 Note that the Möbius Function only depends on the structure of the order. 
 
@@ -28,19 +28,19 @@ Note that the Möbius Function only depends on the structure of the order.
 \[
     I \subseteq \{ 1,2, \ldots, m\}, 
     f(I) = | \bigcap_{i\in I} A_i \cap 
-      \bigcap_{j \in \{1,\ldots ,m\} \backslash I} \overline{A}_j |
+      \bigcap_{j \in \{1,\ldots ,m\} \backslash I} \bar{A}_j |
 \]
 
 \begin{gather*}
-  S_f(I) = \sum_{J \supseteq I} f(J) = \left\| \bigcap_{i\in I} A_i  \right\| \\
+  S_f(I) = \sum_{J \supseteq I} f(J) = \left| \bigcap_{i\in I} A_i  \right| \\
   \left[ S_f(x) = \sum_{z\leq x} f(z) \right]
 \end{gather*}
 
 \begin{align*}
   f(I) &= \sum_{J \supseteq I} S_f(I) \mu(J,I) \\
-    &= \sum_{J \supseteq I} (-1)^{|J| - |I|} * \left\| \bigcap_{i\in I} A_i \right\|
-  f(\varnothing) &= \left\| \bigcap_{j \in \{1,\ldots ,m\}} \overline{A}_j \right\| \\
-    &= \sum_{j \in \{1,\ldots ,m\}} (-1)^{|J|} \left\| \bigcap_{j \in J} A_j \right\|
+    &= \sum_{J \supseteq I} (-1)^{|J| - |I|} * \left| \bigcap_{i\in I} A_i \right| \\
+  f(\varnothing) &= \left| \bigcap_{j \in \{1,\ldots ,m\}} \bar{A}_j \right| \\
+    &= \sum_{j \in \{1,\ldots ,m\}} (-1)^{|J|} \left| \bigcap_{j \in J} A_j \right|
 \end{align*}
 
 \textbf{Example.}

@@ -192,7 +192,7 @@ $A \leftrightarrow \text{generating function } \hat{A}(z) = \sum_{n\geq 0} a_n \
 \begin{align*}
     \mathcal{C} &= \mathcal{A}+\mathcal{B}: \\
          w(x) &= \begin{cases}
-                w_a(x) \quad x\in \mathcal{A}\\
+                w_A(x) \quad x\in \mathcal{A}\\
                 w_B(x) \quad x\in \mathcal{B}
 				\end{cases}\\
     \hat{C}(z) &= \sum_{n\geq 0} (a_n+b_n) \frac{z^n}{n!}
@@ -200,15 +200,12 @@ $A \leftrightarrow \text{generating function } \hat{A}(z) = \sum_{n\geq 0} a_n \
 \end{align*}
 
 \begin{definition}
-
 $\mathcal{A} * \mathcal{B}$ \dt{partitional product}\\
 \begin{align*}
   \mathcal{A} * \mathcal{B} = \{ (x,y) | x \in \mathcal(A), y \in \mathcal{B}, 
     &\text{ atomas are labelled in order preserving way }\\
     &\text{ s.t. the labels are } 1,2, \dotsc , w_A(x) + w_B(y) \}
 \end{align*}
-
-
 \end{definition}
 
 \begin{align*}
@@ -218,8 +215,8 @@ $\mathcal{A} * \mathcal{B}$ \dt{partitional product}\\
 \TODO{figure of $k$ elements $\in \mathcal{A}$}
 
 \begin{align*}
-    \frac{c_n}{n!} &= \sum{k=0}^{n} \frac{1}{k!(n-k)!} a_k b_{n-k}\\
-    &= \sum{k=0}^{n} \frac{a_k}{k!} \frac{b_{n-k}}{(n-k)!} \\
+    \frac{c_n}{n!} &= \sum_{k=0}^{n} \frac{1}{k!(n-k)!} a_k b_{n-k}\\
+    &= \sum_{k=0}^{n} \frac{a_k}{k!} \frac{b_{n-k}}{(n-k)!} \\
     &[z^n] \hat{A}(z)\hat{B}(z) 
         \quad [z^k] \hat{A}(z) 
         \quad [z^{n-k}] \hat{B}(z) \\
@@ -237,7 +234,7 @@ $\mathcal{A} * \mathcal{B}$ \dt{partitional product}\\
 
 sideremark: in the unlabelled case: 
 \begin{align*}
-    \set(\mathcal{A}): C(z) = \exp{A(z) - \frac{A(z^2)}{2} + \frac{A(z^3)}{3} + \ldots }
+  \set(\mathcal{A}): C(z) = \exp\left( A(z) - \frac{A(z^2)}{2} + \frac{A(z^3)}{3} + \ldots \right)
 \end{align*}
 
 cycle of $\mathcal{A}$
@@ -250,7 +247,7 @@ cycle of $\mathcal{A}$
 Permutations. 
 \begin{align*}
     \mathcal{P} &= \text{set}(\text{cyc}(\{ \circ \} )) \\
-    \hat{p}(z) &= e^{log \frac{1}{1-z}} = \frac{1}{1-z} \\
+    \hat{p}(z) &= e^{\log \frac{1}{1-z}} = \frac{1}{1-z} \\
         &= \sum_{n\geq 0} n! * \frac{z^n}{n!}
 \end{align*}
 

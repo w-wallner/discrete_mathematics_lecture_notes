@@ -12,10 +12,9 @@
 
 % Discrete Mathematics Lecture Notes 2013-11-29
 
-
 \textbf{Example}.
 \lecturedate[\baselineskip]{2013-11-29}
-Sets $A_1, A_2, \ldots A_m \subseteq M$. We take the powerset of set of indices "$(2^{\{1,2, \ldots , m\}}, \supseteq)$. 
+Sets $A_1, A_2, \ldots A_m \subseteq M$. We take the powerset of set of indices $(2^{\{1,2, \ldots , m\}}, \supseteq)$. 
 Note that the Möbius Function only depends on the structure of the order. 
 
 \[
@@ -25,13 +24,10 @@ Note that the Möbius Function only depends on the structure of the order.
   \end{cases}
 \]
 
-\[
-    I \subseteq \{ 1,2, \ldots, m\}, 
-    f(I) = | \bigcap_{i\in I} A_i \cap 
-      \bigcap_{j \in \{1,\ldots ,m\} \backslash I} \bar{A}_j |
-\]
-
 \begin{gather*}
+  I \subseteq \{ 1,2, \ldots, m\}, \\
+  f(I) = \left| \bigcap_{i\in I} A_i \cap 
+    \bigcap_{j \in \{1,\ldots ,m\} \backslash I} \bar{A}_j \right| \\
   S_f(I) = \sum_{J \supseteq I} f(J) = \left| \bigcap_{i\in I} A_i  \right| \\
   \left[ S_f(x) = \sum_{z\leq x} f(z) \right]
 \end{gather*}
@@ -45,29 +41,29 @@ Note that the Möbius Function only depends on the structure of the order.
 
 \textbf{Example.}
 Poset $(\mathbb{N}^{+}, \mid)$.
-We can say if n is a product $n = p_1^{g_1} \ldots p_r^{g_r}$ and m is a product $m = p_1^{f_1} \ldots p_r^{f_r}$. This implies 
+We can say if n is a product $n = p_1^{g_1} \ldots p_r^{g_r}$ and $m$ is the product $m = p_1^{f_1} \ldots p_r^{f_r}$. This implies 
 \[
-    m|n \iff \forall f_i \leq g_i
+  m|n \iff \forall f_i \leq g_i
 \]
 
 The number theoretical number order $(\mathbb{N}^{+}, \mid)$ is isomorphic to $(\mathbb{N} \times \mathbb{N} \times \ldots , \leq)$
 
 \begin{align*}
-    \mu(n) = \mu_{|}(1,n) = \mu_{\leq}(0,g_1) \leq \mu_{\leq}(0,g_2) \ldots * \mu_{\leq}(0,g_r) \\
-    = \begin{cases} 
-        1 & \text{if } n=1 \\
-        (-1)^r & \text{if } n = p_1 p_2 \ldots p_r \text( square-free) \\
-         & \text{if } \exists p\in \mathbb{P}: p^2|n
-       \end{cases}
-    m \not{\mid} n:    &\mu(m,n) = 0 \\
-    m \mid n:    &\mu(m,n) = \mu(1, \frac{n}{m} \\
+  \mu(n) =& \mu_{|}(1,n) = \mu_{\leq}(0,g_1) \leq \mu_{\leq}(0,g_2) \ldots * \mu_{\leq}(0,g_r) \\
+    =& \begin{cases} 
+      1 & \text{if } n=1 \\
+      (-1)^r & \text{if } n = p_1 p_2 \ldots p_r \text( square-free) \\
+       & \text{if } \exists p\in \mathbb{P}: p^2|n
+     \end{cases} \\
+  m \not| n: &\mu(m,n) = 0 \\
+  m \mid n:  &\mu(m,n) = \mu(1, \frac{n}{m}) \\
 \end{align*}
 
 \TODO{Hassediagram, [3,18], show when m|n we can divide}
 
 \begin{align*}
-    f: \mathbb{N}^{+} \rightarrow \mathbb{R}, \\
-    S_f(n) = \sum_{d\mid n} f(d) \Rightarrow f(n) = \sum_{d\mid n} S_f(d)\mu(\frac{n}{d}
+  f: &\mathbb{N}^{+} \rightarrow \mathbb{R}, \\
+  S_f(n) =& \sum_{d\mid n} f(d) \Rightarrow f(n) = \sum_{d\mid n} S_f(d)\mu(\frac{n}{d}
 \end{align*}
 
 \subsection{Lattices}
@@ -85,7 +81,7 @@ The greatest common upper bound of $x,y \in P: x \wedge y$ ("$x$ meet $y$").
 \end{definition}
 
 \begin{definition}
-A poset $(L, \leq)$ is a \dt{lattice} if $\forall x,y \in L \exists x \wedge y, x \vee y$.
+A poset $(L, \leq)$ is a \dt{lattice} if $\forall x,y \in L \; \exists x \wedge y, x \vee y$.
 
 If only $x \wedge y$ exists: meet-semilattice. 
 
@@ -98,15 +94,15 @@ If $\forall X \subseteq L : \bigwedge_{x \in X} x, \bigvee_{x \in X} x$ exist, $
 
 \textbf{Example.}
 \begin{align*}
-    (2^M, \subseteq) \\
-    A\vee B = A \cap B, \\
-    A\wedge B = A \cup B
+  (2^M, \subseteq) \\
+  A\vee B = A \cap B, \\
+  A\wedge B = A \cup B
 \end{align*}
 
 \begin{align*}
-    (\mathbb{N}, \mid) \\
-    x \vee y = gcd(x,y), \\
-    x \vee y = lcm(x,y)
+  (\mathbb{N}, \mid) \\
+  x \vee y = gcd(x,y), \\
+  x \vee y = lcm(x,y)
 \end{align*}
 
 \textbf{Remember.}
@@ -117,12 +113,12 @@ absorbtion laws: $a \wedge(a \vee b) = a = a \vee ( a \wedge b)$, $0 \vee a = a$
 Furthermore we have semigroups $(L, \wedge)$ and $(L, \vee)$.
 
 \Lemma.
-If $L$ is a lattice, and $x,y,s,t, \in L$. And s is a common upper bound $x \leq s, y \leq s \Rightarrow x \vee y \leq s$. 
+If $L$ is a lattice, and $x,y,s,t \in L$. And $s$ is a common upper bound $x \leq s, y \leq s \Rightarrow x \vee y \leq s$. 
 And $x \geq t, y \geq t \Rightarrow x \wedge y \geq t$. 
 
 \Remark.
 \[
-    a \leq b \Leftrightarrow a \vee b = b \Leftrightarrow a \wedge b = a
+  a \leq b \Leftrightarrow a \vee b = b \Leftrightarrow a \wedge b = a
 \]
 
 \Lemma.
@@ -132,20 +128,20 @@ $L$ finite meet-semilattice with 1-element. Then $L$ is a lattice.
 Assume $x,y \in L$, Set $B = \{u \in L \mid x \leq u \wedge y \leq u\}$. 
 
 \begin{align*}
-    x \leq 1, y \leq 1, 
-        \Rightarrow 1 \in B \Rightarrow \neq \varnothing, |B| < \infty \\
-    \Rightarrow B= \{u_1, u_2 \ldots , u_m\}: 
-        u:= u_1 \wedge u_2 \wedge \ldots \wedge u_m 
-    \Rightarrow u \in B \\
-    u_i \geq x, u_i \geq y \Rightarrow u_i \geq x \wedge y
+  x \leq 1, y \leq 1
+    \Rightarrow 1 \in B \Rightarrow \neq \varnothing, |B| < \infty \\
+  \Rightarrow B= \{u_1, u_2 \ldots , u_m\}: 
+    u:= u_1 \wedge u_2 \wedge \ldots \wedge u_m \\
+  \Rightarrow u \in B \\
+  u_i \geq x, u_i \geq y \Rightarrow u_i \geq x \wedge y
 \end{align*}
 
 
 \Lemma.
 \begin{align*}
-    x \leq s, y \leq s \\
-    x \leq t, y \leq t \\
-    \Rightarrow x \leq s \wedge t, y \leq s \wedge t
+  &x \leq s, y \leq s \\
+  &x \leq t, y \leq t \\
+  &\Rightarrow x \leq s \wedge t, y \leq s \wedge t
 \end{align*}
 
 \Proof.
@@ -163,16 +159,16 @@ We claim $(\Pi_n, \leq)$ is a lattice.
 It is easy to show that $(\Pi_n, \leq)$ is a poset. 
 
 \begin{align*}
-  \text{1-el}: & \text{1-block partition} \\
-  \text{0-el}: & \text{each block of size 1} \\
-  \alpha, \beta \in \Pi_n: & \alpha \wedge \beta: i,j \in \{1,2,\ldots,n\} 
+  \text{1-el}: & \text{ 1-block partition} \\
+  \text{0-el}: & \text{ each block of size 1} \\
+  \alpha, \beta \in \Pi_n: & \;\alpha \wedge \beta: i,j \in \{1,2,\ldots,n\} 
     \text{ in the same block } \\
     & \implies \text{ they are in the same block of both $\alpha$ and $\beta$} \\
-  \Rightarrow \Pi_n \text{ is a lattice}
+  &\Rightarrow \Pi_n \text{ is a lattice}
 \end{align*}
 
 \Theorem.
-$L$ is a lattice with 0-element and 1 element, $\b in L\backslash \{1\}$
+$L$ is a lattice with 0-element and 1 element, $b \in L\backslash \{1\}$
 \begin{align*}
     \Rightarrow \mu(0,1) = -\sum_{x: x\wedge b = 0, x \neq 0} \mu(x,1) (*)
 \end{align*}
@@ -191,12 +187,12 @@ Let $y \leq b$, and we set $N(y) = \sum_{x: x\wedge b=y} \mu(x,1)$.
 
 \textbf{Note.}
 \begin{align*}
-    \forall x \in L \exists ! y \in L : x \wedge b = y \\
-    \Rightarrow \forall x \in L: \mu(x,1) \text{occurs exactly once in $S(b)$} \\
-    \Rightarrow S(b) = \sum_{x \in L} \mu(x,1) = \sum_{x \in [0,1]} \mu(x,1) = delta_{0,1} = 0 \\
-    \Rightarrow \sum_{y in [0,b]} N(y) = 0 \\
-    \stackrel{\text{MIF}}{\Rightarrow} N(b) = \sum_{y \leq b} S(y) \mu(y,b) = 0\\
-    N(0) = 0, \text{ but } N(0) = \sum_{x:x \wedge b = 0} \mu(x,1) = 0 \\
+  &\forall x \in L \; \exists!\, y \in L : x \wedge b = y \\
+  &\Rightarrow \forall x \in L: \mu(x,1) \text{ occurs exactly once in $S(b)$} \\
+  &\Rightarrow S(b) = \sum_{x \in L} \mu(x,1) = \sum_{x \in [0,1]} \mu(x,1) = \delta_{0,1} = 0 \\
+  &\Rightarrow \sum_{y \in [0,b]} N(y) = 0 \\
+  &\stackrel{\text{MIF}}{\Rightarrow} N(b) = \sum_{y \leq b} S(y) \mu(y,b) = 0\\
+  &N(0) = 0, \text{ but } N(0) = \sum_{x:x \wedge b = 0} \mu(x,1) = 0 \\
 \end{align*}
 
 With the Note in mind, we can now compute for the previous example
@@ -210,18 +206,20 @@ With the Note in mind, we can now compute for the previous example
 \section{Divisibility and Factorisation}
 
 \begin{definition}
-$a,b \in \mathbb{Z}: a\mid b: \Leftrightarrow \exists c \in \mathbb{Z}: a * c = b$
+$a,b \in \mathbb{Z}: a|b: \Leftrightarrow \exists c \in \mathbb{Z}: a * c = b$
 
 More general: 
 $a,b \in R$, and $R$ is a ring (e.g. polynomials $R = \mathbb{Z}[x]$)
-    $a \mid b \Leftrightarrow \exists c \in R , a * c = b$
+\[
+  a|b \Leftrightarrow \exists c \in R , a * c = b
+\]
 \end{definition}
 
 \begin{definition}
 $a,b \in \mathbb{Z}$, $d = gcd(a,b)$
 \begin{align*}
-    \Leftrightarrow & \text{1) } d \mid a \wedge d \mid b \\
-    \leftrightarrow & \text{2) } t \mid a \wedge t \mid b \Rightarrow t \mid d \\
+    \Leftrightarrow & \text{ 1) } d|a \wedge d|b \\
+    \Leftrightarrow & \text{ 2) } t|a \wedge t|b \Rightarrow t|d \\
 \end{align*}
 \end{definition}
 

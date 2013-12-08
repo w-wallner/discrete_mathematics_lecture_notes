@@ -19,30 +19,31 @@ integers $a,b \in \mathbb{Z}, a|b, t = gcd(a,b), -t, a = b*q + r$
 
 \subsection{Euklidian algorithm}
 \begin{align*}
-  a = b q_0 +r \\
-  b = r_0*q_1 + r_1 \\
-  r_0 = r_1 + q_2 + r_2\\
-  r_{k-2} = r_{k-1} * q_k + r_k \\
-  r_{k-1} = r_{k} * q_{k+1} + Q \\
+  a &= b q_0 +r \\
+  b &= r_0*q_1 + r_1 \\
+  r_0 &= r_1 + q_2 + r_2\\
+  r_{k-2} &= r_{k-1} * q_k + r_k \\
+  r_{k-1} &= r_{k} * q_{k+1} + Q \\
 \end{align*}
 
-all the previous formulas: $ b > r_0 > r_1 >> r2 > \ldots > r_k > 0$. From this follows $r_k = gcd(a,b)$
+all the previous formulas: $ b > r_0 > r_1 > r_2 > \ldots > r_k > 0$. From this follows
+\[
+  r_k = gcd(a,b)
+\]
 
-\Proof.
-1) $r_k | r_{k-1} \implies r_k | r_{k-1} q_k + r_k = r_{k-2}$
-  $\implies \ldots \implies r_k | a, a_k | b$
-
-2) 
-\begin{align*}
-  r | a_1 \wedge t | b \implies^{??} t| r_k \\
-  \implies t | a-bq_0 \implies t | r_1 \implies \ldots t|r_k
-\end{align*}
+\Proof. \\
+\begin{tabular}{ll}
+  1) & $r_k | r_{k-1} \implies r_k | r_{k-1} q_k + r_k = r_{k-2}$ \\
+     & $\implies \ldots \implies r_k | a, a_k | b$ \\
+  2) & $r | a_1 \wedge t | b \stackrel{\text{??}}{\implies} t| r_k$ \\
+     & $\implies t | a-bq_0 \implies t | r_1 \implies \ldots t|r_k$
+\end{tabular}
 
 
 \Remark.
 \begin{align*}
-  r_j = r_j + 1 \underbrace{q_{j+2}}_{ \geq 1} + r_{j+2} \geq \underbrace{r_{j+1}}_{ > r_j+2} + r_{j+2} \\
-  \forall j: r_{j+2} \geq \frac{r_j}{2}
+  r_j &= r_j + 1 \underbrace{q_{j+2}}_{ \geq 1} + r_{j+2} \geq \underbrace{r_{j+1}}_{ > r_j+2} + r_{j+2} \\
+      & \forall j: r_{j+2} \geq \frac{r_j}{2}
 \end{align*}
 
 \Theorem.
@@ -53,34 +54,33 @@ all the previous formulas: $ b > r_0 > r_1 >> r2 > \ldots > r_k > 0$. From this 
 \Proof.
 reverse Euklidian algorithm
 
-
 \begin{definition}
-$R$ is a commutative ring with $1$
-$(R,t)$ abelian group $\rightarrow 0$, inverse of $a$ is $-a$\\
-$(R,\cdot)$ semigroup group, if $\exists$ neutral element: $1$ \\
-distributibe laws
-
+$R$ is a \dt{commutative ring} with $1$. \\
+$(R,t)$ \dt{abelian group} $\rightarrow 0$, inverse of $a$ is $-a$\\
+$(R,\cdot)$ \dt{semigroup group}, if $\exists$ neutral element: $1$ \\
+distributibe laws\\
 $R$ \dt{integral domain} $\iff \nexists a,b \in R \backslash \{0\}: a-b = 0$
 \end{definition}
 
 \textbf{Example.}
-$(\mathbb{R}, +, \cdot)$, 
+$(\mathbb{R}, +, \cdot)$, \\
 $(\mathbb{Z}, + , \cdot), m \in P$
 
-$m\not\in \mathbb{P}: m = n \cdot k : \overline{n} \cdot \overline{k} = \overline{m} = \overline{0}$
+$m\not\in \mathbb{P}: m = n \cdot k : \bar{n} \cdot \bar{k} = \bar{m} = \bar{0}$
 
-$\mathbb{Z}_6 : \overline{2} \cdot \overline{3} = \overline{0}$
+$\mathbb{Z}_6 : \bar{2} \cdot \bar{3} = \bar{0}$ \\
 $\{a_0 + a_1 x + a_x x^2 \ldots a_n x^n \mid a_i \in \mathbb{Z}, n \in \mathbb{N} \}$
 
 \begin{definition}
-$R$ Euklidean ring if $R$ integral domain and there is a Euklidean function $n$:
-
+$R$ \dt{Euklidean ring} if $R$ integral domain and there is an Euklidean function $n$:
 \[
-  n : R \rightarrow \mathbb{N} \text{s.t} \forall a,b \in R, b \neq 0, \exists q,r \in R:
+  n : R \rightarrow \mathbb{N} \text{ s.t } \forall a,b \in R,\; b \neq 0,\; \exists q,r \in R:
 \]
 
-1) $a = bq + r$ with $r = 0$ or $n(r) > n(b)$ \\
-2) $\forall a,b \in R \backslash \{0\} : n(a) \leq n(ab)$
+\begin{compactenum}
+\item $a = bq + r$ with $r = 0$ or $n(r) > n(b)$
+\item $\forall a,b \in R \backslash \{0\} : n(a) \leq n(ab)$
+\end{compactenum}
 \end{definition}
 
 \textbf{Example.}
@@ -92,8 +92,8 @@ $K$ is a field, and e look at $K[x] =
 
 $K[x]$ is Eukledian ring:
 \begin{align*}
-  p(x) \in K[x] \\
-  n(p(x)) = deg(p(x))
+  &p(x) \in K[x] \\
+  &n(p(x)) = deg(p(x))
 \end{align*}
 
 \begin{definition}
@@ -169,13 +169,15 @@ Contradiction!
 
 \begin{definition}
 $m \in \mathbb{N}^{+}$ modulus, 
-residue class: $a+m \mathbb{Z} = \overline{a}$ 
+residue class: $a+m \mathbb{Z} = \bar{a}$ 
 \end{definition}
 
 \Remark.
-$a\in \bar{a}, \bar{a} = \bar{b} \iff m | a-b$
+\[
+  a\in \bar{a},\; \bar{a} = \bar{b} \iff m | a-b
+\]
 \begin{align*}
-  a \equiv b mod m & :\iff m \mid a-b \\
+  a \equiv b \mod m & :\iff m \mid a-b \\
   a \equiv (m)     & :\iff \bar{a} = \bar{b}
 \end{align*}
 \[
@@ -220,7 +222,7 @@ $\exists \bar{a}^{-1} \text{ in } \mathbb{Z}_m \iff gcd(a,m) = 1$ ($a,m$ are co-
 
 \Proof.
 "$\Rightarrow$": 
-  $\bar{a}\cdot bar{x} = bar{1} \Rightarrow k\in Z 
+  $\bar{a}\cdot \bar{x} = \bar{1} \Rightarrow k\in Z 
   ax = 1 + km \Rightarrow ax - km = 1$
 
   $d = gcd(a,m) \Rightarrow d \mid ax - km \Rightarrow d = 1$

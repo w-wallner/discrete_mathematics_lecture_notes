@@ -37,14 +37,14 @@ so that
 
 \begin{definition}
 \index{leaf}
-A \dt{leaf} is a node with degree 1. 
+A \dt{leaf} is a node with degree 1.
 \end{definition}
 
 \textbf{Lemma.}
 A non rooted tree $T$ has at least 2 leaves. \\
 $|V(T)| \geq 2$
 
-\textbf{Proof.} \TODO{add images} \\
+\textbf{Proof.} \TODO{add images}
 \begin{compactitem}
 	\item T of size 2
 	\item T of at least 3 nodes, $|V(T)| \geq 3$
@@ -81,7 +81,7 @@ induction on $n = \alpha_0=|V(T)|$
 \begin{tabular}{l l}
 	$n = 1:$	& trivial, $\cdot$ \\
 	$n \rightarrow n+1:$	& Choose leaf $v$ of $T$, $T' = T \backslash \{v\}$ \\
-							 &	
+							 &
 	$\begin{array}{ll}
 	|V(T')| = |E(T')| + 1 \\
 		|V(T')+1 = |E(T')+1 +1 \\
@@ -115,7 +115,7 @@ If $F$ is connected, we call it a \dt{spanning tree}.
 		0 & a & d & e \\
 		a & 0 & 0 & b \\
 		d & 0 & 0 & c \\
-		e & b & c & 0 
+		e & b & c & 0
 	\end{pmatrix}
 	&
 	\tilde D = \begin{pmatrix}
@@ -124,7 +124,7 @@ If $F$ is connected, we call it a \dt{spanning tree}.
 		& & c+d \\
 		& & & b+c+e \\
 	\end{pmatrix}
-\end{array} 
+\end{array}
 \end{equation*}
 \begin{equation*}
 	\tilde D - \tilde A = \begin{pmatrix}
@@ -143,7 +143,7 @@ If $F$ is connected, we call it a \dt{spanning tree}.
 	a+b & 0 & -b \\
 	0 & c+d & -c \\
 	-b & -c & b+c+e
-\end{vmatrix} 
+\end{vmatrix}
 & = (a+b)(c+d)(b+c+e)-b^2(c+d)-c^2(a+b) \\
 & = bcd + abc+ abd +acd + ace + ade + bce + bde \\
 & \text{every term represents a spanning tree}
@@ -154,7 +154,7 @@ if we set $a=b=c=d=1$ then
 
 \begin{itemize}
 	\item $\tilde A \rightarrow A$
-	\item $\tilde D \rightarrow D = 
+	\item $\tilde D \rightarrow D =
 		\begin{pmatrix}3 \\ & 2 \\ & & 2 \\ & & & 3 \\ \end{pmatrix}$
 	\item $\det{(D-A)'} = 8$
 \end{itemize}

@@ -14,7 +14,7 @@
 
 \textbf{Repetition of last time.}
 \lecturedate[\baselineskip]{2013-11-28}
-labelled structure set $\mathcal{A} = (A,w)$, the atomic object can be enumerated. 
+labelled structure set $\mathcal{A} = (A,w)$, the atomic object can be enumerated.
 
 \begin{align*}
   \mathcal{A}+\mathcal{B} &\leftrightarrow \hat{A}(z) + \hat{B}(z) \\
@@ -47,22 +47,22 @@ $a_n$ is number of such n-tuples
 $Q = \{\epsilon,1\} * \{\epsilon,2\} * \ldots * \{\epsilon,N\} $
 
 \begin{align*}
-  \sum_{n\geq 0} a_n \frac{z^n}{n!} &= 
+  \sum_{n\geq 0} a_n \frac{z^n}{n!} &=
     (1+z)^N \\
     &= \sum_{n=0} ^{N} {N \choose n} z^n \\
-    &= \frac{N!}{(N-n)!} 
+    &= \frac{N!}{(N-n)!}
 \end{align*}
 
-with repetition: 
-\TODO{check this formula for correctnes} 
+with repetition:
+\TODO{check this formula for correctnes}
 \[
-  (1+z+ \frac{z^2}{2!} + \ldots)^N 
+  (1+z+ \frac{z^2}{2!} + \ldots)^N
     = e^{zN} = \sum_{n\geq 0} N^n \frac{z^n}{n!}
 \]
 
 \section{Combinatories on posets}
 
-Recall $(A, \leq) \subseteq A \times A$. 
+Recall $(A, \leq) \subseteq A \times A$.
 Instead of $(a,b) \in \, \leq$ we use the notation $a \leq b$. So $\leq$ is a partial order.
 
 \begin{tabular}{ll}
@@ -76,7 +76,7 @@ Instead of $(a,b) \in \, \leq$ we use the notation $a \leq b$. So $\leq$ is a pa
 
 $(A,\leq)$ is a poset.
 
-A poset $(A,\leq)$ is linearly ordered if 
+A poset $(A,\leq)$ is linearly ordered if
 \[
   \forall x,y, \in A: x \leq y \land y \leq x
 \]
@@ -86,21 +86,21 @@ A poset $(A,\leq)$ is linearly ordered if
 \begin{tabular}{l l}
   $(\mathbb{N}, \leq)$ & a poset, even a linearly ordered poset. \\
   $(\mathbb{R}, \leq)$ \\
-  $(\mathbb{N}^{+}, |)$: 
+  $(\mathbb{N}^{+}, |)$:
     & $a|a, a|b, b|c \implies a|c, a|b \land b|a \implies a = b$\\
-  $(2^A, \subseteq)$: 
+  $(2^A, \subseteq)$:
     & $ B \subseteq B,\; B \subseteq C \subseteq D,\; B\subseteq C \land C \subseteq B \implies B = C$ \\
-    & if $|A|\leq 1$ then it is even a linear ordered poset. 
+    & if $|A|\leq 1$ then it is even a linear ordered poset.
 \end{tabular}
 
 \begin{definition}
-Given a poset $(A, \leq)$. 
-An element $x \in A$ is a \dt{minimal element} if $y \leq x \implies x=y$. 
+Given a poset $(A, \leq)$.
+An element $x \in A$ is a \dt{minimal element} if $y \leq x \implies x=y$.
 Each poset can be visualised by a Hasse diagram
 
-\TODO{\begin{tabular}{l}draw Hasse-Diagram, first which edges are not drawn, \\then a diagram showing the minimal elements\end{tabular}}
+\TODO{Draw Hasse-Diagram, first which edges are not drawn, then a diagram showing the minimal elements}
 
-An element $x \in A$ is 
+An element $x \in A$ is
 \begin{compactitem}
   \item a \dt{maximal element} if $y \geq x \implies x=y$
   \item the \dt{0-element} if $\forall y \in A : x \leq y$ \\
@@ -110,32 +110,32 @@ An element $x \in A$ is
 
 Intervall $[x,y] = \{z \in A \mid x \leq z \leq y\}$
 
-$(A, \leq)$ is locally finite if $\forall x,y \in A: | [x,y]| < \infty$. 
+$(A, \leq)$ is locally finite if $\forall x,y \in A: | [x,y]| < \infty$.
 \end{definition}
 
 \textbf{Examples.} \\
 \begin{tabular}{ll}
-  $(\mathbb{N}, \leq)$ 
+  $(\mathbb{N}, \leq)$
     & 0, $\nexists$ 1-element, locally finite \\
   $(\mathbb{N}^{+}, \mid)$
     & locally finite, 0-element = $1$ \\
-  $(\mathbb{N}, \mid)$, 
+  $(\mathbb{N}, \mid)$,
     & 1-element = $0$ \\
-  $(\mathbb{R}, \leq)$ 
+  $(\mathbb{R}, \leq)$
     & not locally finite
 \end{tabular}
 
-\textbf{Assumtions.}
+\textbf{Assumptions.}
 Let $(\mathbb{P}, \leq)$ be a locally finite poset. And we have a map $f \rightarrow \mathbb{R}$, and some function $S_f(x) = \sum_{z \leq x} f(z)$
 
 \textbf{Example.}
 
 \begin{align*}
-  \text{1)} 
+  \text{1)}
     & (\mathbb{N}, \leq) \\
     & f \leftrightarrow (a_n) \\
     & S_f \leftrightarrow \sum_{k\leq n} a_k \\
-  \text{2)} & \TODO{Diagram } \\
+  \text{2)} & \fbox{TODO: Diagram} \\
     & S_f(x) = f(0) + f(a) + f(b) + f(x) \\
     & a_n = \sum_{k \leq n} a_k - \sum_{k \leq n-1} a_k = S_f(n) - S_f(n-1)
 \end{align*}
@@ -144,13 +144,13 @@ Let $(\mathbb{P}, \leq)$ be a locally finite poset. And we have a map $f \righta
 given $S_f$, find $f$
 
 \begin{definition}
-$(P, \leq)$ is a locally finite poset with a 0-element. 
-We have a \dt{Möbius function} of $P$ $\mu: P\times P \rightarrow \mathbb{R}$. 
-if 
+$(P, \leq)$ is a locally finite poset with a 0-element.
+We have a \dt{Möbius function} of $P$ $\mu: P\times P \rightarrow \mathbb{R}$.
+if
 \[
-  \forall x,y \in P: \sum_{z\in [xy]} \mu(z,y) = \delta_{x,y} = 
+  \forall x,y \in P: \sum_{z\in [xy]} \mu(z,y) = \delta_{x,y} =
     \begin{cases}
-      1 & \text{if } x = y \\ 
+      1 & \text{if } x = y \\
       0 & \text{otherwise}
     \end{cases}
 \]
@@ -195,8 +195,8 @@ $ m \geq n+2 \implies \mu(n,m) = 0$
 
 
 \Theorem.
-$(P_1, \leq_1), (P_2, \leq_2)$, locally finite poset, with 0-element. 
-And we define $(P, \leq)$ as 
+$(P_1, \leq_1), (P_2, \leq_2)$, locally finite poset, with 0-element.
+And we define $(P, \leq)$ as
 \[
   P = P_1 \times P_2, (x_1,x_2) \leq (y_1, y_2) :\implies x_1 \leq_1 y_1 \text{ and } x_2 \leq_2 y_2
 \]
@@ -209,7 +209,7 @@ $\Rightarrow (P, \leq)$ is loc finite poset with 0-element ($=(0_1, 0_2)$) with 
 \end{align*}
 
 \textbf{Example.}
-We have a Set $M = \{a_1, \ldots , a_n\}$. We claim that 
+We have a Set $M = \{a_1, \ldots , a_n\}$. We claim that
 \[
   (2^M, \subseteq) \cong ( \{0,1\}, \leq)^n
 \]
@@ -224,7 +224,7 @@ E.g.: $n = 5: A = \{a_2,a_5\}, B= \{a_1, a_2, a_3, a_5\},\; A, B \in 2^M$
   x \in A \rightarrow e_{x,A} = 1 \Rightarrow  e_{x,B} = 1 \implies x \in B\\
 \]
 
-Remark that: $e_{x,A} = 1 \Rightarrow e_{x,B} = 1$ is equal to $e_{x,A} \leq e_{x,B}$ 
+Remark that: $e_{x,A} = 1 \Rightarrow e_{x,B} = 1$ is equal to $e_{x,A} \leq e_{x,B}$
 
 \[
     ( \{0,1\}, \leq): \mu(00) = \mu(1,1) = 1, \mu(0,1) = -1, \mu(1,0) = 0
@@ -235,29 +235,29 @@ Remark that: $e_{x,A} = 1 \Rightarrow e_{x,B} = 1$ is equal to $e_{x,A} \leq e_{
     &= 1
 \end{align*}
 
-We see that: 
-$A\not\subseteq B \Rightarrow \mu(A,B) = 0$, 
-$A\subseteq B \Rightarrow (-1)^{|B| - |A|}$. 
+We see that:
+$A\not\subseteq B \Rightarrow \mu(A,B) = 0$,
+$A\subseteq B \Rightarrow (-1)^{|B| - |A|}$.
 
 \Theorem.
 (Möbius inversion)
-$(P, \leq)$ is a loc, finite poset with a 0-element. 
-And $\mu: P \times P \rightarrow \mathbb{R}$ the Möbius function of $(P, \leq)$. 
+$(P, \leq)$ is a loc, finite poset with a 0-element.
+And $\mu: P \times P \rightarrow \mathbb{R}$ the Möbius function of $(P, \leq)$.
 
-Let for $f: P \rightarrow \mathbb{R}$ its sum function $S_f: P \rightarrow \mathbb{R}$ be given: $S_f(x) = \sum_{z \in [0,x]} f(z)$. 
+Let for $f: P \rightarrow \mathbb{R}$ its sum function $S_f: P \rightarrow \mathbb{R}$ be given: $S_f(x) = \sum_{z \in [0,x]} f(z)$.
 
 $\Rightarrow$: $f(x) = \sum_{z \in [0,x]} S_f(z) * \mu(z,x)$
 
 \textbf{Example.}
 $(\mathbb{N}, \leq)$, $f: \mathbb{N} \rightarrow \mathbb{R}$, $S_f(n) = \sum_{k=0}^{n} f(k)$
 
-\[    
+\[
   f(n) = \sum_{k=0}^{n} s_f(k) \mu(k,n) = s_f(n) - S_f(n-1)
 \]
 
-\Proof. 
+\Proof.
 \begin{align*}
-    \sum_{z \in [0,x]} S_f(z) * \mu(z,x) 
+    \sum_{z \in [0,x]} S_f(z) * \mu(z,x)
     &= \sum_{z \in [0,x]} \sum_{u \in [0,x]} f(u) \mu(z,x) \\
     &= \sum_{u \in [0,x]} \sum_{z \in [0,x]} f(u) \mu(z,x) \\
     &= \sum_{u \in [0,x] f(u)} \sum_{z \in [0,x]} \mu(z,x) \\
@@ -265,5 +265,5 @@ $(\mathbb{N}, \leq)$, $f: \mathbb{N} \rightarrow \mathbb{R}$, $S_f(n) = \sum_{k=
     &= f(x)
 \end{align*}
 
-\TODO{graph of rectangle halfed diagonally, one side colored} 
+\TODO{graph of rectangle halfed diagonally, one side colored}
 

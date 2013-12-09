@@ -15,7 +15,7 @@
 \usepackage{booktabs}
 \usepackage{microtype}
 \usepackage{float}
-\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{framed}
 \usepackage{cleveref}
 \usepackage{tabularx}
 \usepackage{caption}
@@ -90,7 +90,10 @@
 \pltopsep=-5pt
 \plpartopsep=0pt
 
-\def\TODO#1{\fbox{TODO: #1}}
+\newcommand{\TODO}[1]{
+  \begin{framed}
+    TODO: {#1}
+  \end{framed}}
 
 \newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,baseline] \node [anchor=base] (#1) {$#2$};}
 

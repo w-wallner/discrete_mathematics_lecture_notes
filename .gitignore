@@ -4,7 +4,7 @@
 *.swo
 *~
 
-#ignore latex buildfiles
+#ignore latex build-files
 *.aux
 *.log
 *.nav
@@ -20,8 +20,11 @@
 *.fls
 *.fdb*
 
-#ignore pdf-files 
+#ignore pdf-files
 *.pdf
 
 # ignore dolphin-directory-file
 *.directory
+
+# include figures
+!*/pics/*.pdf

@@ -18,7 +18,7 @@ labelled structure set $\mathcal{A} = (A,w)$, the atomic object can be enumerate
 
 \begin{align*}
   \mathcal{A}+\mathcal{B} &\leftrightarrow \hat{A}(z) + \hat{B}(z) \\
-  \mathcal{A}*\mathcal{B} &\leftrightarrow \hat{A}(z) \hat{B}(z) \\
+  \mathcal{A}*\mathcal{B} &\leftrightarrow \hat{A}(z) * \hat{B}(z) \\
   \seq(\mathcal{A}) &\leftrightarrow \frac{1}{1 - \hat{A}(z)}\\
   \set(\mathcal{A}) &\leftrightarrow \exp(\hat{A}(z)) \\
   \cyc(\mathcal{A}) &\leftrightarrow \log \frac{1}{1 - \hat{A}(z)}\\
@@ -26,25 +26,29 @@ labelled structure set $\mathcal{A} = (A,w)$, the atomic object can be enumerate
 
 % end of repetition
 
-\TODO{ first example}
+\textbf{Example.}
+\begin{align*}
+  \mathcal{P} &= set(cyc(\mathcal{A})), \mathcal{A} = \{ \text{\ding{172}} \}\\
+  \hat{P}(z)  &= \exp{(\log{\frac{1}{1-z}})} = ∑_{n≥0} n! \frac{z^n}{n!}
+\end{align*}
 
 \textbf{Example.}
 we got set partitions $M = M_1 \cup M_2 \cup \ldots \cup M_k$ with $M_i \neq \varnothing$ and $M_i \cap M_j = \varnothing$
-
 \begin{align*}
-  \mathcal{P} = \set( \set( \mathcal{A} \backslash \{\varnothing\} )) \\
-  \hat{p}(z) = \exp(\exp((z) = 1) \\
+  \mathcal{P} = \set( \set( \mathcal{A}) \backslash \{\varnothing\} ) \\
+  \hat{P}(z) = \exp(\exp((z) - 1) \\
   [z^n] e^{e^z - 1} = \sum_{k\geq 0 } S_{n,k} \\
 \end{align*}
-\TODO{check above formula for typos}
 
-\subsection{Exponential Generating functions and ordered structures}
+\subsection{Exponential Generating Functions and Ordered Structures}
 
-Ordereed n-tuples $(q_1,q_2, \ldots, q_n), q_i \in \{1,2, \ldots, N\}$, no repetition
+Ordered n-tuples $(q_1,q_2, \ldots, q_n), q_i \in \{1,2, \ldots, N\}$, no repetition
 
 $a_n$ is number of such n-tuples
 
-$Q = \{\epsilon,1\} * \{\epsilon,2\} * \ldots * \{\epsilon,N\} $
+$Q = \underbrace{\{\epsilon,1\}}_{1+z} *
+     \underbrace{\{\epsilon,2\}}_{1+z} * \ldots *
+     \underbrace{\{\epsilon,N\}}_{1+z} $
 
 \begin{align*}
   \sum_{n\geq 0} a_n \frac{z^n}{n!} &=
@@ -53,10 +57,9 @@ $Q = \{\epsilon,1\} * \{\epsilon,2\} * \ldots * \{\epsilon,N\} $
     &= \frac{N!}{(N-n)!}
 \end{align*}
 
-with repetition:
-\TODO{check this formula for correctnes}
+With repetition:
 \[
-  (1+z+ \frac{z^2}{2!} + \ldots)^N
+  (1+z+ \frac{z^2}{2!} + \frac{z^3}{3!} + \ldots)^N
     = e^{zN} = \sum_{n\geq 0} N^n \frac{z^n}{n!}
 \]
 

@@ -63,16 +63,16 @@ The number theoretical number order $(\mathbb{N}^{+}, \mid)$ is isomorphic to $(
 
 \begin{align*}
   f: &\mathbb{N}^{+} \rightarrow \mathbb{R}, \\
-  S_f(n) =& \sum_{d\mid n} f(d) \Rightarrow f(n) = \sum_{d\mid n} S_f(d)\mu(\frac{n}{d}
+  S_f(n) =& \sum_{d\mid n} f(d) \Rightarrow f(n) = \sum_{d\mid n} S_f(d)\mu\left(\frac{n}{d}\right)
 \end{align*}
 
 \subsection{Lattices}
 \begin{definition}
-Let $(P, \leq)$ be a poset, and $x,y,b \in P: a\leq x \leq b$. Furthermore say $a$ is a lower bound for $x$, and $b$ be an upper bound for $x$.
+Let $(P, \leq)$ be a poset, and $x,a,b \in P: a\leq x \leq b$. Furthermore say $a$ is a lower bound for $x$, and $b$ be an upper bound for $x$.
 
 The smallest common upper bound of $x,y \in P: x \vee y$ ("$x$ join $y$").
 
-The greatest common upper bound of $x,y \in P: x \wedge y$ ("$x$ meet $y$").
+The greatest common lower bound of $x,y \in P: x \wedge y$ ("$x$ meet $y$").
 
 \begin{align*}
     X \subseteq P: &\bigvee_{x \in X} x \text{ join of } X, 
@@ -129,7 +129,7 @@ Assume $x,y \in L$, Set $B = \{u \in L \mid x \leq u \wedge y \leq u\}$.
 
 \begin{align*}
   x \leq 1, y \leq 1
-    \Rightarrow 1 \in B \Rightarrow \neq \varnothing, |B| < \infty \\
+    \Rightarrow 1 \in B \Rightarrow B \neq \varnothing, |B| < \infty \\
   \Rightarrow B= \{u_1, u_2 \ldots , u_m\}: 
     u:= u_1 \wedge u_2 \wedge \ldots \wedge u_m \\
   \Rightarrow u \in B \\
@@ -228,7 +228,7 @@ division with remainder
 \begin{align*}
   a,b \in \mathbb{Z}, \; 
   b > 0 \;\exists q,r: 
-    & \; a = b  + r, \\ 
+    & \; a = b q  + r, \\ 
     & \; 0 \leq r < b
 \end{align*}
 \end{definition}

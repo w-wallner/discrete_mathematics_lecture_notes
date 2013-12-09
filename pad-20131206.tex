@@ -48,18 +48,19 @@ The previous are equivalent to
   \hline
   & x \equiv 11 * 1 * 4 + 5 *9 *9 \mod 55\\
   & x \equiv 449 mod 55 \\
-  & x \equiv 9 (55)
+  & x \equiv 9 (55) \\
+  & \text{solutions:} \{\cdots, -46, 9, 64, 119, \cdots \}
 \end{align*}
 
 \Proof.
 
 1) x is a solution: $m_i, i = 1,2, \ldots, r$, are pairwise coprime 
 \[
-  \implies gcd\left(\frac{m}{m_j}\right) = 1 \implies \exists b_j
+  \implies gcd\left(\frac{m}{m_j}, m_j\right) = 1 \implies \exists b_j
 \]
 
 \begin{align*}
-  \frac{m}{m_j} &\equiv 0 (m_j) \quad \forall i \neq j \\
+  \frac{m}{m_j} &\equiv 0 (m_i) \quad \forall i \neq j \\
   \implies \sum_{j=1}^{r}\frac{m}{m_j} b_j * a_j &\equiv 
     \frac{m}{m_j} \underbrace{b_i}_{(\frac{m}{m_j})^{-1} \mod m_i} a_i (m_i) \\
   &\equiv a_i (m_i)
@@ -94,7 +95,7 @@ Second case:
   &m = p^e, p \in \mathbb{P}, e \geq 1 \\
   &\bar{a}\in \mathbb{Z}_m \implies gcd(a,p^e) = \begin{cases}
     1   &\text{ if $\bar{a} \in \mathbb{Z}_m^{*}$} \\
-    p^f &\text{ $1 \leq f \leq e$} 
+    p^f &\text{ $1 \leq f < e$} 
   \end{cases} \\
   &\bar{a}\in \mathbb{Z}_m^{*} \Leftrightarrow p \not|a \\
   & 0,1,2, \ldots, p^e -1\\
@@ -152,7 +153,7 @@ In particular
 
 \Theorem.
 \[
-  p \in \mathbb{P}, \quad p,q\; odd, \quad p \neq q
+  p, q \in \mathbb{P}, \quad p,q\; odd, \quad p \neq q
 \]
 \begin{align*}
   m = pq, \quad v = lcm(p-1, q-1) \\
@@ -165,7 +166,7 @@ we have to show: $pq \mid a ^{kv +1} - a$.
   &\Leftrightarrow p \mid a ^{kv +1} - a \text{ and } q \mid a ^{kv +1} - a\\
   &\text{Case 1: } p \mid a \\
   &\text{Case 2: } p\not| a: 
-    a^{p-1} \equiv 1 (p) \implies a^{kv} \equiv 1(p)
+    a^{p-1} \equiv 1 (p) \implies a^{kv} \equiv 1(p) \implies a^{kv+1} \equiv a(p)
 \end{align*}
 
 \subsection{RSA-Algorithm}
@@ -209,7 +210,7 @@ User i sends to user j:
 \]
 User j checks with his private key:
 \[
-  D_j (E_J(D_i(x))) = D_j(x)
+  D_j (E_J(D_i(x))) = D_i(x)
 \]
 then $E_i$ afterwards:
 \[
@@ -223,10 +224,10 @@ If the order is low then it is possible to find the $x$.
 \textbf{Recall.}
 If $G$ is a group and $x\in G$:
 \[
-  org_G(x) = min\{ i\in \mathbb{N}^{+} \mid x^i = e \}
+  ord_G(x) = min\{ i\in \mathbb{N}^{+} \mid x^i = e \}
 \]
 \[
-  e^1 = e \implies ord_G(e) = 1, a \neq e \implies ord_G(a) > 1
+  e^1 = e \implies ord_G(e) = 1, a \neq e \implies ord_G(a) > 1 \quad \text{e = neutral element}
 \]
 
 \textbf{Cyclic group.}
@@ -240,7 +241,7 @@ G is finite:
   U \leq  G \implies |U| \mid |G|, 
   & \GroupGenBy{x} = \{ e, x, x^2, x^3, \ldots x^{ord_G(x) -1}\}
     &\implies |\GroupGenBy{x}| = ord_G(x) \\
-    &\implies ord_G(x) | \underbrace{|G|}_{text{order of the group}} \\
+    &\implies ord_G(x) | \underbrace{|G|}_{\text{order of the group}} \\
 \end{align*}
 
 G is cyclic
@@ -249,14 +250,20 @@ G is cyclic
   & \Leftrightarrow \exists x \in G: ord_G(x) = |G|
 \end{align*}
 
+Trivial groups:
+\begin{align*}
+  & \GroupGenBy{e} = \{e\} \\
+  & G \leq G
+\end{align*}
+
 \begin{definition}
   \[
-    \bar{a} \in \mathbb{Z}_m^{*} \text{ s.t. } \GroupGenBy{\bar{x}} = \mathbb{Z}_m^{*} 
+    \bar{a} \in \mathbb{Z}_m^{*} \text{ s.t. } \GroupGenBy{\bar{a}} = \mathbb{Z}_m^{*} 
 \]
 is called \dt{primitive root mod m}
 
 $\bar{a}$ primitive root mod m 
-$\implies \mathbb{Z}_m^{*} = \{\bar{a}, \bar{a}^2, \bar{a}^3, \ldots, \bar{a}^{\varphi{m)}} \}$
+$\implies \mathbb{Z}_m^{*} = \{\bar{a}, \bar{a}^2, \bar{a}^3, \ldots, \bar{a}^{\varphi{m)}}=\bar{1} \}$
 \end{definition}
 
 \textbf{Example.}
@@ -268,9 +275,11 @@ $\implies \mathbb{Z}_m^{*} = \{\bar{a}, \bar{a}^2, \bar{a}^3, \ldots, \bar{a}^{\
   &\mathbb{Z}_5^{*} = \{\bar{1}, \bar{2}, \bar{3}, \bar{4}\} 
     = \GroupGenBy{\bar{2}} = \GroupGenBy{\bar{3}} \neq \GroupGenBy{\bar{4}}
     = \{\bar{1}, \bar{4}\} \\
+  &\mathbb{Z}_8^{*} = \{\bar{1}, \bar{3}, \bar{5}, \bar{7}\} \text{ has no primitive roots} \implies \mathbb{Z}_8^{*}\text{ is not a cyclic group} \\
+  & \quad \GroupGenBy{\bar{1}} = \{\bar{1}\} \quad \GroupGenBy{\bar{3}}=\{\bar{3}, \bar{3}^2\}=\{\bar{3}, \bar{1}\} \\
+  & \quad \GroupGenBy{\bar{5}}=\{\bar{5}, \bar{5}^2\}=\{\bar{5}, \bar{1}\} \\
+  & \quad \GroupGenBy{\bar{7}}=\{\bar{7}, \bar{7}^2\}=\{\bar{7}, \bar{1}\} \\
 \end{align*}
-
-\TODO{finish example}
 
 \Theorem.
 $\mathbb{Z}_m^{*}$ cyclic  
@@ -282,7 +291,9 @@ $\mathbb{Z}_m^{*}$ cyclic
 \end{align*}
 
 \Proof.
-Let $g$ be a primitive rot mod $p$. Then $g$ or $g+p$ is a primitive root mod $p^2$.
+Let $g$ be a primitive rot mod $p$. $\rightarrow g^p \equiv 1 (p), \forall i < p : g^i \not\equiv 1 (p) $
+
+Then $g$ or $g+p$ is a primitive root mod $p^2$.
 
 
 \textbf{Claim.}

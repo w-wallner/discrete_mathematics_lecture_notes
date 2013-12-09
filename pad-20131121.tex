@@ -201,7 +201,7 @@ Sketch of proof:
 \subsection{Recurrence relations}
 
 \textbf{Example.}
-Consider the Towers of Hanoi problem with $n$ disk. How many steps do we need to move the disks?
+Consider the Towers of Hanoi problem with $n$ disks. How many steps do we need to move the disks?
 
 \begin{figure}[htbp]
   \centering  \includegraphics[width=0.8\textwidth]{02_higher_combinatorics/pics/TowerOfHanoi}
@@ -235,7 +235,7 @@ A(z) &= \frac{z}{(1-z)(1-2z)} \\
     F_0 = 0, F_1 = 1, F_{n+2} = F_{n+1} + F_n \\
     F(z) &= \sum_{n≥0} F_n z^n : \\
     F(z) - \underbrace{F_0}_{0} - F_1 z &= z \left( F(z) - \underbrace{F_0}_{0} \right) + z^2 F(z)\\
-    ⇒ F(z) &= \frac{z}{1-z-z^2} \\
+    \implies F(z) &= \frac{z}{1-z-z^2} \\
     F(z) &= \frac{-z}{(z-z_1) (z-z_2)},
         \quad z_{1,2} = \frac{-1 \pm \sqrt{5}}{2} \\
     F(z) &= \frac1{\sqrt{5}} \cdot \frac{1}{1- \frac{1 + \sqrt{5}}{2} \cdot z} - \frac{1}{\sqrt{5}} \cdot \frac{1}{1- \frac{1 - \sqrt{5}}{2} \cdot z}  \\
@@ -266,12 +266,16 @@ A(z) - a_0 - a_1 z - \ldots - a_{k-1} z^{k-1} + q_1 z \left( A(z) - \sum_{i=0}^{
 A(z) = \frac{ p(z) }{ 1 + q_1 z + q_2 z^2 + \ldots + q_k z^k } = \frac{p(z)}{q(z)} = \frac{p(z)}{\prod_{i=1}^{r} (z - z_i)^{\lambda_i}}
 \end{align*}
 
+Observation: $deg(p) < deg(q)$.
+
 Use ansatz:
 \begin{align*}
-\frac{p(z)}{q(z)} &= \sum_{i=1}^{r} \sum_{j=1}^{\lambda} \frac{A_{ij}}{(z-z_i)^j} \\
-&= \frac{A_{11}}{z-z_n} + \frac{A_{12}}{(z-z_n)^2} + \cdots + \frac{A_{1\gamma_i}}{(1-z)(1-2z)} + \cdots \\
+\frac{p(z)}{q(z)} &= \sum_{i=1}^{r} \sum_{j=1}^{\lambda_i} \frac{A_{ij}}{(z-z_i)^j} \\
+&= \frac{A_{11}}{z-z_1} + \frac{A_{12}}{(z-z_1)^2} + \cdots + \frac{A_{1\lambda_i}}{(z-z_1)^{\lambda_i}} + \cdots \\
 &= \sum_i\sum_j \frac{B_{ij}}{\left(1-\frac{z}{z_i}\right)^j}= \sum_i\sum_j B_{ij} \cdot \binom {n+j-1}{j-1} \cdot z_i^{-n}\\
-&= \frac{\alpha}{1-z} + \frac{\beta}{1-2z} + \frac{\gamma}{(1-2z)^2} + \frac{\delta}{(1-2z)^3}
+&= \frac{\alpha}{1-z} + \frac{\beta}{1-2z} + \frac{\gamma}{(1-2z)^2} + \frac{\delta}{(1-2z)^3}\\
+&\implies A_z = \sum_{n\geq 0}\left(p_1(n) \left( \frac{1}{z_1} \right)^n + p_2(n) \left( \frac{1}{z_2} \right)^n + \cdots + p_i(n) \left( \frac{1}{z_i} \right)^n \right)z^n \\
+&deg(p_i) \leq \lambda_i + 1
 \end{align*}
 \TODO{Check the previous formulas for completeness}
 \TODO{Complement with Patrik's notes}

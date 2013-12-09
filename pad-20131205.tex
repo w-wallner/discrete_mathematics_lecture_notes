@@ -19,11 +19,11 @@ integers $a,b \in \mathbb{Z}, a|b, t = gcd(a,b), -t, a = b*q + r$
 
 \subsection{Euklidian algorithm}
 \begin{align*}
-  a &= b q_0 +r \\
-  b &= r_0*q_1 + r_1 \\
-  r_0 &= r_1 + q_2 + r_2\\
-  r_{k-2} &= r_{k-1} * q_k + r_k \\
-  r_{k-1} &= r_{k} * q_{k+1} + Q \\
+  a &= b q_0 +r_0 \\
+  b &= r_0 q_1 + r_1 \\
+  r_0 &= r_1 q_2 + r_2\\
+  r_{k-2} &= r_{k-1}  q_k + r_k \\
+  r_{k-1} &= r_{k}  q_{k+1} + 0 \\
 \end{align*}
 
 all the previous formulas: $ b > r_0 > r_1 > r_2 > \ldots > r_k > 0$. From this follows
@@ -34,16 +34,16 @@ all the previous formulas: $ b > r_0 > r_1 > r_2 > \ldots > r_k > 0$. From this 
 \Proof. \\
 \begin{tabular}{ll}
   1) & $r_k | r_{k-1} \implies r_k | r_{k-1} q_k + r_k = r_{k-2}$ \\
-     & $\implies \ldots \implies r_k | a, a_k | b$ \\
-  2) & $r | a_1 \wedge t | b \stackrel{\text{??}}{\implies} t| r_k$ \\
-     & $\implies t | a-bq_0 \implies t | r_1 \implies \ldots t|r_k$
+     & $\implies \ldots \implies r_k | a, r_k | b$ \\
+  2) & $r | a \wedge t | b \stackrel{\text{??}}{\implies} t| r_k$ \\
+     & $\implies t | a-bq_0 \implies t | r_1 \implies \ldots \implies t|r_k$
 \end{tabular}
 
 
 \Remark.
 \begin{align*}
-  r_j &= r_j + 1 \underbrace{q_{j+2}}_{ \geq 1} + r_{j+2} \geq \underbrace{r_{j+1}}_{ > r_j+2} + r_{j+2} \\
-      & \forall j: r_{j+2} \geq \frac{r_j}{2}
+  r_j &= r_{j + 1} \underbrace{q_{j+2}}_{ \geq 1} + r_{j+2} \geq \underbrace{r_{j+1}}_{ > r_j+2} + r_{j+2} > 2 r_{j+2} \\
+      & \forall j: r_{j+2} < \frac{r_j}{2}
 \end{align*}
 
 \Theorem.
@@ -57,9 +57,9 @@ reverse Euklidian algorithm
 \begin{definition}
 $R$ is a \dt{commutative ring} with $1$. \\
 $(R,t)$ \dt{abelian group} $\rightarrow 0$, inverse of $a$ is $-a$\\
-$(R,\cdot)$ \dt{semigroup group}, if $\exists$ neutral element: $1$ \\
-distributibe laws\\
-$R$ \dt{integral domain} $\iff \nexists a,b \in R \backslash \{0\}: a-b = 0$
+$(R,\cdot)$ \dt{semigroup}, if $\exists$ neutral element: $1$ \\
+distributive laws\\
+$R$ \dt{integral domain} $\iff \nexists a,b \in R \backslash \{0\}: a*b = 0$
 \end{definition}
 
 \textbf{Example.}
@@ -78,7 +78,7 @@ $R$ \dt{Euklidean ring} if $R$ integral domain and there is an Euklidean functio
 \]
 
 \begin{compactenum}
-\item $a = bq + r$ with $r = 0$ or $n(r) > n(b)$
+\item $a = bq + r$ with $r = 0$ or $n(r) < n(b)$
 \item $\forall a,b \in R \backslash \{0\} : n(a) \leq n(ab)$
 \end{compactenum}
 \end{definition}
@@ -86,11 +86,11 @@ $R$ \dt{Euklidean ring} if $R$ integral domain and there is an Euklidean functio
 \textbf{Example.}
 all natural numbers $\mathbb{Z}$, because $n(a) = |a|$
 
-$K$ is a field, and e look at $K[x] = 
-\{a_0 + a_1 x + a_x x^2 \ldots a_n x^n \mid a_i \in K, n \in \mathbb{N} \}
-,+, \cdot )$
+$K$ is a field, and $K[x] = 
+\left(\{a_0 + a_1 x + a_2 x^2 \ldots a_n x^n \mid a_i \in K, n \in \mathbb{N} \}
+,+, \cdot \right)$
 
-$K[x]$ is Eukledian ring:
+$K[x]$ is Euklidean ring:
 \begin{align*}
   &p(x) \in K[x] \\
   &n(p(x)) = deg(p(x))
@@ -101,7 +101,7 @@ a \dt{field} has a addition and a multiplication
 $(K, +, \cdot):$ 
   $(K,+)$ abelean group (associativ 0, $\forall a \exists -a$) \\
   $(K \backslash \{0\}, \cdot)$ abelean group \\
-  construction laws
+  distributive laws
 \end{definition}
 
 \textbf{Example.}
@@ -110,9 +110,9 @@ $(K, +, \cdot):$
   -x^4 - x^3 + x^2 - 15 x \\
   \hline 
     2x^3 - 2x^2 - 22 x + 6 \\
-    2x^3 - 2x^2 - 2 x -30 \\ 
+    -2x^3 - 2x^2 + 2 x -30 \\ 
     \hline
-      -4x^2 - 10 x - 24
+      -4x^2 - 20 x - 24
 \end{align*}
 
 \begin{definition}
@@ -127,7 +127,7 @@ $\mathbb{P}$ set of primes
 \]
 
 \Proof.
-Case 1) $p|a$, alleady true\\
+Case 1) $p|a$, already true\\
 Case 2) $p \not\mid a$
 \begin{align*}
   &\implies gcd(p,a) = 1 
@@ -161,7 +161,7 @@ $\nu_p(n)$ \ldots multiplicity of $p$ in the factorisation of $n$
 
 \Proof.
 \[
-  \mathbb{P} = \{p_1, \ldots , p_n\}, N = p_1 \ldots p_r + 1 = \prod_{i=1}^r p_i^{\nu_p(N)}
+  \mathbb{P} = \{p_1, \ldots , p_r\}, N = p_1 \ldots p_r + 1 = \prod_{i=1}^r p_i^{\nu_p(N)}
 \]
 Contradiction!
 
@@ -178,17 +178,17 @@ residue class: $a+m \mathbb{Z} = \bar{a}$
 \]
 \begin{align*}
   a \equiv b \mod m & :\iff m \mid a-b \\
-  a \equiv (m)     & :\iff \bar{a} = \bar{b}
+  a \equiv b (m)     & :\iff \bar{a} = \bar{b}
 \end{align*}
 \[
-  \mathbb{Z}_m = \{ \bar{0},\bar{1},\bar{2}, \ldots, \bar{m-1}\} 
-  \bar{0} \cup \bar{1} \cup \bar{2} \cup  \ldots \cup \bar{m-1} = \mathbb{Z}
+  \mathbb{Z}_m = \{ \bar{0},\bar{1},\bar{2}, \ldots, \overline{m-1}\} , 
+  \bar{0} \cup \bar{1} \cup \bar{2} \cup  \ldots \cup \overline{m-1} = \mathbb{Z}
 \]
 
 
 \begin{definition}
 \[
-  \bar{a} + bar{b} := \bar{a+b}, \bar{a} \cdot \bar{b} := \bar{ab}
+  \bar{a} + \bar{b} := \overline{a+b}, \bar{a} \cdot \bar{b} := \overline{ab}
 \]
 \end{definition}
 
@@ -215,14 +215,16 @@ $(\mathbb{Z}_m, + , \cdot)$ is a commutative ring with $1$
 \[
   m = 5: \bar{2}^{-1} = \bar{3} \\
 \]
-\TODO{finish example}
+\[
+  m = 6: \bar{2}\cdot\bar{3} = \bar{0} \Rightarrow \bar{x} \cdot \bar{2} \cdot \bar{3} = \bar{0} \quad \bar{x} \cdot \bar{2} \neq \bar{1} \Rightarrow \nexists \bar{2}^{-1}
+\]
 
 \Theorem.
 $\exists \bar{a}^{-1} \text{ in } \mathbb{Z}_m \iff gcd(a,m) = 1$ ($a,m$ are co-prime)
 
 \Proof.
 "$\Rightarrow$": 
-  $\bar{a}\cdot \bar{x} = \bar{1} \Rightarrow k\in Z 
+  $\bar{a}\cdot \bar{x} = \bar{1} \Rightarrow \exists k\in Z : 
   ax = 1 + km \Rightarrow ax - km = 1$
 
   $d = gcd(a,m) \Rightarrow d \mid ax - km \Rightarrow d = 1$
@@ -240,17 +242,16 @@ set of prime redisue classes mod m
 
 \textbf{Example.}
 \[
-  \mathbb{Z}_5^{*} = \{ \bar{1}, \bar{2}, \bar{3}, \bar{4} \}, \mathbb{Z}_2^{*} = \{ \bar{1}, \bar{5} \}
+  \mathbb{Z}_5^{*} = \{ \bar{1}, \bar{2}, \bar{3}, \bar{4} \}, \mathbb{Z}_6^{*} = \{ \bar{1}, \bar{5} \}
 \]
 
-\subsection{group of units}
-
 \textbf{Example.}
-$ m = 17$, find $\bar{13}^{-1}$: $ 13 x \equiv 1 (17)$ $x \equiv 4 (17)$
+$ m = 17$, find $\overline{13}^{-1}$: $ 13 x \equiv 1 (17)$ $x \equiv 4 (17)$
 \begin{align*}
-  17 = 13 * 1 +4, 13 = 4*3 +1 
+  &17 = 13 * 1 +4\\
+   &13 = 4*3 +1 \iff 1 = 13-4*3 = 13-(17-13)*3 = 17*3+4*13 \\
+   & \Rightarrow x \equiv 4 (17)
 \end{align*}
-\TODO{finish example}
 
 \textbf{Example.}
 \begin{align*}
@@ -261,15 +262,15 @@ $ m = 17$, find $\bar{13}^{-1}$: $ 13 x \equiv 1 (17)$ $x \equiv 4 (17)$
 \textbf{Example.}
 \begin{align*}
   3b \equiv 3c (6) \\
-  3b = 3c + k*6 | /3 \\
+  3b = 3c + k*6 | :3 \\
   b = c + k*2 \\
   b \equiv c(5)
 \end{align*}
 
 \textbf{Example.}
 \begin{align*}
-  ab \equiv ac (am) \Rightarrow b \equiv  c (m) \\
-  ab \equiv ac (m) \Rightarrow b \equiv c (m)
+  &ab \equiv ac (am) \Rightarrow b \equiv  c (m) \\
+  &ab \equiv ac (m) \Rightarrow b \equiv c (m)
     \text{ if } ax = 1 (m) \text{ has a solution } \iff gcd(a,m) = 1
 \end{align*}
 
@@ -278,7 +279,6 @@ $ m = 17$, find $\bar{13}^{-1}$: $ 13 x \equiv 1 (17)$ $x \equiv 4 (17)$
 \Theorem.
 $m = m_1 m_2$, $gcd(m_1, m_2) = 1$. Then $x \equiv y (m) \iff \begin{cases} x \equiv y (m_1) \\ x \equiv y (m2) \end{cases}$
 
-\Proof.
 \ProofForward.
 \[
   x \equiv y (m) \iff x = y + km \implies x = y + k m_1 m_2 \implies
@@ -297,13 +297,13 @@ $m = m_1 m_2$, $gcd(m_1, m_2) = 1$. Then $x \equiv y (m) \iff \begin{cases} x \e
 \]
 \[
   \implies \exists l: x-y = l* m_1 \equiv 0 (m_2)\\
-  l \equiv 0 (m_2) \implies l = l * m_2 
-    \implies x-y = l* m_1 m_2
+  l \equiv 0 (m_2) \implies l = l' * m_2 
+    \implies x-y = l'* m_1 m_2
     \implies x \equiv y (m)
 \]
 
 \textbf{Corollary.}
-$m = \prod_{i=1} m_i$, $ gcd(m_i, m_j) = 1 \forall i \neq j$
+$m = \prod_{i=1}^r m_i$, $ gcd(m_i, m_j) = 1 \forall i \neq j$
 
 Then $x \equiv y (m) \iff \forall i = 1, \ldots, r : x \equiv y (m_i)$
 
@@ -318,4 +318,4 @@ $\implies$ $(*)$ has a unique solutiion mod $m = \prod_{i = 1}^r m_i$.
 
 and this is $x \equiv \sum_{j=1}^r \frac {m}{m_j} * b_j * a_j (m)$
 
-where $b_j = \left( \frac{m}{m_j} \right) ^{-1}$
+where $b_j = \left( \frac{m}{m_j} \right) ^{-1} (m_j)$

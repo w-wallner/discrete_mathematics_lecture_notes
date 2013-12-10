@@ -41,11 +41,11 @@ Search for $A$ s.t.
 \begin{definition}
 	\index{independence system!basis}
 	\index{matroid!rank}
-	$A\in S$ \dt{independence system!basis} of $M \Leftrightarrow A$ max (w.r.t. set inclusion $\subseteq$) independent set
+	$A\in S$ \dt{basis} of $M \Leftrightarrow A$ max (w.r.t. set inclusion $\subseteq$) independent set
 	\[
 	A, B \text{ basis of } M \Rightarrow |A| = |B| = r(M)
 	\]
-	$r(M)$... \dt{!rank} of the matroid
+	$r(M)$... \dt{rank} of the matroid
 \end{definition}
 
 \textbf{Theorem.} 
@@ -73,5 +73,51 @@ $S = \{A\subseteq E | A=\emptyset \text{ or A linear independent}\}$\\
 	[E] \text{ is a vector space}
 \]
 \[
-	\text{rank of M:} r(M) = dim[E],~A,B\in S,~|A|+1=|B|\Rightarrow \exists x\in B \text{ s.t. } A\cup \{x\}\in S
+	\text{rank of M: } r(M) = dim[E],~A,B\in S,~|A|+1=|B|\Rightarrow \exists x\in B \text{ s.t. } A\cup \{x\}\in S
 \]
+
+\textbf{Theorem: } Let $M=(E, S)$ be a matroid with weight function $w:E\rightarrow \mathbb{R}$\\
+$\Rightarrow$ \textbf{GREEDY} solves $A$ max (w.r.t. $\subseteq$) s.t. $w(A)$ min/max correct. (\textbf{GREEDY} computes basis with min/max weight)\\\\
+\textbf{Proof: } $A=\{a_1, a_2, ... a_r\}$ set after running \textbf{GREEDY}
+\begin{compactenum}
+	\item{
+		\begin{compactenum}[(a)]
+			\item{$A$ basis: $A\in S$ by construction\\
+			Assume $A$ not minimal: $\exists e \in E~~s.t.~~A\cup\{e\}\in S$\\ \textbf{CONTRADICTION}
+			}
+			\item{$w(a_1)\le w(a_2) \le ... w(a_r)$ (elements are sorted) $\checkmark$}
+			\item{$w(A)$ minimal}
+		\end{compactenum}
+	\item{Assume $\exists B = \{b_1, b_2, ... b_3\}$ basis, $w(B) < w(A),~ w(b_1\le w(a_1, ... w(b_3\le w(a_r)$\\
+	$i=min\{j | w(b_j)\le w(a_j)\}$}\\
+	$A_{i-1}=\{a_a, a_2, ... a_{i-1}\}$ status of $A$ after $m\le i-1$ iterations of greedy\\
+	$B_i = \{b_1, b_2, ... b_{i-1}, b_i\}$\\
+	$\Rightarrow |B_i| = |A_{i-1}|+1$
+	}
+	\item{Apply matroid condition:\\
+	$b_j = B_i \setminus A_{i-1}~~s.t.~~A_{i-1}\cup \{b_j\}\in S$}
+	\item{But:\\
+	$w(b_j)\le w_(b_i) < w(a_i) \Rightarrow \forall x \in B_i : w(x) < w(a)$}
+	\item{Thats not how greedy works, greedy would have taken $b_j)$ already\\
+	$\Rightarrow$ \textbf{CONTRADICTION}}
+\end{compactenum}
+
+\textbf{Theorem: } $M(E, S)$ independence system\\
+Assume: \textbf{GREEDY} solves the optimization problem \"A max s.t. $w(A)$ min/max\" correctly for all weight functions $w$\\
+$\Rightarrow$ M is a matroid.\\\\
+\textbf{Proof: } Assume $M$ not a Matroid
+\begin{compactenum}
+	\item{
+	$\exists A, B, \in S: |B| = |A| + 1 \land \forall x \in B \setminus A: A\cup \{x\} \notin S$\\
+	Set $w(e) = \begin{cases} 	|A| + 2 & \text{ if } e\in A\\
+								|A| + 1 & \text{ if } e \in B\setminus A\\
+								0 & else 
+				\end{cases} $
+	}
+	\item{
+	$w(A) = |A| * (|A| + 2) < (|A| + 1)^2 < w(B)$
+	}
+	\item{
+	$\Rightarrow~A$ not solution of the optimisation Problem, $w(A)$ not maximal
+	}
+\end{compactenum}

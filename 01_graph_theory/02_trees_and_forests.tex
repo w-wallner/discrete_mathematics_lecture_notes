@@ -1,3 +1,5 @@
+%!TEX root = ../main.tex
+
 %%%  04.10.2013  %%%
 %%%  VO 02
 \section{Trees and Forests}
@@ -181,6 +183,28 @@ of possible combinations.
 % Proof: F_1, F_2 \sub E
 % Observe:
 \input{01_graph_theory/02_fig_connecting_trees.tex}
+
+\subsection{Minimal or Maximal Spanning Tree}
+We have a weighted graph / network with:
+\begin{compactitem}
+  \item $G=(V, E)$ undirected,
+  \item $w: E \rightarrow \mathbb{R}$ weight function
+  \item $e \mapsto w(e)$
+  \item $F\subseteq E$
+  \item $w(F) = \sum_{e\in F} w(e)$ weight of the edge set F
+\end{compactitem}
+
+\textbf{Problem:} Search for a \dt{spanning forest} F with $w(F)$ maximal / minimal.\\ 
+
+\TODO{Image of a Graph and its spanning forest, maybe reuse from above or just reference it}
+
+\textbf{Algorithms:}
+\begin{compactitem}
+	\item Kruskal
+	\item Prim
+\end{compactitem}
+
+\TODO{Algorithms have been explained on the board via Slides but i cant find them in TISS}
 
 \missingdate{2013-10-10}
 \missingdate{2013-10-11}

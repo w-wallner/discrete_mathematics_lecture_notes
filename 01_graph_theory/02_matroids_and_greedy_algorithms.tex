@@ -1,0 +1,123 @@
+%!TEX root = ../main.tex
+
+\section{Matroids and Greedy Algorithms}
+
+\textit{Kruskal} and \textit{Prim} are greedy algorithm for maximalization/minimalization. 
+
+\textbf{Claim:} In general, greedy strategies fail, but for \dt{matroid}s they always work.\\
+
+\textbf{Kruskal:} edges sorted according to weight, always take the next best one with the restriction that it must not create a cycle.
+
+\begin{definition}
+\index{independence system}
+$(E, S)$ is an \dt{independence system} if $S \subseteq 2^E$, $S$ closed under set-inclusion i.e. $A\in S$, $B \subseteq A \Rightarrow B\in S$.\\
+$S$ is the set of independent sets.
+\end{definition}
+
+\textbf{Optimization Problem}:
+\[ (E, S), w: E \rightarrow \mathbb{R}, A\subseteq E: w(A) = \sum_{e\in A} w(e)\]
+Search for $A$ s.t.
+\[ w(A) \text{ maximal(/minimal)}, A\in S, A \text{ max w.r.t. } \subseteq\]
+
+\textbf{Example:} $(E, S)$, $E$ edge set, $S$ is set of forests.\\\\
+\textbf{GREEDY} $E, S, w, T$
+\begin{enumerate}
+	\item{sort elements of $E$ according to weight: $E=\{e_1, ... e_k|w(e_1)\le w(e_2)\le...\}$}
+	\item{$T=\emptyset$}
+	\item{for $K=1...m$: if $T\cup\{e_k\} \in S $ then $T:= T\cup\{e_k\}$}
+\end{enumerate}
+
+\begin{definition}
+	\index{independence system}
+	\index{matroid}
+	$M=(E, S)$ \dt{independence system} \dt{matroid} if
+	\[
+	A, B \in S~~s.t.~~|B|=|A|+1\Rightarrow\exists v\in B\setminus A \text{ with } A\cup\{v\}\in S
+	\]
+\end{definition}
+
+\textbf{Remark:} matroid property holds in general for $A,B \in S~~s.t.~~|A|<|B|$ as well\\
+
+\begin{definition}
+	\index{independence system!basis}
+	\index{matroid!rank}
+	$A\in S$ \dt{basis} of $M \Leftrightarrow A$ max (w.r.t. set inclusion $\subseteq$) independent set
+	\[
+	A, B \text{ basis of } M \Rightarrow |A| = |B| = r(M)
+	\]
+	$r(M)$... \dt{rank} of the matroid
+\end{definition}
+
+\textbf{Theorem.} 
+\[G=(V,E) \text{ graph, }S=\{F\subseteq E | F \text{ forest}\} \Rightarrow (E,S) \text{ is a matroid}\]
+\textbf{Proof:}
+\begin{compactenum}[(1)]
+	\item{$F_1, F_2 \in E,~F_2\in S,~F_1\subseteq F_2\Rightarrow F1\subseteq S$}
+	\item{$F_1, F_2\in S, ~|F_2| = |F_1| + 1$}
+	\item{$F_1$} has $m$ connected components $T_i=(V_i, A_i),~i=1..m$
+	\item{Observation: \\
+	$V=V_1\cup V_2\cup ... \cup V_m$\\
+	$F_1 = A_1\cup A_2\cup ... \cup A_m$\\
+	$|A_i|=|V_i|+1$}
+	\item{\TODO{Sketch from the notes}}
+	\item{Note: $F_2$ is forest $\Rightarrow$ there are at most $|V_i|-1$ edges in $E_2$ which connect $v\in V_i$ $|F_2| > |F_1| \Rightarrow \exists v,w $ in different components, s.t. $(v,w)$ is an edge of $F_2$ connecting these two components $\Rightarrow F_1\cup\{(v,w)\}$ is still a forest}
+\end{compactenum}
+
+
+\TODO{Please someone check this, my notes are kind of sloppy at this point, it was at the end of a lecture :P}
+\textbf{Example:} $E=\{a_1, a_2, ... a_n\}$, $a_1, ... a_n \in \mathbb{R}^m$, 
+$S = \{A\subseteq E | A=\emptyset \text{ or A linear independent}\}$\\
+\[A \text{ basis of } S \Leftrightarrow A \text{ basis }
+\]
+\[
+	[E] \text{ is a vector space}
+\]
+\[
+	\text{rank of M: } r(M) = dim[E],~A,B\in S,~|A|+1=|B|\Rightarrow \exists x\in B \text{ s.t. } A\cup \{x\}\in S
+\]
+
+\textbf{Theorem: } Let $M=(E, S)$ be a matroid with weight function $w:E\rightarrow \mathbb{R}$\\
+$\Rightarrow$ \textbf{GREEDY} solves $A$ max (w.r.t. $\subseteq$) s.t. $w(A)$ min/max correct. (\textbf{GREEDY} computes basis with min/max weight)\\\\
+\textbf{Proof: } $A=\{a_1, a_2, ... a_r\}$ set after running \textbf{GREEDY}
+\begin{compactenum}
+	\item{
+		\begin{compactenum}[(a)]
+			\item{$A$ basis: $A\in S$ by construction\\
+			Assume $A$ not minimal: $\exists e \in E~~s.t.~~A\cup\{e\}\in S$\\ \textbf{CONTRADICTION}
+			}
+			\item{$w(a_1)\le w(a_2) \le ... w(a_r)$ (elements are sorted) $\checkmark$}
+			\item{$w(A)$ minimal}
+		\end{compactenum}
+	\item{Assume $\exists B = \{b_1, b_2, ... b_3\}$ basis, $w(B) < w(A),~ w(b_1\le w(a_1, ... w(b_3\le w(a_r)$\\
+	$i=min\{j | w(b_j)\le w(a_j)\}$}\\
+	$A_{i-1}=\{a_a, a_2, ... a_{i-1}\}$ status of $A$ after $m\le i-1$ iterations of greedy\\
+	$B_i = \{b_1, b_2, ... b_{i-1}, b_i\}$\\
+	$\Rightarrow |B_i| = |A_{i-1}|+1$
+	}
+	\item{Apply matroid condition:\\
+	$b_j = B_i \setminus A_{i-1}~~s.t.~~A_{i-1}\cup \{b_j\}\in S$}
+	\item{But:\\
+	$w(b_j)\le w_(b_i) < w(a_i) \Rightarrow \forall x \in B_i : w(x) < w(a)$}
+	\item{Thats not how greedy works, greedy would have taken $b_j)$ already\\
+	$\Rightarrow$ \textbf{CONTRADICTION}}
+\end{compactenum}
+
+\textbf{Theorem: } $M(E, S)$ independence system\\
+Assume: \textbf{GREEDY} solves the optimization problem \"A max s.t. $w(A)$ min/max\" correctly for all weight functions $w$\\
+$\Rightarrow$ M is a matroid.\\\\
+\textbf{Proof: } Assume $M$ not a Matroid
+\begin{compactenum}
+	\item{
+	$\exists A, B, \in S: |B| = |A| + 1 \land \forall x \in B \setminus A: A\cup \{x\} \notin S$\\
+	Set $w(e) = \begin{cases} 	|A| + 2 & \text{ if } e\in A\\
+								|A| + 1 & \text{ if } e \in B\setminus A\\
+								0 & else 
+				\end{cases} $
+	}
+	\item{
+	$w(A) = |A| * (|A| + 2) < (|A| + 1)^2 < w(B)$
+	}
+	\item{
+	$\Rightarrow~A$ not solution of the optimisation Problem, $w(A)$ not maximal
+	}
+\end{compactenum}

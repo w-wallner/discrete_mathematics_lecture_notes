@@ -1,0 +1,250 @@
+%%% EtherPad for Discrete Mathematics VO
+%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
+%%% Past pads:
+%%%     * 2013-10-17: committed by patrikf
+%%%     * 2013-10-18: committed by patrikf
+%%%     * 2013-10-24: committed by patrikf
+%%%     * 2013-10-25: committed by patrikf
+%%%     * 2013-11-08: committed by neroburner
+%%%     * 2013-11-21: committed by neroburner
+%%%     * 2013-11-22: committed by neroburner
+%%%     * 2013-11-28: committed by neroburner
+%%%     * 2013-11-29: committed by neroburner
+%%%     * 2013-12-05: committed by neroburner
+%%%     * 2013-12-06: committed by neroburner
+
+% Discrete Mathematics Lecture Notes 2013-12-12
+
+\textbf{rembember from last time}
+\lecturedate[\baselineskip]{2013-12-12}
+
+\Proof. 
+for theorem $\mathbb{Z}_m^{*}$ is cyclic
+
+\Lemma. $g$ is primitive root $\mod p$
+
+$\mathbb{Z}_p^{*} = \{\bar{1}, \bar{2}, \ldots \}$
+
+Then $g$ or $g+p$ is a primitive root $\mod p^2$
+
+\Proof. 
+\begin{align*}
+  \GroupGenBy{g} = \mathbb{Z}_p^{*} \Leftrightarrow g^{p-1} \equiv 1 (p) \land \forall 1 < r < p-1 : g^r \not\equiv 1(p) \\
+  s : = ord_{\mathbb{Z}_{p^2}^{*}} (g) \Rightarrow g^s \equiv 1 (p^2) \Rightarrow g^s \equiv (p) \Rightarrow s \geq p-1
+\end{align*}
+
+\textbf{Claim.}
+\[
+  g^{p-1} \not\equiv 1 (p^2) \text{ or } (g+p)^{p-1} \not\equiv 1(p^2)
+\]
+
+\textbf{Proof of Claim.}
+If
+\begin{align*}
+  g^{p-1} \equiv 1(p^2) \Rightarrow (g+p)^{p-1} 
+  \equiv \underbrace{\underbrace{g^{p-1}}_{\equiv 1} + p*g^{p-2}}_{\not\equiv 1} (p^2)
+\end{align*}
+
+If
+\begin{align*}
+  (g+p)^{p-1} \equiv 1(p^2) \Rightarrow g^{p-1} + pg^{p-2} \equiv 1 (p^2)
+\end{align*}
+
+Case 1. $g^{p-1} \not\equiv 1 (p^2)$
+\begin{align*}
+  s \geq p, \text{Note: } \varphi(p^2) = p(-1) \Rightarrow s|p(p-1) \\
+  \Rightarrow s = p-l \text{ where } p-1 = k-l [k,l < p-1] \\
+  g^{pl} \equiv 1 (p^2) \\
+  g^{pl} = (g^p)^l \equiv g^l \equiv 1 (p) \\
+  \text{Contradiction! except for } l = p-1 \\
+  \implies s = p(p-1) \implies g \text{ primitive root } \mod p^2
+\end{align*}
+
+Case 2. $(g+p)^{p-1} \not\equiv 1 (p^2)$\\
+simmilar
+
+\Lemma.
+$g$ primitive root $\mod p (p \neq 2)$ $\implies$ either $g$ or $g+p$ is a primitive root $\mod p^e(e \geq 2)$
+
+\Lemma.
+If $h$ is a primitive root $\mod p^e \implies$ $h$ or $h+p^e$ is a primitive root $\mod 2p^e$
+
+\begin{definition}
+  \dt{Carmichael function}
+  $\lambda(m) = max_{\bar{a} \in \mathbb{Z_m}^{*}} ord_{\mathbb{Z_m}}(\bar{a})$
+\end{definition}
+
+\Remark.
+
+a) $\lambda(m) | \varphi(m)$ \\
+b) $p \in P \backslash\{2\} \implies \lambda(p^e) = \varphi(p^e) = p^{e-1}(p-1)$ \\
+  $\lambda(1) := \varphi(1) = 1, \lambda(2) = \varphi(2) = 1, \lambda(4) = \varphi(4) = 2$\\
+  c) $\lambda(2^e) = 2^{e-2} \text{ for } e \geq 3$ \\
+  $\lambda(2^e) = ord_{\mathbb{Z}_{2^e}}(5)$
+
+\subsection{The order of elements of an abelion group $G$ with neutral element $e$}
+\Theorem.
+\[
+  \ord(a) = r, \ord(b) = s, \gcd(r,s) = 1 \implies \ord(ab) = rs
+\]
+
+\Proof.
+\begin{align*}
+  (ab)^{rs} = (a^r)^s (b^s)^r = e \implies \ord(ab) |rs \\
+  e = (ab)^n = a^n b^n \implies a^n = (b^{-n})^n \implies e = a^{rn} = (b^{-1})^{nr} \\
+  (b^{-1})^k = e \Leftrightarrow b^k = e \stackrel{(*)}{\implies} b^{nr} = e \implies s|nr \implies s|n \\
+\end{align*}
+
+Analogously.
+\begin{align*}
+  r|n \implies n = rs
+\end{align*}
+
+\textbf{Corollary.}
+\begin{align*}
+  \ord(a^k) = \ord(a) \Leftrightarrow \gcd(k, ord(a)) = 1
+\end{align*}
+
+\Theorem.
+If $ab \in G: \ord(a)=r, \ord(b) = s$ then $\exists c \in G: \ord(c) = \lcm(r,s)$
+
+\Proof.
+\begin{align*}
+  r = \prod_{i\in I} p_i^{e_i}, s = \prod_{i\in I} p_i^{f_i},   e_i f_i \geq 0\\
+  \lcm(r,s) = \prod_{i\in I} p_i^{\max(e_i,f_i)}, \gcd(r,s) = \prod_{i\in I} p_i^{\min(e_i,f_i)}
+\end{align*}
+
+\begin{align*}
+  \implies \lcm(r,s) * \gcd(r,s) = r*s\\
+  I_1 = {i \in I \mid e_i \leq f_i\}, I_2 = I \backslash I_1 
+  & \implies
+     & r = \prod_{i\in I_1} p_i^{e_i} \prod_{i\in I_2} p_i^{e_i} \\
+    && s = \prod_{i\in I_1} p_i^{f_i} \prod_{i\in I_2} p_i^{f_i} \\
+\end{align*}
+\begin{align*}
+  d_1 = \prod_{i\in I_1} p_i^{e_i}, d_2 = \prod_{i\in I_2} p_i^{f_i} \implies \gcd(r,s) = d_1 d_2 \\
+  \implies \ord(a^{d_1}) = \frac{r}{\gcd(r,d_1)} = \frac{1}{d_1} \text{ and } \ord(b^{d_2}) = \frac{s}{d_2}
+\end{align*}
+
+Observe.
+\begin{align*}
+  \gcd(\frac{r}{d_1}, \frac{2}{d_2} ) = 1 
+    \implies \ord(a^{d_1} b^{d_2}) =
+    \frac{rs}{d_1 d_2} = \lcm(r,s)
+\end{align*}
+
+\textbf{Corollary.}
+If $a_1, \ldots, a_r$ with $\ord(a_i) = k_i$ then 
+\[
+  \exists a \in G: \ord(a) = \lcm(k_1, k_2, \ldots, k_r)
+\]
+
+
+\section{And now to something completely different!}
+\begin{align*}
+  \lambda(n), n = \prod_{i = 1}^{r} p_i^{e_i}, e_i > 0
+\end{align*}
+
+Let $ a_i \in \mathbb{Z}_{p_i^{e_i}}^{*}$ such that $ \ord(a_i) = \varphi(p_i^{e_i}) = \lambda(p_i^{e_i})$
+\begin{align*}
+  b_i \in \mathbb{Z}_n \text{ s.t. } b_i \equiv 1 (p_j^{e_j}) \forall j \neq i \text{ and } b_i \equiv a_i (p_i^{e_i})
+\end{align*}
+$b_i$ exists by Chinese remainder theorem
+
+\textbf{Claim.}
+\[
+  \ord_{\mathbb{Z}_n^{*}}(b_i) = \ord_{\mathbb{Z}_{p_i^{e_i}}^{*}} (b_i) = \lambda(p_i^{e_i})
+\]
+
+\Proof.
+For $b_i^k \equiv 1 (n)$ we must have $b_i^k \equiv 1 (p_j^{e_j}) \forall j = 1, \ldots, r$
+
+\begin{align*}
+  b_i = c*n+1 = c*c_1* p_j^{e_j} +1 \implies b_i^k \equiv a_i^k \equiv 1 (p_i ^{e_i}) \\
+  k_{\min} = \lambda(p_i^{e^i}) \implies \ord_{\mathbb{Z}_n^{*}}(b_i) \geq \lambda(p_i^{e_i}) \\
+  b_i^{k_{\min}} \equiv 1 (p_j^{e_j}) \forall j \implies b_i^{k_{\min}} \equiv 1 (n)
+\end{align*}
+
+We found $b_1, b_2, \ldots, b_r \in \mathbb{Z}_n$ such that $\ord_{\mathbb{Z}_n^{*}}(b_i) = \lambda(p_i^{e_i}) \forall i = 1, \ldots, r$
+
+\begin{align*}
+  \implies \exists b \in \mathbb{Z}_n^{*}: \ord_{\mathbb{Z}_n^{*}}(b) = \lcm(\lambda(p_1^{e_1}, \ldots, \lambda(p_r^{e_r})) = K \\
+  \implies \lambda(n) \geq K \text{ We want to show $\lambda(n) = K$}
+\end{align*}
+
+\Theorem.
+If $ a\in G, \ord_G(a)$ maximal, then $forall b \in G: \ord_G(b) | \ord_G(a)$
+
+\Proof. 
+Exercise for the students
+
+Let 
+\[
+  a\in \mathbb{Z}_n: a^k \equiv 1 (n) \Leftrightarrow a^k \equiv 1 p_i^{e_i}) \forall i = 1,\ldots, r
+\]
+
+$\lamba(p_i^{e_i}) = $ max order in $\mathbb{Z}_{p_i^{e_i}}^{*} \implies \ord_{\mathbb{Z}_{p_i^{e_i}}^{*}}(a) | \lambda(p_i^{e_i})$
+
+This implies that
+\[
+  \ord_{\mathbb{Z}_{p_i^{e_i}}^{*}}(a) | K \implies a^K \equiv 1 (p_i^{e_i} \forall i \Leftrightarrow a^K \equiv 1 (n)
+\]
+
+This implies that
+\[
+\ord_{\mathbb{Z}_{n}}^{*}}(a) | K \implies  \ord_{\mathbb{Z}_n^{*}}(a) \leq K \implies \lambda(n) = K
+\]
+
+\Theorem.
+The Carmichael function $\lambda(n)$ obtains the following rules
+
+$\lambda(1) = 1, \lambda(2) 1, \lambda(4) = 2, \lambda(2^e), f e \geq 3$\\
+$\lambda(p^e) = p^{e-1}(p-1)$ for $p\in \mathbb{P} \backslash\{2\}$\\
+$\lambda(\prod_{i=1}^{r} p_i^{e_i}) = \lcm(\lambda(p_1^{e_1}, \ldots, p_r^{e_r})$
+
+\textbf{Example.}
+\[
+  \lambda(100) = \lambda(2^2 * 5^2) = \lcm(\lambda(4), \labmda(25)) = \lcm(2,20) = 20
+\]
+
+\textbf{Ad. RSA.}
+Attack by iteration:
+
+$n = pq$, $(n,e)$ public key, $(n,d)$ private key, \\
+$x$ message, $y_0 = x, y_1 = e^e (n), y_i = y_{i-1}^{e} (n)$
+
+Search for k: $y_k = x$
+
+$y_i = x^{(e^i)} (n)$\\
+\begin{align*}
+  ed \equiv 1 (v) \\
+  v = \lcm(p-1, q-1) = \lambda(n) \\
+  x ^{v+1} \equiv x (n)
+\end{align*}
+
+minimal $k$ s.t. $ y_k = x$ is $k_0 = \ord_{\mathbb{Z}_v^{*}}(x) = \ord_{\mathbb{Z}_{\lambda(n)}^{*}}(e)$ \\
+$k_0 | \lambda(\lambda(n))$
+
+Look for $p,q$ s.t. $\lambda(\lambda(n))$ is large.
+
+If $p,q$ are such that $\frac{p-1}{2}, \frac{p-3}{4}, \frac{q-1}{2}, \frac{q-3}{4}$ are primes too, 
+then 
+\begin{align*}
+  \lambda(pq) = \lcm(p-1, q-1) = 2 * \frac{p-1}{2} \frac{q-1}{2} = \frac{(p-1)(q-1)}{2} \\
+  \lambda(\lambda(pq)) = \lcm(\lambda(2), \lambda( \frac{p-1}{2} ), \lambda( \frac{q-1}{2} )) = \frac{(p-3)(q-3)}{8} \tilde \frac{n}{8}
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

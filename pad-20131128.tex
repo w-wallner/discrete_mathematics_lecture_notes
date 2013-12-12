@@ -63,7 +63,7 @@ With repetition:
     = e^{zN} = \sum_{n\geq 0} N^n \frac{z^n}{n!}
 \]
 
-\section{Combinatories on posets}
+\section{Combinatorics on posets}
 
 Recall $(A, \leq) \subseteq A \times A$.
 Instead of $(a,b) \in \, \leq$ we use the notation $a \leq b$. So $\leq$ is a partial order.
@@ -81,25 +81,30 @@ $(A,\leq)$ is a poset.
 
 A poset $(A,\leq)$ is linearly ordered if
 \[
-  \forall x,y, \in A: x \leq y \land y \leq x
+  \forall x,y, \in A: x \leq y \lor y \leq x
 \]
-\TODO{check above formula}
 
-\textbf{Examples.} \\
+\textbf{Examples.}\\\\
 \begin{tabular}{l l}
-  $(\mathbb{N}, \leq)$ & a poset, even a linearly ordered poset. \\
-  $(\mathbb{R}, \leq)$ \\
+  $(\mathbb{N}, \leq), (\mathbb{R}, \leq)$: & Posets, even linearly ordered \\\\
+
   $(\mathbb{N}^{+}, |)$:
-    & $a|a, a|b, b|c \implies a|c, a|b \land b|a \implies a = b$\\
+    & $a|a$ \\
+    & $ a|b, b|c \implies a|c$\\
+    & $ a|b \land b|a \implies a = b$\\
+    & Poset, not linearly ordered since $2 \not|~ 3 \land 3 \not|~ 2$\\\\
+
   $(2^A, \subseteq)$:
-    & $ B \subseteq B,\; B \subseteq C \subseteq D,\; B\subseteq C \land C \subseteq B \implies B = C$ \\
-    & if $|A|\leq 1$ then it is even a linear ordered poset.
+    & $ B \subseteq B$\\
+    & $ B \subseteq C \subseteq D$\\
+    & $ B \subseteq C \land C \subseteq B \implies B = C$ \\
+    & Poset, If $|A|\leq 1$ then it is even a linear ordered poset.
 \end{tabular}
 
 \begin{definition}
 Given a poset $(A, \leq)$.
 An element $x \in A$ is a \dt{minimal element} if $y \leq x \implies x=y$.
-Each poset can be visualised by a Hasse diagram
+Each poset can be visualized by a Hasse diagram
 
 \TODO{Draw Hasse-Diagram, first which edges are not drawn, then a diagram showing the minimal elements}
 
@@ -109,9 +114,8 @@ An element $x \in A$ is
   \item the \dt{0-element} if $\forall y \in A : x \leq y$ \\
     (every 0-element is minimal)
   \item the \dt{1-element} if $\forall y \in A : x \geq y$
-\end{compactitem}
-
-Intervall $[x,y] = \{z \in A \mid x \leq z \leq y\}$
+\end{compactitem}~\\
+Interval $[x,y] = \{z \in A \mid x \leq z \leq y\}$
 
 $(A, \leq)$ is locally finite if $\forall x,y \in A: | [x,y]| < \infty$.
 \end{definition}
@@ -144,14 +148,14 @@ Let $(\mathbb{P}, \leq)$ be a locally finite poset. And we have a map $f \righta
 \end{align*}
 
 \textbf{Problem.}
-given $S_f$, find $f$
+Given $S_f$, find $f$
 
 \begin{definition}
 $(P, \leq)$ is a locally finite poset with a 0-element.
 We have a \dt{Möbius function} of $P$ $\mu: P\times P \rightarrow \mathbb{R}$.
 if
 \[
-  \forall x,y \in P: \sum_{z\in [xy]} \mu(z,y) = \delta_{x,y} =
+  \forall x,y \in P: \sum_{z\in [x, y]} \mu(z,y) = \delta_{x,y} =
     \begin{cases}
       1 & \text{if } x = y \\
       0 & \text{otherwise}
@@ -204,11 +208,10 @@ And we define $(P, \leq)$ as
   P = P_1 \times P_2, (x_1,x_2) \leq (y_1, y_2) :\implies x_1 \leq_1 y_1 \text{ and } x_2 \leq_2 y_2
 \]
 
-$\Rightarrow (P, \leq)$ is loc finite poset with 0-element ($=(0_1, 0_2)$) with a Möbius function $\mu: P\times P \rightarrow \mathbb{R}$
-
+$\Rightarrow (P, \leq)$ is locally finite poset with 0-element ($=(0_1, 0_2)$) with a Möbius function $\mu: P\times P \rightarrow \mathbb{R}$
 \begin{align*}
-  \mu ( (x_1, x_2), (y_1,y_2)) &= \mu_1(x_1,y_1) * \mu_2(x_2,y_2) \\
-  (P, \leq) &= (P_1, \leq_1) * (P_2, \leq_2)
+  \mu ( (x_1, x_2), (y_1,y_2)) &= \mu_1(x_1,y_1) \cdot \mu_2(x_2,y_2) \\
+  (P, \leq) &= (P_1, \leq_1) \cdot (P_2, \leq_2)
 \end{align*}
 
 \textbf{Example.}
@@ -230,7 +233,7 @@ E.g.: $n = 5: A = \{a_2,a_5\}, B= \{a_1, a_2, a_3, a_5\},\; A, B \in 2^M$
 Remark that: $e_{x,A} = 1 \Rightarrow e_{x,B} = 1$ is equal to $e_{x,A} \leq e_{x,B}$
 
 \[
-    ( \{0,1\}, \leq): \mu(00) = \mu(1,1) = 1, \mu(0,1) = -1, \mu(1,0) = 0
+    ( \{0,1\}, \leq): \mu(0,0) = \mu(1,1) = 1, \mu(0,1) = -1, \mu(1,0) = 0
 \]
 \begin{align*}
     \mu(A,B) &= \mu(01001, 11101) = \mu(0,1) \mu(1,1) \mu(0,1) \mu(0,0) \mu(1,1) \\
@@ -244,7 +247,7 @@ $A\subseteq B \Rightarrow (-1)^{|B| - |A|}$.
 
 \Theorem.
 (Möbius inversion)
-$(P, \leq)$ is a loc, finite poset with a 0-element.
+$(P, \leq)$ is a locally, finite poset with a 0-element.
 And $\mu: P \times P \rightarrow \mathbb{R}$ the Möbius function of $(P, \leq)$.
 
 Let for $f: P \rightarrow \mathbb{R}$ its sum function $S_f: P \rightarrow \mathbb{R}$ be given: $S_f(x) = \sum_{z \in [0,x]} f(z)$.

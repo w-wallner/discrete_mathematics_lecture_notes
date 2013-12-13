@@ -116,7 +116,7 @@ If $ab \in G: \ord(a)=r, \ord(b) = s$ then $\exists c \in G: \ord(c) = \lcm(r,s)
 
 \begin{align*}
   \implies \lcm(r,s) * \gcd(r,s) = r*s\\
-  I_1 = {i \in I \mid e_i \leq f_i\}, I_2 = I \backslash I_1 
+  I_1 = \{i \in I \mid e_i \leq f_i\}, I_2 = I \backslash I_1 
   & \implies
      & r = \prod_{i\in I_1} p_i^{e_i} \prod_{i\in I_2} p_i^{e_i} \\
     && s = \prod_{i\in I_1} p_i^{f_i} \prod_{i\in I_2} p_i^{f_i} \\
@@ -183,7 +183,7 @@ Let
   a\in \mathbb{Z}_n: a^k \equiv 1 (n) \Leftrightarrow a^k \equiv 1 p_i^{e_i}) \forall i = 1,\ldots, r
 \]
 
-$\lamba(p_i^{e_i}) = $ max order in $\mathbb{Z}_{p_i^{e_i}}^{*} \implies \ord_{\mathbb{Z}_{p_i^{e_i}}^{*}}(a) | \lambda(p_i^{e_i})$
+$\lambda(p_i^{e_i}) = $ max order in $\mathbb{Z}_{p_i^{e_i}}^{*} \implies \ord_{\mathbb{Z}_{p_i^{e_i}}^{*}}(a) | \lambda(p_i^{e_i})$
 
 This implies that
 \[
@@ -192,7 +192,7 @@ This implies that
 
 This implies that
 \[
-\ord_{\mathbb{Z}_{n}}^{*}}(a) | K \implies  \ord_{\mathbb{Z}_n^{*}}(a) \leq K \implies \lambda(n) = K
+\ord_{\mathbb{Z}_{n}^{*}}(a) | K \implies  \ord_{\mathbb{Z}_n^{*}}(a) \leq K \implies \lambda(n) = K
 \]
 
 \Theorem.
@@ -204,7 +204,7 @@ $\lambda(\prod_{i=1}^{r} p_i^{e_i}) = \lcm(\lambda(p_1^{e_1}, \ldots, p_r^{e_r})
 
 \textbf{Example.}
 \[
-  \lambda(100) = \lambda(2^2 * 5^2) = \lcm(\lambda(4), \labmda(25)) = \lcm(2,20) = 20
+  \lambda(100) = \lambda(2^2 * 5^2) = \lcm(\lambda(4), \lambda(25)) = \lcm(2,20) = 20
 \]
 
 \textbf{Ad. RSA.}

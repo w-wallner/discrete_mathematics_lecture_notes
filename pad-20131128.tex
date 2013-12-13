@@ -139,15 +139,19 @@ Let $(\mathbb{P}, \leq)$ be a locally finite poset. And we have a map $f \righta
 
 \textbf{Example.}
 
-\begin{align*}
-  \text{1)}
-    & (\mathbb{N}, \leq) \\
-    & f \leftrightarrow (a_n) \\
-    & S_f \leftrightarrow \sum_{k\leq n} a_k \\
-  \text{2)} & \fbox{TODO: Diagram} \\
-    & S_f(x) = f(0) + f(a) + f(b) + f(x) \\
-    & a_n = \sum_{k \leq n} a_k - \sum_{k \leq n-1} a_k = S_f(n) - S_f(n-1)
-\end{align*}
+\begin{tabular}{ll}
+  1) & \\
+     & $(\mathbb{N}, \leq)$\\
+     & $f \leftrightarrow (a_n)$\\
+     & $S_f \leftrightarrow \sum_{k\leq n} a_k$\\\\
+
+  2) & \\
+     & \includegraphics[width=0.4\textwidth]
+        {02_higher_combinatorics/pics/LatticeInterval}\\
+     & $S_f(x) = f(0) + f(a) + f(b) + f(x) $\\
+     & $a_n = \sum_{k \leq n} a_k - \sum_{k \leq n-1} a_k =
+              S_f(n) - S_f(n-1)$\\
+\end{tabular}
 
 \textbf{Problem.}
 Given $S_f$, find $f$

@@ -151,7 +151,7 @@ Let $(\mathbb{P}, \leq)$ be a locally finite poset. And we have a map $f \righta
      & $S_f(x) = f(0) + f(a) + f(b) + f(x) $\\
      & $a_n = \sum_{k \leq n} a_k - \sum_{k \leq n-1} a_k =
               S_f(n) - S_f(n-1)$\\
-\end{tabular}
+\end{tabular}~\\
 
 \textbf{Problem.}
 Given $S_f$, find $f$
@@ -192,21 +192,21 @@ $[n,n+2] = \{n,n+1, n+2\}:$
 \]
 $ m \geq n+2 \implies \mu(n,m) = 0$
 
-\textbf{Example.}
-\TODO{hasse diagram of a partial order, x,y, a,b,c,d}
-
-\begin{gather*}
-    \mu(x,x) = \mu(a,a) = \mu(b,b) = \mu(c,c) = \mu(d,d) = \mu(y,y) = 1\\
-    \mu(x,a) = \mu(x,c) = \mu(x,d) = \mu(a,b) = \mu(b,y) = \mu(c,y) = \mu(d,y) = -1\\
-    \mu(x,b) = 0, \mu(a,y) = 0, \mu(x,y) \\
-\end{gather*}
-
+\begin{center}
+    \includegraphics[width=0.3\textwidth]
+      {02_higher_combinatorics/pics/LatticeMoebiusFunction}
+\end{center}
 \begin{align*}
-    \mu(x,y)&: \mu(x,y) + \mu(a,y) + \mu(b,y) + \mu(c,y) + \mu(d,y) + \mu(y,y) = \delta_{x,y} &= 0 \\
-        &: 2 +0 -1 -1 -1 +1 &= 0
+    \mu(x,x) &= \mu(a,a) = \mu(b,b) = \mu(c,c) = \mu(d,d) = \mu(y,y) = 1\\
+    \textcolor{orange}{\mu(x,a)} &= \mu(x,c) = \mu(x,d) = \mu(a,b) = \mu(b,y) = \mu(c,y) = \mu(d,y) = -1\\
+    \textcolor{aqua}{\mu(x,b)} &= 0, \mu(a,y) = 0\\
+    \mu(x,y)&:  \underbrace{\mu(x,y)}_{2}
+              + \underbrace{\mu(a,y)}_{0}
+              + \underbrace{\mu(b,y)}_{-1}
+              + \underbrace{\mu(c,y)}_{-1}
+              + \underbrace{\mu(d,y)}_{-1}
+              + \underbrace{\mu(y,y)}_{1} = \delta_{x,y} = 0 \\
 \end{align*}
-
-
 \Theorem.
 $(P_1, \leq_1), (P_2, \leq_2)$, locally finite poset, with 0-element.
 And we define $(P, \leq)$ as

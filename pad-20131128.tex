@@ -268,14 +268,20 @@ $(\mathbb{N}, \leq)$, $f: \mathbb{N} \rightarrow \mathbb{R}$, $S_f(n) = \sum_{k=
 \]
 
 \Proof.
-\begin{align*}
-    \sum_{z \in [0,x]} S_f(z) * \mu(z,x)
-    &= \sum_{z \in [0,x]} \sum_{u \in [0,x]} f(u) \mu(z,x) \\
-    &= \sum_{u \in [0,x]} \sum_{z \in [0,x]} f(u) \mu(z,x) \\
-    &= \sum_{u \in [0,x] f(u)} \sum_{z \in [0,x]} \mu(z,x) \\
-    &= \sum_{u \in [0,x] f(u)} \delta_{u,x} \\
-    &= f(x)
-\end{align*}
-
-\TODO{graph of rectangle halfed diagonally, one side colored}
-
+\begin{minipage}[t]{0.6\textwidth}
+  \begin{align*}
+      \sum_{z \in [0,x]} S_f(z) * \mu(z,x)
+      &= \sum_{z \in [0,x]} \sum_{u \in [0,x]} f(u) \mu(z,x) \\
+      &= \sum_{u \in [0,x]} \sum_{z \in [0,x]} f(u) \mu(z,x) \\
+      &= \sum_{u \in [0,x] f(u)} \sum_{z \in [0,x]} \mu(z,x) \\
+      &= \sum_{u \in [0,x] f(u)} \delta_{u,x} \\
+      &= f(x)
+  \end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.3\textwidth}
+  \vspace{1.2cm}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]
+      {02_higher_combinatorics/pics/MoebiusSum}
+  \end{center}
+\end{minipage}

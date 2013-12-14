@@ -14,8 +14,7 @@
 
 \textbf{Repetition of last time.}
 \lecturedate[\baselineskip]{2013-11-28}
-labelled structure set $\mathcal{A} = (A,w)$, the atomic object can be enumerated.
-
+Labelled structure set $\mathcal{A} = (A,w)$, the atomic objects can be enumerated.
 \begin{align*}
   \mathcal{A}+\mathcal{B} &\leftrightarrow \hat{A}(z) + \hat{B}(z) \\
   \mathcal{A}*\mathcal{B} &\leftrightarrow \hat{A}(z) * \hat{B}(z) \\
@@ -23,9 +22,7 @@ labelled structure set $\mathcal{A} = (A,w)$, the atomic object can be enumerate
   \set(\mathcal{A}) &\leftrightarrow \exp(\hat{A}(z)) \\
   \cyc(\mathcal{A}) &\leftrightarrow \log \frac{1}{1 - \hat{A}(z)}\\
 \end{align*}
-
 % end of repetition
-
 \textbf{Example.}
 \begin{align*}
   \mathcal{P} &= set(cyc(\mathcal{A})), \mathcal{A} = \{ \text{\ding{172}} \}\\
@@ -33,10 +30,10 @@ labelled structure set $\mathcal{A} = (A,w)$, the atomic object can be enumerate
 \end{align*}
 
 \textbf{Example.}
-we got set partitions $M = M_1 \cup M_2 \cup \ldots \cup M_k$ with $M_i \neq \varnothing$ and $M_i \cap M_j = \varnothing$
+We have set partitions $M = M_1 \cup M_2 \cup \ldots \cup M_k$ with $M_i \neq \varnothing$ and $M_i \cap M_j = \varnothing$
 \begin{align*}
   \mathcal{P} = \set( \set( \mathcal{A}) \backslash \{\varnothing\} ) \\
-  \hat{P}(z) = \exp(\exp((z) - 1) \\
+  \hat{P}(z) = \exp(\exp((z) - 1)) \\
   [z^n] e^{e^z - 1} = \sum_{k\geq 0 } S_{n,k} \\
 \end{align*}
 
@@ -63,10 +60,10 @@ With repetition:
     = e^{zN} = \sum_{n\geq 0} N^n \frac{z^n}{n!}
 \]
 
-\section{Combinatorics on posets}
+\section{Combinatorics on Posets}
 
 Recall $(A, \leq) \subseteq A \times A$.
-Instead of $(a,b) \in \, \leq$ we use the notation $a \leq b$. So $\leq$ is a partial order.
+Instead of $(a,b) \in \, \leq$ we use the notation $a \leq b$. $\leq$ is a partial order if
 
 \begin{tabular}{ll}
   1) $\leq$ reflexive: &
@@ -77,7 +74,7 @@ Instead of $(a,b) \in \, \leq$ we use the notation $a \leq b$. So $\leq$ is a pa
     if $x \leq y \land y \leq x$ then $x = y$ \\
 \end{tabular}
 
-$(A,\leq)$ is a poset.
+$(A,\leq)$ is a poset (partially ordered set).
 
 A poset $(A,\leq)$ is linearly ordered if
 \[
@@ -98,13 +95,19 @@ A poset $(A,\leq)$ is linearly ordered if
     & $ B \subseteq B$\\
     & $ B \subseteq C \subseteq D$\\
     & $ B \subseteq C \land C \subseteq B \implies B = C$ \\
-    & Poset, If $|A|\leq 1$ then it is even a linear ordered poset.
+    & Poset, If $|A|\leq 1$ then it is even a linearly ordered poset.
 \end{tabular}
 
 \begin{definition}
 Given a poset $(A, \leq)$.
-An element $x \in A$ is a \dt{minimal element} if $y \leq x \implies x=y$.
-Each poset can be visualized by a Hasse diagram
+An element $x \in A$ is a \dt{minimal element} if $y \leq x \implies x=y$. A linearly ordered set has only one minimal element. Distinct minimal elements of a poset are not comparable:
+\begin{align*}
+  x,x' \text{ min} &\implies x=x' \text{ or } x,x' \text{ not comparable }\\
+  x ≤ x'           &\implies x = x'\\
+  x' ≤ x           &\implies x = x'
+\end{align*}
+
+Each poset can be visualized by a Hasse diagram.
 
 \begin{center}
     \includegraphics[width=0.6\textwidth]{02_higher_combinatorics/pics/Lattice}
@@ -127,27 +130,30 @@ $(A, \leq)$ is locally finite if $\forall x,y \in A: | [x,y]| < \infty$.
   $(\mathbb{N}, \leq)$
     & 0, $\nexists$ 1-element, locally finite \\
   $(\mathbb{N}^{+}, \mid)$
-    & locally finite, 0-element = $1$ \\
+    & Locally finite, 0-element = $1$ \\
   $(\mathbb{N}, \mid)$,
     & 1-element = $0$ \\
   $(\mathbb{R}, \leq)$
-    & not locally finite
+    & Not locally finite
 \end{tabular}
 
 \textbf{Assumptions.}
-Let $(\mathbb{P}, \leq)$ be a locally finite poset. And we have a map $f \rightarrow \mathbb{R}$, and some function $S_f(x) = \sum_{z \leq x} f(z)$
+Let
+\begin{itemize}
+  \item $(\mathbb{P}, \leq)$ be a locally finite poset
+  \item $f$, be a function $f: P \rightarrow \mathbb{R}$ and
+  \item $S_f$ be a sum function: $\displaystyle{S_f(x) = \sum_{z \leq x} f(z)}$
+\end{itemize}
 
-\textbf{Example.}
+\textbf{Examples.}
 
 \begin{tabular}{ll}
-  1) & \\
-     & $(\mathbb{N}, \leq)$\\
+  1) & $(\mathbb{N}, \leq)$\\
      & $f \leftrightarrow (a_n)$\\
      & $S_f \leftrightarrow \sum_{k\leq n} a_k$\\\\
 
-  2) & \\
-     & \includegraphics[width=0.4\textwidth]
-        {02_higher_combinatorics/pics/LatticeInterval}\\
+  2) & \vtop{\null\hbox{\includegraphics[width=0.4\textwidth]
+        {02_higher_combinatorics/pics/LatticeInterval}}}\\
      & $S_f(x) = f(0) + f(a) + f(b) + f(x) $\\
      & $a_n = \sum_{k \leq n} a_k - \sum_{k \leq n-1} a_k =
               S_f(n) - S_f(n-1)$\\
@@ -158,7 +164,7 @@ Given $S_f$, find $f$
 
 \begin{definition}
 $(P, \leq)$ is a locally finite poset with a 0-element.
-We have a \dt{Möbius function} of $P$ $\mu: P\times P \rightarrow \mathbb{R}$.
+We have a \dt{Möbius function} of $P$ $\mu: P\times P \rightarrow \mathbb{R}$
 if
 \[
   \forall x,y \in P: \sum_{z\in [x, y]} \mu(z,y) = \delta_{x,y} =
@@ -209,7 +215,7 @@ $ m \geq n+2 \implies \mu(n,m) = 0$
 \end{align*}
 \Theorem.
 $(P_1, \leq_1), (P_2, \leq_2)$, locally finite poset, with 0-element.
-And we define $(P, \leq)$ as
+We define $(P, \leq)$ as
 \[
   P = P_1 \times P_2, (x_1,x_2) \leq (y_1, y_2) :\implies x_1 \leq_1 y_1 \text{ and } x_2 \leq_2 y_2
 \]
@@ -221,7 +227,7 @@ $\Rightarrow (P, \leq)$ is locally finite poset with 0-element ($=(0_1, 0_2)$) w
 \end{align*}
 
 \textbf{Example.}
-We have a Set $M = \{a_1, \ldots , a_n\}$. We claim that
+We have a set $M = \{a_1, \ldots , a_n\}$. We claim that
 \[
   (2^M, \subseteq) \cong ( \{0,1\}, \leq)^n
 \]
@@ -254,17 +260,21 @@ $A\subseteq B \Rightarrow (-1)^{|B| - |A|}$.
 \Theorem.
 (Möbius inversion)
 $(P, \leq)$ is a locally, finite poset with a 0-element.
-And $\mu: P \times P \rightarrow \mathbb{R}$ the Möbius function of $(P, \leq)$.
+$\mu: P \times P \rightarrow \mathbb{R}$ is the Möbius function of $(P, \leq)$.
 
-Let for $f: P \rightarrow \mathbb{R}$ its sum function $S_f: P \rightarrow \mathbb{R}$ be given: $S_f(x) = \sum_{z \in [0,x]} f(z)$.
-
-$\Rightarrow$: $f(x) = \sum_{z \in [0,x]} S_f(z) * \mu(z,x)$
+Let the sum function $S_f: P \rightarrow \mathbb{R}$ of $f: P \rightarrow \mathbb{R}$ be given by:
+\[
+  S_f(x) = \sum_{z \in [0,x]} f(z).
+\]
+\[
+ \Rightarrow f(x) = \sum_{z \in [0,x]} S_f(z) * \mu(z,x)
+\]
 
 \textbf{Example.}
-$(\mathbb{N}, \leq)$, $f: \mathbb{N} \rightarrow \mathbb{R}$, $S_f(n) = \sum_{k=0}^{n} f(k)$
+$(\mathbb{N}, \leq)$, $f: \mathbb{N} \rightarrow \mathbb{R}$, $S_f(n) = \displaystyle{\sum_{k=0}^{n} f(k)}$
 
 \[
-  f(n) = \sum_{k=0}^{n} s_f(k) \mu(k,n) = s_f(n) - S_f(n-1)
+  f(n) = \sum_{k=0}^{n} S_f(k) \mu(k,n) = S_f(n) - S_f(n-1)
 \]
 
 \Proof.
@@ -273,8 +283,8 @@ $(\mathbb{N}, \leq)$, $f: \mathbb{N} \rightarrow \mathbb{R}$, $S_f(n) = \sum_{k=
       \sum_{z \in [0,x]} S_f(z) * \mu(z,x)
       &= \sum_{z \in [0,x]} \sum_{u \in [0,x]} f(u) \mu(z,x) \\
       &= \sum_{u \in [0,x]} \sum_{z \in [0,x]} f(u) \mu(z,x) \\
-      &= \sum_{u \in [0,x] f(u)} \sum_{z \in [0,x]} \mu(z,x) \\
-      &= \sum_{u \in [0,x] f(u)} \delta_{u,x} \\
+      &= \sum_{u \in [0,x]} f(u) \sum_{z \in [0,x]} \mu(z,x) \\
+      &= \sum_{u \in [0,x]} f(u) \delta_{u,x} \\
       &= f(x)
   \end{align*}
 \end{minipage}

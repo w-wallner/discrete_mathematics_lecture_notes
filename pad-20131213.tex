@@ -21,12 +21,12 @@
 
 \subsection{Rings}
 \begin{definition}
-Is called a \dt{Ring} $(R,+,\cdot)$ if
+$(R,+,\cdot)$ is called a \dt{Ring} if
 \begin{tabular}{ll}
   $(R,+)$ & abelian group (neutral element: 0)\\
   $(R,\cdot)$ & semigroup \\
   $\forall ab,c \in R:$ & $a(b+c) = ab+ac$\\
-                        & $a+b)c = ac+bc$\\
+                        & $(a+b)c = ac+bc$\\
 \end{tabular}
 \end{definition}
 
@@ -37,18 +37,18 @@ and no zero divisors: $a\cdot b = 0 \implies a=0 \lor b = 0$
 
 \begin{definition}
 An \dt{Euklidean ring} is an integral domain with an Euklidean function
-\[
-  n: R \backslash \{0\} \rightarrow \mathbb{N} \text{ s.t. }
-  \forall a,b \in R: \exists q,r \in R: a 0 bq + r, n(r) < n(b) \lor r=0
-  \text{ and } n(a) \leq n(ab)
-\]
+\begin{align*}
+  n: R \backslash \{0\} \rightarrow \mathbb{N} \text{ s.t. } &\forall a,b \in R: \exists q,r \in R: a = bq + r, \\
+  &n(r) < n(b) \lor r=0 \\
+  \text{ and } &n(a) \leq n(ab)
+\end{align*}
 \end{definition}
 
 Let us assume we have an integral domain $(R,+, \cdot)$. 
-$t|a: \Leftrightarrow \exists c: a=tc =ct$
+$t|a \Leftrightarrow \exists c: a=tc =ct$
 \begin{tabular}{ll}
-$d=\gcd(a,b) if$ & 1) $d|a \land d|b$ \\
-  & $t|a \land t|b \implies t|d$
+$d=\gcd(a,b)$ if & 1) $d|a \land d|b$ \\
+  & 2) $t|a \land t|b \implies t|d$
 \end{tabular}
 
 \textbf{Remember}
@@ -56,9 +56,9 @@ in $\mathbb{Z}$: $d = gcd(a,b) \implies -d = \gcd(a,b)$
 
 \begin{definition}
 $R$ integral domain, 
-$a,b \in R$ are called associated, $a \tilde b$,
+$a,b \in R$ are called associated, $a \sim b$,
 \[
-  \Leftrightarrow: \exists \text{ unit } r \in R^{*}: a = rb
+  \Leftrightarrow \exists \text{ unit } r \in R^{*}: a = rb
 \]
 \end{definition}
 
@@ -88,53 +88,54 @@ $d|d' \land d' | d$
 
 
 \Remark.
-1) $x = a\cdot b, a,b\not\in R^{*} \cup \{0\} \implies n(a) < n(x), n(b) < n(x)$
+1) $x = a\cdot b, \quad a,b\not\in R^{*} \cup \{0\} \implies n(a) < n(x), n(b) < n(x)$
 
 \Remark.
 2) In general integral domains: 
 \[
-  d= \gcd(a,b), d' = \gcd(a,b) \implies d \tilde d'
+  d= \gcd(a,b), d' = \gcd(a,b) \implies d \sim d'
 \]
-\[
-  d|d' \land d'|d \implies d = c_1\cdot d', d' = c_2 \cdot d 
-  \implies d = c_1c_2 *d \implies c_1 c_2 = 1
-  \implies c_1,c_2 \in R^{*}
-\]
+\begin{align*}
+  &d|d' \land d'|d \implies d = c_1\cdot d', d' = c_2 \cdot d \\
+  &\implies d = c_1c_2 d \implies d (1-c_1c_2) = 0 \implies c_1 c_2 = 1\\
+  &\implies c_1,c_2 \in R^{*}
+\end{align*}
 
 \subsection{Generalization of prime numbers}
 \begin{definition}
   Integral domain $R$, with $a\in R \backslash (\{0\}\cup R^{*})$, i.e. $\nexists a^{-1}$
 
-$a$ \dt{irreducible} $:\Leftrightarrow a = bc$ implies that either $b\in R^{*}$ or $c\in R^{*}$
+$a$ \dt{irreducible} $\Leftrightarrow a = bc$ implies that either $b\in R^{*}$ or $c\in R^{*}$
 
 Sideremark: 
-$\mathbb{Z}: \mathbb{Z}^{*} = \{-1, 1\}$ \\
+In $\mathbb{Z}: \mathbb{Z}^{*} = \{-1, 1\}$ \\
 $p = p \cdot 1 = (-p) \cdot (-1)$
 
-$a$ \dt{prime element} $:\Leftrightarrow a | bc$ implies that $a|b$ or $a|c$
+$a$ \dt{prime element} $\Leftrightarrow a | bc$ implies that $a|b$ or $a|c$
 \end{definition}
 
 \textbf{Example.}
-$R = \mathbb{Z} \implies x \in R$ irreducible $\iff x \in \mathbb{P}$ or $-xin \mathbb{P} \iff $ $x$ prime element
+$R = \mathbb{Z} \implies x \in R$ irreducible $\iff x \in \mathbb{P}$ or $-x \in \mathbb{P} \iff $ $x$ prime element
 
 \Theorem.
 \begin{enumerate}
   \item Every prime element is irreducible
-  \item In Euklidean rings the convers is true as well
+  \item In Euklidean rings the converse is true as well
 \end{enumerate}
 
 \Proof.
 1) a is a prime element and $a = bc$ (which implies $a |b$ or $a|c$)\\
 If $a|b$ then $a|b \land b|a \implies a = bc, b = a\bar{c} = b c\bar{c}$\\
-$b(1-c\bar{c}) = 0 \implies c\bar{c} = 1 \implies c, \bar{c} \in R^{*} 
-\implies a \sim b$
+$\implies b(1-c\bar{c}) = 0 \implies c\bar{c} = 1 \implies c, \bar{c} \in R^{*} 
+\implies a \sim b \implies$ a irredicible
+(because: a irredicuble $\implies \underbrace{b \in R^{*}}_{a \sim c} \lor \underbrace{c \in R^{*}}_{a \sim b}$)
 
 2) a irreducible, $a|bc$ 
 
 Suppose $a \not|: d = \gcd(a,b): a = d\cdot c_1,\; b = d\cdot c_2$.
 Either $d$ or $c_1$ has to be a unit. 
-If $c1 \in R^{*} = \stackrel{\implies}{\exists c_1^{-1}} d = a\cdot c_1^{-1} \implies b = a \cdot c_1^{-1} \cdot c_2 \implies a |b$ Contradiction! \\
-$\implies d \in R^{*}$: 
+If $c_1 \in R^{*} \stackrel{\exists c_1^{-1}}{\implies} d = a\cdot c_1^{-1} \implies b = a \cdot c_1^{-1} \cdot c_2 \implies a |b$ Contradiction! \\
+$\implies c_1 \not\in R^{*} \implies d \in R^{*}$: 
 Without loss of generality: $d = 1$\\
 we are in an Euklidean Ring $R$ $\implies$ $\exists x,y \in R: 1 = ax + by$ \\
 $\implies c = acx + bcy = acx + ay = a (cx+y) \implies a|c$
@@ -144,10 +145,10 @@ In the same way we can proof $a\not|c \implies a|b$.
 \textbf{Example.}
 $R = \mathbb{Z} [i \sqrt{5}] = \{a+bi \sqrt{5} \mid a,b \in \mathbb{Z} \} \subseteq \mathbb{C}, i = \sqrt{-1}$
 
-$R(,+,\cdot) \underbrace{\leq}_{\text{subring}} (\mathbb{C}, +,\cdot)$
+$(R,+,\cdot) \underbrace{\leq}_{\text{subring}} (\mathbb{C}, +,\cdot)$
 \begin{align*}
   (a+bi \sqrt{5}) (c+di\sqrt{5}) = 
-    \underbrace{ac - 5bd}_{\in \mathbb{Z}} + \underbrace{(ad+bc)}_{\in \mathbb{Z}} i\sqrt{5} \in \mathbb{Z}[i\sqrt{5}]
+    \underbrace{ac - 5bd}_{\in \mathbb{Z}} + \underbrace{(ad+bc)}_{\in \mathbb{Z}} i\sqrt{5} \quad \in \mathbb{Z}[i\sqrt{5}]
 \end{align*}
 
 \begin{align*}
@@ -155,47 +156,53 @@ $R(,+,\cdot) \underbrace{\leq}_{\text{subring}} (\mathbb{C}, +,\cdot)$
   6 = 2*3 = (1+i\sqrt{5})(1-i\sqrt{5})\\
 \end{align*}
 \begin{align*}
-  2|6, 2 \not| 1+i\sqrt{5}: & 1+i\sqrt{5} = 2c = 2(a+bi\sqrt{5}) \\
+  2|6, 2 \not| (1+i\sqrt{5}): & 1+i\sqrt{5} = 2c = 2(a+bi\sqrt{5}) \\
     & \implies 2a = 1, 2b = 1 \\
     & \implies a \not\in \mathbb{Z}
 \end{align*}
 
-$2 \not| 1 - i\sqrt{5}$ but $2 | (1+i\sqrt{5})(1-i\sqrt{5})$ \\
+$2 \not| (1 - i\sqrt{5})$ but $2 | (1+i\sqrt{5})(1-i\sqrt{5})$ \\
 $\implies 2$ is not a prime element of $R$
 
 \begin{align*}
   2 = \underbrace{(a+bi \sqrt{5})}_{r} \underbrace{(c+di\sqrt{5})}_{s}\\
   \implies \frac{2}{a+ib\sqrt{5}} \frac{a-i\sqrt{5}b}{a-i\sqrt{5}b} \\
   = c+di\sqrt{5} 
-= \underbrace{frac{2a}{a^2 + 5b^2}}_{\in \mathbb{Z}} - \underbrace{i\sqrt{5} \frac{2b}{a^2 + 5b^2}}_{\in \mathbb{Z}}
+= \underbrace{\frac{2a}{a^2 + 5b^2}}_{\in \mathbb{Z}} - \underbrace{i\sqrt{5} \frac{2b}{a^2 + 5b^2}}_{\in \mathbb{Z}}
 \end{align*}
 
 But $a^2 + 5b^2 > 4b^2 > 2|b|$ except if $ b=0$ $\implies d \not\in \mathbb{Z}$ except if $b=0$ \\
 If $b=0: c = \frac{2a}{a^2} = \frac{2}{a} \implies a \in \{\pm 1, \pm 2\}$
-$\implies r = \pm 1 \implies r \in R^{*}$ or $ r = \pm 2 \implies s in R^{*} \implies 2 $ irreducible
+$\implies r = \pm 1 \implies r \in R^{*}$ or $ r = \pm 2 \implies s \in R^{*} \implies 2 $ irreducible
 
 $\implies \mathbb{Z}[i\sqrt{5}]$ is not an Euklidian ring
 
 \textbf{Example.}
-$K$ is a field \\
+$K$ is a field $\implies K[x]$ is a Euklidean ring\\
+
+Definition of a field:
 \begin{tabular}{ll}
   $(K,+)$ &abelian group \\
   $(K\backslash \{0\}, \cdot)$ & abelian group \\
   $a(b+c) = ab + ac$
 \end{tabular}
-The previous properties imply $\forall x \in K: 0\cdot x = 0$
+
+These properties imply $\forall x \in K: 0\cdot x = 0$
 
 Recall: 
 $n(p(x)) = \deg(p(x))$ and 
-$\deg(p(x) \leq \deg(p(x) q(x))$. $\implies$ The prime elements are the irreducible elements: irreducible polynomials: $a(x) = b(x)c(x)$
+$\deg(p(x)) \leq \deg(p(x) q(x))$. 
 
+$\implies$ The prime elements are the irreducible elements: irreducible polynomials: $a(x) = b(x)c(x) \implies \deg(b(x))=0 \lor \deg(c(x))=0$
+
+Sideremark:
 \begin{align*}
   &r(x) \in K[x]^{*}, 1 = 1*x^0 + 0 x^1 + \ldots \\
   &r(x) \in K[x]^{*} \Leftrightarrow r(x) \neq 0, \deg(r(x)) = 0\\
 \end{align*}
 
 in $\mathbb{C}[x]: 
-\deg(p(x)) = n \implies \exists n$ not necessarily different zeros $a_1, a_2, \ldots a_n$ and $p(x) = (x-a_1)(x-a_2) \ldots (x-a_n)$
+\deg(p(x)) = n \implies \exists n$ not necessarily different zeros $a_1, a_2, \ldots a_n$ and $p(x) = (x-a_1)(x-a_2) \ldots (x-a_n) \quad$ (fundamental theorem of algebra)
 
 $\implies p(x)$ is irreducible $\iff$ $p(x) = ax+b$ linear polynomial
 
@@ -203,7 +210,7 @@ in $\mathbb{R}[x]:$
 $x^4 + 1 = (x^2 + \sqrt{2} +1)(x^2 - \sqrt{2} + 1)$
 
 \begin{tabular}{ll}
-  irr.: 
+  irreducible: 
     & $ax+b$ and \\
     & $ax^2 + bx + c$ without zeros\\
 \end{tabular}
@@ -213,40 +220,43 @@ $p(a) = 0 \implies p(\bar{a}) = 0$ \\
 $(x-a)(x-\bar{a}) = x^2 - \underbrace{(a + \bar{a})}_{Re(a)} x + \underbrace{a\bar{a}}_{|a|^2}$
 
 \begin{definition}
-integral domain $R$ such that $\forall a \in R \backslash (\{0\} \cup R^{*})$ 
+$R$ is an integral domain such that $\forall a \in R \backslash (\{0\} \cup R^{*})$ 
 there exists a unique representation $a = \epsilon p_1 p_2 \ldots p_k$ 
 where $\epsilon \in R^{*}$ and $p_1, \ldots, p_k$ are prime elements.
 
-unique: $\epsilon p_1 \ldots p_k = \eta q_1 \ldots q_k \implies k=l$ and there is a permutation $\pi$ such that $p_i \sim q_{\pi(i)} \forall i = 1,\ldots, k$
+unique: $\epsilon p_1 \ldots p_k = \eta q_1 \ldots q_l \implies k=l$ and there is a permutation $\pi$ such that 
+$p_i \sim q_{\pi(i)} \quad \forall i = 1,\ldots, k \quad $($ p_i = \underbrace{\epsilon_i}_{\in R^{*}} q_{\pi(i)} $)
 
-$15 = 1*3*5 = (-1) * (-5) * 3$, $ 3 \sim 3, 5 \sim (-5): 5=\underbrace{(-1)}_{\mathbb{Z}^{*}} (-5)$
+$15 = 1\cdot 3\cdot 5 = (-1) \cdot (-5) \cdot 3$, $ 3 \sim 3, 5 \sim (-5): 5=\underbrace{(-1)}_{\in\mathbb{Z}^{*}} (-5)$
 
-Then $R$ is called a \dt{factorial ring} (ZPE-Ring). 
+Then $R$ is called a \dt{factorial ring} (dt.: ZPE-Ring). 
 \end{definition}
 
 \Theorem.
-Every Euklidean ring is a factial ring.
+Every Euklidean ring is a factorial ring.
 
 \Proof.
 We have to show existence and uniqueness. 
 
 Existence:\\
-Case1: 
+Case 1: 
 $a$ irreducible $\Leftrightarrow$ $a$ prime elment $\implies$ $a=1\cdot a$. This is a representation as desired. 
 
-Case2: $a= bc, b,c \not\in R^{*}$ $\implies$ $n(b) < n(a), n(c) < n(a)$
+Case 2: $a= bc, b,c \not\in R^{*}$ $\implies$ $n(b) < n(a), n(c) < n(a)$
 
-Suppose that a does not have a reprsentation of the form (*) and $n(a)$ is minimal. 
-This implies that $b$ must have a prime repesentation $b = \epsilon_1 p_1 \ldots p_k$ $c = \epsilon_2 q_1 \ldots q_l$ 
-$\implies a = \underbrace{\epsilon_1 \epsilon_2}_{\in R^{*}} p_1 \ldots pk q_1 \ldots q_l$. Contradiction!
+Suppose that $a$ does not have a reprsentation of the form (*) and $n(a)$ is minimal. 
+This implies that $b$ must have a prime repesentation $b = \epsilon_1 p_1 \ldots p_k$, $c = \epsilon_2 q_1 \ldots q_l$ 
+$\implies a = \underbrace{\epsilon_1 \epsilon_2}_{\in R^{*}} p_1 \ldots p_k q_1 \ldots q_l$. Contradiction!
 
 Uniqueness:\\
 $a = \epsilon p_1 \ldots p_k = \eta q_1 \ldots q_l, k\geq 2$\\
-$\implies p_1 | \eta q_1 \ldots q_l \implies_{p_1 \not\in R^{*}} p_1 | q_1 \ldots q_l$ 
-$\implies \exists i: p_1 |q_i$ W.l.o.g: $i = 1: p_1|q_1 \implies p_1 \sim q_1$ $p_1 = \epsilon_1 q_1$ with $\epsilon \in R^{*}$
+$\implies p_1 | \eta q_1 \ldots q_l \underset{p_1 \not\in R^{*}}{\implies}{} p_1 | q_1 \ldots q_l$ 
+$\implies \exists i: p_1 |q_i$ \\ W.l.o.g: $i = 1: p_1|q_1 \implies p_1 \sim q_1 \implies p_1 = \epsilon_1 q_1$ with $\epsilon \in R^{*}$
 
-$\epsilon p_2 \ldots p_k = \underbrace{\eta \epsilon_1}_{\in R^{*}} q_2 \ldots q_l$ W.l.o.g.: $p_1|q_w$
+$\implies\epsilon p_2 \ldots p_k = \underbrace{\eta \epsilon_1}_{\in R^{*}} q_2 \ldots q_l$ W.l.o.g.: $p_2|q_2$
 
-\TODO{finish proof properly}
+If $l > k$: $\epsilon = \tilde{\epsilon} q_{k+1} \ldots q_l$. Contradiction!
+
+This implies that $k=l$, which implies uniqueness.
 
 

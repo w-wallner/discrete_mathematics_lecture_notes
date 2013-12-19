@@ -1,0 +1,272 @@
+%%% EtherPad for Discrete Mathematics VO
+%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
+%%% Past pads:
+%%%     * 2013-10-17: committed by patrikf
+%%%     * 2013-10-18: committed by patrikf
+%%%     * 2013-10-24: committed by patrikf
+%%%     * 2013-10-25: committed by patrikf
+%%%     * 2013-11-08: committed by neroburner
+%%%     * 2013-11-21: committed by neroburner
+%%%     * 2013-11-22: committed by neroburner
+%%%     * 2013-11-28: committed by neroburner
+%%%     * 2013-11-29: committed by neroburner
+%%%     * 2013-12-05: committed by neroburner
+%%%     * 2013-12-06: committed by neroburner
+%%%     * 2013-12-12: committed by neroburner
+%%%     * 2013-12-13: committed by neroburner
+
+% Discrete Mathematics Lecture Notes 2013-12-19
+
+\textbf{Remember from last time.}
+\lecturedate[\baselineskip]{2013-12-19}
+There are rings, where we have unique factorisations into prime elements. 
+Every Euklidean ring is a factorial ring. Divisibility theory, Euklidean Algorithm.
+
+We need to go deeper.
+
+\subsection{Ideals in rings}
+
+first some facts from proof-theory
+
+\textbf{Recall.}
+$(G,*)$ and subgroup $U \leq G: a * U = \{ a * x \mid x \in U \}$. These sets form a partition of the group.
+$ a \neq a' \begin{cases} a*U = a'*U \\ (a*U) \cap (a'*U) = \varnothing \end{cases}$
+
+\begin{tabular}{ll}
+  left coset  & $a*U$, $a \in G$\\
+  right cosets & $U*a$
+\end{tabular}
+
+
+If $U \leq G$ such that $\forall a \in G: a*U = U*a$ then $U$ is calld \dt{normal subgroup} $(U \NormSubgroup G)$
+
+\begin{tabular}{ll}
+$U \NormSubgroup G :$ & $(a*U) * (b*U) = (a*b) * U$ \\
+                      & $ a' *U \; b'*U a \; (a'*b')*U$
+\end{tabular}
+
+$(G \backslash U, *)$ is called a \dt{quotient group}
+
+\begin{definition}
+  $R,S$ ring, $\varphi : R \rightarrow S$
+
+  (ring) homomorphism if 
+  \begin{align*}
+    \varphi(a+b) &= \varphi(a) + \varphi(b)\\
+    \varphi(a \cdot b) &= \varphi(a) \cdot \varphi(b)\\
+  \end{align*}
+
+  kernel of $\varphi$: kern $\varphi = \{ x \in R \mid \varphi(x) = 0\}$
+\end{definition}
+
+\Theorem.
+$(\Kernel \varphi, +) \NormSubgroup (R, +)$
+and 
+$a * \Kernel \varphi \subseteq \Kernel \varphi$
+
+\begin{align*}
+  &x \in \Kernel \varphi \Rightarrow \varphi(ax) = \varphi(a) \varphi(x) = 0 \\
+  & \Rightarrow a x \in \Kernel \varphi, x a \in \Kernel \varphi
+\end{align*}
+
+\begin{definition}
+  $R$ ring, $I \subseteq R$ \dt{ideal} if
+  \begin{enumerate}
+    \item $(I, +)$ in (normal subgroup of (R,+), which is an abeliant group
+    \item $a \cdot I \subseteq I$, $I \cdot a \subseteq I$
+  \end{enumerate}
+\end{definition}
+
+\Remark.
+$\varphi: R \rightarrow S$ homomorphism $\implies$ $\Kernel \varphi$ is an ideal of $R$
+
+\Theorem. 
+$R$ ring, $ I \subseteq R$ ideal. Then define $+$ and $\cdot$ on $R\backslash I$ as follows:
+\begin{align*}
+  (a+I) + (b+I) &:= (a+b)+I, \\
+  (a+I)*(b+1) &:= (ab) + I
+\end{align*}
+
+Then $(R\backslash I, +, \cdot)$ is a ring, a quotient ring
+
+\textbf{Example.}
+$R = \mathbb{Z}, I = n*\mathbb{Z} = \{n \cdot z \mid z \in \mathbb{Z}$ is an ideal \\
+$U \subseteq G \Leftrightarrow$ \\
+  $1) U \neq \varnothing$, \\
+  $2) a,b \in U \Rightarrow a*b^{-1} \in U$
+
+$x,y \in n\mathbb{Z} \Rightarrow x = k\cdot n, y = l\cdot n \Rightarrow x -y = (k-l) \cdot n \in \mathbb{Z}$\\
+$\implies n\mathbb{Z} \NormSubgroup \mathbb{Z}: a \in \mathbb{Z} : a+n\mathbb{Z} = \{a+nz \mid z\in \mathbb{Z} \}$
+
+\begin{align*}
+  a+n\mathbb{Z} = \bar{a} \text{ in } \mathbb{Z}_n \\
+  a \cdot n \mathbb{Z} \subseteq n \mathbb{Z} \\
+\end{align*}
+
+\begin{align*}
+  \mathbb{Z} \backslash n \mathbb{Z}: 
+    & \bar{a} + \bar{b} = \overline{a+b}, \bar{a} \bar{b} = \overline{ab} \\
+    & a+b \equiv a+b (n), a\cdot b \equiv a\cdot b (n)
+\end{align*}
+
+\Remark.
+$R$ ring $\implies \{0\}$ and $R$ are the tivial ideals
+
+\begin{tabular}{l|l}
++ & 0 \\
+\hline
+0 & 0
+\end{tabular}
+, $a \cdot \{0\} \subseteq \{0\}$
+
+\begin{definition}
+  $R$ ring, $I \subseteq R$ ideal
+
+  We then define a equivalence relation $\sim$ (i.e. $\sim \subseteq R \times R$)
+
+  $\sim$ is compatible with $+$ and $\cdot$ if 
+  \begin{align*}
+    & a \sim b, c \sim d \\
+    \implies & a +c \sim b+d \\
+             & ac \sim bd
+  \end{align*}
+
+  $\sim$ equivalence relation which is compatible with $+$ and $\cdot$
+  is called \dt{congruence relation}, e.g $\equiv \mod n$
+
+  in particular: $a\sim b :\Leftrightarrow a + I = b + I \Rightarrow \sim$ is a congruece relation
+\end{definition}
+
+\Theorem.
+$R$ ring with $1$, $I \subseteq R$ ideal, $ \epsilon \in R^{*}, \epsilon \in I$
+
+Then $R = I$
+
+\Proof. 
+$\epsilon \in I \cap R^{*} \implies \exists \epsilon^{-1}$ \\
+$\forall r \in R: r \cdot I \subseteq I$, in particular $\epsilon^{-1} \cdot I \subseteq I$
+
+$r \cdot I \subseteq I \implies r \cdot 1 = r \in I \implies R \subseteq I$
+
+Because by definition we have $I \subset R$ and in the proof we have $R \subset I$, this implies $R = I$.
+
+\Corollary.
+A field $K$ has only the trivial ideals $\{0\}$ and $K$
+
+\Remark. 
+$R$ ring, $(I_j)_{j\in J}$ family of ideals $\implies \bigcap_{j \in J} I_j$ is an ideal as well.
+
+\begin{definition}
+  $M \subset R$, $R$ ring, 
+  \[
+    (M):= \bigcap_{I \subseteq R, I \text{ideal}, M \subseteq I} I
+  \]
+  is the \dt{ideal generated by M}. Which is the smallest ideal with contains $M$ (with respect to $\subseteq$).
+\end{definition}
+
+\begin{definition}
+  An ideal generated by one lement $a$ $(a)$, is called a \dt{principal ideal}
+\end{definition}
+
+\Theorem.
+$R$ euklidean ring. Then every ideal is a principal ideal. 
+i.e. $R$ is a \dt{principal ideal domain}.
+
+\Remark. 
+Euklidean ring $\subseteq$ principal ideal domain $\subseteq$ factorial ring $\subseteq$ integral domain
+
+\Example.
+1) $R=\mathbb{Z}: (n) = n\cdot \mathbb{Z}$
+
+$M = \{m_1, m_2, \ldots, m_k\} \subseteq \mathbb{Z}, (M)$\\
+\begin{align*}
+  m_1, m_2 &\implies a \cdot m_1 + b\cdot m_2 \in (M) \\
+           &\implies \gcd(m_1,m_2) \cdot \mathbb{Z} \subseteq (M) \\
+           &\implies M \subseteq gcd(m_1,m_2) \cdot \mathbb{Z} = (M)
+\end{align*}
+
+\Example.
+2) $x\in R^{*} \implies (x) = R$
+
+\Example.
+3) $\mathbb{Q}$ is a subring (even a subfield) of $\mathbb{R}$, but no ideal 
+
+\section{Fields}
+
+\textbf{Recall.}
+$(K,+)$ is an abelian group, $(K\backslash \{0\}, \cdot)$ is an abelian group
+
+$\forall a,b,c \in K: a(b+c) = ab+ac, (a+b)c = ac+bc$
+
+\begin{align*}
+  0\cdot x &= (0+0) \cdot x \\
+           &= 0x + 0x \\
+         0 &= 0x
+\end{align*}
+$x0 = 0$ simmilarly
+
+$(K_i)_{i\in I}$ family of subfields $\implies$ $\bigcap_{i\in I} K_i$ is a subfield
+
+\begin{definition}
+  $\bigcap_{K' \text{ subgroup of $K$}} K'$ is \dt{prime field} of $K$, denoted by $P(K)$
+\end{definition}
+
+$\{0\}$ is not a field, because in every field we have that $0 \neq 1$
+
+\begin{definition}
+  $\ord_{(K,+)} (1)$ is the \dt{characteristic of K} (char $K$)
+\end{definition}
+
+$1,1+1, 1+1+1, \ldots, \underbrace{1+1+ \ldots +1}_{\text{char $K$}} = 0$ if this is finite.
+
+char $K = 0$ if $\ord_{K,+)} (1) = \infty$
+
+\Example.
+$(\mathbb{R}, +)$, char $R = 0$, char $\mathbb{Q} = 0$, char $\mathbb{C} = 0$
+
+$\mathbb{Z}_2, +, \cdot): $ char $\mathbb{Z}_2 = 2$, char $\mathbb{Z}_p = p$ if $p \in \mathbb{P}$
+
+\textbf{Properties of $P(K)$}
+Case 1: 
+char $K=0$: 
+$\forall K'$ subfield of $K$: $0,1 \in K' \implies 0,1 \in P(K)$
+
+$1,1+1, 1+1+1, \ldots k-1$, $k \in \mathbb{N}$, $-1(-1)+(-1), \ldots k(-1) = -(k\cdot 1) \in P(K)$
+
+$(k\cdot 1)^{-1} \in P(K), k\cdot 1, (-k)1,(k\cdot 1)^{-1}, (k\cdot 1)\cdot (l\cdot 1)^{-1} \in P(K), l \in \mathbb{N} \backslash \{0\}$
+
+\TODO{finish Case 1}
+
+Case 2: $\Char K \neq 0$
+
+\Lemma.
+$p = \ord_{(K,+)} (1) < \infty$
+\begin{tabular}{ll}
+\implies
+  & 1) $\forall a \in K \backslash \{0\}: \ord_{(K,+)} (a) = p$\\
+  & 2) $p \in \mathbb{P}$
+\end{tabular}
+
+\Proof.
+$p\cdot 1 = \underbrace{1+1+ \ldots +1}_{p \text{ times}} = 0$
+
+\begin{align*}
+  \implies & p \cdot a = a+a+ \ldots +a = a * (1+1+ \ldots +1) = a\cdot 0 = 0 \\
+  \implies & \ord(a) \leq p
+\end{align*}
+
+\begin{align*}
+  \ord(a) = m \implies 
+  & (ma) a^{-1} = 
+    \underbrace{aa^{-1} + \ldots + aa^{-1}}_{n\text{ times}} = m\cdot 1 \\
+  \implies & m \geq p \implies m= p
+\end{align*}
+
+\TODO{add last point, subpoint 2)}
+
+
+
+
+
+
+

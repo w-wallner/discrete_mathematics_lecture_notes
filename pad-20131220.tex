@@ -1,0 +1,215 @@
+%%% EtherPad for Discrete Mathematics VO
+%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
+%%% Past pads:
+%%%     * 2013-10-17: committed by patrikf
+%%%     * 2013-10-18: committed by patrikf
+%%%     * 2013-10-24: committed by patrikf
+%%%     * 2013-10-25: committed by patrikf
+%%%     * 2013-11-08: committed by neroburner
+%%%     * 2013-11-21: committed by neroburner
+%%%     * 2013-11-22: committed by neroburner
+%%%     * 2013-11-28: committed by neroburner
+%%%     * 2013-11-29: committed by neroburner
+%%%     * 2013-12-05: committed by neroburner
+%%%     * 2013-12-06: committed by neroburner
+%%%     * 2013-12-12: committed by neroburner
+%%%     * 2013-12-13: committed by neroburner
+%%%     * 2013-12-19: committed by neroburner
+
+% Discrete Mathematics Lecture Notes 2013-12-20
+
+\textbf{Remember from last time.}
+\lecturedate[\baselineskip]{2013-12-20}
+
+Fields,
+
+Field $K$, $\Char K$, Primefield $P(K)$, Primefield is isomorphic to $\mathbb{Q}$ or $\mathbb{Z}_p, p \in \mathbb{P}$
+
+\Corollary.
+$K$ finite field. The characteristic cannot be $0$. We know that $\exists p \in \mathbb{P}, n \in \mathbb{N}^{+}: |K| = p^n$. 
+
+\Proof.
+$P(K)$ finite, this means $\exists p \in \mathbb{P}$ such that $|P(K)| = p, P(K) \tilde{=} \mathbb{Z}_p$
+
+$P(K) \subseteq K$: regard $K$ as vector space over $P(K)$. Skalars are taken from $P(K)$. We have finite spaces
+
+\begin{align*}
+  \implies & \exists \text{ base } \{ a_1, a_2, \ldots, a_n \} \subseteq K, \text{i.e.} \dim \GroupGenBy{K, + , P(K)} = n\\
+  \implies & K= \{\sum_{i=1}^n \lambda_i a_i \mid \lambda_i \in P(K), i = 1,2,\ldots,n\} \implies |K| = p^n
+\end{align*}
+
+\Remark.
+In fact, given $p,n \implies $
+
+1) $\exists K: |K| = p^n$\\
+2) $K, K': |K| = |K'| = p^n \implies K \cong K'$
+
+$K$ field $\implies K[x]$ Euklidean ring $\implies$ every ideal is a principal ideal. Furthermore $K[x]$ is a factorial ring (unique factorisation into primes). 
+
+\begin{align*}
+  P(x): x^n = a_{n-1} x^{n-1} + \ldots + a_1 x_1 + a_0 \quad ,a_0, a_1, \ldots a_{n-1} \in K \\
+  I = (P(x)) \text{ ideal in $K[x]$ } \implies P(x) \in I, Q(x)P(x) \in Q(x) \cdot I \subseteq I \\
+  \{R(x) \mid \exists Q(x) \in K[x] : P(x)Q(x) = R(x)\} = I
+\end{align*}
+
+$K[x]\backslash P(x)$ (i.e. $K[x] | (P(x))$ ): $A(x) = B(x) \mod P(x) :\Leftrightarrow P(x) | A(x) - B(x)$ $\implies \equiv $ is a congruence relation.
+
+\begin{align*}
+  A(x) \equiv B(x), C(x) \equiv D(X) \mod P(x) \\
+  A(x) + C(x) \equiv B(x) + D(x) \mod P(x) \\
+  A(x)C(x) \equiv B(x) D(x) \mod P(x)
+\end{align*}
+
+This implies, that we have a quotient ring $K[x]\backslash P(x)$
+
+$P(x) \equiv 0 \mod P(x)$
+
+$\implies x^n \equiv -a_{n-1}x^{n-1} - a_{n-2}x^{n-2} - \ldots - a_1 x - a_0 \mod P(x)$\\
+each polynomial $Q(x)$ fulfills:
+$Q(x) \equiv \tilde{Q}(x) \mod P(x), \deg \tilde{Q}(x)<n$
+
+\Example.
+$\mathbb{R}[x] \backslash x^2-1$:
+
+\begin{align*}
+  x^4 - 3x³ + 2x^2 -5x + 1 \equiv x^2 - 3x +2 - 6x + 1 \equiv x^2 - 8x +3 \equiv -8 + 4 \\
+  x^2 \equiv 1 \mod x^2 -1 \\
+\end{align*}
+
+$\mathbb{R}[x] \backslash x^2 -1 = \{ \overline{ax+b} \mid a,b \in \mathbb{R} \} : x-1, x+1$
+
+In general: $K[x] | P(x) = \{ \sum_{i=0}^{n-1} b_i x^i \mid b_i \in K\}$
+
+$\overline{x-1}, \overline{x+1}$ are zero divisors. This implies that $\mathbb{R}[x] \backslash x^2 -1$ is not an integral domain.
+
+If $P(x) = Q(x)R(x), \deg Q(x) \geq 1, \deg R(x) geq 1 \implies K[x] | P(x)$ is not an integral domain.
+
+\Theorem.
+$K$ field, $P(x) \in K[x] \implies K[x] | P(x)$ is a field if and only if P(x) is irreducible.
+
+\ProofForward.
+Assume $K[x] | P(x)$ is a field. Then the polynomial $P(x)$ must be reducible, otherwise $K[x] | P(x)$ has zero divisors. 
+
+\ProofBackward. Assume $P(x)$ is irreducible:
+$K[x] | P(x)$ is a commutative ring with 1-element $\bar{1} = 1+ (P(x))$
+
+We have to show that every non-zero element has an invers. 
+
+$a(x) \not\equiv 0 \mod P(x) \implies $ without loss of generality $\deg A(x) < \deg P(x) \implies \gcd(A(x), P(x)) = 1$\\
+$\implies \exists B(x), C(x)$ such that 
+\begin{align*}
+  & 1 = A(x)B(x) + P(x)C(x)\\
+  \implies & 1 \equiv A(x) B(x) \mod P(x) \\
+  \implies & B(x) = A(x)^{-1} \mod K[x] | P(x) \\
+  \implies & (K[x] | P(x))^{*} = K[x]|P(x) \backslash \{\bar{0} \\
+  \implies & K[x] | P(x) \text{ is a field}
+\end{align*}
+
+\Remark.
+1) $P(x)$ is irreducible, $\deg P \geq 2$ \\
+$\implies P(x)$ has no zeros, since otherwise, say $P(a) = 0$, then $x -1 | P(x)$
+
+2) $K$ subfield of $K[x]|P(x)$\\
+$K\hat{=}$ constant poly
+
+\subsection{Algebraic extensions of a field $K$}
+$\mathbb{R}, x^2 +1 = 0, x = \pm \sqrt{-1}$ \\
+$\mathbb{C} = \{a+bi \mid a,b \in \mathbb{R} \}$
+
+$P(x)$ irreducible over $K$. $P(x) = 0$ has no solutions in $K$
+
+$P(a) = 0 \implies a\notin K$, $ a \in L \stackrel{\supset}{\neq} K$
+
+$P(x)$ is monic, ie $P(x) = x^n + a_{n-1}x^{n-1} + \ldots + a_1 x + a_0$
+
+\Theorem.
+If $K,L$ fields, $K\subseteq L$, $a$ is zeoro of some polynomial in $K[x]$
+
+$a \notin K \implies \exists!$ monic and irreducible polynomial in $K[x]$ having $a$ as zero.
+
+\Proof.
+Existence: $K[x]$ is a factorialring and an integral domain. 
+
+Uniqueness: Let us assume we have two polynomials $P_1(x) P_2(x)$, which are monic, irreducile, $P_1(x) \neq P_2(x), P_1(a) = P_2(a) = 0$
+
+\begin{align*}
+  \implies d(x) &= gcd(P_1(x), P_2(x))\\
+                &= A(x) P_1(x) + B(x) P_2(x) \\
+  \implies d(x) &= 0
+\end{align*}
+
+But we defined $d(x) = 1$, Contradiction!
+
+$\implies P(x)$ is unique, $P(x)$ has minimal degree amoung all $Q(x)$ with $Q(a) = 0$. \\
+$\implies$ If $P(x) = x^n + \sum_{i=0}^{n-1} p_i x^i \implies \sum_{i=0}^{n-1} p_i a^i \neq 0, \sum_{i=0}^{n-1} c_i a^i \neq 0$ 
+
+$a^n \sum_{i=0}^{n-1} p_i aI = 0$
+
+\TODO{finish this sum-equals thingy}
+
+$\implies L = \{ \sum_{i=0}^{n-1} c_i a^i \mid c_i \in K\}$ is the smalles field with $a \in L$. Moreover $L \cong K[x]|P(x)$
+
+\begin{definition}
+  $P(x)$ monic, irreducible over $K$, $\deg P = n$, $P(a) = 0$, 
+  $L = \{ \sum_{i=0}^{n-1} \mid c_i \in K \}$
+
+  $a$ \dt{algebraic} over $K$, $P(x)$ \dt{minimal polynomial of $a$ over $K$}, $L$ \dt{algebraic extions of $K$}, $L = K(a)$, "$K$ adjoined $a$"
+\end{definition}
+
+\Example.
+$\mathbb{C} = \mathbb{R}(i) \cong \mathbb{R}[x] | x^2 +1 = \{\overline{a+bx} \mid a,b \in \mathbb{R} \}$
+
+\begin{align*}
+  (a + bx)(c+dx) 
+  \equiv & ac + (ad+bc)x + bd x^2 \\
+  \equiv & ac - bd + (ad+bc)x \\
+  \equiv & -1
+\end{align*}
+\begin{align*}
+  (a + bi)(c+di) 
+  \equiv & ac + (ad+bc)i + bd i^2 \\
+  \equiv & ac - bd + (ad+bc)i \\
+\end{align*}
+
+\Example.
+$\mathbb{Q}[x] | x^2 -2 \cong \mathbb{Q}(\sqrt{2}) = \{ a+b \sqrt{2} \mit a,b \in \mathbb{Q}\}$ \\
+$x^2-2 = 0 \implies x = \pm \sqrt{2}$
+
+$\sqrt{2}$ zero of the irreducible polynomial $x^2 -2 \implies x^2 = 2$
+
+$\sqrt{2}$ irrational, algebraic
+
+$\pi$ is not algebraic: $\nexists P(x) \in \mathbb{Q}[x]$ such that $P(\pi) = 0$. It is part of the transcendent numbers. further examples are $ln 2$ and $e$. 
+
+\Example.
+$K[x]|ax+b$, $a,b \in K$, $ a\neq 0$ $\implies x = a^-1b$
+
+$\cong K$
+
+$\mathbb{Q}(\sqrt{2}): x^2 -3$ irreducible over $Q(\sqrt{2})$\\
+$\mathbb{Q}(\sqrt{2}, \sqrt{3})$
+
+\Remark.
+1) A maximal field has only irreducible polinomials of degree $1$. $\implies \nexists$ propber algebraic extensions $\rightarrow$ algebraically closed. 
+
+2) If $K$ is a field then there exists a field $L$ such that $K \subseteq L$, $L$ algebraic closed. 
+
+3) If $|K| = p$ and $p\in \mathbb{P}$, then for every $n \in \mathbb{N}^{+}$ there is an irreducible polynomial $P(x) \in K[x]$. \\
+$\implies \left| K[x]|P(x) \right| = \left| \{\sum_{i=1}^{n-1} c_i x^i \mid c_i \in K\} \right| = p^n$
+
+$\mathbb{Z}_p|P(x) \rightarrow$ the field of order $p^n$, Galois-Field $GF(p^n)$
+
+\textbf{Proposition.}
+Let $M(x)$ be the minimal polynomial of $a \in K$ and $f(x) \in K[x]$ such that $f(a) = 0$. Then $M(x)|f(x)$. Obviously: If $g(x) = M(x)b(x) \implies g(a) = 0$
+
+\Proof. 
+$f(x) = M(x) * p(x) + q(x)$, $\deg g(x) < \deg M(x)$
+
+$f(a) = 0 + q(a) \implies q(a) = 0 \implies q(x) = 0$
+
+
+
+
+
+
+

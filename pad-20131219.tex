@@ -19,33 +19,32 @@
 
 \textbf{Remember from last time.}
 \lecturedate[\baselineskip]{2013-12-19}
-There are rings, where we have unique factorisations into prime elements. 
+There are rings, where we have unique factorizations into prime elements. 
 Every Euklidean ring is a factorial ring. Divisibility theory, Euklidean Algorithm.
 
 We need to go deeper.
 
-\subsection{Ideals in rings}
+\subsubsection{Ideals in rings}
 
 first some facts from proof-theory
 
 \textbf{Recall.}
 $(G,*)$ and subgroup $U \leq G: a * U = \{ a * x \mid x \in U \}$. These sets form a partition of the group.
-$ a \neq a' \begin{cases} a*U = a'*U \\ (a*U) \cap (a'*U) = \varnothing \end{cases}$
+$ a \neq a' \begin{cases} a*U = a'*U $ or$\\ (a*U) \cap (a'*U) = \varnothing \end{cases}$
 
 \begin{tabular}{ll}
-  left coset  & $a*U$, $a \in G$\\
+  left cosets  & $a*U$, $a \in G$\\
   right cosets & $U*a$
 \end{tabular}
 
 
 If $U \leq G$ such that $\forall a \in G: a*U = U*a$ then $U$ is calld \dt{normal subgroup} $(U \NormSubgroup G)$
 
-\begin{tabular}{ll}
-$U \NormSubgroup G :$ & $(a*U) * (b*U) = (a*b) * U$ \\
-                      & $ a' *U \; b'*U a \; (a'*b')*U$
-\end{tabular}
+$U \NormSubgroup G :$ $\underbrace{(a*U)}_{=(a' *U)} * \underbrace{(b*U)}_{=(b' *U)} = \underbrace{(a*b) * U}_{=(a'*b')*U}$
 
-$(G \backslash U, *)$ is called a \dt{quotient group}
+$(G / U, *)$ is called a \dt{quotient group}
+
+($G/U = \{ a*U \mid a \in G\}$ \quad (read: "G modulo U"))
 
 \begin{definition}
   $R,S$ ring, $\varphi : R \rightarrow S$
@@ -60,42 +59,45 @@ $(G \backslash U, *)$ is called a \dt{quotient group}
 \end{definition}
 
 \Theorem.
-$(\Kernel \varphi, +) \NormSubgroup (R, +)$
-and 
-$a * \Kernel \varphi \subseteq \Kernel \varphi$
+\begin{align*}
+(\Kernel \varphi, +) \NormSubgroup (R, +) \text{ and } &a \cdot \Kernel \varphi \subseteq \Kernel \varphi\\
+&(\Kernel \varphi) \cdot a \subseteq \Kernel \varphi
+\end{align*}
 
 \begin{align*}
-  &x \in \Kernel \varphi \Rightarrow \varphi(ax) = \varphi(a) \varphi(x) = 0 \\
-  & \Rightarrow a x \in \Kernel \varphi, x a \in \Kernel \varphi
+  &x \in \Kernel \varphi \Rightarrow \varphi(ax) = \varphi(a) \underbrace{\varphi(x)}_{=0} = 0 \\
+  & \Rightarrow a x \in \Kernel \varphi \text{, } x a \in \Kernel \varphi
 \end{align*}
 
 \begin{definition}
   $R$ ring, $I \subseteq R$ \dt{ideal} if
   \begin{enumerate}
-    \item $(I, +)$ in (normal subgroup of (R,+), which is an abeliant group
+    \item $(I, +)$ is (normal) subgroup of (R,+), which is an abeliant group
     \item $a \cdot I \subseteq I$, $I \cdot a \subseteq I$
   \end{enumerate}
 \end{definition}
+
+The "normal" is in parentheses because every subgroup of an abelian group is a normal subgroup.
 
 \Remark.
 $\varphi: R \rightarrow S$ homomorphism $\implies$ $\Kernel \varphi$ is an ideal of $R$
 
 \Theorem. 
-$R$ ring, $ I \subseteq R$ ideal. Then define $+$ and $\cdot$ on $R\backslash I$ as follows:
+$R$ ring, $ I \subseteq R$ ideal. Then define $+$ and $\cdot$ on $\underbrace{R / I}_{=(R,+)/(I,+)}$ as follows:
 \begin{align*}
   (a+I) + (b+I) &:= (a+b)+I, \\
-  (a+I)*(b+1) &:= (ab) + I
+  (a+I) \cdot (b+I) &:= (ab) + I
 \end{align*}
 
-Then $(R\backslash I, +, \cdot)$ is a ring, a quotient ring
+Then $(R / I, +, \cdot)$ is a ring, the \dt{quotient ring} $R$ modulo $I$.
 
 \textbf{Example.}
-$R = \mathbb{Z}, I = n*\mathbb{Z} = \{n \cdot z \mid z \in \mathbb{Z}$ is an ideal \\
+$R = \mathbb{Z}, I = n*\mathbb{Z} = \{n \cdot z \mid z \in \mathbb{Z}\}$ is an ideal \\
 $U \subseteq G \Leftrightarrow$ \\
   $1) U \neq \varnothing$, \\
   $2) a,b \in U \Rightarrow a*b^{-1} \in U$
 
-$x,y \in n\mathbb{Z} \Rightarrow x = k\cdot n, y = l\cdot n \Rightarrow x -y = (k-l) \cdot n \in \mathbb{Z}$\\
+$x,y \in n\mathbb{Z} \Rightarrow x = k\cdot n, y = l\cdot n \Rightarrow x -y = (k-l) \cdot n \in n\mathbb{Z}$\\
 $\implies n\mathbb{Z} \NormSubgroup \mathbb{Z}: a \in \mathbb{Z} : a+n\mathbb{Z} = \{a+nz \mid z\in \mathbb{Z} \}$
 
 \begin{align*}
@@ -104,7 +106,7 @@ $\implies n\mathbb{Z} \NormSubgroup \mathbb{Z}: a \in \mathbb{Z} : a+n\mathbb{Z}
 \end{align*}
 
 \begin{align*}
-  \mathbb{Z} \backslash n \mathbb{Z}: 
+  \mathbb{Z} / n \mathbb{Z}: 
     & \bar{a} + \bar{b} = \overline{a+b}, \bar{a} \bar{b} = \overline{ab} \\
     & a+b \equiv a+b (n), a\cdot b \equiv a\cdot b (n)
 \end{align*}
@@ -122,13 +124,13 @@ $R$ ring $\implies \{0\}$ and $R$ are the tivial ideals
 \begin{definition}
   $R$ ring, $I \subseteq R$ ideal
 
-  We then define a equivalence relation $\sim$ (i.e. $\sim \subseteq R \times R$)
+  We then define an equivalence relation $\sim$ on $R$ (i.e. $\sim \subseteq R \times R$)
 
   $\sim$ is compatible with $+$ and $\cdot$ if 
   \begin{align*}
     & a \sim b, c \sim d \\
     \implies & a +c \sim b+d \\
-             & ac \sim bd
+             & a \cdot c \sim b \cdot d
   \end{align*}
 
   $\sim$ equivalence relation which is compatible with $+$ and $\cdot$
@@ -144,11 +146,11 @@ Then $R = I$
 
 \Proof. 
 $\epsilon \in I \cap R^{*} \implies \exists \epsilon^{-1}$ \\
-$\forall r \in R: r \cdot I \subseteq I$, in particular $\epsilon^{-1} \cdot I \subseteq I$
+$\forall r \in R: r \cdot I \subseteq I$, in particular $\epsilon^{-1} \cdot \underbrace{I}_{\epsilon \in I} \subseteq I \implies 1 \in I$
 
-$r \cdot I \subseteq I \implies r \cdot 1 = r \in I \implies R \subseteq I$
+$r \cdot I \subseteq I \implies r \cdot 1 = r \in I \implies R \subseteq I \implies R = I$
 
-Because by definition we have $I \subset R$ and in the proof we have $R \subset I$, this implies $R = I$.
+Because by definition we have $I \subseteq R$ and in the proof we have $R \subseteq I$, this implies $R = I$.
 
 \Corollary.
 A field $K$ has only the trivial ideals $\{0\}$ and $K$
@@ -157,19 +159,19 @@ A field $K$ has only the trivial ideals $\{0\}$ and $K$
 $R$ ring, $(I_j)_{j\in J}$ family of ideals $\implies \bigcap_{j \in J} I_j$ is an ideal as well.
 
 \begin{definition}
-  $M \subset R$, $R$ ring, 
+  $M \subseteq R$, $R$ ring, 
   \[
-    (M):= \bigcap_{I \subseteq R, I \text{ideal}, M \subseteq I} I
+    (M):= \bigcap_{I \subseteq R, I \text{ ideal}, M \subseteq I} I
   \]
   is the \dt{ideal generated by M}. Which is the smallest ideal with contains $M$ (with respect to $\subseteq$).
 \end{definition}
 
 \begin{definition}
-  An ideal generated by one lement $a$ $(a)$, is called a \dt{principal ideal}
+  An ideal generated by one lement $a$ $\left( =(a) \right)$, is called a \dt{principal ideal}.
 \end{definition}
 
 \Theorem.
-$R$ euklidean ring. Then every ideal is a principal ideal. 
+$R$ Euklidean ring. Then every ideal is a principal ideal. 
 i.e. $R$ is a \dt{principal ideal domain}.
 
 \Remark. 
@@ -182,7 +184,8 @@ $M = \{m_1, m_2, \ldots, m_k\} \subseteq \mathbb{Z}, (M)$\\
 \begin{align*}
   m_1, m_2 &\implies a \cdot m_1 + b\cdot m_2 \in (M) \\
            &\implies \gcd(m_1,m_2) \cdot \mathbb{Z} \subseteq (M) \\
-           &\implies M \subseteq gcd(m_1,m_2) \cdot \mathbb{Z} = (M)
+           &\implies M \subseteq gcd(m_1,m_2) \cdot \mathbb{Z} \\
+           &\implies (M) = \gcd(m_1,m_2) \cdot \mathbb{Z}
 \end{align*}
 
 \Example.
@@ -191,10 +194,10 @@ $M = \{m_1, m_2, \ldots, m_k\} \subseteq \mathbb{Z}, (M)$\\
 \Example.
 3) $\mathbb{Q}$ is a subring (even a subfield) of $\mathbb{R}$, but no ideal 
 
-\section{Fields}
+\subsection{Fields}
 
 \textbf{Recall.}
-$(K,+)$ is an abelian group, $(K\backslash \{0\}, \cdot)$ is an abelian group
+$\underbrace{(K,+)}_{\text{neutral el. }= 0}$ is an abelian group, $\underbrace{(K\backslash \{0\}, \cdot)}_{\text{neutral el. }= 1}$ is an abelian group
 
 $\forall a,b,c \in K: a(b+c) = ab+ac, (a+b)c = ac+bc$
 
@@ -203,12 +206,12 @@ $\forall a,b,c \in K: a(b+c) = ab+ac, (a+b)c = ac+bc$
            &= 0x + 0x \\
          0 &= 0x
 \end{align*}
-$x0 = 0$ simmilarly
+$x0 = 0$ similarly
 
 $(K_i)_{i\in I}$ family of subfields $\implies$ $\bigcap_{i\in I} K_i$ is a subfield
 
 \begin{definition}
-  $\bigcap_{K' \text{ subgroup of $K$}} K'$ is \dt{prime field} of $K$, denoted by $P(K)$
+  $\bigcap_{K' \text{ subfield of $K$}} K'$ is \dt{prime field} of $K$, denoted by $P(K)$
 \end{definition}
 
 $\{0\}$ is not a field, because in every field we have that $0 \neq 1$
@@ -222,20 +225,27 @@ $1,1+1, 1+1+1, \ldots, \underbrace{1+1+ \ldots +1}_{\Char K} = 0$ if this is fin
 $\Char K = 0$ if $\ord_{K,+)} (1) = \infty$
 
 \Example.
-$(\mathbb{R}, +)$, $\Char R = 0$, $\Char \mathbb{Q} = 0$, $\Char \mathbb{C} = 0$
-
-$\mathbb{Z}_2, +, \cdot): $ $\Char \mathbb{Z}_2 = 2$, $\Char \mathbb{Z}_p = p$ if $p \in \mathbb{P}$
+\begin{align*}
+  (\mathbb{R}, +): &\Char \mathbb{R} = 0\\
+  &\Char \mathbb{Q} = 0\\
+  &\Char \mathbb{C} = 0\\
+  (\mathbb{Z}_2, +, \cdot): &\Char \mathbb{Z}_2 = 2\\
+  &\Char \mathbb{Z}_p = p \text{ if } p \in \mathbb{P}
+\end{align*}
 
 \textbf{Properties of $P(K)$}
 Case 1: 
 $\Char K=0$: 
 $\forall K'$ subfield of $K$: $0,1 \in K' \implies 0,1 \in P(K)$
 
-$1,1+1, 1+1+1, \ldots k-1$, $k \in \mathbb{N}$, $-1(-1)+(-1), \ldots k(-1) = -(k\cdot 1) \in P(K)$
-
-$(k\cdot 1)^{-1} \in P(K), k\cdot 1, (-k)1,(k\cdot 1)^{-1}, (k\cdot 1)\cdot (l\cdot 1)^{-1} \in P(K), l \in \mathbb{N} \backslash \{0\}$
-
-\TODO{finish Case 1}
+\begin{align*}
+&1, 1+1, 1+1+1, \ldots = k-1, k \in \mathbb{N}\\
+&-1, (-1)+(-1), \ldots = k(-1) = -(k\cdot 1) = (-k) \cdot 1\\
+&(k\cdot 1)^{-1} \in P(K)\\
+&k\cdot 1, (-k)\cdot 1,(k\cdot 1)^{-1}, (k\cdot 1)\cdot (l\cdot 1)^{-1} \in P(K), \quad k \in \mathbb{Z}, l \in \mathbb{N} \backslash \{0\}\\
+&\{ k \in \mathbb{Z}, l \in \mathbb{Z}, l>0 \} \cong \mathbb{Q}\\
+&\implies P(K) \cong \mathbb{Q} \implies |K|=\infty
+\end{align*}
 
 Case 2: $\Char K \neq 0$
 
@@ -248,25 +258,26 @@ $\implies$
 \end{tabular}
 
 \Proof.
-$p\cdot 1 = \underbrace{1+1+ \ldots +1}_{p \text{ times}} = 0$
+1) $p\cdot 1 = \underbrace{1+1+ \ldots +1}_{p \text{ times}} = 0$
 
 \begin{align*}
-  \implies & p \cdot a = a+a+ \ldots +a = a * (1+1+ \ldots +1) = a\cdot 0 = 0 \\
+  \implies & p \cdot a = \underbrace{a+a+ \ldots +a}_{p\text{ times}} = a \cdot \underbrace{(1+1+ \ldots +1)}_{=0} = a\cdot 0 = 0 \\
   \implies & \ord(a) \leq p
 \end{align*}
 
 \begin{align*}
-  \ord(a) = m \implies 
-  & (ma) a^{-1} = 
-    \underbrace{aa^{-1} + \ldots + aa^{-1}}_{n\text{ times}} = m\cdot 1 \\
-  \implies & m \geq p \implies m= p
+  \text{assume }\ord(a) = m \implies 
+  & (m\cdot a)\cdot a^{-1} = 
+    \underbrace{\overbrace{a\cdot a^{-1}}^{=1} + \overbrace{a\cdot a^{-1}}^{=1} + \ldots + \overbrace{a\cdot a^{-1}}^{=1}}_{m\text{ times}} = m\cdot 1 \\
+  \implies & m \geq p \implies m = p
 \end{align*}
 
-\TODO{add last point, subpoint 2)}
-
-
-
-
-
+2)
+\begin{align*}
+p=a\cdot b & \implies 0=p \cdot 1 = \underbrace{\underbrace{1 + 1 + \ldots + 1}_{a\text{ times}} + a\cdot 1 + a\cdot 1 + \ldots + a\cdot 1}_{b\text{ times}}\\
+&\implies b \cdot (a \cdot 1) = a\cdot 1 + a\cdot 1 + \ldots + a\cdot 1\\
+&\implies \ord(a\cdot 1)=b < p \quad \text{Contradiction!}\\
+\Char K=p &\implies P(K) \cong \mathbb{Z}_p
+\end{align*}
 
 

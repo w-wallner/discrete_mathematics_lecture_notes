@@ -18,7 +18,7 @@
 \textbf{rembember from last time}
 \lecturedate[\baselineskip]{2013-12-12}
 
-\Proof. 
+\Proof.
 for theorem $\mathbb{Z}_m^{*}$ is cyclic
 
 \Lemma. $g$ is primitive root $\mod p$
@@ -27,7 +27,7 @@ $\mathbb{Z}_p^{*} = \{\bar{1}, \bar{2}, \ldots \overline{p-1}\}$
 
 Then $g$ or $g+p$ is a primitive root $\mod p^2$
 
-\Proof. 
+\Proof.
 \begin{align*}
   &\GroupGenBy{g} = \mathbb{Z}_p^{*} \Leftrightarrow g^{p-1} \equiv 1 (p) \land \forall 1 < r < p-1 : g^r \not\equiv 1(p) \\
   &s : = ord_{\mathbb{Z}_{p^2}^{*}} (g) \Rightarrow g^s \equiv 1 (p^2) \Rightarrow g^s \equiv 1 (p) \Rightarrow s \geq p-1
@@ -42,7 +42,7 @@ Then $g$ or $g+p$ is a primitive root $\mod p^2$
 
 If
 \begin{align*}
-  &g^{p-1} \equiv 1(p^2) \Rightarrow (g+p)^{p-1} 
+  &g^{p-1} \equiv 1(p^2) \Rightarrow (g+p)^{p-1}
   &\equiv \underbrace{\underbrace{g^{p-1}}_{\equiv 1} + \underbrace{pg^{p-2}}_{\gcd(g,p) = 1 \Rightarrow pg^{p-1}\not\equiv 0 (p^2)}}_{\not\equiv 1} (p^2)
 \end{align*}
 
@@ -118,7 +118,7 @@ If $ab \in G: \ord(a)=r, \ord(b) = s$ then $\exists c \in G: \ord(c) = \lcm(r,s)
 
 \begin{align*}
   \implies \lcm(r,s) * \gcd(r,s) = r*s\\
-  I_1 = \{i \in I \mid e_i \leq f_i\}, I_2 = I \backslash I_1 
+  I_1 = \{i \in I \mid e_i \leq f_i\}, I_2 = I \backslash I_1
   & \implies
      & r = \prod_{i\in I_1} p_i^{e_i} \prod_{i\in I_2} p_i^{e_i} \\
     && s = \prod_{i\in I_1} p_i^{f_i} \prod_{i\in I_2} p_i^{f_i} \\
@@ -130,13 +130,13 @@ If $ab \in G: \ord(a)=r, \ord(b) = s$ then $\exists c \in G: \ord(c) = \lcm(r,s)
 
 Observe.
 \begin{align*}
-  \gcd(\frac{r}{d_1}, \frac{2}{d_2} ) = 1 
+  \gcd(\frac{r}{d_1}, \frac{2}{d_2} ) = 1
     \implies \ord(a^{d_1} b^{d_2}) =
     \frac{rs}{d_1 d_2} = \lcm(r,s)
 \end{align*}
 
 \textbf{Corollary.}
-If $a_1, \ldots, a_r$ with $\ord(a_i) = k_i$ then 
+If $a_1, \ldots, a_r$ with $\ord(a_i) = k_i$ then
 \[
   \exists a \in G: \ord(a) = \lcm(k_1, k_2, \ldots, k_r)
 \]
@@ -177,10 +177,10 @@ We found $b_1, b_2, \ldots, b_r \in \mathbb{Z}_n$ such that $\ord_{\mathbb{Z}_n^
 \Theorem.
 If $ a\in G, \ord_G(a)$ maximal, then $\forall b \in G: \ord_G(b) | \ord_G(a)$
 
-\Proof. 
+\Proof.
 Exercise for the students
 
-Let 
+Let
 \[
   a\in \mathbb{Z}_n: a^k \equiv 1 (n) \Leftrightarrow a^k \equiv 1 (p_i^{e_i}) \quad \forall i = 1,\ldots, r
 \]
@@ -223,24 +223,9 @@ $k_0 | \lambda(\lambda(n))$
 
 Look for $p,q$ s.t. $\lambda(\lambda(n))$ is large.
 
-If $p,q$ are such that $\frac{p-1}{2}, \frac{p-3}{4}, \frac{q-1}{2}, \frac{q-3}{4}$ are primes too, 
-then 
+If $p,q$ are such that $\frac{p-1}{2}, \frac{p-3}{4}, \frac{q-1}{2}, \frac{q-3}{4}$ are primes too,
+then
 \begin{align*}
 %  \lambda(pq) = \lcm(p-1, q-1) = 2 * \frac{p-1}{2} \frac{q-1}{2} = \frac{(p-1)(q-1)}{2} \\
   \lambda(\lambda(pq)) = \lcm(\lambda(2), \lambda( \frac{p-1}{2} ), \lambda( \frac{q-1}{2} )) = \frac{(p-3)(q-3)}{8} \quad \sim \quad \frac{n}{8}
 \end{align*}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

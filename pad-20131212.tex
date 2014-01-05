@@ -18,15 +18,13 @@
 \textbf{Remember from last time}
 \lecturedate[\baselineskip]{2013-12-12}
 
-\Proof.
-for theorem $\mathbb{Z}_m^{*}$ is cyclic
+\Theorem. $\mathbb{Z}_m^{*}$ is cyclic $\Leftrightarrow$ \dots
 
-\Lemma. $g$ is primitive root $\mod p$
+\Lemma. $g$ is primitive root $\bmod p \implies g$ or $g+p$ is a primitive root $\bmod{p^2}$.
 
-$\mathbb{Z}_p^{*} = \{\bar{1}, \bar{2}, \ldots \overline{p-1}\}$
-
-Then $g$ or $g+p$ is a primitive root $\mod p^2$
-
+\begin{leftbar}
+  $\mathbb{Z}_p^{*} = \{\bar{1}, \bar{2}, \ldots \overline{p-1}\}$
+\end{leftbar}
 \Proof.
 \begin{align*}
   &\GroupGenBy{g} = \mathbb{Z}_p^{*} \Leftrightarrow g^{p-1} \equiv 1 (p) \land \forall 1 < r < p-1 : g^r \not\equiv 1(p) \\
@@ -39,51 +37,52 @@ Then $g$ or $g+p$ is a primitive root $\mod p^2$
 \]
 
 \textbf{Proof of Claim.}
+\begin{alignat*}{2}
+  &\text{If } g^{p-1} \equiv 1(p^2)
+  &&\Rightarrow (g+p)^{p-1} \equiv \underbrace{\underbrace{g^{p-1}}_{\equiv 1} + \underbrace{pg^{p-2}}_{\gcd(g,p) = 1 \Rightarrow pg^{p-2}\not\equiv 0 (p^2)}}_{\not\equiv 1} (p^2)\\
+  &\text{If } (g+p)^{p-1} \equiv 1(p^2)
+  &&\Rightarrow \underbrace{g^{p-1}}_{\not\equiv 1\Leftarrow} + \underbrace{pg^{p-2}}_{\not\equiv 0} \equiv 1 (p^2)
+\end{alignat*}
 
-If
+\textbf{Case 1.} $g^{p-1} \not\equiv 1 (p^2)$
 \begin{align*}
-  &g^{p-1} \equiv 1(p^2) \Rightarrow (g+p)^{p-1}
-  &\equiv \underbrace{\underbrace{g^{p-1}}_{\equiv 1} + \underbrace{pg^{p-2}}_{\gcd(g,p) = 1 \Rightarrow pg^{p-1}\not\equiv 0 (p^2)}}_{\not\equiv 1} (p^2)
-\end{align*}
-
-If
-\begin{align*}
-  (g+p)^{p-1} \equiv 1(p^2) \Rightarrow \underbrace{g^{p-1}}_{\equiv 1 \Leftarrow} + \underbrace{pg^{p-2}}_{\not\equiv 0} \equiv 1 (p^2)
-\end{align*}
-
-Case 1. $g^{p-1} \not\equiv 1 (p^2)$
-\begin{align*}
-  &s \geq p, \quad\text{Note: } \varphi(p^2) = p(p-1) \Rightarrow s|p(p-1) \\
+  &s \geq p, \quad\text{Note: } \varphi(p^2) = p(p-1) \Rightarrow s \mid p(p-1) \\
   &\Rightarrow s = p-l \text{ where } p-1 = k\cdot l \quad (k,l < p-1) \\
   &g^{pl} \equiv 1 (p^2) \\
   &g^{pl} = (g^p)^l \equiv g^l \equiv 1 (p) \\
-  &\text{Contradiction! except for } l = p-1 \\
-  &\implies s = p(p-1) \implies g \text{ primitive root } \mod p^2
+  &\text{Contradiction except for } l = p-1 \text{ !}\\
+  &\implies s = p(p-1) \implies g \text{ primitive root } \bmod p^2
 \end{align*}
 
-Case 2. $(g+p)^{p-1} \not\equiv 1 (p^2)$\\
-similar
+\textbf{Case 2.} $(g+p)^{p-1} \not\equiv 1 (p^2)$ similar\\
 
 \Lemma.
-$g$ primitive root $\mod p \quad(p \neq 2)$ $\implies$ either $g$ or $g+p$ is a primitive root $\mod p^e \quad(e \geq 2)$
+$g$ primitive $\text{root}\bmod{p} ~ (p \neq 2)$ $\implies$ either $g$ or $g+p$ is a primitive $\text{root}\bmod{p^e} ~ (e \geq 2)$
 
 \Lemma.
-If $h$ is a primitive root $\mod p^e \implies$ $h$ or $h+p^e$ is a primitive root $\mod 2p^e$
+If $h$ is a primitive $\text{root} \bmod{p^e} \implies$ $h$ or $h+p^e$ is a primitive root $\text{root} \bmod{2p^e}$
 
 \begin{definition}
   \dt{Carmichael function}
-  $\lambda(m) = max_{\bar{a} \in \mathbb{Z}_m^{*}} ord_{\mathbb{Z}_m^{*}}(\bar{a})$
+  $\lambda(m) = max_{\bar{a} \in \mathbb{Z}_m^{*}} ~ord_{\mathbb{Z}_m^{*}}\pod{\bar{a}}$
 \end{definition}
 
 \Remark.
+\begin{enumerate}[a)]
 
-a) $\lambda(m) | \varphi(m)$ \\
-b) $p \in P \backslash\{2\} \implies \lambda(p^e) = \varphi(p^e) = p^{e-1}(p-1)$ \\
-  $\lambda(1) := \varphi(1) = 1, \lambda(2) = \varphi(2) = 1, \lambda(4) = \varphi(4) = 2$\\
-c) $\lambda(2^e) = 2^{e-2} \text{ for } e \geq 3$ \\
-  $\lambda(2^e) = ord_{\mathbb{Z}_{2^e}}(5)$
+  \item $\lambda(m) \mid \varphi(m)$
 
-\subsection{The order of elements of an abelian group $G$ with neutral element $e$}
+  \item $p \in P \backslash\{2\} \implies \lambda(p^e) = \varphi(p^e) = p^{e-1}(p-1)$ \\
+  $\lambda(1) := \varphi(1) = 1$\\
+  $\lambda(2) = \varphi(2) = 1$\\
+  $\lambda(4) = \varphi(4) = 2$
+
+  \item $\lambda(2^e) = 2^{e-2} \text{ for } e \geq 3$ \\
+  $\lambda(2^e) = ord_{\mathbb{Z}_{2^e}^{*}}(5)$
+
+\end{enumerate}
+
+\subsection{The Order of Elements of an Abelian Group $G$ With Neutral Element $e$}
 \Theorem.
 \[
   \ord(a) = r, \ord(b) = s, \gcd(r,s) = 1 \implies \ord(ab) = rs
@@ -91,15 +90,14 @@ c) $\lambda(2^e) = 2^{e-2} \text{ for } e \geq 3$ \\
 
 \Proof.
 \begin{align*}
-  &(ab)^{rs} = (\underbrace{a^r}_{e})^s (\underbrace{b^s}_{e})^r = e \implies \underbrace{\ord(ab)}_{n} |rs \\
+  &(ab)^{rs} = (\underbrace{a^r}_{e})^s (\underbrace{b^s}_{e})^r = e \implies \underbrace{\ord(ab)}_{n} \mid rs \\
   &e = (ab)^n = a^n b^n \implies a^n = (b^{-1})^n \implies e = a^{rn} = (b^{-1})^{nr} \quad (*)\\
-  &(b^{-1})^k = e \Leftrightarrow b^k = e \stackrel{(*)}{\implies} b^{nr} = e \implies s|nr \implies s|n \\
+  &(b^{-1})^k = e \Leftrightarrow b^k = e \stackrel{(*)}{\implies} b^{nr} = e \implies s \mid nr \implies s \mid n \\
 \end{align*}
-
-Analogously.
-\begin{align*}
-  r|n \implies n = rs
-\end{align*}
+Analogously:
+\[
+  r \mid n \implies n = rs
+\]
 
 \textbf{Corollary.}
 \begin{align*}
@@ -115,42 +113,40 @@ If $ab \in G: \ord(a)=r, \ord(b) = s$ then $\exists c \in G: \ord(c) = \lcm(r,s)
   &\lcm(r,s) = \prod_{i\in I} p_i^{\max(e_i,f_i)}\\
   &\gcd(r,s) = \prod_{i\in I} p_i^{\min(e_i,f_i)}
 \end{align*}
-
 \begin{align*}
-  \implies \lcm(r,s) * \gcd(r,s) = r*s\\
+  \implies \lcm(r,s) \cdot \gcd(r,s) = r \cdot s\\
   I_1 = \{i \in I \mid e_i \leq f_i\}, I_2 = I \backslash I_1
-  & \implies
+  \implies
      & r = \prod_{i\in I_1} p_i^{e_i} \prod_{i\in I_2} p_i^{e_i} \\
-    && s = \prod_{i\in I_1} p_i^{f_i} \prod_{i\in I_2} p_i^{f_i} \\
+     & s = \prod_{i\in I_1} p_i^{f_i} \prod_{i\in I_2} p_i^{f_i} \\
 \end{align*}
 \begin{align*}
   &d_1 = \prod_{i\in I_1} p_i^{e_i}, d_2 = \prod_{i\in I_2} p_i^{f_i}, \quad \gcd(r,s) = d_1 d_2 \\
-  &\implies \ord(a^{d_1}) = \frac{r}{\gcd(r,d_1)} = \frac{1}{d_1} \text{ and } \ord(b^{d_2}) = \frac{s}{d_2}
+  &\implies \ord\left(a^{d_1}\right) = \frac{r}{\gcd(r,d_1)} = \frac{r}{d_1} \text{ and } \ord\left(b^{d_2}\right) = \frac{s}{d_2}
 \end{align*}
 
 Observe.
 \begin{align*}
-  \gcd(\frac{r}{d_1}, \frac{2}{d_2} ) = 1
+  \gcd\left(\frac{r}{d_1}, \frac{s}{d_2} \right) = 1
     \implies \ord(a^{d_1} b^{d_2}) =
     \frac{rs}{d_1 d_2} = \lcm(r,s)
 \end{align*}
 
 \textbf{Corollary.}
-If $a_1, \ldots, a_r$ with $\ord(a_i) = k_i$ then
 \[
-  \exists a \in G: \ord(a) = \lcm(k_1, k_2, \ldots, k_r)
+  \text{If } a_1, \ldots, a_r \text{ with } \ord(a_i) = k_i
+  \implies \exists a \in G: \ord(a) = \lcm(k_1, k_2, \ldots, k_r)
 \]
 
+\subsection{And now to Something Completely Different!}
 
-\subsection{And now to something completely different!}
-\begin{align*}
+\[
   \lambda(n), n = \prod_{i = 1}^{r} p_i^{e_i}, e_i > 0
-\end{align*}
-
-\begin{align*}
-\text{Let } &a_i \in \mathbb{Z}_{p_i^{e_i}}^{*} \text{ s.t. } \ord(a_i) = \varphi(p_i^{e_i}) = \lambda(p_i^{e_i})\\
-  &b_i \in \mathbb{Z}_n \text{ s.t. } b_i \equiv 1 (p_j^{e_j}) \quad \forall j \neq i \text{ and } b_i \equiv a_i (p_i^{e_i})
-\end{align*}
+\]
+\begin{alignat*}{2}
+\text{Let } &a_i \in \mathbb{Z}_{p_i^{e_i}}^{*} &&\text{ such that } \ord(a_i) = \varphi(p_i^{e_i}) = \lambda(p_i^{e_i})\\
+  &b_i \in \mathbb{Z}_n &&\text{ such that } b_i \equiv 1 (p_j^{e_j}) \quad \forall j \neq i \text{ and } b_i \equiv a_i (p_i^{e_i})
+\end{alignat*}
 $b_i$ exists by Chinese remainder theorem
 
 \textbf{Claim.}
@@ -160,7 +156,6 @@ $b_i$ exists by Chinese remainder theorem
 
 \Proof.
 For $b_i^k \equiv 1 (n)$ we must have $b_i^k \equiv 1 (p_j^{e_j}) \quad \forall j = 1, \ldots, r$
-
 \begin{align*}
   &b_i = c\cdot n+1 = c c_1 p_j^{e_j} +1 \implies b_i^k \equiv a_i^k \equiv 1 (p_i ^{e_i}) \\
   &k_{\min} = \lambda(p_i^{e_i}) \implies \ord_{\mathbb{Z}_n^{*}}(b_i) \geq \lambda(p_i^{e_i}) \\
@@ -168,14 +163,13 @@ For $b_i^k \equiv 1 (n)$ we must have $b_i^k \equiv 1 (p_j^{e_j}) \quad \forall 
 \end{align*}
 
 We found $b_1, b_2, \ldots, b_r \in \mathbb{Z}_n$ such that $\ord_{\mathbb{Z}_n^{*}}(b_i) = \lambda(p_i^{e_i}) \quad \forall i = 1, \ldots, r$
-
 \begin{align*}
-  &\implies \exists b \in \mathbb{Z}_n^{*} \text{ s.t. } \ord_{\mathbb{Z}_n^{*}}(b) = \lcm(\lambda(p_1^{e_1}), \lambda(p_2^{e_2}), \ldots, \lambda(p_r^{e_r})) = K \\
+  &\implies \exists b \in \mathbb{Z}_n^{*} \text{ such that } \ord_{\mathbb{Z}_n^{*}}(b) = \lcm(\lambda(p_1^{e_1}), \lambda(p_2^{e_2}), \ldots, \lambda(p_r^{e_r})) =: K \\
   &\implies \lambda(n) \geq K \text{ We want to show $\lambda(n) = K$}
 \end{align*}
 
 \Theorem.
-If $ a\in G, \ord_G(a)$ maximal, then $\forall b \in G: \ord_G(b) | \ord_G(a)$
+If $ a\in G, \ord_G(a)$ maximal, then $\forall b \in G: \ord_G(b) \mid \ord_G(a)$
 
 \Proof.
 Exercise for the students
@@ -184,19 +178,20 @@ Let
 \[
   a\in \mathbb{Z}_n: a^k \equiv 1 (n) \Leftrightarrow a^k \equiv 1 (p_i^{e_i}) \quad \forall i = 1,\ldots, r
 \]
-
 \begin{align*}
-  &\lambda(p_i^{e_i}) = \text{ max order in } \mathbb{Z}_{p_i^{e_i}}^{*} \implies \ord_{\mathbb{Z}_{p_i^{e_i}}^{*}}(a) | \underbrace{\lambda(p_i^{e_i})}_{\lambda(p_i^{e_i}) | K}\\
-  &\Rightarrow \ord_{\mathbb{Z}_{p_i^{e_i}}^{*}}(a) | K \implies a^K \equiv 1 (p_i^{e_i}) \quad \forall i \\
-  &\Leftrightarrow a^K \equiv 1 (n) \implies \ord_{\mathbb{Z}_{n}^{*}}(a) | K \implies  \ord_{\mathbb{Z}_n^{*}}(a) \leq K \implies \lambda(n) = K
+  &\lambda(p_i^{e_i}) = \text{ max order in } \mathbb{Z}_{p_i^{e_i}}^{*} \implies \ord_{\mathbb{Z}_{p_i^{e_i}}^{*}}(a) \mid \underbrace{\lambda(p_i^{e_i})}_{\lambda(p_i^{e_i}) \mid K}\\
+  &\Rightarrow \ord_{\mathbb{Z}_{p_i^{e_i}}^{*}}(a) \mid K \implies a^K \equiv 1 (p_i^{e_i}) \quad \forall i \\
+  &\Leftrightarrow a^K \equiv 1 (n) \implies \ord_{\mathbb{Z}_{n}^{*}}(a) \mid K \implies  \ord_{\mathbb{Z}_n^{*}}(a) \leq K \implies \lambda(n) = K
 \end{align*}
 
 \Theorem.
-The Carmichael function $\lambda(n)$ obtains the following rules
+The Carmichael function $\lambda(n)$ obeys the following rules
 
-$\lambda(1) = 1, \lambda(2) = 1, \lambda(4) = 2, \lambda(2^e) = 2^{e-2} $ if $e \geq 3$\\
-$\lambda(p^e) = p^{e-1}(p-1)$ for $p\in \mathbb{P} \backslash\{2\}$\\
-$\lambda(\prod_{i=1}^{r} p_i^{e_i}) = \lcm(\lambda(p_1^{e_1}), \ldots, \lambda(p_r^{e_r}))$
+\begin{itemize}
+  \item $\lambda(1) = 1, \lambda(2) = 1, \lambda(4) = 2, \lambda(2^e) = 2^{e-2} $ for $e \geq 3$
+  \item $\lambda(p^e) = p^{e-1}(p-1)$ for $p\in \mathbb{P} \backslash\{2\}$
+  \item $\displaystyle{\lambda\left(\prod_{i=1}^{r} p_i^{e_i}\right) = \lcm(\lambda(p_1^{e_1}), \ldots, \lambda(p_r^{e_r}))}$
+\end{itemize}
 
 \textbf{Example.}
 \[
@@ -204,28 +199,26 @@ $\lambda(\prod_{i=1}^{r} p_i^{e_i}) = \lcm(\lambda(p_1^{e_1}), \ldots, \lambda(p
 \]
 
 \textbf{Ad. RSA.}
-Attack by iteration:
-
-$n = pq$, $(n,e)$ public key, $(n,d)$ private key, \\
-$x$ message, $y_0 = x, y_1 = x^e (n), y_i = y_{i-1}^{e} (n)$
-
-Search for k: $y_k = x$
-
+Attack by message iteration:
 \begin{align*}
-  &y_i = x^{(e^i)} (n) \\
-  &ed \equiv 1 (v) \\
-  &v = \lcm(p-1, q-1) = \lambda(n) \\
-  &x ^{v+1} \equiv x (n)
+  n = pq               & \quad (n,e) \text{ public key}\\
+                       & \quad (n,d) \text{ private key}\\
+  x \text{ message}    & \quad y_0 = x, y_1 = x^e (n), y_i = y_{i-1}^{e} (n)\\
+  \text{Search for k:} & \quad y_k = x\\
+                       & \quad y_i = x^{(e^i)} (n)\\
+                       & \quad ed \equiv 1 (v)\\
+                       & \quad v = \lcm(p-1, q-1) = \lambda(n)\\
+                       & \quad x ^{v+1} \equiv x (n)
 \end{align*}
 
-minimal $k$ s.t. $ y_k = x$ is $k_0 = \ord_{\mathbb{Z}_v^{*}}(e) = \ord_{\mathbb{Z}_{\lambda(n)}^{*}}(e)$ \\
-$k_0 | \lambda(\lambda(n))$
+The minimal $k$ such that $ y_k = x$ is $k_0 = \ord_{\mathbb{Z}_v^{*}}(e) = \ord_{\mathbb{Z}_{\lambda(n)}^{*}}(e)$ \\
+$k_0 \mid \lambda(\lambda(n))$
 
-Look for $p,q$ s.t. $\lambda(\lambda(n))$ is large.
+Look for $p,q$ such that $\lambda(\lambda(n))$ is large.
 
 If $p,q$ are such that $\frac{p-1}{2}, \frac{p-3}{4}, \frac{q-1}{2}, \frac{q-3}{4}$ are primes too,
 then
 \begin{align*}
-%  \lambda(pq) = \lcm(p-1, q-1) = 2 * \frac{p-1}{2} \frac{q-1}{2} = \frac{(p-1)(q-1)}{2} \\
-  \lambda(\lambda(pq)) = \lcm(\lambda(2), \lambda( \frac{p-1}{2} ), \lambda( \frac{q-1}{2} )) = \frac{(p-3)(q-3)}{8} \quad \sim \quad \frac{n}{8}
+ \lambda(pq) &= \lcm(p-1, q-1) = 2 \cdot \frac{p-1}{2} \frac{q-1}{2} = \frac{(p-1)(q-1)}{2} \\
+  \lambda(\lambda(pq)) &= \lcm(\underbrace{\lambda(2)}_{1}, \underbrace{\lambda( \frac{p-1}{2} )}_{\frac{p-3}{2}}, \underbrace{\lambda( \frac{q-1}{2} )}_{\frac{q-3}{2}}) = \frac{(p-3)(q-3)}{8} \quad \sim \quad \frac{n}{8}
 \end{align*}

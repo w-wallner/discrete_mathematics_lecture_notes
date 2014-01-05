@@ -36,7 +36,7 @@ and no zero divisors: $a\cdot b = 0 \implies a=0 \lor b = 0$
 \end{definition}
 
 \begin{definition}
-An \dt{Euklidean ring} is an integral domain with an Euklidean function
+An \dt{Euclidean ring} is an integral domain with an Euclidean function
 \begin{align*}
   n: R \backslash \{0\} \rightarrow \mathbb{N} \text{ s.t. } &\forall a,b \in R: \exists q,r \in R: a = bq + r, \\
   &n(r) < n(b) \lor r=0 \\
@@ -73,7 +73,7 @@ Recall the set (group) of units:
 \end{tabular}
 
 \Theorem.
-$R$ is an Euklidiean ring, $a,b\in R, a|b \implies n(a) \leq n(b)$
+$R$ is an Euclidean ring, $a,b\in R, a|b \implies n(a) \leq n(b)$
 
 \Proof.
 \begin{align*}
@@ -107,7 +107,7 @@ $d|d' \land d' | d$
 
 $a$ \dt{irreducible} $\Leftrightarrow a = bc$ implies that either $b\in R^{*}$ or $c\in R^{*}$
 
-Sideremark:
+Side remark:
 In $\mathbb{Z}: \mathbb{Z}^{*} = \{-1, 1\}$ \\
 $p = p \cdot 1 = (-p) \cdot (-1)$
 
@@ -120,15 +120,15 @@ $R = \mathbb{Z} \implies x \in R$ irreducible $\iff x \in \mathbb{P}$ or $-x \in
 \Theorem.
 \begin{enumerate}
   \item Every prime element is irreducible
-  \item In Euklidean rings the converse is true as well
+  \item In Euclidean rings the converse is true as well
 \end{enumerate}
 
 \Proof.
 1) a is a prime element and $a = bc$ (which implies $a |b$ or $a|c$)\\
 If $a|b$ then $a|b \land b|a \implies a = bc, b = a\bar{c} = b c\bar{c}$\\
 $\implies b(1-c\bar{c}) = 0 \implies c\bar{c} = 1 \implies c, \bar{c} \in R^{*}
-\implies a \sim b \implies$ a irredicible
-(because: a irredicuble $\implies \underbrace{b \in R^{*}}_{a \sim c} \lor \underbrace{c \in R^{*}}_{a \sim b}$)
+\implies a \sim b \implies$ a irreducible
+(because: a irreducible $\implies \underbrace{b \in R^{*}}_{a \sim c} \lor \underbrace{c \in R^{*}}_{a \sim b}$)
 
 2) a irreducible, $a|bc$
 
@@ -137,7 +137,7 @@ Either $d$ or $c_1$ has to be a unit.
 If $c_1 \in R^{*} \stackrel{\exists c_1^{-1}}{\implies} d = a\cdot c_1^{-1} \implies b = a \cdot c_1^{-1} \cdot c_2 \implies a |b$ Contradiction! \\
 $\implies c_1 \not\in R^{*} \implies d \in R^{*}$:
 Without loss of generality: $d = 1$\\
-we are in an Euklidean Ring $R$ $\implies$ $\exists x,y \in R: 1 = ax + by$ \\
+we are in an Euclidean Ring $R$ $\implies$ $\exists x,y \in R: 1 = ax + by$ \\
 $\implies c = acx + bcy = acx + ay = a (cx+y) \implies a|c$
 
 In the same way we can proof $a\not|c \implies a|b$.
@@ -175,10 +175,10 @@ But $a^2 + 5b^2 > 4b^2 > 2|b|$ except if $ b=0$ $\implies d \not\in \mathbb{Z}$ 
 If $b=0: c = \frac{2a}{a^2} = \frac{2}{a} \implies a \in \{\pm 1, \pm 2\}$
 $\implies r = \pm 1 \implies r \in R^{*}$ or $ r = \pm 2 \implies s \in R^{*} \implies 2 $ irreducible
 
-$\implies \mathbb{Z}[i\sqrt{5}]$ is not an Euklidian ring
+$\implies \mathbb{Z}[i\sqrt{5}]$ is not an Euclidean ring
 
 \textbf{Example.}
-$K$ is a field $\implies K[x]$ is a Euklidean ring\\
+$K$ is a field $\implies K[x]$ is a Euclidean ring\\
 
 Definition of a field:
 \begin{tabular}{ll}
@@ -195,7 +195,7 @@ $\deg(p(x)) \leq \deg(p(x) q(x))$.
 
 $\implies$ The prime elements are the irreducible elements: irreducible polynomials: $a(x) = b(x)c(x) \implies \deg(b(x))=0 \lor \deg(c(x))=0$
 
-Sideremark:
+Side remark:
 \begin{align*}
   &r(x) \in K[x]^{*}, 1 = 1*x^0 + 0 x^1 + \ldots \\
   &r(x) \in K[x]^{*} \Leftrightarrow r(x) \neq 0, \deg(r(x)) = 0\\
@@ -233,19 +233,19 @@ Then $R$ is called a \dt{factorial ring} (dt.: ZPE-Ring).
 \end{definition}
 
 \Theorem.
-Every Euklidean ring is a factorial ring.
+Every Euclidean ring is a factorial ring.
 
 \Proof.
 We have to show existence and uniqueness.
 
 Existence:\\
 Case 1:
-$a$ irreducible $\Leftrightarrow$ $a$ prime elment $\implies$ $a=1\cdot a$. This is a representation as desired.
+$a$ irreducible $\Leftrightarrow$ $a$ prime element $\implies$ $a=1\cdot a$. This is a representation as desired.
 
 Case 2: $a= bc, b,c \not\in R^{*}$ $\implies$ $n(b) < n(a), n(c) < n(a)$
 
-Suppose that $a$ does not have a reprsentation of the form (*) and $n(a)$ is minimal.
-This implies that $b$ must have a prime repesentation $b = \epsilon_1 p_1 \ldots p_k$, $c = \epsilon_2 q_1 \ldots q_l$
+Suppose that $a$ does not have a representation of the form (*) and $n(a)$ is minimal.
+This implies that $b$ must have a prime representation $b = \epsilon_1 p_1 \ldots p_k$, $c = \epsilon_2 q_1 \ldots q_l$
 $\implies a = \underbrace{\epsilon_1 \epsilon_2}_{\in R^{*}} p_1 \ldots p_k q_1 \ldots q_l$. Contradiction!
 
 Uniqueness:\\

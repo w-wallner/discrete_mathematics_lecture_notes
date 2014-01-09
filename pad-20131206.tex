@@ -14,66 +14,74 @@
 
 % Discrete Mathematics Lecture Notes 2013-12-06
 
-\textbf{rembember from last time}
+\textbf{Remember from last time}
 \lecturedate[\baselineskip]{2013-12-06}
 \[
   x \equiv a_i (m_i), 1 \leq i \leq r (*)
 \]
-$\implies$ $(*)$ has unique solution mod $m = \prod_{i = 1}^r m_i$. 
+$\implies$ $(*)$ has unique solution mod $\displaystyle{m = \prod_{i = 1}^r m_i}$.
 
 \[
-  x \equiv \sum_{j=1}^r \frac {m}{m_j} * b_j * a_j (m) \text{ where }
-  b_j = \left( \frac{m}{m_j} \right) ^{-1} \mod m_j
+  x \equiv \sum_{j=1}^r \frac {m}{m_j} \cdot b_j \cdot a_j (m) \text{ where }
+  b_j = \left( \frac{m}{m_j} \right) ^{-1} \imod{m_j}
 \]
 
 \textbf{Example.}
 System of two congruent relations.
 \begin{align*}
-  3x &\equiv 2 (5) \\
-  2x &\equiv 7 (11)
+  3x &\equiv 2 \pod{5} \\
+  2x &\equiv 7 \pod{11}
 \end{align*}
 
-The previous are equivalent to
+The previous relations are equivalent to
 \begin{align*}
-  x &\equiv 4 (5) \\
-  x &\equiv 9 (11)
+  x &\equiv 4 \pod{5} \\
+  x &\equiv 9 \pod{11}
 \end{align*}
-
+\begin{minipage}[t]{0.5\textwidth}
 \begin{align*}
-  &m_1 = 4, m_2 = 11, m = 55 \\
+  &m_1 = 5, m_2 = 11, m = 55 \\
   &a_1 = 4, a_2 = 9 \\
-  \hline
-  &b_1 * 11 = 1 (5)  \implies b_1 = 1 \\
-  &b_2 *5 = 1 (11) \implies b_2 = 9 \\
-  \hline
-  & x \equiv 11 * 1 * 4 + 5 *9 *9 \mod 55\\
-  & x \equiv 449 \mod 55 \\
-  & x \equiv 9 (55) \\
-  & \text{solutions: } \{\cdots, -46, 9, 64, 119, \cdots \}
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{align*}
+  &b_1 \cdot 11 = 1 \pod{5}  \implies b_1 = 1 \\
+  &b_2 \cdot 5 = 1  \pod{11} \implies b_2 = 9 \\
+\end{align*}
+\end{minipage}
+\begin{align*}
+  & x \equiv 11 \cdot 1 \cdot 4 + 5 \cdot9 \cdot9 \pod{55}\\
+  & x \equiv 449 \pod{55} \\
+  & x \equiv 9 \pod{55} \\
+  & \text{Solutions: } \{\dots, -46, 9, 64, 119, \dots \}
 \end{align*}
 
 \Proof.
 
-1) x is a solution: $m_i, i = 1,2, \ldots, r$, are pairwise coprime 
-\[
-  \implies \gcd\left(\frac{m}{m_j}, m_j\right) = 1 \implies \exists b_j
-\]
+\begin{enumerate}[1)]
 
-\begin{align*}
-  \frac{m}{m_j} &\equiv 0 (m_i) \quad \forall i \neq j \\
-  \implies \sum_{j=1}^{r}\frac{m}{m_j} b_j * a_j &\equiv 
-    \frac{m}{m_j} \underbrace{b_i}_{(\frac{m}{m_j})^{-1} \mod m_i} a_i (m_i) \\
-  &\equiv a_i (m_i)
-\end{align*}
+  \item x is a solution: $m_i, i = 1,2, \ldots, r$, are pairwise coprime
+  \[
+    \implies \gcd\left(\frac{m}{m_j}, m_j\right) = 1 \implies \exists b_j
+  \]
+  \begin{align*}
+    \frac{m}{m_j} &\equiv 0 \pod{m_i} \quad \forall i \neq j \\
+    \implies \sum_{j=1}^{r}\frac{m}{m_j} b_j \cdot a_j &\equiv
+      \frac{m}{m_j} \underbrace{b_i}_{\left(\frac{m}{m_j}\right)^{-1} \imod{m_i}} a_i \pod{m_i} \\
+    &\equiv a_i \pod{m_i}
+  \end{align*}
 
-2) x is unique mod m:
-\begin{align*}
-  & x \equiv a_i(m_i) \quad y \equiv a_i (m_i) \quad \forall i = 1,\ldots, r \\
-  \implies & x \equiv y (m_i) \quad \forall i \\
-  \implies & x \equiv y (m)
-\end{align*}
+  \item x is unique mod m:
+  \begin{align*}
+    & x \equiv a_i\pod{m_i} \quad y \equiv a_i \pod{m_i} \quad \forall i = 1,\ldots, r \\
+    \implies & x \equiv y \pod{m_i} \quad \forall i \\
+    \implies & x \equiv y \pod{m}
+  \end{align*}
 
-\section{Euler-Fermat theorem and RSA-Algorithm}
+\end{enumerate}
+
+\section{Euler-Fermat Theorem and RSA-Algorithm}
 
 \Theorem.
 $(\mathbb{Z}_m^{*}, \cdot)$ is a group.
@@ -86,21 +94,22 @@ $(\mathbb{Z}_m^{*}, \cdot)$ is a group.
 E.g.: $\varphi(5) = 4, \varphi(6) = 2$
 
 Consider two cases. First case:
-\begin{align*}
-  &m \in \mathbb{P}: \varphi(m) = m-1 \\
-\end{align*}
-
+\[
+  m \in \mathbb{P}: \varphi(m) = m-1 \\
+\]
 Second case:
 \begin{align*}
   &m = p^e, p \in \mathbb{P}, e \geq 1 \\
   &\bar{a}\in \mathbb{Z}_m \implies \gcd(a,p^e) = \begin{cases}
     1   &\text{ if $\bar{a} \in \mathbb{Z}_m^{*}$} \\
-    p^f &\text{ $1 \leq f < e$} 
+    p^f &\text{ $1 \leq f < e$}
   \end{cases} \\
   &\bar{a}\in \mathbb{Z}_m^{*} \Leftrightarrow p \not|a \\
-  & 0,1,2, \ldots, p^e -1\\
-  & p^e - p^{e-1} = \varphi(p^e) = p^{e-1}(p-1) \\
-  & \varphi(m) = m\left(1-\frac{1}{p}\right) 
+  & \underbrace{0,1,2, \ldots, p^e -1}_{p^e}\\
+\end{align*}\vspace{-1.5cm}
+\begin{align*}
+  p^e - p^{e-1} = \varphi(\underbrace{p^e}_{m}) &= p^{e-1}(p-1) \\
+                \varphi(m) &= m\left(1-\frac{1}{p}\right)
 \end{align*}
 
 \Theorem.
@@ -110,7 +119,7 @@ Second case:
 \end{align*}
 
 \Proof.
-Let $r=2: M = \{1,2, \ldots, m\},$ 
+Let $r=2: M = \{1,2, \ldots, m\},$
 \begin{align*}
   A = \{ n \in M \mid p_1|n\} = \{p_1, 2p_1, 3p_1, \ldots m-p_1, m\} \\
   B = \{ n \in M \mid p_2|n\} = \{p_2, 2p_2, 3p_2, \ldots m-p_2, m\} \\
@@ -119,22 +128,22 @@ Let $r=2: M = \{1,2, \ldots, m\},$
 \begin{align*}
   |M| &= m, \; |A| = \frac{m}{p_1}, \; |B| = \frac{m}{p_2}, \;
     |A \cap B| = \frac{m}{p_1p_2}\\
-  \varphi(m) 
+  \varphi(m)
     &= | M \backslash(A\cup B) | \\
     &= |M| - |A| - |B| + | A \cap B|\\
     &= m \left(1- \frac{1}{p_1} \right) \left(1- \frac{1}{p_2} \right)
 \end{align*}
 
 \Theorem.
-Therem of Euler-Fermat:
+Theorem of Euler-Fermat:
 \[
   \gcd(a,m) = 1 \implies a ^{\varphi(m)} \equiv 1 (m)
 \]
-In particular 
+In particular:
 \[
-  p \in \mathbb{P}, p \not| a \implies a^{p-1} \equiv 1 (p)
+  p \in \mathbb{P}, p \not| a \implies a^{p-1} \equiv 1 (p) \quad
+  \text{(Fermat's Little Theorem)}
 \]
-(Fermat's little theorem)
 
 \Proof.
 \[
@@ -146,14 +155,14 @@ In particular
     \implies \bar{a}_i = \bar{a}_j \implies i = j \\
   &\implies \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
         {\in \mathbb{Z}_m^{*}}
-      = \bar{a}^k * \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
+      = \bar{a}^k \cdot \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
         {\in \mathbb{Z}_m^{*}} \\
-  &\implies \bar{a}^k = \bar{a}^{\varphi(m)} = \bar{1} 
+  &\implies \bar{a}^k = \bar{a}^{\varphi(m)} = \bar{1}
 \end{align*}
 
 \Theorem.
 \[
-  p, q \in \mathbb{P}, \quad p,q \text{ odd }, \quad p \neq q
+  p, q \in \mathbb{P} \quad p,q \text{ odd} \quad p \neq q
 \]
 \begin{align*}
   m = pq, \quad v = \lcm(p-1, q-1) \\
@@ -161,45 +170,45 @@ In particular
 \end{align*}
 
 \Proof.
-we have to show: $pq \mid a ^{kv +1} - a$. 
+We have to show: $pq \mid a ^{kv +1} - a$.
 \begin{align*}
   &\Leftrightarrow p \mid a ^{kv +1} - a \text{ and } q \mid a ^{kv +1} - a\\
   &\text{Case 1: } p \mid a \\
-  &\text{Case 2: } p\not| a: 
+  &\text{Case 2: } p \not|~ a:
     a^{p-1} \equiv 1 (p) \implies a^{kv} \equiv 1(p) \implies a^{kv+1} \equiv a(p)
 \end{align*}
 
 \subsection{RSA-Algorithm}
-Let $m = pq$ and $v = \lcm(p-1, q-1)$ then 
+Let $m = pq$ and $v = \lcm(p-1, q-1)$ then
 \[
-  \gcd(e,v) = 1 \implies \exists d : d *e \equiv 1 (v).
+  \gcd(e,v) = 1 \implies \exists d : d \cdot e \equiv 1 (v).
 \]
 
 We have a message $a_1, a_2, a_3, \ldots$ where $0 \leq a_i < m$
 
-Encryption: 
+Encryption:
 \[
-  E(a_j) = b_j := a_j^e \mod m
+  E(a_j) = b_j := a_j^e \imod{m}
 \]
 
-Decryption: 
+Decryption:
 \[
-  D(b_j) = a_j := b_j^d \mod m
+  D(b_j) = a_j := b_j^d \imod{m}
 \]
 
 Check if this really works:
 \begin{align*}
-  b_j^d &\equiv (a_j^e)^d \mod m \\
-    & \equiv a_j^{e*d} \mod m \\
-    & \equiv a_j^{kv+1} (m) \\
-    & \equiv a_j (m) \\
+  b_j^d &\equiv (a_j^e)^d \imod{m} \\
+    & \equiv a_j^{e \cdot d} \imod{m} \\
+    & \equiv a_j^{kv+1} \pod{m} \\
+    & \equiv a_j \pod{m} \\
 \end{align*}
 
 We can provide a public key $(m,e)$ and the private key $d$.
 
-If we want to compute the private key and we only know the public key the hard part is the factorisation $m = p*q$. This factorisation needs time exponential in the number of digits of $m$.
+If we want to compute the private key and we only know the public key, then the hard part is the factorisation $m = p \cdot q$. The time needed for this factorisation grows exponentially with the number of digits of $m$.
 
-\textbf{e-signature: } 
+\textbf{e-Signature: }
 $(e_j,d_j)$,
 
 $e_j$ is public $\hat{=} E_j, D_j$
@@ -218,8 +227,8 @@ then $E_i$ afterwards:
 \]
 
 \textbf{Caveat. (Warning)}
-$E(x)$ may have many fixed points. 
-If the order is low then it is possible to find the $x$. 
+$E(x)$ may have many fixed points.
+If the order is low then it is possible to find $x$.
 
 \textbf{Recall.}
 If $G$ is a group and $x\in G$:
@@ -231,79 +240,68 @@ If $G$ is a group and $x\in G$:
 \]
 
 \textbf{Cyclic group.}
-the group generated by $x$:
+The group generated by $x$:
 \[
   \{ e, x, x^2, x^3, \ldots \} = \GroupGenBy{x}
 \]
 
 G is finite:
 \begin{align*}
-  U \leq  G \implies |U| \mid |G|, \\
-  & \GroupGenBy{x} = \{ e, x, x^2, x^3, \ldots x^{\ord_G(x) -1}\} \\
-    &\implies |\GroupGenBy{x}| = \ord_G(x) \\
-    &\implies \ord_G(x) \underbrace{|G|}_{\text{order of the group}} \\
+  U & \underbrace{\leq}_{\text{subgroup}}  G \implies |U| \mid |G|\\
+  |G| & …\text{Order of the group}\\
+      \GroupGenBy{x} &= \{ e, x, x^2, x^3, \ldots x^{\ord_G(x) -1}\} \\
+    & \implies |\GroupGenBy{x}| = \ord_G(x)\\
 \end{align*}
 
-G is cyclic
 \begin{align*}
-  & \Leftrightarrow \exists x \in G: \GroupGenBy{x} = G \\
-  & \Leftrightarrow \exists x \in G: \ord_G(x) = |G|
+  \text{G is cyclic} & \Leftrightarrow \exists x \in G: \GroupGenBy{x} = G \\
+                     & \Leftrightarrow \exists x \in G: \ord_G(x) = |G|
 \end{align*}
 
-Trivial groups:
-\begin{align*}
-  & \GroupGenBy{e} = \{e\} \\
-  & G \leq G
-\end{align*}
+Trivial group: $\GroupGenBy{e} = \{e\}$\\
+A group is always a subgroup of itself: $G \leq G$
 
 \begin{definition}
   \[
-    \bar{a} \in \mathbb{Z}_m^{*} \text{ s.t. } \GroupGenBy{\bar{a}} = \mathbb{Z}_m^{*} 
+    \bar{a} \in \mathbb{Z}_m^{*} \text{ s.t. } \GroupGenBy{\bar{a}} = \mathbb{Z}_m^{*}
 \]
 is called \dt{primitive root mod m}
 
-$\bar{a}$ primitive root mod m 
+$\bar{a}$ primitive root mod m
 $\implies \mathbb{Z}_m^{*} = \{\bar{a}, \bar{a}^2, \bar{a}^3, \ldots, \bar{a}^{\varphi(m)} =\bar{1} \}$
 \end{definition}
-\TODO{check previous definition for errors}
 
 \textbf{Example.}
 \begin{align*}
   &\mathbb{Z}_2^{*} = \{\bar{1}\} = \GroupGenBy{\bar{1}} \\
-  &\mathbb{Z}_3^{*} = \{\bar{1}, \bar{2}\} = \GroupGenBy{\bar{2}} 
-    = \{\bar{2}, \bar{2}^2 \}\\
+  &\mathbb{Z}_3^{*} = \{\bar{1}, \bar{2}\} = \GroupGenBy{\bar{2}}
+    = \{\bar{2}, \bar{2}^2 \} = \{\bar{2}, \bar{1}\}\\
   &\mathbb{Z}_4^{*} = \{\bar{1}, \bar{3}\} = \GroupGenBy{\bar{3}} \\
-  &\mathbb{Z}_5^{*} = \{\bar{1}, \bar{2}, \bar{3}, \bar{4}\} 
+  &\mathbb{Z}_5^{*} = \{\bar{1}, \bar{2}, \bar{3}, \bar{4}\}
     = \GroupGenBy{\bar{2}} = \GroupGenBy{\bar{3}} \neq \GroupGenBy{\bar{4}}
     = \{\bar{1}, \bar{4}\} \\
   &\mathbb{Z}_8^{*} = \{\bar{1}, \bar{3}, \bar{5}, \bar{7}\} \text{ has no primitive roots} \implies \mathbb{Z}_8^{*}\text{ is not a cyclic group} \\
   & \quad \GroupGenBy{\bar{1}} = \{\bar{1}\} \quad \GroupGenBy{\bar{3}}=\{\bar{3}, \bar{3}^2\}=\{\bar{3}, \bar{1}\} \\
   & \quad \GroupGenBy{\bar{5}}=\{\bar{5}, \bar{5}^2\}=\{\bar{5}, \bar{1}\} \\
-  & \quad \GroupGenBy{\bar{7}}=\{\bar{7}, \bar{7}^2\}=\{\bar{7}, \bar{1}\} \\
+  & \quad \GroupGenBy{\bar{7}}=\{\bar{7}, \bar{7}^2\}=\{\bar{7}, \bar{1}\}
 \end{align*}
 
 \Theorem.
-$\mathbb{Z}_m^{*}$ cyclic  
+$\mathbb{Z}_m^{*}$ cyclic
 \begin{align*}
-  \Leftrightarrow 
-    &\exists \text{ primitive root mod m} \\
-  \Leftrightarrow 
-    &m \in \{2,4\} \cup \{ p^e \mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \} \cup \{ 2p^e \mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \}
+  & \Leftrightarrow \exists \text{ primitive root mod m} \\
+  & \Leftrightarrow m \in \{2,4\} \cup \{ p^e \mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \} \cup \{ 2p^e \mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \}
 \end{align*}
 
 \Proof.
-Let $g$ be a primitive root mod $p$. $\rightarrow g^p \equiv 1 (p), \forall i < p : g^i \not\equiv 1 (p) $
+Let $g$ be a primitive root mod $p \Rightarrow g^{p-1} \equiv 1 (p), \forall i < p-1 : g^i \not\equiv 1 (p) $
 
 Then $g$ or $g+p$ is a primitive root mod $p^2$.
-
 
 \textbf{Claim.}
 $g^{p-1} \not\equiv 1 (p^2)$ or $(g+p)^{p-1} \not\equiv 1 (p^2)$
 
 \textbf{Note.}
-$\varphi(p^2) = p(p-1)$, assume that $p-1 = k*l$ where $(k, l < p-1)$
+$\varphi(p^2) = p(p-1)$, assume that $p-1 = k \cdot l$ where $(k, l < p-1)$
 
-$\ord_{\mathbb{Z_p^2}}^{*}(g) = p*l \implies g^{pl} \equiv 1 (p^2)$
-
-
-
+$\ord_{\mathbb{Z}^{*}_{p^2}}(g) = p \cdot l \implies g^{pl} \equiv 1 (p^2)$

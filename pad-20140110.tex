@@ -1,0 +1,190 @@
+%%% EtherPad for Discrete Mathematics VO
+%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
+%%% Past pads:
+%%%     * 2013-10-17: committed by patrikf
+%%%     * 2013-10-18: committed by patrikf
+%%%     * 2013-10-24: committed by patrikf
+%%%     * 2013-10-25: committed by patrikf
+%%%     * 2013-11-08: committed by neroburner
+%%%     * 2013-11-21: committed by neroburner
+%%%     * 2013-11-22: committed by neroburner
+%%%     * 2013-11-28: committed by neroburner
+%%%     * 2013-11-29: committed by neroburner
+%%%     * 2013-12-05: committed by neroburner
+%%%     * 2013-12-06: committed by neroburner
+%%%     * 2013-12-12: committed by neroburner
+%%%     * 2013-12-13: committed by neroburner
+%%%     * 2013-12-19: committed by neroburner
+%%%     * 2013-12-20: committed by neroburner
+%%%     * 2014-01-09: committed by neroburner
+
+% Discrete Mathematics Lecture Notes 2014-01-10
+
+\textbf{Remember from last time.}
+\lecturedate[\baselineskip]{2014-01-10}
+
+linear mapping $f: K^k \rightarrow K^n$, $K = GF(q)$
+
+We take word $\underline{x} = x_1, x_2, \ldots x_k \mapsto \underline{x} G$
+
+the code $C = f(K^n) = [\underline{c}_1, \ldots, \underline{c}_k]$
+
+$C^\bot$ dual code of $C$, $H$ generating matrix of $C^\bot$, \\
+$\underline{c}\cdot H^T = \underline{0} \Leftrightarrow \underline{c} \in C$ check matrix of $C$
+
+$S_H(\underline{v}) = \underline{v} \cdot H^T$
+
+$dim C = k$, $dim C^\bot = n-k$, $\underline{v} = \underline{v}_1, \ldots \underline{v}_n$
+
+\Theorem.
+$C\leq K^n$, $(n,k)$-linear code, check matrix $H$, $(C,+) \NormSubgroup (K^n, +)$
+
+$\underline{u}, \underline{v} \in K^n$ are in the same coset $\underline{a} + C$ if and only if $S_H(\underline{u} = S_H\underline{v})$
+
+$|K^n| = q^n$, $|C| = q^k$, using lagrange theorem we get $|K^n / C| = q^{n-k} = |K^{n-k}|$
+
+\Proof. 
+$\underline{u} + C = \underline{v} + C \Leftrightarrow \underline{u} - \underline{v} \in C \Leftrightarrow \underbrace{S_H(\underline{u}-\underline{v})}_{(\underline{u}-\underline{v}) H^T} = \underline{0}$
+
+
+\Example.
+\TODO{insert example (5,2) linear code over $\mathbb{Z}_2$ from the Slides}
+
+\subsection{Polynomial code}
+$K= GF(q)$, $K_{n-1}[x] = \{p(x) \in K[x] \mid \deg(p(x)) \leq n-1\}$ vector space over $K$
+
+$\dim K_{n-1}[x] = n$, $K_{n-1}[x] \cong K^n$, $g(x) \in K[x], \deg(g(x)) = n-k$
+
+$F: F(p(x)) = p(x) \cdot g(x)$ for $(p(x) \in K_{k-1}[x]$\\
+$F: K_{k-1}[x] \rightarrow K_{n-1}[x]$ injective, linear, $C= \{p(x)g(x) \mid p(x) \in K_{k-1}[x]\} \leq K_{n-1}[x]$, $\dim C = k$
+
+$C= [g(x), xg(x), \ldots, x^{k-1} g(x)]$
+
+$g(x)$ is the generating polynomial
+
+check polynomial: $c(x)\cdot h(x) \hat{=} 0$\\
+$f(x):: K[x] / f(x)$ \quad $c(x) \in C \Leftrightarrow c(x)h(x) \equiv 0 \mod f(x)$\\
+$c(x) \in C \Leftrightarrow c(x) = p(x)g(x) \stackrel{!}{\Leftrightarrow} c(x)h(x)=p(x)g(x)h(x) \equiv 0 \mod f(x) \forall p(x) \in K_{k-1}[x]$
+
+$\deg(g(x)) = n-k$, $\deg(f(x)) = n$, $\deg(h(x)) = k$\\
+$\implies g(x)h(x) \equiv 0 mod f(x) \implies f(x) = \lambda g(x)h(x)$
+
+$f,g,h$ monic $\Rightarrow f(x) = g(x)h(x)$\quad$f(x)$ is principal polynomial of $C$
+
+$v(x)h(x) \equiv 0 (f(x)) \Leftrightarrow f(x)=g(x)h(x) \mid v(x)h(x) \Leftrightarrow g(x) \mid v(x) \Leftrightarrow v(x)\in C $
+
+\textbf{Syndromes.} 
+$v(x)+C = w(x) + C \Leftrightarrow v(x) - w(x) \in C$\\
+$\Leftrightarrow (v(x)-w(x))h(x) \equiv 0 \mod f(x)$\\
+$\Leftrightarrow v(x)h(x) \equiv w(x)h(x) \mod f(x)$ \\
+$\Leftrightarrow v(x) \equiv w(x) \mod g(x)$
+
+Therefore we can define a syndrom $S(v(x)) = v(x) \mod g(x)$
+
+possible syndromes are therefor $p(x) \in K_{n-k-1}[x]$
+
+\begin{definition}
+  $C$ cyclic if $ \underline{c} = c_1c_2\ldots c_n \in C \Rightarrow c_nc_1c_2\ldots c_{n-1} \in C$\\
+  $\Leftrightarrow c_1 + c_2 x+ \ldots + c_n x^{n-1} \in C \Rightarrow c_n + c_1 x + \ldots + c_{n-1} x^{n-1} \in C \underbrace{\equiv c_n x^n}_{x\cdot c(x) \mod x^n-1}$
+\end{definition}
+
+\Theorem.
+$(n,k)$-polynomial code is cyclic $\Leftrightarrow g(x) \mid x^n-1$
+
+\Proof.\\
+\ProofBackward.
+$f(x) = x^n-1$ can be chosen to be principal polynomial of $C$
+
+\ProofForward.
+$c(x) = c_0 + c_1x + \ldots + c_{n-1}x^{n-1} \in C$\\
+$\Rightarrow \pi c(x) = c_{n-1} + c_0x + \ldots + c_{n-2}x^{n-1} \in C$\\
+$\pi c(x) = xc(x) - c_{n-1}(x^n-1) \Rightarrow \overline{\pi c(x)} = \overline{x c(x)}$ in $K[x]/x^n-1$\\
+$\overline{\pi^i c(x)} = \overline{x^i c(x)}$ in $K[x]/x^n-1$\\
+
+$g(x) \in C \Rightarrow \pi^i g(x) \in C \Rightarrow x^i g(x) \mod x^n -1$
+
+in particular: $( x^k \underbrace{g(x)}_{\deg(g(x)) = n-k} \mod x^n -1 ) = x^k g(x) - (x^n-1) \in C \Rightarrow g(x)|x^n-1$
+
+\subsection{BCH-codes }
+named after Bose, Chaudhuri and Hocquenghem
+
+a primitive $n$-th root of unity ($a^n-1=0$, |$\GroupGenBy{a}|=n$) in $GF(g)$
+
+$A = \{a^{i_1}, \ldots a^{i_m}\}$
+
+$M(A) = \begin{pmatrix}
+  1 & a^{i_1} & \ldots & a^{(n-1)i_1} \\
+  1 & a^{i_2} & \ldots & a^{(n-1)i_2} \\
+  \vdots  & \vdots & \vdots & \vdots \\
+  1 & a^{i_m} & \ldots & a^{(n-1)i_m} \\
+\end{pmatrix}$
+
+$m\times n$- matrix. If $ij = i+j-1$ and this means that $A = \{a^i, a^{i+1}, \ldots, a^{i+n-1} \}$, $A$ is gap-free
+
+\Theorem.
+a primitive n-th root of unity in $GF(q)$, $A = \{a^i, a^{i+1}, \ldots, a^{i+m-1} \}$ gap-free\\
+$\Rightarrow$ any m columns of $M(A)$ are linear independent
+
+\Proof.
+$i\neq k \Rightarrow a^j \neq a^k$
+
+$\det \begin{pmatrix}
+  a^{j_1*i} & a^{j_2*i} & \ldots & a^{j_m*i} \\
+  a^{j_1*(i+1)} & a^{j_2*(i+1)} & \ldots & a^{j_m*(i+1)} \\
+  \vdots  & \vdots & \vdots & \vdots \\
+  a^{j_1*(i+m-1)} & a^{j_2*(i+m-1)} & \ldots & a^{j_m*(i+m-1)} \\
+\end{pmatrix}\\
+= a^{(j_1+ j_2+ \ldots j_m) i}* \det \begin{pmatrix}
+  1 & 1& \ldots & 1\\
+  a^{j_1} & a^{j_2} & \ldots & a^{j_m} \\
+  a^{j_1*2} & a^{j_2*2} & \ldots & a^{j_m*2} \\
+  a^{j_1*(i+1)} & a^{j_2*(i+1)} & \ldots & a^{j_m*(i+1)} \\
+  \vdots  & \vdots & \vdots & \vdots \\
+  a^{j_1*(m-1)} & a^{j_2*(m-1)} & \ldots & a^{j_m*(m-1)} \\
+\end{pmatrix}
+\stackrel{\text{Vandermonde}}{\neq} 0$
+
+\Theorem.
+$C$ cyclic $(n-k)$-polynomial code over $GF(q)$, generating polynomial $g(x)$ a in an $n$-nth prim root of unity in $GF(q)$. If $\exists b \geq 0, \delta \geq 2: g(a^{i+b}) = 0$ for $0 \leq i \leq \delta -2$ then $w_{\min}(C) \geq \delta$.
+
+\Proof.
+\TODO{this proof}
+
+Let $A = \{a^b , a^{b+1}, \ldots, a^{b+\delta-2}\} \Rightarrow C * M(A)^T$\\
+$= (c_0, c_1, \ldots, c_{n-1}) \begin{pmatrix}
+  1 & 1& \ldots & 1\\
+  a^{b} & a^{b+1} & \ldots & a^{b+\delta-2} \\
+  (a^{2})^{b} & (a^{2})^{b+1} & \ldots & (a^{2})^{b+\delta-2} \\
+  \vdots  & \vdots & \vdots & \vdots \\
+  (a^{n-1})^{b} & (a^{n-1})^{b+1} & \ldots & (a^{n-1})^{b+\delta-2} \\
+\end{pmatrix} = \underbrace{(0,0,\ldots, )}_{\delta-1}$
+
+Assume $\underline{d} = d_0 d_1 \ldots d_{n-1} \in C \backslash{0}$, $w(d) < \delta$\\
+$i_j, 1 \leq j \leq w(\underline{d}) < \delta$ are the positions in d where $d_{i_j} \neq 0$ \\
+Take column number $i_j$, $j= 1, \ldots w(\underline{d})$ of $M(A) \to M \Rightarrow$
+\TODO{fix and finish this proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

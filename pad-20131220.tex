@@ -23,7 +23,7 @@
 
 Fields,
 
-Field $K$, $\Char K$, Primefield $P(K)$, 
+Field $K$, $\Char K$, Primefield $P(K)$,
 
 $P(K) \cong \begin{cases}$
 $\mathbb{Q} \\$
@@ -31,7 +31,7 @@ $\mathbb{Z}_p, \quad p \in \mathbb{P}$
 $\end{cases}$
 
 \Corollary.
-$K$ finite field. The characteristic cannot be $0$. We know that $\exists p \in \mathbb{P}, n \in \mathbb{N}^{+}: |K| = p^n$. 
+$K$ finite field. The characteristic cannot be $0$. We know that $\exists p \in \mathbb{P}, n \in \mathbb{N}^{+}: |K| = p^n$.
 
 \Proof.
 $P(K)$ finite, this means $\exists p \in \mathbb{P}$ such that $|P(K)| = p, P(K) \cong \mathbb{Z}_p$
@@ -50,7 +50,7 @@ In fact, given $p,n \implies $
 1) $\exists K: |K| = p^n$\\
 2) $K, K'$ fields$: |K| = |K'| = p^n \implies K \cong K'$
 
-$K$ field $\implies K[x]$ Euklidean ring $\implies$ every ideal is a principal ideal. Furthermore $K[x]$ is a factorial ring (unique factorization into primes). 
+$K$ field $\implies K[x]$ Euklidean ring $\implies$ every ideal is a principal ideal. Furthermore $K[x]$ is a factorial ring (unique factorization into primes).
 
 \begin{align*}
   P(x)= x^n + a_{n-1} x^{n-1} + \ldots + a_1 x_1 + a_0 \quad ,a_0, a_1, \ldots ,a_{n-1} \in K \\
@@ -94,15 +94,15 @@ If $P(x) = Q(x)R(x), \deg Q(x) \geq 1, \deg R(x) \geq 1 \implies K[x] / P(x)$ is
 $K$ field, $P(x) \in K[x] \implies K[x] / P(x)$ is a field if and only if P(x) is irreducible.
 
 \ProofForward.
-Assume $K[x] / P(x)$ is a field. Then the polynomial $P(x)$ must be reducible, otherwise $K[x] / P(x)$ has zero-divisors. 
+Assume $K[x] / P(x)$ is a field. Then the polynomial $P(x)$ must be reducible, otherwise $K[x] / P(x)$ has zero-divisors.
 
 \ProofBackward. Assume $P(x)$ is irreducible:
 $K[x] / P(x)$ is a commutative ring with 1-element $\bar{1} = 1+ (P(x))$
 
-We have to show that every non-zero element has an inverse. 
+We have to show that every non-zero element has an inverse.
 
 $A(x) \not\equiv 0 \mod P(x) \implies $ without loss of generality $\deg A(x) < \deg P(x) \implies \gcd(A(x), P(x)) = 1$\\
-$\implies \exists B(x), C(x)$ such that 
+$\implies \exists B(x), C(x)$ such that
 \begin{align*}
   & 1 = A(x)B(x) + P(x)C(x)\\
   \implies & 1 \equiv A(x) B(x) \mod P(x) \\
@@ -136,7 +136,7 @@ If $K,L$ fields, $K\subseteq L$, $a$ is zero of some polynomial in $K[x]$
 $a \notin K \implies \exists!$ monic and irreducible polynomial in $K[x]$ having $a$ as zero.
 
 \Proof.
-Existence: $K[x]$ is a factorial ring and an integral domain. 
+Existence: $K[x]$ is a factorial ring and an integral domain.
 
 Uniqueness: Let us assume we have two polynomials $P_1(x) P_2(x)$, which are monic, irreducile, $P_1(x) \neq P_2(x), P_1(a) = P_2(a) = 0$
 
@@ -149,14 +149,14 @@ Uniqueness: Let us assume we have two polynomials $P_1(x) P_2(x)$, which are mon
 But we defined $d(x) = 1$, Contradiction!
 
 $\implies P(x)$ is unique, $P(x)$ has minimal degree amoung all $Q(x)$ with $Q(a) = 0$. \\
-$\implies$ If $P(x) = x^n + \sum_{i=0}^{n-1} p_i x^i \implies \sum_{i=0}^{n-1} p_i a^i \neq 0, \underbrace{\sum_{i=0}^{n-1} c_i a^i \neq 0}_{\hat{=} \sum_{i=0}^{n-1} c_i x^i \text{ in } \underbrace{K[x]/P(x)}_{\text{field!}}}$ 
+$\implies$ If $P(x) = x^n + \sum_{i=0}^{n-1} p_i x^i \implies \sum_{i=0}^{n-1} p_i a^i \neq 0, \underbrace{\sum_{i=0}^{n-1} c_i a^i \neq 0}_{\hat{=} \sum_{i=0}^{n-1} c_i x^i \text{ in } \underbrace{K[x]/P(x)}_{\text{field!}}}$
 
 $\underbrace{a^n + \sum_{i=0}^{n-1} p_i a^i = 0}_{\overline{x^n + \sum_{i=0}^{n-1} p_i x^i} = \bar{0}}$
 
 $\implies L = \{ \sum_{i=0}^{n-1} c_i a^i \mid c_i \in K\}$ is the smallest field with $a \in L$. Moreover $L \cong K[x]/P(x)$
 
 \begin{definition}
-  $P(x)$ monic, irreducible over $K$, $\deg P(x) = n$, $P(a) = 0$, 
+  $P(x)$ monic, irreducible over $K$, $\deg P(x) = n$, $P(a) = 0$,
   $L = \{ \sum_{i=0}^{n-1} c_i a^i\mid c_i \in K \} \supseteq K$
 
   $a$ \dt{algebraic} over $K$, $P(x)$ \dt{minimal polynomial of $a$ over $K$}, $L$ \dt{algebraic extension of $K$}, $L = K(a)$, "$K$ adjoined $a$"
@@ -166,12 +166,12 @@ $\implies L = \{ \sum_{i=0}^{n-1} c_i a^i \mid c_i \in K\}$ is the smallest fiel
 $\mathbb{C} = \mathbb{R}(i) \cong \mathbb{R}[x] / x^2 +1 = \{\overline{a+bx} \mid a,b \in \mathbb{R} \}$
 
 \begin{align*}
-  (a + bx)(c+dx) 
+  (a + bx)(c+dx)
   \equiv & ac + (ad+bc)x + bd \underbrace{x^2}_{\equiv -1} \\
   \equiv & ac - bd + (ad+bc)x
 \end{align*}
 \begin{align*}
-  (a + bi)(c+di) 
+  (a + bi)(c+di)
   \equiv & ac + (ad+bc)i + bd i^2 \\
   \equiv & ac - bd + (ad+bc)i
 \end{align*}
@@ -198,7 +198,7 @@ $\implies \mathbb{Q}(\sqrt{2}, \sqrt{3})$
 \Remark.
 1) A maximal field has only irreducible polynomials of degree $1$. $\implies \nexists$ propber algebraic extensions $\rightarrow$ algebraically closed. Example: $\mathbb{C}$
 
-2) If $K$ is a field then there exists a field $L$ such that $K \subseteq L$, $L$ algebraic closed. 
+2) If $K$ is a field then there exists a field $L$ such that $K \subseteq L$, $L$ algebraic closed.
 
 3) If $\underbrace{|K| = p}_{\cong \mathbb{Z}_p}$ and $p\in \mathbb{P}$, then for every $n \in \mathbb{N}^{+}$ there is an irreducible polynomial $P(x) \in K[x]$. \\
 $\implies \left| K[x]/P(x) \right| = \left| \{\overline{\sum_{i=1}^{n-1} c_i x^i} \mid c_i \in K\} \right| = p^n$
@@ -208,14 +208,7 @@ $\mathbb{Z}_p/P(x) \rightarrow$ the field of order $p^n$, Galois-Field $GF(p^n)$
 \textbf{Proposition.}
 Let $M(x)$ be the minimal polynomial of $a \in K$ and $f(x) \in K[x]$ such that $f(a) = 0$. Then $M(x)|f(x)$. Obviously: If $g(x) = M(x)b(x) \implies g(a) = 0$
 
-\Proof. 
+\Proof.
 $f(x) = M(x) p(x) + q(x)$, $\deg q(x) < \deg M(x)$
 
 $\underbrace{f(a)}_{=0} = 0 + q(a) \implies q(a) = 0 \implies q(x) = 0$
-
-
-
-
-
-
-

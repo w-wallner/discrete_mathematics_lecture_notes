@@ -19,7 +19,7 @@
 
 \textbf{Remember from last time.}
 \lecturedate[\baselineskip]{2013-12-19}
-There are rings, where we have unique factorizations into prime elements. 
+There are rings, where we have unique factorizations into prime elements.
 Every Euklidean ring is a factorial ring. Divisibility theory, Euklidean Algorithm.
 
 We need to go deeper.
@@ -49,7 +49,7 @@ $(G / U, *)$ is called a \dt{quotient group}
 \begin{definition}
   $R,S$ ring, $\varphi : R \rightarrow S$
 
-  (ring) homomorphism if 
+  (ring) homomorphism if
   \begin{align*}
     \varphi(a+b) &= \varphi(a) + \varphi(b)\\
     \varphi(a \cdot b) &= \varphi(a) \cdot \varphi(b)\\
@@ -82,7 +82,7 @@ The "normal" is in parentheses because every subgroup of an abelian group is a n
 \Remark.
 $\varphi: R \rightarrow S$ homomorphism $\implies$ $\Kernel \varphi$ is an ideal of $R$
 
-\Theorem. 
+\Theorem.
 $R$ ring, $ I \subseteq R$ ideal. Then define $+$ and $\cdot$ on $\underbrace{R / I}_{=(R,+)/(I,+)}$ as follows:
 \begin{align*}
   (a+I) + (b+I) &:= (a+b)+I, \\
@@ -106,7 +106,7 @@ $\implies n\mathbb{Z} \NormSubgroup \mathbb{Z}: a \in \mathbb{Z} : a+n\mathbb{Z}
 \end{align*}
 
 \begin{align*}
-  \mathbb{Z} / n \mathbb{Z}: 
+  \mathbb{Z} / n \mathbb{Z}:
     & \bar{a} + \bar{b} = \overline{a+b}, \bar{a} \bar{b} = \overline{ab} \\
     & a+b \equiv a+b (n), a\cdot b \equiv a\cdot b (n)
 \end{align*}
@@ -126,7 +126,7 @@ $R$ ring $\implies \{0\}$ and $R$ are the tivial ideals
 
   We then define an equivalence relation $\sim$ on $R$ (i.e. $\sim \subseteq R \times R$)
 
-  $\sim$ is compatible with $+$ and $\cdot$ if 
+  $\sim$ is compatible with $+$ and $\cdot$ if
   \begin{align*}
     & a \sim b, c \sim d \\
     \implies & a +c \sim b+d \\
@@ -144,7 +144,7 @@ $R$ ring with $1$, $I \subseteq R$ ideal, $ \epsilon \in R^{*}, \epsilon \in I$
 
 Then $R = I$
 
-\Proof. 
+\Proof.
 $\epsilon \in I \cap R^{*} \implies \exists \epsilon^{-1}$ \\
 $\forall r \in R: r \cdot I \subseteq I$, in particular $\epsilon^{-1} \cdot \underbrace{I}_{\epsilon \in I} \subseteq I \implies 1 \in I$
 
@@ -155,11 +155,11 @@ Because by definition we have $I \subseteq R$ and in the proof we have $R \subse
 \Corollary.
 A field $K$ has only the trivial ideals $\{0\}$ and $K$
 
-\Remark. 
+\Remark.
 $R$ ring, $(I_j)_{j\in J}$ family of ideals $\implies \bigcap_{j \in J} I_j$ is an ideal as well.
 
 \begin{definition}
-  $M \subseteq R$, $R$ ring, 
+  $M \subseteq R$, $R$ ring,
   \[
     (M):= \bigcap_{I \subseteq R, I \text{ ideal}, M \subseteq I} I
   \]
@@ -171,10 +171,10 @@ $R$ ring, $(I_j)_{j\in J}$ family of ideals $\implies \bigcap_{j \in J} I_j$ is 
 \end{definition}
 
 \Theorem.
-$R$ Euklidean ring. Then every ideal is a principal ideal. 
+$R$ Euklidean ring. Then every ideal is a principal ideal.
 i.e. $R$ is a \dt{principal ideal domain}.
 
-\Remark. 
+\Remark.
 Euklidean ring $\subseteq$ principal ideal domain $\subseteq$ factorial ring $\subseteq$ integral domain
 
 \Example.
@@ -192,7 +192,7 @@ $M = \{m_1, m_2, \ldots, m_k\} \subseteq \mathbb{Z}, (M)$\\
 2) $x\in R^{*} \implies (x) = R$
 
 \Example.
-3) $\mathbb{Q}$ is a subring (even a subfield) of $\mathbb{R}$, but no ideal 
+3) $\mathbb{Q}$ is a subring (even a subfield) of $\mathbb{R}$, but no ideal
 
 \subsection{Fields}
 
@@ -234,8 +234,8 @@ $\Char K = 0$ if $\ord_{K,+)} (1) = \infty$
 \end{align*}
 
 \textbf{Properties of $P(K)$}
-Case 1: 
-$\Char K=0$: 
+Case 1:
+$\Char K=0$:
 $\forall K'$ subfield of $K$: $0,1 \in K' \implies 0,1 \in P(K)$
 
 \begin{align*}
@@ -266,8 +266,8 @@ $\implies$
 \end{align*}
 
 \begin{align*}
-  \text{assume }\ord(a) = m \implies 
-  & (m\cdot a)\cdot a^{-1} = 
+  \text{assume }\ord(a) = m \implies
+  & (m\cdot a)\cdot a^{-1} =
     \underbrace{\overbrace{a\cdot a^{-1}}^{=1} + \overbrace{a\cdot a^{-1}}^{=1} + \ldots + \overbrace{a\cdot a^{-1}}^{=1}}_{m\text{ times}} = m\cdot 1 \\
   \implies & m \geq p \implies m = p
 \end{align*}
@@ -279,5 +279,3 @@ p=a\cdot b & \implies 0=p \cdot 1 = \underbrace{\underbrace{1 + 1 + \ldots + 1}_
 &\implies \ord(a\cdot 1)=b < p \quad \text{Contradiction!}\\
 \Char K=p &\implies P(K) \cong \mathbb{Z}_p
 \end{align*}
-
-

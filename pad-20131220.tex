@@ -23,7 +23,7 @@
 
 Fields,
 
-Field $K$, $\Char K$, Primefield $P(K)$,
+Field $K$, $\Char K$, Prime field $P(K)$,
 
 $P(K) \cong \begin{cases}$
 $\mathbb{Q} \\$
@@ -36,7 +36,7 @@ $K$ finite field. The characteristic cannot be $0$. We know that $\exists p \in 
 \Proof.
 $P(K)$ finite, this means $\exists p \in \mathbb{P}$ such that $|P(K)| = p, P(K) \cong \mathbb{Z}_p$
 
-$P(K) \subseteq K$: regard $K$ as vectorspace over $P(K)$. Skalars are taken from $P(K)$. We have finite spaces
+$P(K) \subseteq K$: regard $K$ as vector space over $P(K)$. Scalars are taken from $P(K)$. We have finite spaces
 
 \begin{align*}
   \implies & \exists \text{ base } \{ a_1, a_2, \ldots, a_n \} \subseteq K, \text{i.e.} \dim \GroupGenBy{K , P(K)} = n\\
@@ -50,7 +50,7 @@ In fact, given $p,n \implies $
 1) $\exists K: |K| = p^n$\\
 2) $K, K'$ fields$: |K| = |K'| = p^n \implies K \cong K'$
 
-$K$ field $\implies K[x]$ Euklidean ring $\implies$ every ideal is a principal ideal. Furthermore $K[x]$ is a factorial ring (unique factorization into primes).
+$K$ field $\implies K[x]$ Euclidean ring $\implies$ every ideal is a principal ideal. Furthermore $K[x]$ is a factorial ring (unique factorization into primes).
 
 \begin{align*}
   P(x)= x^n + a_{n-1} x^{n-1} + \ldots + a_1 x_1 + a_0 \quad ,a_0, a_1, \ldots ,a_{n-1} \in K \\
@@ -138,7 +138,7 @@ $a \notin K \implies \exists!$ monic and irreducible polynomial in $K[x]$ having
 \Proof.
 Existence: $K[x]$ is a factorial ring and an integral domain.
 
-Uniqueness: Let us assume we have two polynomials $P_1(x) P_2(x)$, which are monic, irreducile, $P_1(x) \neq P_2(x), P_1(a) = P_2(a) = 0$
+Uniqueness: Let us assume we have two polynomials $P_1(x) P_2(x)$, which are monic, irreducible, $P_1(x) \neq P_2(x), P_1(a) = P_2(a) = 0$
 
 \begin{align*}
   \implies d(x) &= gcd(P_1(x), P_2(x))\\
@@ -159,7 +159,7 @@ $\implies L = \{ \sum_{i=0}^{n-1} c_i a^i \mid c_i \in K\}$ is the smallest fiel
   $P(x)$ monic, irreducible over $K$, $\deg P(x) = n$, $P(a) = 0$,
   $L = \{ \sum_{i=0}^{n-1} c_i a^i\mid c_i \in K \} \supseteq K$
 
-  $a$ \dt{algebraic} over $K$, $P(x)$ \dt{minimal polynomial of $a$ over $K$}, $L$ \dt{algebraic extension of $K$}, $L = K(a)$, "$K$ adjoined $a$"
+  $a$ \dt{algebraic} over $K$, $P(x)$ \dt{minimal polynomial of $a$ over $K$}, $L$ \dt{algebraic extension of $K$}, $L = K(a)$, ``$K$ adjoined $a$''
 \end{definition}
 
 \Example.
@@ -196,14 +196,14 @@ $\mathbb{Q}(\sqrt{2}): x^2 -3$ irreducible over $Q(\sqrt{2})$\\
 $\implies \mathbb{Q}(\sqrt{2}, \sqrt{3})$
 
 \Remark.
-1) A maximal field has only irreducible polynomials of degree $1$. $\implies \nexists$ propber algebraic extensions $\rightarrow$ algebraically closed. Example: $\mathbb{C}$
+1) A maximal field has only irreducible polynomials of degree $1$. $\implies \nexists$ proper algebraic extensions $\rightarrow$ algebraically closed. Example: $\mathbb{C}$
 
 2) If $K$ is a field then there exists a field $L$ such that $K \subseteq L$, $L$ algebraic closed.
 
 3) If $\underbrace{|K| = p}_{\cong \mathbb{Z}_p}$ and $p\in \mathbb{P}$, then for every $n \in \mathbb{N}^{+}$ there is an irreducible polynomial $P(x) \in K[x]$. \\
 $\implies \left| K[x]/P(x) \right| = \left| \{\overline{\sum_{i=1}^{n-1} c_i x^i} \mid c_i \in K\} \right| = p^n$
 
-$\mathbb{Z}_p/P(x) \rightarrow$ the field of order $p^n$, Galois-Field $GF(p^n)$
+$\mathbb{Z}_p/P(x) \rightarrow$ the field of order $p^n$, Galois field $GF(p^n)$
 
 \textbf{Proposition.}
 Let $M(x)$ be the minimal polynomial of $a \in K$ and $f(x) \in K[x]$ such that $f(a) = 0$. Then $M(x)|f(x)$. Obviously: If $g(x) = M(x)b(x) \implies g(a) = 0$

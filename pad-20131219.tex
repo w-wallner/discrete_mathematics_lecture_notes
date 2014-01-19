@@ -257,24 +257,28 @@ Case 2: $\Char K \neq 0$
 \end{align*}
 
 \Proof.
-1) $p\cdot 1 = \underbrace{1+1+ \ldots +1}_{p \text{ times}} = 0$
+\begin{enumerate}[1)]
 
-\begin{align*}
-  \implies & p \cdot a = \underbrace{a+a+ \ldots +a}_{p\text{ times}} = a \cdot \underbrace{(1+1+ \ldots +1)}_{=0} = a\cdot 0 = 0 \\
-  \implies & \ord(a) \leq p
-\end{align*}
+  \item $p\cdot 1 = \underbrace{1+1+ \ldots +1}_{p \text{ times}} = 0$
+  \begin{align*}
+    \implies & p \cdot a = \underbrace{a+a+ \ldots +a}_{p\text{ times}} = a \cdot \underbrace{(1+1+ \ldots +1)}_{=0} = a\cdot 0 = 0 \\
+    \implies & \ord(a) \leq p
+  \end{align*}
 
-\begin{align*}
-  \text{assume }\ord(a) = m \implies
-  & (m\cdot a)\cdot a^{-1} =
-    \underbrace{\overbrace{a\cdot a^{-1}}^{=1} + \overbrace{a\cdot a^{-1}}^{=1} + \ldots + \overbrace{a\cdot a^{-1}}^{=1}}_{m\text{ times}} = m\cdot 1 \\
-  \implies & m \geq p \implies m = p
-\end{align*}
+  Assume $\ord(a) = m$
+  \begin{align*}
+    \implies
+    & \overbrace{(m\cdot a)}^{=0}\cdot a^{-1} =
+      \underbrace{\overbrace{a\cdot a^{-1}}^{=1} + \overbrace{a\cdot a^{-1}}^{=1} + \ldots + \overbrace{a\cdot a^{-1}}^{=1}}_{m\text{ times}} = m\cdot 1 \\
+    \implies & m \geq p \implies m = p
+  \end{align*}
 
-2)
-\begin{align*}
-p=a\cdot b & \implies 0=p \cdot 1 = \underbrace{\underbrace{1 + 1 + \ldots + 1}_{a\text{ times}} + a\cdot 1 + a\cdot 1 + \ldots + a\cdot 1}_{b\text{ times}}\\
-&\implies b \cdot (a \cdot 1) = a\cdot 1 + a\cdot 1 + \ldots + a\cdot 1\\
-&\implies \ord(a\cdot 1)=b < p \quad \text{Contradiction!}\\
-\Char K=p &\implies P(K) \cong \mathbb{Z}_p
-\end{align*}
+  \item
+  \begin{align*}
+  p=a\cdot b & \implies 0=p \cdot 1 = \underbrace{\underbrace{1 + 1 + \ldots + 1}_{a\text{ times}} + a\cdot 1 + a\cdot 1 + \ldots + a\cdot 1}_{b\text{ times}}\\
+  &\implies b \cdot (a \cdot 1) = a\cdot 1 + a\cdot 1 + \ldots + a\cdot 1\\
+  &\implies \ord(a\cdot 1)=b < p \quad \text{Contradiction!}\\
+  \Char K=p &\implies P(K) \cong \mathbb{Z}_p
+  \end{align*}
+
+\end{enumerate}

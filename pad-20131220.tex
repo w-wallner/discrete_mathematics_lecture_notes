@@ -76,12 +76,17 @@ $Q(x) \equiv \tilde{Q}(x) \mod P(x), \deg \tilde{Q}(x)<n$
 
 \Example.
 $\mathbb{R}[x] / x^2-1$:
-
+\begin{leftbar}
+  Remark: $x^2 \equiv 1 \mod {x² -1}$
+\end{leftbar}\vspace{-1cm}
 \begin{align*}
-  x^4 - 3x³ + 2x^2 -5x + 1 \equiv x^2 - 3x +2 - 5x + 1 \equiv \underbrace{x^2}_{\equiv 1} - 8x -3 \equiv -8 + 4 \mod x^2-1 \\
-  x^2 \equiv 1 \mod x^2 -1 \\
+  \underbrace{x⁴}_{\equiv x²}
+  \underbrace{-3x³}_{\equiv -3x}
+  \underbrace{+2x²}_{\equiv 2}
+  -5x + 1                       & \equiv x² - 3x +2 - 5x + 1\\
+                                & \equiv \underbrace{x²}_{\equiv 1} - 8x + 3\\
+                                & \equiv -8x + 4\\
 \end{align*}
-
 $\mathbb{R}[x] / x^2 -1 = \{ \overline{ax+b} \mid a,b \in \mathbb{R} \}$
 
 $\overline{x-1}, \overline{x+1}$ are zero-divisors $\implies \mathbb{R}[x] / x^2 -1$ is not an integral domain

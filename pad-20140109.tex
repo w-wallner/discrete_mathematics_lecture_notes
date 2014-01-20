@@ -39,14 +39,14 @@ $P(x) \in K[x]$ monic, irreducible, $P(a) = 0 ( \Rightarrow a \not\in K)$
 $\Rightarrow L = \{ \sum_{i=0}^{\deg(P)-1} c_i a^i \mid c_i \in K \}$,
 $L = K(a) \cong K[x] / P(x)$
 
-$P(x)$ minimal polynomial of $a$, $f(x) \in K[x], f(a) = 0 \Rightarrow P(x)|f(x)$
+$P(x)$ minimal polynomial of $a$, $f(x) \in K[x], f(a) = 0 \Rightarrow P(x)∣f(x)$
 
 \section{Finite Fields}
 
 $K$ finite $\Rightarrow \Char K = p \in \mathbb{P}$, $P(k) \cong \mathbb{Z}_p$, $|K| = p^n$
 
-$|K^{*}| = | K \backslash \{0\}| = p^n -1$. Let $a \in K^{*}$ with $\ord_{K^{*}}(a)=r$ is maximal, then $ r| p^n-1$,
-$y \in K^{*} \implies \ord_{K^{*}}(y) | \ord_{K^{*}}(a) = r$
+$|K^{*}| = | K \backslash \{0\}| = p^n -1$. Let $a \in K^{*}$ with $\ord_{K^{*}}(a)=r$ is maximal, then $ r∣ p^n-1$,
+$y \in K^{*} \implies \ord_{K^{*}}(y) ∣ \ord_{K^{*}}(a) = r$
 
 $\forall y \in K^{*}: y^r = 1:$ All $y \in K^{*}$ are zeros of $x^r -1$.
 In a field we have that the number of zeros of a polynomial $P(x)$ is bounded by the degree $\deg(P(x))$ ($P(x) \leq \deg(P(x))$). This implies that $p^n-1 \leq r \implies r = p^n-1$.
@@ -64,16 +64,16 @@ $\forall a \in K: a^{p^n} = a$. Thus the polynomial $x^{p^n} -x = \prod_{a\in K}
 \end{definition}
 
 \Theorem.
-Let $q(x) \in \mathbb{Z}_p[x]$ monic, irreducible, degree $n$. Then $q(x)$ is a primitive polynomial of $K = GF(p^n) \iff q(x) | x^{p^n -1}-1$ and $\forall k : 1 \leq k \leq p^n-1: q(x) \not| x^k-1$
+Let $q(x) \in \mathbb{Z}_p[x]$ monic, irreducible, degree $n$. Then $q(x)$ is a primitive polynomial of $K = GF(p^n) \iff q(x) ∣ x^{p^n -1}-1$ and $\forall k : 1 \leq k \leq p^n-1: q(x) \nmid x^k-1$
 
 \Proof. \\
 \ProofForward.
 $q(x)$ is the minimal polynomial of $a$, $\GroupGenBy{a} = K^{*}$ ($a$ is a primitive element)
 
-Since $a^{p^n-1}-1 = 0 \Rightarrow q(x)|x^{p^n-1}-1$
+Since $a^{p^n-1}-1 = 0 \Rightarrow q(x)∣x^{p^n-1}-1$
 
 $k < p^n-1: a^k -1 \neq = 0$, because $\ord_{(K^{*}, \cdot)} (a) = | K^{*}| = p^n-1$ \\
-$\implies q(x) \not| x^k -1$
+$\implies q(x) \nmid x^k -1$
 
 \ProofBackward.
 $q(a) = 0 \Rightarrow a \in L \stackrel{\subset}{\neq} \mathbb{Z}_p$
@@ -95,7 +95,7 @@ $a^k$ prim $\Rightarrow l = \varphi(p^n-1)$
 
 $a$ primitive then $a^p, a^{p^2}, \ldots a^{p^{n-1}}$ are primitives as well.
 
-$\Rightarrow n| \varphi(p^n-1)$, number of primitive polynomials $= \frac{l}{n} \varphi(p^n-1)$
+$\Rightarrow n∣ \varphi(p^n-1)$, number of primitive polynomials $= \frac{l}{n} \varphi(p^n-1)$
 
 \Lemma.
 $a,b \in K$ $(p= \Char K) \implies (ab)^p = a^p b^p$ and also $(a+b)^p = a^p + b^p$, but this an exercise.

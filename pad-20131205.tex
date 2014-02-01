@@ -179,10 +179,12 @@ $\nu_p(n)$ \ldots Multiplicity of $p$ in the factorization of $n$
 \]
 
 \Proof.
+Assume that there are only finitly many prime numbers $\mathbb{P} = \{p_1, \ldots , p_r\}$. Now, we use these "known" primen umbers to construct a new number $N$ in the following way. 
 \[
-  \mathbb{P} = \{p_1, \ldots , p_r\}, N = p_1 \ldots p_r + 1 = \prod_{i=1}^r p_i^{\nu_{p_i}(N)}
+	N = p_1 \ldots p_r + 1 
 \]
-Contradiction!
+%= \prod_{i=1}^r p_i^{\nu_{p_i}(N)}
+There are two cases, either $N$ is a new prime number, which we did not know before (contradiction) or it must be possible to factor it into prime numbers. However, every "known" prime number is certainly not a divisor of $N$. That means there must be a new prime number, which we did not know before (contradiction).
 
 \section{Congruence Relations and Residue Classes}
 

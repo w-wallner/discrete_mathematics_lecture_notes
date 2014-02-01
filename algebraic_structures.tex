@@ -1,0 +1,75 @@
+
+\subsection{Basics: Algebraic Sturctures}
+
+\begin{definition}
+	A set $R$ with the arithmetic operations $+$ and $.$ is called a \textbf{Ring} $(R,+,\cdot)$ if
+	\begin{itemize}
+	\item $(R,+)$ is an \textbf{abelian group}:
+		\begin{itemize}
+		\item closure: $a,b \in R \implies (a+b)\in R $
+		\item existence of zero element: $a+0=a$, $0+a=a$
+		\item additive inverses: $\forall a \in R \exists (-a) : a + (-a) = 0$
+		\item commutativity: $a+b=b+a$
+		\item associativity: $(a+b)+c=a+(b+c)$
+		\end{itemize}
+	\item $(R, )$ is a \textbf{semi group}
+		\begin{itemize}
+			\item closure 
+			\item associativity: $(a \cdot b)\cdot c=a \cdot (b \cdot c)$
+		\end{itemize}
+	\item distribute laws hold ($\cdot$ distributes over $+$)
+		\begin{itemize}
+			\item $a \cdot (b+c) = a \cdot b + a \cdot c $ 
+			\item $(b+c) \cdot a = b \cdot a + c \cdot a $
+		\end{itemize}
+		Note, that since the multiplicative structure $(R, \cdot)$ does not have to be commutative, both of both of the constraints are needed.
+	\end{itemize}
+\end{definition}
+
+This is a very basic structure, which can be equipped with further properties, like
+\begin{itemize}
+	\item commutativity of the multiplication: $a \cdot b = b \cdot a$
+	\item neutral element of the multiplication: $a \cdot 1 = 1 \cdot a = a$
+\end{itemize}
+If both properties a present in R, we call it a \textbf{commutative ring with 1 element}.
+
+\begin{definition}
+A commutative ring with 1 element is called an \textbf{Integral Domain} if it does not contain zero-divisors.
+\[a \cdot b = 0 \implies a=0 \text{ or } b=0\]
+\[ R \text{ is Inegral Domain} \Leftrightarrow  \nexists a,b \in R \backslash \{0\}: a \cdot b = 0\]
+\end{definition}
+
+\textbf{Examples.}
+\begin{itemize}
+\item $(\mathbb{R}, +, \cdot)$
+\item $(\mathbb{Z}_m, + , \cdot), m \in \mathbb{P}$ \\
+If $m\not\in \mathbb{P}$ then $m = n \cdot k$ (factorization) and $\bar{n} \cdot \bar{k} = \bar{m} = \bar{0}$.
+This means, for example, that $\mathbb{Z}_6$ is not an integral domain since $\bar{2} \cdot \bar{3} = \bar{0}$ \\
+\item $\mathbb{Z}[x] = (\{a_0 + a_1 x + a_x x^2 + \ldots + a_n x^n \mid a_i \in \mathbb{Z}, n \in \mathbb{N} \},+,\cdot)$
+\end{itemize}
+
+\begin{definition}
+$R$ is an \dt{Euclidean ring} if $R$ is an integral domain and there is an Euclidean function $n$:
+\[
+  n : R \rightarrow \mathbb{N} \text{ such that } \forall a,b \in R,\; b \neq 0,\; \exists q,r \in R:
+\]
+	\begin{compactenum}
+	\item $a = bq + r$ with $n(r) < n(b)$ or $r = 0$  
+	\item $\forall a,b \in R \backslash \{0\} : n(a) \leq n(ab)$ 
+	\end{compactenum}
+	($\implies$ division with remainder) 
+\end{definition}
+
+
+\begin{definition}
+A set $K$ with the arithmetic operations $+$ and $.$ is called a \textbf{Field} $(K,+,\cdot)$ if
+\begin{itemize}
+	\item $(R,+)$ is an \textbf{abelian group}
+	\item $(R,\cdot)$ is an \textbf{abelian group}
+	\item $\cdot$ distributes over $x$
+\end{itemize}
+\end{definition}
+
+The algebraic structures discussed in this section have the following relations:
+rings $\subset$ commutative rings $\subset$ integral domains $\subset$ Euclidean rings $\subset$ fields.
+In other words this means, for examples, that every integral domain is a ring and every field in an integral domain, but not vice versa. 

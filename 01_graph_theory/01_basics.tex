@@ -56,7 +56,7 @@ Graphs can have \textbf{multiple edges}, in which case $E$ is a multiset.
 \index{graph!simple}
 A graph is \dt{simple} when it has
 \begin{compactitem}
-\item no loops and 
+\item no loops and
 \item no multiple edges.
 \end{compactitem}
 \end{definition}
@@ -78,7 +78,7 @@ Notation: \\[\medskipamount]
 
 \begin{definition}
 \index{degree}
-Let $v\in V$. For undirected graphs, 
+Let $v\in V$. For undirected graphs,
 \begin{compactitem}
   \item the \dt{degree} $d(v)$ is the number of edges \emph{incident} to $v$.
 \end{compactitem}
@@ -120,7 +120,7 @@ For directed graphs,
 \textbf{Lemma (Handshaking Lemma).} Let $G=(V,E)$ be a simple graph. Then
 \begin{align*}
 &\sum_{v\in V} d(v) = 2 |E| &&\text{($G$ undirected)} \\
-&\sum_{v\in V} d^{+}(v) = \sum{v\in V} d^{-}(v) = |E| &&\text{($G$ directed).} \\
+&\sum_{v\in V} d^{+}(v) = \sum_{v\in V} d^{-}(v) = |E| &&\text{($G$ directed).} \\
 \end{align*}
 
 \textbf{Proof.} see Figure~\ref{fig:hand_shaking_lemma}
@@ -138,7 +138,7 @@ For directed graphs,
 \end{figure}
 \FloatBarrier
 
-\textbf{Example (Hypercube).} 
+\textbf{Example (Hypercube).}
 $G = (\{0,1\}^n, E)$
 
 $vw \in E \Leftrightarrow \sum_{i=1}^{n} |v_i - w_i | = 1$ (only one switch in coordinates)
@@ -146,10 +146,10 @@ $vw \in E \Leftrightarrow \sum_{i=1}^{n} |v_i - w_i | = 1$ (only one switch in c
 $v = v_1, v_2, \ldots , v_n$\\
 $w = w_1, w_2, \ldots , w_n$
 
-compute $a_0$ and $a_1$
+compute $\alpha_0$ and $\alpha_1$
 
-$a_0 = 2^n$ \\
-$a_1 = \frac{1}{2} \sum_{v \in V} d(v) = 2^{n-1} * n$
+$\alpha_0 = 2^n$ \\
+$\alpha_1 = \frac{1}{2} \sum_{v \in V} d(v) = 2^{n-1} * n$
 
 $d(v) = n \Rightarrow $ regular Graph
 \begin{figure}[htb]
@@ -297,7 +297,7 @@ be added to $H$ so that is still connected: $\nexists H': H < H' \leq G, H'\text
 \index{relation!connectivity relation}
 For directed graphs, we define the \dt{connectivity relation} $\operatorname{S}$ as follows:
 \begin{align*}
-v \operatorname{R} w \text{ ($v$ connected to $w$)} \iff \null
+v \operatorname{S} w \text{ ($v$ connected to $w$)} \iff \null
 &\text{$\exists$ walk from $v$ to $w$\quad\emph{and}} \\
 &\text{$\exists$ walk from $w$ to $v$.}
 \end{align*}

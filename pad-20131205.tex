@@ -179,12 +179,12 @@ $\nu_p(n)$ \ldots Multiplicity of $p$ in the factorization of $n$
 \]
 
 \Proof.
-Assume that there are only finitly many prime numbers $\mathbb{P} = \{p_1, \ldots , p_r\}$. Now, we use these "known" primen umbers to construct a new number $N$ in the following way. 
+Assume that there are only finitely many prime numbers $\mathbb{P} = \{p_1, \ldots , p_r\}$. Now, we use these "known" prime numbers to construct a new number $N$ in the following way. 
 \[
 	N = p_1 \ldots p_r + 1 
 \]
 %= \prod_{i=1}^r p_i^{\nu_{p_i}(N)}
-There are two cases, either $N$ is a new prime number, which we did not know before (contradiction) or it must be possible to factor it into prime numbers. However, every "known" prime number is certainly not a divisor of $N$. That means there must be a new prime number, which we did not know before (contradiction).
+There are two cases, either $N$ is a new prime number, which we did not know before (contradiction) or it must be possible to factor it into prime numbers. However, every "known" prime number is certainly not a divisor of $N$. That means, that there must be a new prime number, which we did not know before (contradiction).
 
 \section{Congruence Relations and Residue Classes}
 
@@ -278,10 +278,15 @@ $\exists \bar{a}^{-1} \text{ in } \mathbb{Z}_m \iff gcd(a,m) = 1$ ($a,m$ are co-
 
 
 \begin{definition}
+Set of prime residue classes mod m
 \[
   \mathbb{Z}_m^{*} = \{ \bar{a} \in \mathbb{Z}_m \mid gcd(a,m) = 1 \}
 \]
-Set of prime residue classes mod m
+This set contains all invertible elements of $\mathbb{Z}_m$. Hence, we can also define it as follows:
+\[
+  \mathbb{Z}_m^{*} = \{ x \in \mathbb{Z}_m \mid \exists x^{-1} : x \cdot x^{-1} = 1 \}
+\]
+This set is also referred to as \textbf{group of units}.
 \end{definition}
 
 \textbf{Example.}

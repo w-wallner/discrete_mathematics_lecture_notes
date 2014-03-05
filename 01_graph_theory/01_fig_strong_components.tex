@@ -1,6 +1,7 @@
 % strongly connected components
 \begin{figure}[htb]
-\subfigure[directed Graph $G$] 
+\resizebox{\textwidth}{!}{
+\subfigure[directed Graph $G$]
 {
 	\begin{tikzpicture}
 	\node at (0,0) {};
@@ -26,7 +27,7 @@
 
 	\foreach \i / \j in {
 	1/2, 2/3, 3/1, 4/3, 1/4,
-	7/8, 8/9, 9/7, 
+	7/8, 8/9, 9/7,
 	2/5, 3/6,
 	5/7,
 	6/9}
@@ -42,7 +43,7 @@
 
 	\end{tikzpicture}
 }
-\subfigure[shadow $H$ of Graph $G$] 
+\subfigure[shadow $H$ of Graph $G$]
 {
 	\begin{tikzpicture}
 	\node at (0,0) {};
@@ -68,7 +69,7 @@
 
 	\foreach \i / \j in {
 	1/2, 2/3, 3/1, 4/3, 1/4,
-	7/8, 8/9, 9/7, 
+	7/8, 8/9, 9/7,
 	2/5, 3/6,
 	5/7,
 	6/9,
@@ -78,8 +79,9 @@
 		\path (k\i) edge[thick] (k\j);
 	};
 	\end{tikzpicture}
-}
-\subfigure[strongly connected components of $G$] 
+}}
+\resizebox{\textwidth}{!}{
+\subfigure[strongly connected components of $G$]
 {
 	\begin{tikzpicture}
 	\node at (0,0) {};
@@ -105,7 +107,7 @@
 
 	\foreach \i / \j in {
 	1/2, 2/3, 3/1, 4/3, 1/4,
-	7/8, 8/9, 9/7, 
+	7/8, 8/9, 9/7,
 	2/5, 3/6,
 	5/7,
 	6/9}
@@ -153,7 +155,7 @@
 		\path (k\i.center) edge[->, thick] (k\j);
 	};
 	\end{tikzpicture}
-}
+}}
 \caption{Graphs}
 \end{figure}
 

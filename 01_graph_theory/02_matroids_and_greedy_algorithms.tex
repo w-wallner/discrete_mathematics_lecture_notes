@@ -2,7 +2,7 @@
 
 \section{Matroids and Greedy Algorithms}
 
-\textit{Kruskal} and \textit{Prim} are greedy algorithm for maximalization/minimalization. 
+\textit{Kruskal} and \textit{Prim} are greedy algorithm for maximalization/minimalization.
 
 \textbf{Claim:} In general, greedy strategies fail, but for \dt{matroid}s they always work.\\
 
@@ -48,7 +48,7 @@ Search for $A$ s.t.
 	$r(M)$... \dt{rank} of the matroid
 \end{definition}
 
-\textbf{Theorem.} 
+\textbf{Theorem.}
 \[G=(V,E) \text{ graph, }S=\{F\subseteq E | F \text{ forest}\} \Rightarrow (E,S) \text{ is a matroid}\]
 \textbf{Proof:}
 \begin{compactenum}[(1)]
@@ -65,7 +65,7 @@ Search for $A$ s.t.
 
 
 \TODO{Please someone check this, my notes are kind of sloppy at this point, it was at the end of a lecture :P}
-\textbf{Example:} $E=\{a_1, a_2, ... a_n\}$, $a_1, ... a_n \in \mathbb{R}^m$, 
+\textbf{Example:} $E=\{a_1, a_2, ... a_n\}$, $a_1, ... a_n \in \mathbb{R}^m$,
 $S = \{A\subseteq E | A=\emptyset \text{ or A linear independent}\}$\\
 \[A \text{ basis of } S \Leftrightarrow A \text{ basis }
 \]
@@ -111,7 +111,7 @@ $\Rightarrow$ M is a matroid.\\\\
 	$\exists A, B, \in S: |B| = |A| + 1 \land \forall x \in B \setminus A: A\cup \{x\} \notin S$\\
 	Set $w(e) = \begin{cases} 	|A| + 2 & \text{ if } e\in A\\
 								|A| + 1 & \text{ if } e \in B\setminus A\\
-								0 & else 
+								0 & else
 				\end{cases} $
 	}
 	\item{

@@ -92,15 +92,15 @@ $\Rightarrow$ \textbf{GREEDY} solves $A$ max (w.r.t. $\subseteq$) s.t. $w(A)$ mi
 			\item{$w(A)$ minimal}
 		\end{compactenum}
 	\item{Assume $\exists B = \{b_1, b_2, ... b_r\}$ basis, $w(B) < w(A),~ w(b_1)\le w(a_1), ... , w(b_r)\le w(a_r)$\\
-	$i=min\{j ~|~ w(b_j)\le w(a_j)\}$}\\
-	$A_{i-1}=\{a_a, a_2, ... a_{i-1}\}$ status of $A$ after $m\le i-1$ iterations of greedy\\
+	$i=min\{j ~|~ w(b_j) < w(a_j)\}$}\\
+	$A_{i-1}=\{a_1, a_2, ..., a_{i-1}\}$ status of $A$ after $m\le i-1$ iterations of GREEDY\\
 	$B_i = \{b_1, b_2, ... b_{i-1}, b_i\}$\\
 	$\Rightarrow |B_i| = |A_{i-1}|+1$
 	}
 	\item{Apply matroid condition:\\
 	$b_j = B_i \setminus A_{i-1}~~s.t.~~A_{i-1}\cup \{b_j\}\in S$}
 	\item{But:\\
-	$w(b_j)\le w(b_i) < w(a_i) \Rightarrow \forall x \in B_i : w(x) < w(a)$}
+	$w(b_j)\le w(b_i) < w(a_i) \Rightarrow \forall x \in B_i : w(x) < w(a_i)$}
 	\item{Thats not how greedy works, greedy would have taken $b_j$ already\\
 	$\Rightarrow$ \textbf{CONTRADICTION}}
 \end{compactenum}

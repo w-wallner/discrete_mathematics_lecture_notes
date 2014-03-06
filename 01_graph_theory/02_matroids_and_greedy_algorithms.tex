@@ -111,10 +111,10 @@ $\Rightarrow$ M is a matroid.\\\\
 \textbf{Proof: } Assume $M$ not a Matroid
 \begin{compactenum}
 	\item{
-	$\exists A, B, \in S: |B| = |A| + 1 \land \forall x \in B \setminus A: A\cup \{x\} \notin S$\\
-	Set $w(e) = \begin{cases} 	|A| + 2 & \text{ if } e\in A\\
-								|A| + 1 & \text{ if } e \in B\setminus A\\
-								0 & else
+	$\exists A, B \in S: |B| = |A| + 1 \land \forall x \in B \setminus A: A\cup \{x\} \notin S$\\
+	Set $w(e) = \begin{cases} 	|A| + 2 & \text{if } e\in A\\
+								|A| + 1 & \text{if } e \in B\setminus A\\
+								0 & \text{else}
 				\end{cases} $
 	}
 	\item{

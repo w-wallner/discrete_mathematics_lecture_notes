@@ -88,11 +88,11 @@ A coloring is \dt{feasible} if $vw\in E\implies c(v)≠c(w)$.
 \Remark. Edge coloring $\bar{c}: E\mapsto C$, feasible if edges with a common vertex have different colors.
 
 \[
-  \bar{G} = (\bar V, \bar E), \bar V = E
+  \bar{G} = (\bar V, \bar E), \bar V = E \quad
   e_1 e_2\in \bar E \iff e_1,e_2\text{ share common vertex}
 \]
 
-\Remark. Similarly, face colorings of a planar graph (think of a map of countries) can be 
+\Remark. Similarly, face colorings of a planar graph (think of a map of countries) can be
 
 \begin{definition}
 $G=(V,E)$ graph. The \dt{chromatic number} $\chi(G)$ is the minimal number of colors so that there is a feasible coloring.
@@ -102,7 +102,7 @@ Examples:
 \begin{align*}
   &\chi(K_n) = n \\
   &\chi(K_{n,m}) = 2 \\
-  &\chi(T) = 2 \text{ if $T$ tree, } |V| ≥ 1 
+  &\chi(T) = 2 \text{ if $T$ tree, } |V| ≥ 1
 \end{align*}
 
 \Theorem.
@@ -164,15 +164,15 @@ $c(a) = 1, c(b) = 2,\ldots$.
 $G_a = \{x\in V\mid \exists 1--3--1--3--\ldots \text{path a} \leadsto x\}$.
 Similar for $G_c$.
   \begin{compactenum}
-%Case 2.1: 
+%Case 2.1:
     \item If $G_a\cap G_c =\varnothing$, we can recolor $G_a$ by switching colors 1 and 3. Then we can color $v$ with $c(v) = 1$.
 
-%Case 2.2: 
+%Case 2.2:
     \item If $G_a\cap G_c ≠ \varnothing$, then $G_a = G_c$.
 %Case 2.2.1:
     \begin{compactenum}
       \item If $G_b\cap G_d =\varnothing$, then recolor $G_b$ by switching 2 and 4, and $c(v) = 2$.
-%Case 2.2.2: 
+%Case 2.2.2:
       \item If $G_b\cap G_d ≠\varnothing$, then $G_b = G_d$. Contradiction! (planar graph - the paths $G_a=G_c$ and $G_b=G_d$ cannot cross each other)
     \end{compactenum}
   \end{compactenum}

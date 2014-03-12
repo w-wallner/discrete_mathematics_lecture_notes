@@ -2,7 +2,7 @@
 \subsection{Basics: Algebraic Sturctures}
 
 \begin{definition}
-	A set $R$ with the arithmetic operations $+$ and $.$ is called a \textbf{Ring} $(R,+,\cdot)$ if
+	A set $R$ with the arithmetic operations $+$ and $\cdot$ is called a \textbf{Ring} $(R,+,\cdot)$ if
 	\begin{itemize}
 	\item $(R,+)$ is an \textbf{abelian group}:
 		\begin{itemize}
@@ -12,14 +12,14 @@
 		\item commutativity: $a+b=b+a$
 		\item associativity: $(a+b)+c=a+(b+c)$
 		\end{itemize}
-	\item $(R, )$ is a \textbf{semi group}
+	\item $(R, \cdot)$ is a \textbf{semi group}
 		\begin{itemize}
-			\item closure 
+			\item closure
 			\item associativity: $(a \cdot b)\cdot c=a \cdot (b \cdot c)$
 		\end{itemize}
 	\item distribute laws hold ($\cdot$ distributes over $+$)
 		\begin{itemize}
-			\item $a \cdot (b+c) = a \cdot b + a \cdot c $ 
+			\item $a \cdot (b+c) = a \cdot b + a \cdot c $
 			\item $(b+c) \cdot a = b \cdot a + c \cdot a $
 		\end{itemize}
 		Note, that since the multiplicative structure $(R, \cdot)$ does not have to be commutative, both of both of the constraints are needed.
@@ -36,7 +36,7 @@ If both properties a present in R, we call it a \textbf{commutative ring with 1 
 \begin{definition}
 A commutative ring with 1 element is called an \textbf{Integral Domain} if it does not contain zero-divisors.
 \[a \cdot b = 0 \implies a=0 \text{ or } b=0\]
-\[ R \text{ is Inegral Domain} \Leftrightarrow  \nexists a,b \in R \backslash \{0\}: a \cdot b = 0\]
+\[ R \text{ is Integral Domain} \Leftrightarrow  \nexists a,b \in R \backslash \{0\}: a \cdot b = 0\]
 \end{definition}
 
 \textbf{Examples.}
@@ -54,15 +54,15 @@ $R$ is an \dt{Euclidean ring} if $R$ is an integral domain and there is an Eucli
   n : R \rightarrow \mathbb{N} \text{ such that } \forall a,b \in R,\; b \neq 0,\; \exists q,r \in R:
 \]
 	\begin{compactenum}
-	\item $a = bq + r$ with $n(r) < n(b)$ or $r = 0$  
-	\item $\forall a,b \in R \backslash \{0\} : n(a) \leq n(ab)$ 
+	\item $a = bq + r$ with $n(r) < n(b)$ or $r = 0$
+	\item $\forall a,b \in R \backslash \{0\} : n(a) \leq n(ab)$
 	\end{compactenum}
-	($\implies$ division with remainder) 
+	($\implies$ division with remainder)
 \end{definition}
 
 
 \begin{definition}
-A set $K$ with the arithmetic operations $+$ and $.$ is called a \textbf{Field} $(K,+,\cdot)$ if
+A set $K$ with the arithmetic operations $+$ and $\cdot$ is called a \textbf{Field} $(K,+,\cdot)$ if
 \begin{itemize}
 	\item $(R,+)$ is an \textbf{abelian group}
 	\item $(R,\cdot)$ is an \textbf{abelian group}
@@ -72,4 +72,4 @@ A set $K$ with the arithmetic operations $+$ and $.$ is called a \textbf{Field} 
 
 The algebraic structures discussed in this section have the following relations:
 rings $\subset$ commutative rings $\subset$ integral domains $\subset$ Euclidean rings $\subset$ fields.
-In other words this means, for examples, that every integral domain is a ring and every field in an integral domain, but not vice versa. 
+In other words this means, for examples, that every integral domain is a ring and every field in an integral domain, but not vice versa.

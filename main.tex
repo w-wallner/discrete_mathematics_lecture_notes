@@ -1,47 +1,25 @@
-\include{dmpreamble}
 
-% Put all options specific to the main document here. Anything that applies
-% both to the main document and WriteLaTeX belongs in dmpreamble.tex.
+
+\documentclass[10pt,a4paper,titlepage,oneside,final]{book}
+
+\include{dmpreamble}
 
 \include{dm_tikz_makros}
 
 \makeindex
 
+
 \begin{document}
 
 \maketitle
 \tableofcontents
-%\listoffigures
+\listoffigures
 
-% include the chapters here:
+\include{01_graph_theory/graph_theory}
+\include{02_higher_combinatorics/higher_combinatorics}
+\include{03_number_theory/number_theory}
+\include{04_polynomials_over_ff/polynomials_over_ff}
 
-\chapter{Graph Theory}
-\input{01_graph_theory/01_basics}
-\input{01_graph_theory/02_trees_and_forests}
-\input{01_graph_theory/02_matroids_and_greedy_algorithms}
-\input{01_graph_theory/03_weighted_graphs_and_algorithms}
-\input{01_graph_theory/04_special_graph_classes}
-
-\input{pad-20131018.tex}
-\input{pad-20131024.tex}
-\input{pad-20131025.tex}
-\input{pad-20131108.tex}
-\input{pad-20131121.tex}
-\input{pad-20131122.tex}
-\input{pad-20131128.tex}
-\input{pad-20131129.tex}
-\input{pad-20131205.tex}
-\input{pad-20131206.tex}
-\input{pad-20131212.tex}
-\input{pad-20131213.tex}
-\input{pad-20131219.tex}
-\input{pad-20131220.tex}
-\input{pad-20140109.tex}
-\input{pad-20140110.tex}
-\input{pad-20140116.tex}
-
-
-%\include{02_the_next_chapter}
 
 \printindex
 

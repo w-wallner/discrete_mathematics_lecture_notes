@@ -3,6 +3,7 @@
 *.swp
 *.swo
 *~
+*.kilepr
 
 #ignore latex build-files
 *.aux

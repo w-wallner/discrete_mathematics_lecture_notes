@@ -1,0 +1,422 @@
+
+\section{Applications}
+\subsection{Linear Codes}
+\begin{definition}
+  $K = GF(q)$, $f:K^k \rightarrow K^n$ linear, injective,
+
+  image of whole set $C = f(K^k) \leq_{\text{"subspace"}} K^n$
+
+  $C$ \ldots $(n,k)$ \dt{linear code}
+
+  element $x_1\ldots x_k \in K^k$\\
+  element $c_1\ldots c_k \in K^n$
+
+  $\underline{c} \in K^n: w(\underline{c}) = w(c_1c_2 \ldots c_n) = |\{i \mid c_i \neq 0 \}|$ Hamming weight of $\underline{c}$
+
+  $\underline{c}_1, \underline{c}_2, \ldots \underline{c}_k$ base of $C$
+
+$G = \begin{pmatrix}\underline{c}_1\\ \underline{c}_2\\ \vdots \\ \underline{c}_k \end{pmatrix}$ $k\times n$-matrix, \dt{generating matrix of $C$}
+
+  $C$ systematic if $v = v_1v_2 \ldots v_k \Rightarrow v*G = v_1v_2 \ldots v_kc_{k+1}\ldots c_n$
+
+  $\underline{x} = \lambda_1 * 100 \ldots 0 + \lambda_2 * 010 + \ldots 0 + \lambda_k 00\ldots 1$ \\
+  $\Rightarrow 000\ldots 010 \ldots 0 * G = \underline{c}_j$
+
+  $\underline{x}*G = \sum_{i=1}^k \lambda_i c_i \Rightarrow f(K^k) = [\underline{c}_1, \underline{c}_2, \ldots, \underline{c}_k ] = C$
+\end{definition}
+
+\Theorem.
+Every $(n,k)$ linear code has an equivalent (w.r.t. error detection and correction) systematic $(n,k)$ linear code,
+
+$G = (I_{k\times k} A_{k\times (n-k)})$
+
+$\underline{x} G = x_1 x_2 \ldots x_k v_{k+1} \ldots v_n$
+
+$d(\underline{v}, \underline{w}) = w(\underline{v}-\underline{w})$
+
+$W_{\min}(\underline{x})$ $\underline{x} \in C \backslash \{00\ldots 0\}$ $W_{\min} = d$ \\
+$d-1$ is detectable, $ \left|\frac{d}{2}\right| -1$ is correctable
+
+
+$W_{\min}(\underline{x}) = W_{\min} = d_{\min}$, $\underline{x} \in C \backslash \{0\}$ \\
+$d_{\min} = \min d( \underline{x},\underline{y}) : \underline{x},\underline{y} \in C$\\
+$\underline{x},\underline{y} \in C \Rightarrow \underline{x} - \underline{y} \in C$\\
+$\underline{x} \in C \Rightarrow w(\underline{x}) = d(\underline{x},\underline{0}) \in C$\\
+\TODO{finish this}
+
+
+\begin{definition}
+  $C^\bot = \{ \underline{v} \in K^n \mid \underline{v} \underline{u} = 0 \forall u \in C \}$,$ C^\bot \leq K^n, \dim C^\bot = n-k$,
+  \dt{dual code}
+
+  A generating matrix $H$ of $C^\bot$ is called \dt{check matrix of $C$}
+
+$G * H^T = \begin{pmatrix}\underline{c}_1\\ \underline{c}_2\\ \vdots \\ \underline{c}_k \end{pmatrix} \cdot \begin{pmatrix}\underline{h}_1^T& \underline{h}_2^T& \ldots & \underline{h}_{n-k}^T \end{pmatrix} = 0_{k\times (n-k)}$
+\end{definition}
+
+\Remark.
+\TODO{this remark}
+
+\begin{definition}
+  $S_H(\underline{v}) = \underline{v} \cdot H^T$ \dt{syndrome of $\underline{v}$}
+
+  $S_H(\underline{v}) = \underline{0} \Leftrightarrow \underline{v} \in C$
+\end{definition}
+
+\Theorem.
+$C\leq K^n$ $(n,k)$ linear code, check matrix $H$
+
+$(C,+) \NormSubgroup (K^n, +)$ Then
+
+\TODO{finish theorem}
+
+
+\textbf{Remember from last time.}
+\lecturedate[\baselineskip]{2014-01-10}
+
+linear mapping $f: K^k \rightarrow K^n$, $K = GF(q)$
+
+We take word $\underline{x} = x_1, x_2, \ldots x_k \mapsto \underline{x} G$
+
+the code $C = f(K^n) = [\underline{c}_1, \ldots, \underline{c}_k]$
+
+$C^\bot$ dual code of $C$, $H$ generating matrix of $C^\bot$, \\
+$\underline{c}\cdot H^T = \underline{0} \Leftrightarrow \underline{c} \in C$ check matrix of $C$
+
+$S_H(\underline{v}) = \underline{v} \cdot H^T$
+
+$dim C = k$, $dim C^\bot = n-k$, $\underline{v} = \underline{v}_1, \ldots \underline{v}_n$
+
+\Theorem.
+$C\leq K^n$, $(n,k)$-linear code, check matrix $H$, $(C,+) \NormSubgroup (K^n, +)$
+
+$\underline{u}, \underline{v} \in K^n$ are in the same coset $\underline{a} + C$ if and only if $S_H(\underline{u} = S_H\underline{v})$
+
+$|K^n| = q^n$, $|C| = q^k$, using lagrange theorem we get $|K^n / C| = q^{n-k} = |K^{n-k}|$
+
+\Proof. 
+$\underline{u} + C = \underline{v} + C \Leftrightarrow \underline{u} - \underline{v} \in C \Leftrightarrow \underbrace{S_H(\underline{u}-\underline{v})}_{(\underline{u}-\underline{v}) H^T} = \underline{0}$
+
+
+\Example.
+\TODO{insert example (5,2) linear code over $\mathbb{Z}_2$ from the Slides}
+
+\subsection{Polynomial code}
+$K= GF(q)$, $K_{n-1}[x] = \{p(x) \in K[x] \mid \deg(p(x)) \leq n-1\}$ vector space over $K$
+
+$\dim K_{n-1}[x] = n$, $K_{n-1}[x] \cong K^n$, $g(x) \in K[x], \deg(g(x)) = n-k$
+
+$F: F(p(x)) = p(x) \cdot g(x)$ for $(p(x) \in K_{k-1}[x]$\\
+$F: K_{k-1}[x] \rightarrow K_{n-1}[x]$ injective, linear, $C= \{p(x)g(x) \mid p(x) \in K_{k-1}[x]\} \leq K_{n-1}[x]$, $\dim C = k$
+
+$C= [g(x), xg(x), \ldots, x^{k-1} g(x)]$
+
+$g(x)$ is the generating polynomial
+
+check polynomial: $c(x)\cdot h(x) \hat{=} 0$\\
+$f(x):: K[x] / f(x)$ \quad $c(x) \in C \Leftrightarrow c(x)h(x) \equiv 0 \mod f(x)$\\
+$c(x) \in C \Leftrightarrow c(x) = p(x)g(x) \stackrel{!}{\Leftrightarrow} c(x)h(x)=p(x)g(x)h(x) \equiv 0 \mod f(x) \forall p(x) \in K_{k-1}[x]$
+
+$\deg(g(x)) = n-k$, $\deg(f(x)) = n$, $\deg(h(x)) = k$\\
+$\implies g(x)h(x) \equiv 0 mod f(x) \implies f(x) = \lambda g(x)h(x)$
+
+$f,g,h$ monic $\Rightarrow f(x) = g(x)h(x)$\quad$f(x)$ is principal polynomial of $C$
+
+$v(x)h(x) \equiv 0 (f(x)) \Leftrightarrow f(x)=g(x)h(x) \mid v(x)h(x) \Leftrightarrow g(x) \mid v(x) \Leftrightarrow v(x)\in C $
+
+\textbf{Syndromes.} 
+$v(x)+C = w(x) + C \Leftrightarrow v(x) - w(x) \in C$\\
+$\Leftrightarrow (v(x)-w(x))h(x) \equiv 0 \mod f(x)$\\
+$\Leftrightarrow v(x)h(x) \equiv w(x)h(x) \mod f(x)$ \\
+$\Leftrightarrow v(x) \equiv w(x) \mod g(x)$
+
+Therefore we can define a syndrom $S(v(x)) = v(x) \mod g(x)$
+
+possible syndromes are therefor $p(x) \in K_{n-k-1}[x]$
+
+\begin{definition}
+  $C$ cyclic if $ \underline{c} = c_1c_2\ldots c_n \in C \Rightarrow c_nc_1c_2\ldots c_{n-1} \in C$\\
+  $\Leftrightarrow c_1 + c_2 x+ \ldots + c_n x^{n-1} \in C \Rightarrow c_n + c_1 x + \ldots + c_{n-1} x^{n-1} \in C \underbrace{\equiv c_n x^n}_{x\cdot c(x) \mod x^n-1}$
+\end{definition}
+
+\Theorem.
+$(n,k)$-polynomial code is cyclic $\Leftrightarrow g(x) \mid x^n-1$
+
+\Proof.\\
+\ProofBackward.
+$f(x) = x^n-1$ can be chosen to be principal polynomial of $C$
+
+\ProofForward.
+$c(x) = c_0 + c_1x + \ldots + c_{n-1}x^{n-1} \in C$\\
+$\Rightarrow \pi c(x) = c_{n-1} + c_0x + \ldots + c_{n-2}x^{n-1} \in C$\\
+$\pi c(x) = xc(x) - c_{n-1}(x^n-1) \Rightarrow \overline{\pi c(x)} = \overline{x c(x)}$ in $K[x]/x^n-1$\\
+$\overline{\pi^i c(x)} = \overline{x^i c(x)}$ in $K[x]/x^n-1$\\
+
+$g(x) \in C \Rightarrow \pi^i g(x) \in C \Rightarrow x^i g(x) \mod x^n -1$
+
+in particular: $( x^k \underbrace{g(x)}_{\deg(g(x)) = n-k} \mod x^n -1 ) = x^k g(x) - (x^n-1) \in C \Rightarrow g(x)|x^n-1$
+
+\subsection{BCH-codes }
+named after Bose, Chaudhuri and Hocquenghem
+
+a primitive $n$-th root of unity ($a^n-1=0$, |$\GroupGenBy{a}|=n$) in $GF(g)$
+
+$A = \{a^{i_1}, \ldots a^{i_m}\}$
+
+$M(A) = \begin{pmatrix}
+  1 & a^{i_1} & \ldots & a^{(n-1)i_1} \\
+  1 & a^{i_2} & \ldots & a^{(n-1)i_2} \\
+  \vdots  & \vdots & \vdots & \vdots \\
+  1 & a^{i_m} & \ldots & a^{(n-1)i_m} \\
+\end{pmatrix}$
+
+$m\times n$- matrix. If $ij = i+j-1$ and this means that $A = \{a^i, a^{i+1}, \ldots, a^{i+n-1} \}$, $A$ is gap-free
+
+\Theorem.
+a primitive n-th root of unity in $GF(q)$, $A = \{a^i, a^{i+1}, \ldots, a^{i+m-1} \}$ gap-free\\
+$\Rightarrow$ any m columns of $M(A)$ are linear independent
+
+\Proof.
+$i\neq k \Rightarrow a^j \neq a^k$
+
+$\det \begin{pmatrix}
+  a^{j_1*i} & a^{j_2*i} & \ldots & a^{j_m*i} \\
+  a^{j_1*(i+1)} & a^{j_2*(i+1)} & \ldots & a^{j_m*(i+1)} \\
+  \vdots  & \vdots & \vdots & \vdots \\
+  a^{j_1*(i+m-1)} & a^{j_2*(i+m-1)} & \ldots & a^{j_m*(i+m-1)} \\
+\end{pmatrix}\\
+= a^{(j_1+ j_2+ \ldots j_m) i}* \det \begin{pmatrix}
+  1 & 1& \ldots & 1\\
+  a^{j_1} & a^{j_2} & \ldots & a^{j_m} \\
+  a^{j_1*2} & a^{j_2*2} & \ldots & a^{j_m*2} \\
+  a^{j_1*(i+1)} & a^{j_2*(i+1)} & \ldots & a^{j_m*(i+1)} \\
+  \vdots  & \vdots & \vdots & \vdots \\
+  a^{j_1*(m-1)} & a^{j_2*(m-1)} & \ldots & a^{j_m*(m-1)} \\
+\end{pmatrix}
+\stackrel{\text{Vandermonde}}{\neq} 0$
+
+\Theorem.
+$C$ cyclic $(n-k)$-polynomial code over $GF(q)$, generating polynomial $g(x)$ a in an $n$-nth prim root of unity in $GF(q)$. If $\exists b \geq 0, \delta \geq 2: g(a^{i+b}) = 0$ for $0 \leq i \leq \delta -2$ then $w_{\min}(C) \geq \delta$.
+
+\Proof.
+\TODO{this proof}
+
+Let $A = \{a^b , a^{b+1}, \ldots, a^{b+\delta-2}\} \Rightarrow C * M(A)^T$\\
+$= (c_0, c_1, \ldots, c_{n-1}) \begin{pmatrix}
+  1 & 1& \ldots & 1\\
+  a^{b} & a^{b+1} & \ldots & a^{b+\delta-2} \\
+  (a^{2})^{b} & (a^{2})^{b+1} & \ldots & (a^{2})^{b+\delta-2} \\
+  \vdots  & \vdots & \vdots & \vdots \\
+  (a^{n-1})^{b} & (a^{n-1})^{b+1} & \ldots & (a^{n-1})^{b+\delta-2} \\
+\end{pmatrix} = \underbrace{(0,0,\ldots, )}_{\delta-1}$
+
+Assume $\underline{d} = d_0 d_1 \ldots d_{n-1} \in C \backslash{0}$, $w(d) < \delta$\\
+$i_j, 1 \leq j \leq w(\underline{d}) < \delta$ are the positions in d where $d_{i_j} \neq 0$ \\
+Take column number $i_j$, $j= 1, \ldots w(\underline{d})$ of $M(A) \to M \Rightarrow$
+\TODO{fix and finish this proof}
+
+
+\textbf{Remember from last time.}
+\lecturedate[\baselineskip]{2014-01-16}
+
+\Example.
+$g(x) = x^3 +x+1$, $f(x) = x^7-1$ over $\mathbb{Z}_2 = GF(2)$
+
+$\to (7,4)-$linear code
+
+\begin{align*}
+  &g(a) = 0 \Rightarrow && a^3= a+1\\
+  &a^3+a+1              &&(a^2)^3 = (a^3)^2 = (a+1)^2 = a^2+1\\
+  &\Rightarrow g(a^2) = 0  && (a^4)^3 = a^4+1\\
+  &g(a^4)=0
+\end{align*}
+
+In $\mathbb{Z}_2(a)$, $g(x)$ has the zeros $a,a^2,a^4$
+
+$A = \{a,a^2\}$ is a gap-free set, $b=1$, $\delta =3$
+
+\Example.
+We want to construct a code over $GF(2^4)$ with minimal distance $w_{\min} \geq 5$.
+
+$n=2^4-1=15$
+
+We need a cyclic code, $C$ is cyclic iff $g(x)|x^{15}-1$
+
+$x^{15}-1 = x^{15}+1 = (x+1)(x^2+x+1)\underbrace{(x^4+x+1)}_{g_1(x)}(x^4+x^3+1)\underbrace{(x^4+x^3+x^2+x+1)}_{g_2(x)}$
+
+$g_1(a)=0= g_1(a^2)=g_1(a^4) = g_1(a^k), k>5$ $\to$ largest gap-free subset is $A=\{a,a^2\}$\\
+$g_2(a^3)=0$ \\
+$g_1(x)g_2(x)$ has zeros $a,a^2,a^3,a^4$ gap-free $b=1, \delta=5$
+
+generating polynnomial of $C \Rightarrow w_{\min}(C) \geq \delta = 5$
+
+$GF(p^n): x^{p^n} -x = \prod_{a \in K}(x-a)$ \\
+a primitive element $\Rightarrow x^{p^n-1}-1 = \prod_{k=1}^{p^n-1}(x-a^k)$
+
+\subsection{Reed-Solomon-Codes}
+
+\begin{tabular}{ll}
+  $RS(s,k,t):$ &$s$ bits = $1$ block\\
+    & $k$ blocks = $1$ record\\
+\end{tabular}
+
+record: $b= b_0b_1b_2 \ldots b_{k-1}$ \quad $b_i in GF(2^s)$
+
+Then you do the coding. $\stackrel{\to}{coding} c= c_0\ldots c_{k-1}c_{k}c_{k+1}\ldots c_{k+2t-1}$ \quad $c_i \in GF(2^s)$
+
+cyclic poly code: $GF(2^s)^k \to GF(2^s)^{k+2t}$
+
+$s$ free, $k+2t \geq 2^s-1$, $g(x) = \prod_{i=1}^{2t} (x-a^i)$, a primitive element of $GF(s^s)$
+
+\Theorem.
+$w_{\min}(RS(s,k,t)) \geq 2t+1$, detect $2t$ errors, correct $t$ errors
+
+On CDs there are scratches which cause \dt{burst errors}. A solution to that problem is \textbf{interleaving}
+
+$t$ code words $\to t \times x$ matrix $\to$ $(nt,nk)$-code
+
+\subsection{Linear shift registers}
+\Example.
+A set of three registers, in which we can put bits. 
+
+\TODO{draw the shift-register with 3 elements and an adder above 1 and 3}
+
+\begin{verbatim}
++-->+-
+n   n  |
+|   |  |
+1 0 1<-
+\end{verbatim}
+
+generates: $101,010,100,001,011,111,110$ and then starts from the beginning. $2^3=8$ possible states.
+
+\TODO{draw the big shift register length k}
+
+This is a shift register of length $k$ over $GF(g) \Rightarrow q^k$ possible states $\Rightarrow$ periodic sequence ($q^k -1$ non-zero states).
+
+$\underline{s}_0 = (s_0,s_1,s_2, \ldots, s_{k-1}) = (s_0^{(0)}, \ldots, s_0^{(k-1)})$\\
+$\underline{s}_1 = (s_1,s_2,s_3, \ldots, s_{k}, \sum_{i=0}^{k-1}a_is_i) = (s_1^{(0)}, \ldots, s_1^{(k-1)})$\\
+$\underline{s}_{t+1} =  = (s_t^{(1)}, s_t^{(2)}, \ldots, s_t^{(k-1)} \sum_{i=0}^{k-1}a_is_t^{(i)})$\\
+
+$s_0,s_1,s_2,\ldots$\\
+$s_{n+k} = a_0s_n + a_1 s_{n+1} + \ldots a_{k-1}s_{n+k-1}$ linear recurrence, constant coefficients, order $k$
+
+generating functions: $S(x) = \sum_{n\geq 0}x_nx^n = \frac{g(x)}{f(x)}$\\
+$f(x) = 1 -a_{k-1}x - a_{k-2}x^2 - \ldots -a_0 x^k$, $deg(g(x)) <k$
+
+\Example.
+$K=GF(2)$, $k=4$, $(a_0,a_1,a_2,a_3) = (1,1,0,1) \to f(x) = x^4 +x^3+x+1$
+
+\begin{tabular}{ll}
+  $\underline{s}_0 =$ & $1000$\\
+                      & $0001$\\
+                      & $0011$\\
+                      & $0111$\\
+                      & $1110$\\
+  period 6
+\end{tabular}
+\begin{tabular}{ll}
+  $\underline{s}_0 =$ & $1001$\\
+                      & $0010$\\
+                      & $0100$\\
+  period 3
+\end{tabular}
+\begin{tabular}{ll}
+  $\underline{s}_0 =$ & $1010$\\
+                      & $0101$\\
+  period 2
+\end{tabular}
+\begin{tabular}{ll}
+  $\underline{s}_0 =$ & $1111$\\
+  period 1
+\end{tabular}
+
+with another shift register $f(x) = x^4 + x^3 + 1 \hat{=} (1,1,0,0)$
+\begin{verbatim}
+1000
+0001
+0010
+0100
+1001
+0011
+0110
+1101
+1010
+0101
+1011
+0111
+1111
+1110
+1100
+\end{verbatim}
+
+we get a maximum period of $15$
+
+\begin{align*}
+  x^4 + x^3 + x + 1 &= (x^3 + 1)(x+1)\\
+    &= (x+1)^2(x^2+x+1)
+\end{align*}
+
+\begin{align*}
+  x^4 + x^3 + 1 &= \text{ irreducible over $GF(2)$}\\
+\end{align*}
+
+\Theorem.
+Let $(s_n)$ be a shift register sequence (SRS) and $f(x)$ irreducible. Then $t$ is a period, i.i. $s_{n+t}= s_n \forall n \in \mathbb{N}$, if and only if $f(x) | x^t-1$
+
+\ProofForward.
+$s_{n+t}= s_n \forall n$\\
+\begin{align*}
+  \Rightarrow S(x) &= (s_0+s_1x+ \ldots + s_{t-1}x^{t-1})(1+x^t+x^{2t}+\ldots)\\
+                   &= \underbrace{(s_0+s_1x+ \ldots + s_{t-1}x^{t-1})}_{\sigma(x)} \frac{1}{1-x^t} = \frac{\sigma(x)}{1-x^t}\\
+\end{align*}
+
+$\frac{\sigma(x)}{1-x^t} = \frac{g(x)}{f(x)} \Rightarrow f(x) | x^t-1$
+
+\ProofBackward.
+Assume $f(x) | x^t-1 \Rightarrow \exists q(x): f(x)q(x) = 1-x^t$\\
+$S(x) = \frac{g(x)}{f(x)} = \frac{g(x)q(x)}{1-x^t}$, $deg(g(x)q(x))<t$\\
+$\Rightarrow \underbrace{S(x)}_{\sum s_n x^n} = \underbrace{g(x)q(x)}_{\sum_{l=0}^{t-1}h_lx^l} + \underbrace{x^t S(x)}_\sum s_n x^{n+t} \Rightarrow s_{n+t}= s_n$
+
+\Corollary.
+$\exists t \leq q^n -1: f(x) | x^t-1$
+
+\Theorem. 
+\textbf{(fundamental theorem on SRS)}.
+$(s_n)_{n\in \mathbb{N}}$ SRS over $GF(q)$, register of length $k$, $S(x) = \sum_{n \geq 0} s_n x^n = \frac{g(x)}{f(x)}$
+
+minimal period of $(s_n)_{n\in \mathbb{N}}$ is $q^n -1$ (optimal!) iff $f(x)$ is a primitive polynomial.
+
+\Proof.
+We ommit reducible case. 
+
+in the irreducible case: $f(x)$ primitive polynomial $\iff$ 
+\begin{itemize}
+  \item $f(x)$ irreducible and
+  \item $\forall t < q^k -1 : f(x) \not| x^t-1$ and 
+  \item $f(x) | x^{q^k-1}-1$
+\end{itemize}
+
+$\iff$ $\forall t < q^k -1: t$ is not a period of $(s_n)_{n\in \mathbb{N}}$ and $q^k-1$ is a perid of $(s_n)_{n\in \mathbb{N}}$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

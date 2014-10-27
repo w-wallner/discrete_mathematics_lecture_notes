@@ -1,0 +1,203 @@
+
+\section{Divisibility and Factorisation}
+
+\begin{definition}
+$a,b \in \mathbb{Z}: a|b: \Leftrightarrow \exists c \in \mathbb{Z}: a * c = b$
+
+More general: 
+$a,b \in R$, and $R$ is a ring (e.g. polynomials $R = \mathbb{Z}[x]$)
+\[
+  a|b \Leftrightarrow \exists c \in R , a * c = b
+\]
+\end{definition}
+
+\begin{definition}
+$a,b \in \mathbb{Z}$, $d = \gcd(a,b)$
+\begin{align*}
+    \Leftrightarrow & \text{ 1) } d|a \wedge d|b \\
+    \Leftrightarrow & \text{ 2) } t|a \wedge t|b \Rightarrow t|d \\
+\end{align*}
+\end{definition}
+
+\begin{definition}
+division with remainder
+\begin{align*}
+  a,b \in \mathbb{Z}, \; 
+  b > 0 \;\exists q,r: 
+    & \; a = b q  + r, \\ 
+    & \; 0 \leq r < b
+\end{align*}
+\end{definition}
+
+\subsection{Euclidean algorithm}
+\lecturedate[\baselineskip]{2013-12-05}
+\begin{align*}
+  a &= b q_0 +r_0 \\
+  b &= r_0 q_1 + r_1 \\
+  r_0 &= r_1 q_2 + r_2\\
+  &~~\vdots\\
+  r_{k-2} &= r_{k-1}  q_k + r_k \\
+  r_{k-1} &= r_{k}  q_{k+1} + 0 \\
+\end{align*}
+
+From the previous formulas we know that: $b > r_0 > r_1 > r_2 > \ldots > r_k > 0$. From this follows
+\[
+  r_k = gcd(a,b)
+\]
+
+\Proof.
+\begin{enumerate}[1)]
+  \item $r_k | r_{k-1} \implies r_k | \underbrace{r_{k-1} q_k + r_k}_{r_{k-2}}
+         \implies \ldots \implies r_k | a, r_k | b$ \\
+  \item $t | a \wedge t | b \stackrel{\text{??}}{\implies} t| r_k
+         \implies t | \underbrace{a-bq_0}_{r_0} \implies t | r_1
+         \implies \ldots \implies t|r_k$
+\end{enumerate}
+
+\Remark.
+\begin{align*}
+  r_j &= r_{j + 1} \underbrace{q_{j+2}}_{ \geq 1} + r_{j+2} \geq \underbrace{r_{j+1}}_{ > r_j+2} + r_{j+2} > 2 r_{j+2} \\
+      & \forall j: r_{j+2} < \frac{r_j}{2}
+\end{align*}
+
+\Theorem.
+\[
+  d = gcd(a,b) \implies \exists e,f \in \mathbb{Z}: d = ae + bf
+\]
+
+\Proof.
+Reverse Euclidean algorithm
+
+\begin{definition}
+$R$ is a \dt{commutative ring} with $1$-element.\\
+$(R,t)$ \dt{abelian group} $\rightarrow 0$, inverse of $a$ is $-a$\\
+$(R,\cdot)$ \dt{semigroup}, if $\exists$ neutral element: $1$, distributive laws\\
+$R$ \dt{integral domain} $\iff \nexists a,b \in R \backslash \{0\}: a \cdot b = 0$
+\end{definition}
+
+\textbf{Example.}
+$(\mathbb{R}, +, \cdot)$, $(\mathbb{Z}_m, + , \cdot), m \in \mathbb{P}$ ($\mathbb{P}$…Prime numbers)
+
+$m\not\in \mathbb{P}: m = n \cdot k \qquad \bar{n} \cdot \bar{k} = \bar{m} = \bar{0}$
+
+$\mathbb{Z}_6 : \bar{2} \cdot \bar{3} = \bar{0}$ \\
+$\mathbb{Z}[x] = (\{a_0 + a_1 x + a_x x^2 + \ldots + a_n x^n \mid a_i \in \mathbb{Z}, n \in \mathbb{N} \},+,\cdot)$
+
+\begin{definition}
+$R$ \dt{Euclidean ring} if $R$ integral domain and there is an Euclidean function $n$:
+\[
+  n : R \rightarrow \mathbb{N} \text{ such that } \forall a,b \in R,\; b \neq 0,\; \exists q,r \in R:
+\]
+
+\begin{compactenum}
+\item $a = bq + r$ with $r = 0$ or $n(r) < n(b)$
+\item $\forall a,b \in R \backslash \{0\} : n(a) \leq n(ab)$
+\end{compactenum}
+\end{definition}
+
+\textbf{Example.}
+Natural numbers $\mathbb{Z}$, with $n(a) = |a|$
+
+$K$ is a field, and $K[x] =
+\left(\{a_0 + a_1 x + a_2 x^2 \ldots a_n x^n \mid a_i \in K, n \in \mathbb{N} \}
+,+, \cdot \right)$
+
+$K[x]$ is Euclidean ring:
+\begin{align*}
+  &p(x) \in K[x] \\
+  &n(p(x)) = deg(p(x))
+\end{align*}
+
+\begin{definition}
+A \dt{field} is a commutative group together with two operations: addition and multiplication
+$(K, +, \cdot):$
+\begin{itemize}
+  \item $(K,+)$ Abelian group (associativity, 0, $\forall a \exists -a$)
+  \item $(K \backslash \{0\}, \cdot)$ Abelian group
+  \item Distributive laws
+\end{itemize}
+\end{definition}
+
+\textbf{Example.}
+\[
+  \begin{array}{rrrrrr}
+    x^4 & + 3x^3 & - 3x^2 & - 7x  & +6  & : ( x^3 + x^2 - x + 15) = x+2 \\
+    -x^4 & - x^3  & + x^2  & - 15x &     &\\
+    \cline{1-4}
+         &  2x^3  & - 2x^2 & - 22x & + 6 &\\
+         & -2x^3  & - 2x^2 & + 2x  & -30 &\\
+    \cline{2-5}
+         &        & - 4x^2 & - 20x & -24 &\\
+  \end{array}
+\]
+\[
+  p(x) = (x+2) \cdot q + \underbrace{(-4x^2-20x-24)}_{r(x)}
+\]
+
+\begin{definition}
+$p>1$ is called a \dt{prime number} $\iff$ $\pm 1, \pm p$ are the only divisors. $\mathbb{P}$ is the set of primes.
+\end{definition}
+
+\Theorem.
+\begin{align*}
+  & p\in \mathbb{P}, \\
+  & p|ab \implies p|a \vee p|b
+\end{align*}
+
+\Proof.
+\begin{enumerate}[{Case} 1)]
+  \item $p|a$, already true\\
+  \item $p \not| a$
+  \begin{align*}
+    &\implies gcd(p,a) = 1 \\
+    &\implies \exists e,f \in \mathbb{Z}: ep + fa = 1 \\
+    &\implies b = b \cdot 1 =
+      \underbrace{b e \mathbf{p}}_{\text{multiple of p}} +
+      \underbrace{\mathbf{b} f \mathbf{a}}_{\text{multiple of p}} \implies p|b
+  \end{align*}
+\end{enumerate}
+\Theorem.
+\[
+  n \in \mathbb{N}^{+} \implies \exists p_1, \ldots ,p_r \in \mathbb{P}: n = p_1 \ldots p_r, (r \geq 0), (\prod_{i\in \varnothing} a_i = 1)
+\]
+
+\Remark.
+Factorization is unique up to order of the factors
+
+\[
+  \Rightarrow n = \prod_{p \in \mathbb{P}} p^{\nu_p(n)}
+\]
+
+\Proof.
+\begin{itemize}
+
+  \item Induction: $n ∈ \mathbb{P}$
+
+  \item $n \not ∈ \mathbb{P} \implies n = n_1 \cdot n_2$\\
+  $n_1, n_2 < n \implies n_1 = p_1 \dots p_r, n_2 = q_1  \dots q_s$
+
+\end{itemize}
+
+$\nu_p(n)$ \ldots Multiplicity of $p$ in the factorization of $n$
+
+\[
+  p^{\nu_p(n)} | n, \quad p^{\nu_p(n)+1} \not| n
+\]
+\begin{align*}
+  gcd(a,b) &= \prod_{p \in \mathbb{P}} p ^{\min(\nu_p(a), \nu_p(b))} \\
+  lcm(a,b) &= \prod_{p \in \mathbb{P}} p ^{\max(\nu_p(a), \nu_p(b))} \\
+  a|b &\iff \forall p \in \mathbb{P} : \nu_p(a) \leq \nu_p(b)
+\end{align*}
+
+\Theorem.
+\[
+  | \mathbb{P} | = \infty
+\]
+
+\Proof.
+Assume that there are only finitely many prime numbers $\mathbb{P} = \{p_1, \ldots , p_r\}$. Now, we use these "known" prime numbers to construct a new number $N$ in the following way. 
+\[
+	N = p_1 \ldots p_r + 1 
+\]
+%= \prod_{i=1}^r p_i^{\nu_{p_i}(N)}
+There are two cases, either $N$ is a new prime number, which we did not know before (contradiction) or it must be possible to factor it into prime numbers. However, every "known" prime number is certainly not a divisor of $N$. That means, that there must be a new prime number, which we did not know before (contradiction).

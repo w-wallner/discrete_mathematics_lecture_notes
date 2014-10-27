@@ -1,0 +1,104 @@
+
+\section{Finite Fields}
+
+$K$ finite $\Rightarrow \Char K = p \in \mathbb{P}$, $P(k) \cong \mathbb{Z}_p$, $|K| = p^n$
+
+$|K^{*}| = | K \backslash \{0\}| = p^n -1$. Let $a \in K^{*}$ with $\ord_{K^{*}}(a)=r$ is maximal, then $ r∣ p^n-1$,
+$y \in K^{*} \implies \ord_{K^{*}}(y) ∣ \ord_{K^{*}}(a) = r$
+
+$\forall y \in K^{*}: y^r = 1:$ All $y \in K^{*}$ are zeros of $x^r -1$.
+In a field we have that the number of zeros of a polynomial $P(x)$ is bounded by the degree $\deg(P(x))$ ($P(x) \leq \deg(P(x))$). This implies that $p^n-1 \leq r \implies r = p^n-1$.
+
+\Theorem.
+If $K$ finite field then $(K^{*},\cdot)$ is a cyclic group (it has a generator).
+
+\Corollary.
+$\forall a \in K: a^{p^n} = a$. Thus the polynomial $x^{p^n} -x = \prod_{a\in K}(x-a)$
+
+\begin{definition}
+  A generator of $K^{*}$ is called a \dt{primitive element of $K$}.
+
+  Its minimal polynomial over $\mathbb{Z}_p$ is called \dt{primitive polynomial}
+\end{definition}
+
+\Theorem.
+Let $q(x) \in \mathbb{Z}_p[x]$ monic, irreducible, degree $n$. Then $q(x)$ is a primitive polynomial of $K = GF(p^n) \iff q(x) ∣ x^{p^n -1}-1$ and $\forall k : 1 \leq k \leq p^n-1: q(x) \nmid x^k-1$
+
+\Proof. \\
+\ProofForward.
+$q(x)$ is the minimal polynomial of $a$, $\GroupGenBy{a} = K^{*}$ ($a$ is a primitive element)
+
+Since $a^{p^n-1}-1 = 0 \Rightarrow q(x)∣x^{p^n-1}-1$
+
+$k < p^n-1: a^k -1 \neq = 0$, because $\ord_{(K^{*}, \cdot)} (a) = | K^{*}| = p^n-1$ \\
+$\implies q(x) \nmid x^k -1$
+
+\ProofBackward.
+$q(a) = 0 \Rightarrow a \in L \stackrel{\subset}{\neq} \mathbb{Z}_p$
+
+$\Rightarrow \ord(a)$ in $\mathbb{Z}_p(a): a^{p^n-1}-1 = 0$ \\
+$\ord(a) = k < p^n -1: a^k -1 = 0$, but $x^k-1$ must then be a multiple of $g(x)$. Contradiction!
+
+%end of proof
+
+We will show: $q(x)$ is a minimal polynomial of primitive element $a$, then $q(x) = (x- a)(x-a^p)(x-a^{p^2}) \ldots (x-a^{p^{n-1}}) \rightarrow n \text{ elements}$
+
+$|K| = p^n$, number of primitive elements is $l$, $\GroupGenBy{a} = K^{*} \Rightarrow \ord(a) = p^n-1$
+
+$\ord(a^k) = \frac{p^n-1}{\gcd(p^n-1,k)} = p^n-1 \Leftrightarrow \gcd(p^n-1,k) = 1$
+
+$\{a^0, a^1, \ldots, a^{p^n-2}\} = K^{*}$
+
+$a^k$ prim $\Rightarrow l = \varphi(p^n-1)$
+
+$a$ primitive then $a^p, a^{p^2}, \ldots a^{p^{n-1}}$ are primitives as well.
+
+$\Rightarrow n∣ \varphi(p^n-1)$, number of primitive polynomials $= \frac{l}{n} \varphi(p^n-1)$
+
+\Lemma.
+$a,b \in K$ $(p= \Char K) \implies (ab)^p = a^p b^p$ and also $(a+b)^p = a^p + b^p$, but this an exercise.
+
+\begin{align*}
+  \varphi : &K \rightarrow K & \text{ field homomorphism}\\
+    & x \mapsto x^p
+\end{align*}
+
+$\Rightarrow \Kernel \varphi$ is an ideal of $K$, $K$ is a field: $\{0\}$, $K$ are only ideals
+
+$\varphi(1) = 1^p \neq 0 \Rightarrow 1 \notin \Kernel \varphi \Rightarrow \varphi = \{0\}$\\
+$\implies \varphi$ injective $\Rightarrow \varphi$ bijective $\Rightarrow \varphi$ is an automorphism
+
+\Theorem.
+$K = GF(p^n) \Rightarrow $
+\begin{align*}
+  \varphi : &K \rightarrow K \\
+    & x \mapsto x^p
+\end{align*}
+is an automorphism.
+
+\Remark.
+$\varphi, \varphi\circ \varphi, \varphi\circ\varphi\circ\varphi, \ldots$ are automorphisms
+
+$\varphi, \varphi^2, \ldots \varphi^{n-1}, \varphi^n = id_K$ are all automorphisms
+
+$( \{\psi: K \rightarrow K \mid \psi \text{ automorphism}\}, \circ ) = \GroupGenBy{\varphi}$ cyclic group
+
+automorphism group of $K$
+
+Automorphism properties:
+\begin{align*}
+  \forall x,y \in K:
+    & \psi(x+y) = \psi(x) + \psi(y)\\
+    & \psi(xy) = \psi(x)\psi(y)
+\end{align*}
+
+\textbf{Consequence.}
+$K = \mathbb{Z}_p(a) \cong GF(p^n)$ if minimal polynomial of $a$, $q(x)$ has degree $n$, $q(x) \in \mathbb{Z}_p[x]$
+
+$q(a) = 0$, $\psi \in \Aut(K)$, $b = \psi(a)$\\
+$\Rightarrow q(b) = q(\psi(a)) = \psi(0) = 0$
+
+$\psi(a) \in \{a, a^p, a^{p^2}, \ldots, a^{p^{n-1}} \}$
+
+$\Rightarrow q(x) = (x-a)(x-a^p) \ldots (x-a^{p^{n-1}})$
+

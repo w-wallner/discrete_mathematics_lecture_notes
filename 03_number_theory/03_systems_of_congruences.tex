@@ -1,0 +1,117 @@
+
+\section{Systems of Congruences}
+
+\Theorem.
+$m = m_1 m_2$, $gcd(m_1, m_2) = 1$. Then $x \equiv y (m) \iff \begin{cases} x \equiv y (m_1) \\ x \equiv y (m_2) \end{cases}$
+
+\ProofForward.
+\[
+  x \equiv y (m) \iff x = y + km \implies x = y + k m_1 m_2 \implies
+  \begin{cases}
+    x \equiv y (m_1) \\
+    x \equiv y (m_2)
+  \end{cases}
+\]
+
+\ProofBackward.
+\[
+  \begin{cases}
+    x \equiv y (m_1) \\
+    x \equiv y (m_2)
+  \end{cases}
+\]
+\begin{align*}
+  & \implies \exists l: x-y = l\cdot m_1 \equiv 0 (m_2)\\
+  & l \equiv 0 (m_2) \implies l = l' \cdot m_2
+    \implies x-y = l'\cdot m_1 m_2
+    \implies x \equiv y (m)
+\end{align*}
+
+\textbf{Corollary.}
+\[
+  m = \prod_{i=1}^r m_i,\; gcd(m_i, m_j) = 1 \quad \forall i \neq j
+\]
+
+Then $x \equiv y (m) \iff \forall i = 1, \ldots, r : x \equiv y (m_i)$
+
+\subsection{Chinese Remainder Theorem}
+We are faced with a system of congruence equations
+\[
+  x \equiv a_i (m_i) \quad 1 \leq i \leq r (*)
+\]
+$i \neq j \implies \gcd(m_i, m_j) = 1$
+
+$\implies$ $(*)$ has a unique solution mod $\displaystyle{m = \prod_{i = 1}^r m_i}$.
+
+and this is $\displaystyle{x \equiv \sum_{j=1}^r \frac {m}{m_j} \cdot b_j \cdot a_j (m)}$
+
+where $b_j = \left( \frac{m}{m_j} \right) ^{-1} (m_j)$
+
+\textbf{Remember from last time}
+\lecturedate[\baselineskip]{2013-12-06}
+\[
+  x \equiv a_i (m_i), 1 \leq i \leq r (*)
+\]
+$\implies$ $(*)$ has unique solution mod $\displaystyle{m = \prod_{i = 1}^r m_i}$.
+
+\[
+  x \equiv \sum_{j=1}^r \frac {m}{m_j} \cdot b_j \cdot a_j (m) \text{ where }
+  b_j = \left( \frac{m}{m_j} \right) ^{-1} \imod{m_j}
+\]
+
+\textbf{Example.}
+System of two congruent relations.
+\begin{align*}
+  3x &\equiv 2 \pod{5} \\
+  2x &\equiv 7 \pod{11}
+\end{align*}
+
+The previous relations are equivalent to
+\begin{align*}
+  x &\equiv 4 \pod{5} \\
+  x &\equiv 9 \pod{11}
+\end{align*}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{align*}
+  &m_1 = 5, m_2 = 11, m = 55 \\
+  &a_1 = 4, a_2 = 9 \\
+\end{align*}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{align*}
+  &b_1 \cdot 11 = 1 \pod{5}  \implies b_1 = 1 \\
+  &b_2 \cdot 5 = 1  \pod{11} \implies b_2 = 9 \\
+\end{align*}
+\end{minipage}
+\begin{align*}
+  & x \equiv 11 \cdot 1 \cdot 4 + 5 \cdot9 \cdot9 \pod{55}\\
+  & x \equiv 449 \pod{55} \\
+  & x \equiv 9 \pod{55} \\
+  & \text{Solutions: } \{\dots, -46, 9, 64, 119, \dots \}
+\end{align*}
+
+\Proof.
+
+\begin{enumerate}[1)]
+
+  \item x is a solution: $m_i, i = 1,2, \ldots, r$, are pairwise coprime
+  \[
+    \implies \gcd\left(\frac{m}{m_j}, m_j\right) = 1 \implies \exists b_j
+  \]
+  \begin{align*}
+    \frac{m}{m_j} &\equiv 0 \pod{m_i} \quad \forall i \neq j \\
+    \implies \sum_{j=1}^{r}\frac{m}{m_j} b_j \cdot a_j &\equiv
+      \frac{m}{m_j} \underbrace{b_i}_{\left(\frac{m}{m_j}\right)^{-1} \imod{m_i}} a_i \pod{m_i} \\
+    &\equiv a_i \pod{m_i}
+  \end{align*}
+
+  \item x is unique mod m:
+  \begin{align*}
+    & x \equiv a_i\pod{m_i} \quad y \equiv a_i \pod{m_i} \quad \forall i = 1,\ldots, r \\
+    \implies & x \equiv y \pod{m_i} \quad \forall i \\
+    \implies & x \equiv y \pod{m}
+  \end{align*}
+
+\end{enumerate}
+
+

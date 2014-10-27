@@ -1,11 +1,3 @@
-%%% EtherPad for Discrete Mathematics VO
-%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
-%%% Past pads:
-%%%     * 2013-10-17: committed by patrikf
-%%%     * 2013-10-18: committed by patrikf
-%%%     * 2013-10-24: committed by patrikf
-
-% Discrete Mathematics Lecture Notes 2013-10-25
 
 \section{Enumerative Combinatorics}
 
@@ -345,4 +337,293 @@ If we have a universe $A$ such that
 \end{align*}
 \dots if you presume that the intersection of ``nothing'' is ``everything'' (A)
 
+\subsection{Counting sets}
+\lecturedate{2013-11-08}
+Finite Set $A = \{a_1, \ldots, a_n\}$, $n$-element-set or $n$-set
 
+A \dt{counting set} is a set $A = \{1, 2, \ldots, n\}$
+
+\begin{enumerate}
+  \item number of permutations: $n!$
+  \item number of $k$-subsets: ${n\choose k}$
+  \item number of ordered $k$-subsets: $k! {n\choose k}$
+  \item number of $k$-multisets: $b_1, \ldots, b_k \in A$, the order doesn't matter, but we are allowed to choose a element several times $\implies$ ${n +k-1 \choose k}$
+\end{enumerate}
+
+There is a mapping $f$ that maps the
+\[
+  \text{$k$-multiset}
+  \subseteq A:
+  b_1 ≤ \ldots ≤ b_k
+\]
+to the
+\[
+  \text{$k$-subset}
+  \subseteq \{1,2,\ldots,n+k-1\}:
+  b_1 < b_2+1 < \ldots < b_k+k-1.
+\]
+
+\begin{enumerate}
+  \setcounter{enumi}{4}
+  \item number of arrangements of a multiset: $\{b_1, b_1, \ldots , b_2, b_2,\ldots, b_2, \ldots, b_m, b_m, \ldots b_m\}$
+\end{enumerate}
+
+$b_1$ appears $k_1$ times, ...; $n$ in total
+
+Permutations of this multiset:
+$\frac{n!}{k_1! k_2! \ldots k_m!}$
+
+\begin{enumerate}
+  \setcounter{enumi}{5}
+  \item number of ordered $k$-multisets over $A$: $n^k$ \\
+  (we take a fixed number of positions $k$ and for each position choose any element from $A$)
+\end{enumerate}
+
+Remember:
+\begin{compactitem}
+  \item $\sum_{k=0}^n {n\choose k} = 2^n$
+  \item Pascal's triangle
+  \item ${n\choose k} + {n\choose k+1} = {n+1 \choose k+1}$
+  \item $\sum_{m=0}^n {m\choose k} = {n+1 \choose k+1}$
+  \item $\sum_{k=0}^n {m+k \choose k} = {m+n+1 \choose n}$
+\end{compactitem}
+
+\[
+  \forall x,y\in \mathbb{C}
+  \forall n\in \mathbb{N}
+  (x+y)^n = \sum_{k=0}^n {n\choose k} x^k y^{n-k}
+\]
+
+$b_1, \ldots, b_k$ \; ${n \choose k} = \frac{n(n-1) \ldots (n-k+1)}{k!}$
+
+\textbf{Definition (Extension to complex numbers).}
+\index{binomial coefficient!for complex numbers}
+Let $x\in \mathbb{C}, k\in\mathbb{N}$. Then we can define
+\[
+  {x\choose k} = \frac{
+    x (x-1) \ldots (x-k+1)
+  }{
+    k!
+  }
+\]
+
+\Lemma.
+\[
+  \forall k \in \mathbb{Z}, \forall x\in \mathbb{C}:
+  {x\choose k} = {x-1 \choose k-1} + {x-1 \choose k}
+\]
+(with ${x \choose k} = 0$ for $k < 0$).
+
+\Theorem. (Vandermonde's theorem).
+\[
+  {x+y \choose n} = \sum_{k=0}^{n} {x\choose k} {y\choose n-k},
+  \forall n \in \mathbb{N}, \forall x,y \in \mathbb{C}
+\]
+
+\Proof.
+Assume $x,y\in \mathbb{N}$. $X,Y$ sets: $X\cap Y=\varnothing, |X|=x, |Y|=y$.
+
+Then the left-hand side
+${x+y \choose n}$
+is the number of $n$-subsets of $X\cup Y$.
+
+Choose any $n$-subset $A\subseteq X\cup Y$.
+Then $A$ can be decomposed like this:
+\begin{gather*}
+  A = (A\cap X)\cup (A\cap Y) \\
+  |A\cap X| = k, |A\cap Y| = n-k
+\end{gather*}
+
+number of unions of shape right hand side of (*) $\left(={x+y \choose n} \right)$
+
+\[
+  \sum_{k=0}^n {x\choose k} {y\choose n-k}
+\]
+
+left hand side:
+\[
+  \sum_{i\in I} p_i (x) y^i
+  = \sum \widetilde p_i (x) y^i
+\]
+
+lets assume $x\in \mathbb{N}$ and is fixed, then
+\[
+  Q_1(y) = Q_2(y) \; \forall y \in \mathbb{N}
+  \implies \forall y\in \mathbb{C}
+  p_i(x) = \widetilde p_i(x) \; \forall x \in \mathbb{N}
+\]
+
+\subsection{Stirling numbers}
+Assume we have a set $A = \{1,2,3, \ldots ,n\}$
+, permutation $\pi\in S_n$.
+$S_n$ is the symmetric group; $|S_n| = n!$
+
+We can represent $\pi$ as follows:
+\[
+  \begin{pmatrix}
+    1&2&3&\cdots&n \\
+    \pi(1)&\pi(2)&\pi(3)&\cdots&\pi(n) \\
+  \end{pmatrix}
+\]
+
+2-line representation:
+\[
+  \begin{pmatrix}
+    1&2&3&4&5&6&7 \\
+    4&6&3&1&7&5&2 \\
+  \end{pmatrix}
+\]
+The second line is also called the word representation.
+
+Cycle representation:
+$(1 4) (2 6 5 7) (3)$
+Fixpoints can be omitted, so this is the same as $(14)(2657)$.
+
+We can do calculations with permutations.
+
+$(12)\in S_7 \implies (12)(3)(4)(5)(6)(7)$
+
+A transposition is a permutation of just 2 elements.
+
+Take $(12),(13)\in S_7$. Then $(12)\circ (13) = (132)$.
+
+Every $\pi\in S_n$ can be written as a product of cycles, even as a product of transpositions (but not unique).
+
+e.g. $(14)(2657) = (14)(27)(25)(26)$.
+
+Of course, the order within a cycles does not matter:
+$(2657)=(5726)$.
+
+Canonical representation: generated from 2-line representation, smallest element comes first.
+If additionally you start with the cycle with the largest last element first, you could even omit parentheses.
+
+\begin{definition}
+Let
+\[
+  s_{n,k} = \text{number of permutations of an $n$-set $A$ which have $k$ cycles}
+\]
+Then $s_{n,k}$ are the \dt{Stirling numbers of the first kind}.
+(Fixpoints count as a cycle as well.)
+\end{definition}
+
+\Remark.
+\begin{gather*}
+  s_{n,1} = (n-1)! \\
+  s_{n,n-1} = {n\choose 2} \\
+  s_{n,n} = 1 \\
+  s_{n,0} = s_{k,0} = 0 \quad n,k ≥ 1 \\
+  s_{0,0} := 1 \\
+  \sum_{k=0}^{n} s_{n,k} = n!
+\end{gather*}
+
+It doesn't matter where we start the cycle, just the order of the cycle needs to stay. $(3 2 6 5 7 1 4) = (6 5 7 1 4 3 2)$
+
+\Theorem.
+\[
+  \forall n,k > 0:\;
+  s_{n,k} = s_{n-1,k-1} + (n-1)s_{n-1,k}
+\]
+
+\Proof.
+Take a permutation
+$\pi = (1 \ldots )(\ldots) \ldots (\ldots) \in S_n \text{, with $k$ cycles}$.
+
+How many such permutations are there?
+
+\begin{compactitem}
+  \item If $1$ is a fixed point: $s_{n-1, k-1}$.
+
+  \item If $1$ is not a fixed point, start with a permutation of $n-1$ elements and add the element $1$ to one of the cycles. We can insert it before any of the $n-1$ elements, thus we get
+$(n-1) s_{n-1,k}$ possibilities.
+\end{compactitem}
+
+\Remark.
+Signed Stirling numbers of the first kind:
+\[
+  c_{n,k} = (-1)^{n+k} s_{n,k}
+\]
+
+\begin{definition}
+Set partitions:
+Take a set $A=\{1,2, \ldots, n\}$
+and decompose it such that
+\[
+  A = A_1 \cup A_2 \cup \cdots\cup A_k
+  \quad
+  \forall i\neq j: A_i \cap A_j = \varnothing
+\]
+Then
+\[
+  S_{n,k} = \text{number of set partitions of $A$ with $k$ blocks}
+\]
+are the \dt{Stirling numbers of the second kind}.
+\end{definition}
+
+\textbf{Example.}
+Set $A = \{1,2,3,4\}$
+\begin{align*}
+  \text{number of 1-partitions }= 1 &= S_{4,1}\\
+  \text{number of 2-partitions }= 7 &= S_{4,2}\\
+  \text{number of 3-partitions }= 6 &= S_{4,3}\\
+  \text{number of 4-partitions }= 1 &= S_{4,4}
+\end{align*}
+
+\Remark.
+\begin{align*}
+  S_{n,1} &= S_{n,n} = 1 \\
+  S_{n,2} &= 2^{n-1}-1 \\
+  S_{n,n-1} &= {n\choose 2} \\
+  S_{0,0} &:= 1 \\
+  S_{n,0} &= S_{0,k} = 0
+    \quad\forall n,k ≥ 1
+\end{align*}
+
+\Theorem.
+\[
+  S_{n,k} = S_{n-1,k-1} + k S_{n-1,k}
+\]
+
+\Proof.
+If $\{1\}$ is a block:
+\[
+  S_{n-1,k-1}
+\]
+If $\{1\}$ is not a block, it has to be element of one of the $k$ blocks:
+\[
+  k S_{n-1,k}
+\]
+
+\Theorem.
+$\forall x\in \mathbb{C} \forall n ≥ 0:$
+\begin{gather*}
+  (x)_n
+    := x(x-1)(x-2) \ldots(x-n+1)
+    = \sum_{k=0}^{n} (-1)^{n+k} s_{n,k} x^k \quad ((x)_0:=1)
+    \\
+  x^n = \sum_{k=0}^{n} S_{n,k} (x)_k
+\end{gather*}
+
+\Remark.
+$V_n = \{a_0 + a_1 x + \ldots + a_n x^n \mid a_i \in \mathbb{C} \}$ \\
+$\{1,x,x^2, \ldots , x^n\}, \{1,(x)_1, (x)_2, \ldots ,(x)_n\}$ are bases of $V_n$ \\
+$(V_n, +, \mathbb{C})$ vector space dim $V_n = n+1$
+
+basis change:
+\[
+  (S_{m,k})_{m,k= 0, \ldots,n}
+    ((-1)^{m+k} s_{m,k})_{m,k= 0, \ldots,n}
+\]
+
+\Proof.
+\begin{align*}
+  (x)_n
+  &= (x)_{n-1} (x-n+1) \\
+  &= (x-n+1) \sum_{k=0}^{n-1} (-1)^{n-1+k} s_{n-1,k} x^k \\
+  &= \sum_{k=0}^{n-1} (-1)^{n-1+k} s_{n-1,k} x^{k+1}
+    + (n-1)\sum_{k=0}^{n-1} (-1)^{n+k} s_{n-1,k} x^k \\
+  &= \sum_{k=1}^n (-1)^{n+k} s_{n-1,k-1} x^k
+    \quad + (n-1)\sum_{k=0}^{n-1} (-1)^{n+k} s_{n-1,k} x^k \\
+  &= \sum_{k=0}^n (-1)^{n+k}
+    (s_{n-1,k-1} + (n-1)s_{n-1,k}) x^k \\
+  &= \sum_{k=0}^n (-1)^{n+k} s_{n,k} x^k \\
+\end{align*}

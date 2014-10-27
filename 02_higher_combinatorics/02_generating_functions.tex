@@ -1,13 +1,3 @@
-%%% EtherPad for Discrete Mathematics VO
-%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
-%%% Past pads:
-%%%     * 2013-10-17: committed by patrikf
-%%%     * 2013-10-18: committed by patrikf
-%%%     * 2013-10-24: committed by patrikf
-%%%     * 2013-10-25: committed by patrikf
-%%%     * 2013-11-08: committed by neroburner
-
-% Discrete Mathematics Lecture Notes 2013-11-21
 
 \section{Generating Functions}
 \lecturedate[\baselineskip]{2013-11-21}
@@ -352,3 +342,290 @@ If there are n internal nodes, then there are n+1 leaves. The number of vertices
 	&= - \sum_{n\geq 0} \frac{\frac12 (-\frac12) (-\frac32) \ldots (\frac12 - n+1))}{n!} \cdot (-4)^n z^n \\
     &\sum_{n\geq 0} \underbrace{\frac{1}{n+1} {\binom{2n}{n}}}_{\text{ Catalan numbers}} z^n
 \end{align*}
+
+\lecturedate[\baselineskip]{2013-11-22}
+
+A binary tree of even size has a certain number of internal nodes: $\displaystyle{a_n = \frac{1}{n+1} {2n \choose n}}$\\
+$A(z) = 1 + zA(z)^2$
+
+We look at the set of binary trees $B$. The tree is either a leaf with size 0, or a node with two binary trees as children.
+
+\textbf{Examples.}
+
+\textbf{Example 1.}
+We have a bin with red, blue and yellow balls. We have 2 or 3 red balls, at least one blue ball, and not more than one yellow ball. We now ask for the number of combinations with $n$ balls, conforming to the given constraints.
+
+Assume we introduce a variable for each color: $r,b,y$. We count by the exponent. So our function is:
+\[
+    1\cdot r^2 + r^3,  1+y, b + b^2 + \ldots = \frac{b}{1-b}
+\]
+
+We now have 2 configurations:
+\[
+    A(z) = \sum a_n z^n \quad
+    B(z) = \sum b_n z^n
+    \implies \sum_{k=0}^{n} a_k b_{n-k}
+\]
+
+This leads to the formula:
+\[
+    (r^2  z^2+ r^3 z^3) (1+zy) \left(\frac{bz}{1-bz}\right)
+    = \sum a_{lmkn} r^l b^m y^k z^n
+\]
+
+The coefficient $a_{lmkn}$ is the number of configurations with l red, m blue, k yellow and a total number of n balls
+
+We are not interested in the number of red, blue or yellow balls, but the total number of used balls, so we set $r=b=y=1$ and simplify the formula to:
+\begin{align*}
+    (z^2 + z^3)&(1+z) \frac{z}{1-z} \\
+    \implies \text{\# comb}
+    &= \left[z^n\right] \frac{z^3(1+z)^2}{1-z} \\
+    &= \left[z^{n-3}\right] \frac{1}{1-z}+ 2\left[z^{n-4}\right] \frac{1}{1-z} + \left[z^{n-5}\right] \frac{1}{1-z} \\
+    a_n &= 4 \quad \text{for } n ≥ 5 \quad (a_3=1, a_4=3)
+\end{align*}
+
+\textbf{Example.}
+Number of combinations w/o repetition of a set $M = \{1,2, \ldots ,N\}$. We now want to know the number of combinations of size $k = {N \choose k}$.
+
+\[
+    a_1, \ldots , a_n \mathrel{\hat{=}} \text{different balls} \mathrel{\hat{=}} \text{elements of } M
+\]
+
+\[
+    % a_1^0, a_1^1
+    (1+a_1)(1+a_2)(1+a_3) \ldots (1+a_N)
+\]
+
+We now need to consider the size of the set
+\[
+    (1+x)(1+x)(1+x) \ldots (1+x)^N = \sum {N \choose k} x^k
+\]
+
+If we allow repetition:
+\[
+    \prod _{i=1}^N (1+a_i + a_i^2 + \ldots) = \prod _{i=1}^N \frac{1}{1-a_i} \quad a_i = x
+\]
+
+\[
+    f(x) = \prod _{i=1}^N \frac{1}{1-x} = \frac{1}{(1-x)^N}
+    = (1-x)^{-N}
+    = \sum _{k \geq 0} {-N \choose k} (-1)^k x^k
+    = \sum _{k \geq 0} {N + k-1 \choose k} x^k
+\]
+
+\subsection{Combinatorial construction}
+$\mathcal{A}$ is a combinatorial class, which is a set of objects.
+Furthermore there is a size-function $w: \mathcal{A} \rightarrow \mathbb{N}$.
+
+\[
+a_n = \left(\text{number of objects } x\in \mathcal{A}\right) \text{ such that }w(x) = n < \infty,  \forall n \in \mathbb{N}
+\]
+
+generating function of $(\mathcal{A}, w)$
+\[
+    A(z) = \sum_{n\geq 0 } a_n z^n
+\]
+
+We now create combinatorial classes from combinatorial classes.
+$(\mathcal{A}, w_A) , (\mathcal{B}, w_B)$
+
+\begin{enumerate}[1)]
+\item combinatorial sum $\mathcal{A} + \mathcal{B}$:
+    we assume that $\mathcal{A} \cap \mathcal{B} = \varnothing$
+    \begin{align*}
+        \mathcal{A} + \mathcal{B} &= (\mathcal{A} \cup \mathcal{B} , w), \\
+        w(x) &= \begin{cases}
+            {w_A(x) \quad x \in \mathcal{A}}\\
+            {w_B(x) \quad x \in \mathcal{B}}
+			\end{cases}\\
+        c_n &= a_n + b_ n\rightarrow C(z) = A(z) + B(z)
+    \end{align*}
+\item
+    \begin{align*}
+        \mathcal{A} \times \mathcal{B}
+        &:= (\mathcal{A} \times \mathcal{B}, w)
+        \qquad \text{with } w((x,y)) = w_a(x) + w_b(y), x\in \mathcal{A}, y\in \mathcal{B}\\
+        c_n &= \sum_{k=0}^n a_kb_{n-k}\\
+        C(z) &= A(z)B(z)
+    \end{align*}
+
+\item
+    \begin{align*}
+        \seq(\mathcal{A}) &= \{ (x_1, x_2, \ldots x_k) \mid k \in \mathbb{N}_0, x_i \in \mathcal{A}\}
+        \qquad k = 0 \mathrel{\hat{=}} \epsilon \ldots \text{empty sequence}\\
+        &w((x_1, x_2, \ldots x_k) ) = \sum_{i=1}^{k} w_A(x_i) \\
+        \mathcal{C} &= \seq(\mathcal{A} = \{\epsilon\} \cup \mathcal{A} \cup (\mathcal{A}\times\mathcal{A}) \cup \ldots )\\
+        C(z) &= 1 + A(z) + A(z)^2 + \ldots = \frac{1}{1-A(z)} \\
+    \end{align*}
+
+    Assumption $a_0 = 0$
+\end{enumerate}
+
+\textbf{Example.}
+Integer partitions:
+
+Decomposition of an integer into a sum of smaller integers ($5 = 3+1+1= 1+3+1 = 2+2+1 = 1+1+1+1+1$). The order does NOT matter ($5= 4+1 = 3 + 2 = 3+1+1 = 2+2+1 = 2+1+1+1 = 1+1+1+1+1$).
+
+If the order matters, then we speak of \dt{compositions} of an integer
+
+\begin{align*}
+    \mathcal{C} &\ldots \text{compositions of an integer }\in \mathbb{N}^{+} \\
+    \mathcal{C} &= \seq(\mathcal{A}) \\
+     \mathcal{A} &= \mathbb{N}^{+}, w_A(x) = x\\
+	\underline{x} &= (x_1, x_2, \ldots x_k) \in \mathcal{C}\\
+    \underline{x} &\mathrel{\hat{=}} x_1 + x_2 + \cdots + x_k\\
+    w(\underline{x}) &= x_1 + x_2 + \ldots x_k\\
+    \mathcal{A}&=\seq( \{ 0 \})\setminus \{\epsilon\}) \\
+    A(z) &= \frac{1}{1-z} - 1 = \frac{z}{1-z} \\
+    C(z) &= \frac{1}{1-A(z)} = \frac{1}{1-\frac{z}{1-z} }
+         = \frac{1-z}{1-2z}
+         = 1 + \sum_{n\geq 1} 2^{n-1} z^n \\
+    P(z) &= \prod_{i\geq 1} \frac{1}{1-x^i}\\
+	\mathcal{P} &= \seq(\{1\}) \times \seq(\{2\}) \times \cdots \\
+\end{align*}
+
+\textbf{Example.}
+Strings composed of $\cdot, -$.
+“$\cdot$” has length 1 and “$-$” has length 2.
+We want to compute the number of strings of length $n$
+\begin{align*}
+  \mathcal{A} &= \{\cdot\} && \leftrightarrow z\\
+  \mathcal{V} &= \{ - \} \mathrel{\hat{=}} \mathcal{A} \times \mathcal{A} && \leftrightarrow z^2
+\end{align*}
+
+\textbf{Example.}
+Binary trees, as explained before
+\begin{align*}
+  \mathcal{B} &= \{ \Box\} + \{ \circ\} \times \mathcal{B} \times \mathcal{B}\\
+  B(z) &= 1 + z \cdot B(z) \cdot B(z)
+\end{align*}
+
+\subsection{Labelled constructions}
+\textbf{Example.}
+Permutations, $a_k = n!$
+\[
+  A(z) = \sum_{n\geq 0} n! z^n
+\]
+
+Cyclic permutations: $(p_1 p_2 \ldots p_n) \mathrel{\hat{=}} (p_3 p_4 \ldots p_n p_1 p_2)$
+
+The number of cyclic permutations is therefore $(n-1)!$
+
+With the generating function:
+\begin{align*}
+    B(z) = \sum (n-1)! z^n
+\end{align*}
+
+\begin{definition}
+We define a \dt{labelled structure} $\mathcal{A}$ in the following way: Each object of size $n$ is composed of $n$ atomic objects. The atoms are numbered with numbers from $1$ to $n$.
+\end{definition}
+$A \leftrightarrow \text{generating function } \hat{A}(z) = \displaystyle{\sum_{n\geq 0} a_n \frac{z^n}{n!}}$
+\begin{align*}
+    \mathcal{C} &= \mathcal{A}+\mathcal{B}: \\
+         w(x) &= \begin{cases}
+                w_A(x) \quad x\in \mathcal{A}\\
+                w_B(x) \quad x\in \mathcal{B}
+				\end{cases}\\
+    \hat{C}(z) &= \sum_{n\geq 0} (a_n+b_n) \frac{z^n}{n!}
+        = \hat{A}(z) + \hat{B}(z)
+\end{align*}
+
+\begin{definition}
+$\mathcal{A} * \mathcal{B}$ \dt{partitional product}\\
+\begin{align*}
+  \mathcal{A} * \mathcal{B} = \{ (x,y) | x \in \mathcal{A}, y \in \mathcal{B},
+    &\text{ atoms are labelled in order preserving way }\\
+    &\text{ s.t. the labels are } 1,2, \dotsc , w_A(x) + w_B(y) \}
+\end{align*}
+\end{definition}
+
+\begin{align*}
+    c_n = \sum_{k=0}^{n} {n \choose k} a_k b_{n-k}
+\end{align*}
+
+\TODO{figure of $k$ elements $\in \mathcal{A}$}
+
+\begin{align*}
+    \frac{c_n}{n!} &= \sum_{k=0}^{n} \frac{1}{k!(n-k)!} a_k b_{n-k}\\
+    &= \sum_{k=0}^{n} \frac{a_k}{k!} \frac{b_{n-k}}{(n-k)!} \\
+    &[z^n] \hat{A}(z)\hat{B}(z)
+        \quad [z^k] \hat{A}(z)
+        \quad [z^{n-k}] \hat{B}(z) \\
+    &\implies \hat{C}(z) = \hat{A}(z) \hat{B}(z) \\
+\end{align*}
+
+\begin{align*}
+    \seq(\mathcal{A}) &= \{\epsilon\} \times \mathcal{A} \times \mathcal{A}*\mathcal{A} \times \ldots \\
+    \hat{C}(z) &= \frac{1}{1-\hat{A}(z)} \\
+    \set(\mathcal{A}) &\mathrel{"\cong"} \{\varnothing\}
+        \times \mathcal{A}
+        \times \frac{1}{2}\mathcal{A} * \mathcal{A} + \frac{1}{3!}\mathcal{A}*\mathcal{A}*\mathcal{A} \\
+        \implies \hat{C}(z) &= e^{\hat{A}(z)}
+\end{align*}
+
+\textbf{Side-remark.} In the unlabeled case:
+\begin{align*}
+  \set(\mathcal{A}): C(z) = \exp\left( A(z) - \frac{A(z^2)}{2} + \frac{A(z^3)}{3} + \ldots \right)
+\end{align*}
+
+cycle of $\mathcal{A}$
+\begin{align*}
+    \cyc(\mathcal{A}) &\cong \mathcal{A} + \frac{1}{2}\mathcal{A} * A + \frac{1}{3}\mathcal{A}*\mathcal{A} + \mathcal{A} + \mathcal{A} + \ldots \frac{1}{k}\mathcal{A}^k \\
+    \hat{C}(z) &= \log\frac{1}{1-\hat{A}(z)}
+\end{align*}
+
+\textbf{Example.}
+Permutations.
+\begin{align*}
+    \mathcal{P} &= \text{set}(\text{cyc}(\{ \circ \} )) \\
+    \hat{p}(z) &= e^{\log \frac{1}{1-z}} = \frac{1}{1-z} \\
+        &= \sum_{n\geq 0} n! * \frac{z^n}{n!}
+\end{align*}
+
+\textbf{Repetition of last time.}
+\lecturedate[\baselineskip]{2013-11-28}
+Labelled structure set $\mathcal{A} = (A,w)$, the atomic objects can be enumerated.
+\begin{align*}
+  \mathcal{A}+\mathcal{B} &\leftrightarrow \hat{A}(z) + \hat{B}(z) \\
+  \mathcal{A}*\mathcal{B} &\leftrightarrow \hat{A}(z) * \hat{B}(z) \\
+  \seq(\mathcal{A}) &\leftrightarrow \frac{1}{1 - \hat{A}(z)}\\
+  \set(\mathcal{A}) &\leftrightarrow \exp(\hat{A}(z)) \\
+  \cyc(\mathcal{A}) &\leftrightarrow \log \frac{1}{1 - \hat{A}(z)}\\
+\end{align*}
+% end of repetition
+\textbf{Example.}
+\begin{align*}
+  \mathcal{P} &= set(cyc(\mathcal{A})), \mathcal{A} = \{ \text{\ding{172}} \}\\
+  \hat{P}(z)  &= \exp{(\log{\frac{1}{1-z}})} = ∑_{n≥0} n! \frac{z^n}{n!}
+\end{align*}
+
+\textbf{Example.}
+We have set partitions $M = M_1 \cup M_2 \cup \ldots \cup M_k$ with $M_i \neq \varnothing$ and $M_i \cap M_j = \varnothing$
+\begin{align*}
+  \mathcal{P} = \set( \set( \mathcal{A}) \backslash \{\varnothing\} ) \\
+  \hat{P}(z) = \exp(\exp((z) - 1)) \\
+  [z^n] e^{e^z - 1} = \sum_{k\geq 0 } S_{n,k} \\
+\end{align*}
+
+\subsection{Exponential Generating Functions and Ordered Structures}
+
+Ordered n-tuples $(q_1,q_2, \ldots, q_n), q_i \in \{1,2, \ldots, N\}$, no repetition
+
+$a_n$ is number of such n-tuples
+
+$Q = \underbrace{\{\epsilon,1\}}_{1+z} *
+     \underbrace{\{\epsilon,2\}}_{1+z} * \ldots *
+     \underbrace{\{\epsilon,N\}}_{1+z} $
+
+\begin{align*}
+  \sum_{n\geq 0} a_n \frac{z^n}{n!} &=
+    (1+z)^N \\
+    &= \sum_{n=0} ^{N} {N \choose n} z^n \\
+    &= \frac{N!}{(N-n)!}
+\end{align*}
+
+With repetition:
+\[
+  (1+z+ \frac{z^2}{2!} + \frac{z^3}{3!} + \ldots)^N
+    = e^{zN} = \sum_{n\geq 0} N^n \frac{z^n}{n!}
+\]

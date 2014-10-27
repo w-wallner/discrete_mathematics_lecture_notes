@@ -1,19 +1,227 @@
-%%% EtherPad for Discrete Mathematics VO
-%%% http://www.informatik-forum.at/showthread.php?104454-Notes-2013WS-VO_01
-%%% Past pads:
-%%%     * 2013-10-17: committed by patrikf
-%%%     * 2013-10-18: committed by patrikf
-%%%     * 2013-10-24: committed by patrikf
-%%%     * 2013-10-25: committed by patrikf
-%%%     * 2013-11-08: committed by neroburner
-%%%     * 2013-11-21: committed by neroburner
-%%%     * 2013-11-22: committed by neroburner
-%%%     * 2013-11-28: committed by neroburner
-%%%     * 2013-11-29: committed by neroburner
-%%%     * 2013-12-05: committed by neroburner
-%%%     * 2013-12-06: committed by neroburner
+\section{Euler-Fermat Theorem and RSA-Algorithm}
 
-% Discrete Mathematics Lecture Notes 2013-12-12
+\Theorem.
+$(\mathbb{Z}_m^{*}, \cdot)$ is a group.
+\begin{align*}
+  &|\mathbb{Z}_m| = m, \\
+  &|\mathbb{Z}_m^{*}| = \varphi(m) \\
+  &\varphi \ldots \text{ Euler's totient function}
+\end{align*}
+
+E.g.: $\varphi(5) = 4, \varphi(6) = 2$
+
+Consider two cases. First case:
+\[
+  m \in \mathbb{P}: \varphi(m) = m-1 \\
+\]
+Second case:
+\begin{align*}
+  &m = p^e, p \in \mathbb{P}, e \geq 1 \\
+  &\bar{a}\in \mathbb{Z}_m \implies \gcd(a,p^e) = \begin{cases}
+    1   &\text{ if $\bar{a} \in \mathbb{Z}_m^{*}$} \\
+    p^f &\text{ $1 \leq f < e$}
+  \end{cases} \\
+  &\bar{a}\in \mathbb{Z}_m^{*} \Leftrightarrow p \not|a \\
+  & \underbrace{0,1,2, \ldots, p^e -1}_{p^e}\\
+\end{align*}\vspace{-1.5cm}
+\begin{align*}
+  p^e - p^{e-1} = \varphi(\underbrace{p^e}_{m}) &= p^{e-1}(p-1) \\
+                \varphi(m) &= m\left(1-\frac{1}{p}\right)
+\end{align*}
+
+\Theorem.
+\begin{align*}
+  m &= p_1^{e_1} p_2^{e_2} \ldots p_r^{e_r} \\
+  \implies \varphi(m) &= m \left( 1-\frac{1}{p_1} \right) \left( 1-\frac{1}{p_2} \right) \ldots \left( 1-\frac{1}{p_r} \right)
+\end{align*}
+
+\Proof.
+Let $r=2: M = \{1,2, \ldots, m\},$
+\begin{align*}
+  A = \{ n \in M \mid p_1|n\} = \{p_1, 2p_1, 3p_1, \ldots m-p_1, m\} \\
+  B = \{ n \in M \mid p_2|n\} = \{p_2, 2p_2, 3p_2, \ldots m-p_2, m\} \\
+\end{align*}
+
+\begin{align*}
+  |M| &= m, \; |A| = \frac{m}{p_1}, \; |B| = \frac{m}{p_2}, \;
+    |A \cap B| = \frac{m}{p_1p_2}\\
+  \varphi(m)
+    &= | M \backslash(A\cup B) | \\
+    &= |M| - |A| - |B| + | A \cap B|\\
+    &= m \left(1- \frac{1}{p_1} \right) \left(1- \frac{1}{p_2} \right)
+\end{align*}
+
+\Theorem.
+Theorem of Euler-Fermat:
+\[
+  \gcd(a,m) = 1 \implies a ^{\varphi(m)} \equiv 1 (m)
+\]
+In particular:
+\[
+  p \in \mathbb{P}, p \not| a \implies a^{p-1} \equiv 1 (p) \quad
+  \text{(Fermat's Little Theorem)}
+\]
+
+\Proof.
+\[
+  \mathbb{Z}_m^{*} = \{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k \}, \;k = \varphi(m)
+\]
+\begin{align*}
+  &\implies \mathbb{Z}_m^{*} \{\bar{a}\bar{a}_1, \bar{a}\bar{a}_2, \ldots, \bar{a}\bar{a}_k \}, \\
+  &\text{ since } \bar{a}\bar{a}_i = \bar{a}\bar{a}_j
+    \implies \bar{a}_i = \bar{a}_j \implies i = j \\
+  &\implies \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
+        {\in \mathbb{Z}_m^{*}}
+      = \bar{a}^k \cdot \underbrace{\bar{a}_1, \bar{a}_2, \ldots, \bar{a}_k}_
+        {\in \mathbb{Z}_m^{*}} \\
+  &\implies \bar{a}^k = \bar{a}^{\varphi(m)} = \bar{1}
+\end{align*}
+
+\Theorem.
+\[
+  p, q \in \mathbb{P} \quad p,q \text{ odd} \quad p \neq q
+\]
+\begin{align*}
+  m = pq, \quad v = \lcm(p-1, q-1) \\
+  \implies \forall a,k \in \mathbb{Z}: a^{kv + 1} \equiv a(m)
+\end{align*}
+
+\Proof.
+We have to show: $pq \mid a ^{kv +1} - a$.
+\begin{align*}
+  &\Leftrightarrow p \mid a ^{kv +1} - a \text{ and } q \mid a ^{kv +1} - a\\
+  &\text{Case 1: } p \mid a \\
+  &\text{Case 2: } p \not|~ a:
+    a^{p-1} \equiv 1 (p) \implies a^{kv} \equiv 1(p) \implies a^{kv+1} \equiv a(p)
+\end{align*}
+
+\subsection{RSA-Algorithm}
+Let $m = pq$ and $v = \lcm(p-1, q-1)$ then
+\[
+  \gcd(e,v) = 1 \implies \exists d : d \cdot e \equiv 1 (v).
+\]
+
+We have a message $a_1, a_2, a_3, \ldots$ where $0 \leq a_i < m$
+
+Encryption:
+\[
+  E(a_j) = b_j := a_j^e \imod{m}
+\]
+
+Decryption:
+\[
+  D(b_j) = a_j := b_j^d \imod{m}
+\]
+
+Check if this really works:
+\begin{align*}
+  b_j^d &\equiv (a_j^e)^d \imod{m} \\
+    & \equiv a_j^{e \cdot d} \imod{m} \\
+    & \equiv a_j^{kv+1} \pod{m} \\
+    & \equiv a_j \pod{m} \\
+\end{align*}
+
+We can provide a public key $(m,e)$ and the private key $d$.
+
+If we want to compute the private key and we only know the public key, then the hard part is the factorisation $m = p \cdot q$. The time needed for this factorisation grows exponentially with the number of digits of $m$.
+
+\textbf{e-Signature: }
+$(e_j,d_j)$,
+
+$e_j$ is public $\hat{=} E_j, D_j$
+
+User i sends to user j:
+\[
+  E_j(D_i(x)) = x^{d_i e_j} (m)
+\]
+User j checks with his private key:
+\[
+  D_j (E_J(D_i(x))) = D_i(x)
+\]
+then $E_i$ afterwards:
+\[
+  E_i(D_i(x)) = x
+\]
+
+\textbf{Caveat. (Warning)}
+$E(x)$ may have many fixed points.
+If the order is low then it is possible to find $x$.
+
+\textbf{Recall.}
+If $G$ is a group and $x\in G$:
+\[
+  \ord_G(x) = \min\{ i\in \mathbb{N}^{+} \mid x^i = e \}
+\]
+\[
+  e^1 = e \implies \ord_G(e) = 1, a \neq e \implies \ord_G(a) > 1 \quad \text{e = neutral element}
+\]
+
+\textbf{Cyclic group.}
+The group generated by $x$:
+\[
+  \{ e, x, x^2, x^3, \ldots \} = \GroupGenBy{x}
+\]
+
+G is finite:
+\begin{align*}
+  U & \underbrace{\leq}_{\text{subgroup}}  G \implies |U| \mid |G|\\
+  |G| & …\text{Order of the group}\\
+      \GroupGenBy{x} &= \{ e, x, x^2, x^3, \ldots x^{\ord_G(x) -1}\} \\
+    & \implies |\GroupGenBy{x}| = \ord_G(x)\\
+\end{align*}
+
+\begin{align*}
+  \text{G is cyclic} & \Leftrightarrow \exists x \in G: \GroupGenBy{x} = G \\
+                     & \Leftrightarrow \exists x \in G: \ord_G(x) = |G|
+\end{align*}
+
+Trivial group: $\GroupGenBy{e} = \{e\}$\\
+A group is always a subgroup of itself: $G \leq G$
+
+\begin{definition}
+  \[
+    \bar{a} \in \mathbb{Z}_m^{*} \text{ s.t. } \GroupGenBy{\bar{a}} = \mathbb{Z}_m^{*}
+\]
+is called \dt{primitive root mod m}
+
+$\bar{a}$ primitive root mod m
+$\implies \mathbb{Z}_m^{*} = \{\bar{a}, \bar{a}^2, \bar{a}^3, \ldots, \bar{a}^{\varphi(m)} =\bar{1} \}$
+\end{definition}
+
+\textbf{Example.}
+\begin{align*}
+  &\mathbb{Z}_2^{*} = \{\bar{1}\} = \GroupGenBy{\bar{1}} \\
+  &\mathbb{Z}_3^{*} = \{\bar{1}, \bar{2}\} = \GroupGenBy{\bar{2}}
+    = \{\bar{2}, \bar{2}^2 \} = \{\bar{2}, \bar{1}\}\\
+  &\mathbb{Z}_4^{*} = \{\bar{1}, \bar{3}\} = \GroupGenBy{\bar{3}} \\
+  &\mathbb{Z}_5^{*} = \{\bar{1}, \bar{2}, \bar{3}, \bar{4}\}
+    = \GroupGenBy{\bar{2}} = \GroupGenBy{\bar{3}} \neq \GroupGenBy{\bar{4}}
+    = \{\bar{1}, \bar{4}\} \\
+  &\mathbb{Z}_8^{*} = \{\bar{1}, \bar{3}, \bar{5}, \bar{7}\} \text{ has no primitive roots} \implies \mathbb{Z}_8^{*}\text{ is not a cyclic group} \\
+  & \quad \GroupGenBy{\bar{1}} = \{\bar{1}\} \quad \GroupGenBy{\bar{3}}=\{\bar{3}, \bar{3}^2\}=\{\bar{3}, \bar{1}\} \\
+  & \quad \GroupGenBy{\bar{5}}=\{\bar{5}, \bar{5}^2\}=\{\bar{5}, \bar{1}\} \\
+  & \quad \GroupGenBy{\bar{7}}=\{\bar{7}, \bar{7}^2\}=\{\bar{7}, \bar{1}\}
+\end{align*}
+
+\Theorem.
+$\mathbb{Z}_m^{*}$ cyclic
+\begin{align*}
+  & \Leftrightarrow \exists \text{ primitive root mod m} \\
+  & \Leftrightarrow m \in \{2,4\} \cup \{ p^e \mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \} \cup \{ 2p^e \mid p \in \mathbb{P} \backslash \{2\}, e \geq 1 \}
+\end{align*}
+
+\Proof.
+Let $g$ be a primitive root mod $p \Rightarrow g^{p-1} \equiv 1 (p), \forall i < p-1 : g^i \not\equiv 1 (p) $
+
+Then $g$ or $g+p$ is a primitive root mod $p^2$.
+
+\textbf{Claim.}
+$g^{p-1} \not\equiv 1 (p^2)$ or $(g+p)^{p-1} \not\equiv 1 (p^2)$
+
+\textbf{Note.}
+$\varphi(p^2) = p(p-1)$, assume that $p-1 = k \cdot l$ where $(k, l < p-1)$
+
+$\ord_{\mathbb{Z}^{*}_{p^2}}(g) = p \cdot l \implies g^{pl} \equiv 1 (p^2)$
 
 \textbf{Remember from last time}
 \lecturedate[\baselineskip]{2013-12-12}

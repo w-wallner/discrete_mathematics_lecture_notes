@@ -1,0 +1,139 @@
+
+\section{Congruence Relations and Residue Classes}
+
+\begin{definition}
+$m \in \mathbb{N}^{+}$ modulus,
+residue class: $a+m \mathbb{Z} = \bar{a}$
+\end{definition}
+
+\Remark.
+\[
+  a\in \bar{a},\; \bar{a} \equiv \bar{b} \iff m | a-b
+\]
+\begin{align*}
+  a \equiv b \mod m & :\iff m | a-b \\
+  a \equiv b (m)     & :\iff \bar{a} = \bar{b}
+\end{align*}
+\[
+  \mathbb{Z}_m = \{ \bar{0},\bar{1},\bar{2}, \ldots, \overline{m-1}\} ,
+  \bar{0} \cup \bar{1} \cup \bar{2} \cup  \ldots \cup \overline{m-1} = \mathbb{Z}
+\]
+
+\begin{definition}
+\[
+  \bar{a} + \bar{b} := \overline{a+b}
+\]
+\[
+  \bar{a} \cdot \bar{b} := \overline{ab}
+\]
+\end{definition}
+
+\Remark.
+\begin{align*}
+  a \equiv c(m), b \equiv d(m) \implies & a+b \equiv c+d(m) \\
+                                        & ab \equiv cd (m)
+\end{align*}
+\begin{center}
+\begin{minipage}[t]{0.2\textwidth}
+    \begin{tabular}{c|cc}
+      $+$             & $\overline{0}$  & $\overline{1}$\\
+      \hline
+      $\overline{0}$  & $\overline{0}$  & $\overline{1}$\\
+      $\overline{1}$  & $\overline{1}$  & $\overline{0}$\\
+    \end{tabular}
+\end{minipage}
+\begin{minipage}[t]{0.2\textwidth}
+  \begin{tabular}{c|cc}
+    $\cdot$         & $\overline{0}$  & $\overline{1}$\\
+    \hline
+    $\overline{0}$  & $\overline{0}$  & $\overline{0}$\\
+    $\overline{1}$  & $\overline{0}$  & $\overline{1}$\\
+  \end{tabular}
+\end{minipage}
+\end{center}
+
+\Theorem.
+$(\mathbb{Z}_m, + , \cdot)$ is a commutative ring with $1$
+
+\begin{definition}
+  We define the inverse element as follows:
+\[
+  \bar{a} \in \mathbb{Z}_m, \bar{x} \in \mathbb{Z}_m \text{ s.t }
+  \bar{x} \cdot \bar{a} = \bar{1} \implies \bar{x} = \bar{a}^{-1}
+\]
+\end{definition}
+
+\textbf{Example.}
+\begin{align*}
+  m = 5: &\quad \bar{2}^{-1} = \bar{3} \\
+  m = 6: &\quad \bar{2}\cdot\bar{3} = \bar{0} \Rightarrow \bar{x} \cdot \bar{2} \cdot \bar{3} = \bar{0} \quad \bar{x} \cdot \bar{2} \neq \bar{1} \Rightarrow \nexists \bar{2}^{-1}
+\end{align*}
+
+\Theorem.
+$\exists \bar{a}^{-1} \text{ in } \mathbb{Z}_m \iff gcd(a,m) = 1$ ($a,m$ are co-prime)
+
+\Proof.
+
+\ProofForward.
+\begin{align*}
+  & \bar{a}\cdot \bar{x} = \bar{1} \Rightarrow \exists k\in \mathbb{Z}:
+    ax = 1 + km \Rightarrow ax - km = 1\\
+  & d = gcd(a,m) \Rightarrow d \mid ax - km \Rightarrow d = 1
+\end{align*}
+
+\ProofBackward.
+\begin{align*}
+  & gcd(a,m) = 1 \Rightarrow \exists e,f : ae + mf = 1\\
+  & \Rightarrow ae = 1 + (-f)m \Rightarrow \bar{a} \cdot \bar{e} = \bar{1}
+    \Rightarrow \bar{e} = \bar{a}^{-1}
+\end{align*}
+
+
+\begin{definition}
+Set of prime residue classes mod m
+\[
+  \mathbb{Z}_m^{*} = \{ \bar{a} \in \mathbb{Z}_m \mid gcd(a,m) = 1 \}
+\]
+This set contains all invertible elements of $\mathbb{Z}_m$. Hence, we can also define it as follows:
+\[
+  \mathbb{Z}_m^{*} = \{ x \in \mathbb{Z}_m \mid \exists x^{-1} : x \cdot x^{-1} = 1 \}
+\]
+This set is also referred to as \textbf{group of units}.
+\end{definition}
+
+\textbf{Example.}
+\[
+  \mathbb{Z}_5^{*} = \{ \bar{1}, \bar{2}, \bar{3}, \bar{4} \}, \mathbb{Z}_6^{*} = \{ \bar{1}, \bar{5} \}
+\]
+
+\textbf{Example.}
+$ m = 17$, find $\overline{13}^{-1}$: $ 13 x \equiv 1 (17)$ $x \equiv 4 (17)$
+\begin{align*}
+  & 17 = 13 \cdot  1 +4\\
+  & 13 = 4\cdot 3 +1 \iff 1 = 13-4\cdot 3 = 13-(17-13)\cdot 3 = 17\cdot
+    3+4\cdot 13 \\
+  & \Rightarrow x \equiv 4 (17)
+\end{align*}
+
+\textbf{Example.}
+\begin{align*}
+  3b &\equiv 3c (5) | \cdot 2 \\
+  b &\equiv c(5)
+\end{align*}
+
+\textbf{Example.}
+\begin{align*}
+  3b &\equiv 3c (6) \\
+  3b &= 3c + k \cdot 6 | :3 \\
+  b &= c + k \cdot 2 \\
+  b &\equiv c(5)
+\end{align*}
+
+\textbf{Example.}
+\begin{align*}
+  ab &\equiv ac (am) \Rightarrow b \equiv  c (m) \\
+  ab &\equiv ac (m) \Rightarrow b \equiv c (m)
+    \text{ if } ax \equiv 1 (m) \text{ has a solution } \iff gcd(a,m) = 1
+\end{align*}
+
+

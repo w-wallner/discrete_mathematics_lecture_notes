@@ -27,28 +27,9 @@ shorthand notation.
 
 \index{loop}
 A \dt{loop} is an edge from a vertex to itself.
-
+The edges of a graph correspond to a \emph{relation} on $V$. In case of undirected graphs, this relation is symmetric.
 Graphs can have \textbf{multiple edges}, in which case $E$ is a multiset.
-
-\begin{figure}[htb]
-\centering
-\begin{tabular}{c c}
-\subfloat[directed graph] {
-	\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_edge.pdf}
-} &
-\subfloat[undirected graph] {
-	\includegraphics[scale=.5]{01_graph_theory/pics/graph_edge.pdf}
-} \\
-\subfloat[loop] {
-	\includegraphics[scale=.5]{01_graph_theory/pics/graph_loop.pdf}
-} &
-\subfloat[multiple edges] {
-	\includegraphics[scale=.5]{01_graph_theory/pics/graph_multiple-edges.pdf}
-}
-\end{tabular}
-\caption{different graphs}
-\end{figure}
-\FloatBarrier
+An overview of these concepts is given in \cref{fig:GraphTypes}.
 
 \begin{definition}
 \index{graph!simple}
@@ -59,23 +40,44 @@ A graph is \dt{simple} when it has
 \end{compactitem}
 \end{definition}
 
-Unless otherwise stated, we assume simple, finite graphs throughout this
-lecture.
-
-A graph corresponds to a \emph{relation} on $V$. In case of undirected graphs,
-this relation is symmetric.
+\begin{bclogo}[logo=\bcinfo,barre=none,noborder=false]{Remark}
+~\\Unless otherwise stated we assume that all graphs are \textbf{simple} and \textbf{finite} throughout this lecture.
+\end{bclogo}
 
 
-Notation: \\[\medskipamount]
+Graph theory notation: \\[\medskipamount]
 \begin{tabular}{ll}
-  $V$, $V(G)$ & vertice set \\
-  $E$, $E(G)$ & edge set \\
+  $V$, $V(G)$ & vertice set of G \\
+  $E$, $E(G)$ & edge set of G \\
   $\alpha_0 = |V|$ & number of vertices \\
   $\alpha_1 = |E|$ & number of edges \\
+  $\alpha_2 =    $ & number of faces (will be defined later) \\ % TODO: Add ref
 \end{tabular}
 
-\begin{definition}
-\index{degree}
+\begin{figure}[t!htp]
+\centering
+\begin{tabular}{c c}
+\subfloat[directed graph] {
+    \includegraphics[width=.35\textwidth]{01_graph_theory/pics/directed-graph_edge.pdf}
+} &
+\subfloat[undirected graph] {
+    \includegraphics[width=.35\textwidth]{01_graph_theory/pics/graph_edge.pdf}
+} \\
+\subfloat[node with a loop] {
+\makebox[.45\textwidth]{
+    \includegraphics[width=.10\textwidth]{01_graph_theory/pics/graph_loop.pdf}
+    }
+} &
+\subfloat[multiple edges] {
+    \includegraphics[width=.35\textwidth]{01_graph_theory/pics/graph_multiple-edges.pdf}
+}
+\end{tabular}
+\caption{Visualization of different graph types}
+\label{fig:GraphTypes}
+\end{figure}
+
+\begin{definition}\index{degree}
+~\\
 Let $v\in V$. For undirected graphs,
 \begin{compactitem}
   \item the \dt{degree} $d(v)$ is the number of edges \emph{incident} to $v$.

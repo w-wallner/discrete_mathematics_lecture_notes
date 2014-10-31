@@ -1,16 +1,16 @@
 \begin{figure}[htb]
   \centering
-  \subfigure[$K_3$, planar]{
+  \subfloat[$K_3$, planar]{
     \begin{tikzpicture}
       \fullyConnectedGraph{90,-30,180+30}{1cm}
     \end{tikzpicture}
   }
-  \subfigure[$K_4$, planar]{
+  \subfloat[$K_4$, planar]{
     \begin{tikzpicture}
       \fullyConnectedGraph{90-45, 90+45, -90-45, -90+45}{1cm}
     \end{tikzpicture}
   }
-  \subfigure[$K_4$, planar, alternative]{
+  \subfloat[$K_4$, planar, alternative]{
     \begin{tikzpicture}
       \fullyConnectedGraph{90,-30,180+30}{1cm}
       \node (n0) at (0,0) {};
@@ -20,12 +20,12 @@
       };
     \end{tikzpicture}
   }
-  \subfigure[$K_5$, nonplanar]{
+  \subfloat[$K_5$, nonplanar]{
     \begin{tikzpicture}
       \fullyConnectedGraph{90, 30, 180-30, -90-45, -90+45}{1.25cm}
     \end{tikzpicture}
   }
-  \subfigure[$K_{3,3}$, nonplanar, bipartite]{
+  \subfloat[$K_{3,3}$, nonplanar, bipartite]{
     \begin{tikzpicture} % pipartite graph K_{3,3}
       \foreach \i in {1,...,3} {
 	\node (n1\i) at (0,\i) {};

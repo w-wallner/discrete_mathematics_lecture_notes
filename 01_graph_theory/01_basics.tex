@@ -33,16 +33,16 @@ Graphs can have \textbf{multiple edges}, in which case $E$ is a multiset.
 \begin{figure}[htb]
 \centering
 \begin{tabular}{c c}
-\subfigure[directed graph] {
+\subfloat[directed graph] {
 	\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_edge.pdf}
 } &
-\subfigure[undirected graph] {
+\subfloat[undirected graph] {
 	\includegraphics[scale=.5]{01_graph_theory/pics/graph_edge.pdf}
 } \\
-\subfigure[loop] {
+\subfloat[loop] {
 	\includegraphics[scale=.5]{01_graph_theory/pics/graph_loop.pdf}
 } &
-\subfigure[multiple edges] {
+\subfloat[multiple edges] {
 	\includegraphics[scale=.5]{01_graph_theory/pics/graph_multiple-edges.pdf}
 }
 \end{tabular}
@@ -89,10 +89,10 @@ For directed graphs,
 
 \begin{figure}[htb]
 \centering
-\subfigure[vertex $v$ with degree $d(v)=6$]{
+\subfloat[vertex $v$ with degree $d(v)=6$]{
 	\includegraphics[scale=.5]{01_graph_theory/pics/graph_degree.pdf}
 }
-\subfigure[vertex $v$ with in-degree $d^{-}(v)=3$ and out-degree $d^{+}(v)=3$]{
+\subfloat[vertex $v$ with in-degree $d^{-}(v)=3$ and out-degree $d^{+}(v)=3$]{
 	\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_indegree-outdegree.pdf}
 }
 \caption{vertex-degrees}
@@ -125,10 +125,10 @@ For directed graphs,
 
 \begin{figure}[htb]
 \centering
-\subfigure[undirected graph, each edge is counted twice]{
+\subfloat[undirected graph, each edge is counted twice]{
 	\includegraphics[scale=.5]{01_graph_theory/pics/graph_degree_handshaking-lemma.pdf}
 }
-\subfigure[directed graph, each edge is counted only once]{
+\subfloat[directed graph, each edge is counted only once]{
 	\includegraphics[scale=.5]{01_graph_theory/pics/directed-graph_degree_handshaking-lemma.pdf}
 }
 \caption{Hand Shaking Lemma in undirected and directed graphs}
@@ -152,13 +152,13 @@ $\alpha_1 = \frac{1}{2} \sum_{v \in V} d(v) = 2^{n-1} * n$
 $d(v) = n \Rightarrow $ regular Graph
 \begin{figure}[htb]
 \centering
-\subfigure[1D-hypercube]{
+\subfloat[1D-hypercube]{
 	\includegraphics[scale=.4]{01_graph_theory/pics/1D-cube.pdf}
 }
-\subfigure[2D-hypercube]{
+\subfloat[2D-hypercube]{
 	\includegraphics[scale=.4]{01_graph_theory/pics/2D-cube.pdf}
 }
-\subfigure[3D-hypercube]{
+\subfloat[3D-hypercube]{
 	\includegraphics[scale=.4]{01_graph_theory/pics/3D-cube.pdf}
 }
 \caption{n-Hypercubes}
@@ -189,13 +189,13 @@ Let $V=\{v_1,\ldots,v_n\}.$ The \dt{adjacency matrix} $A =
 
 \begin{figure}[htb]
 \centering
-\subfigure[adjacency $k = 1$]{
+\subfloat[adjacency $k = 1$]{
 	\includegraphics[scale=.5]{01_graph_theory/pics/adjacency_k-1.pdf}
 }
-\subfigure[adjacency $k = 2$]{
+\subfloat[adjacency $k = 2$]{
 	\includegraphics[scale=.5]{01_graph_theory/pics/adjacency_k-2.pdf}
 }
-\subfigure[adjacency via induction]{
+\subfloat[adjacency via induction]{
 	\includegraphics[scale=.5]{01_graph_theory/pics/adjacency_k-induction.pdf}
 }
 \caption{adjaceny}

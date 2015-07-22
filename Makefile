@@ -21,21 +21,28 @@ else
 endif
 
 clean:
-	rm -f *.aux
-	rm -f *.log
-	rm -f *.pdf
-	rm -f *.nav
-	rm -f *.out
-	rm -f *.snm
-	rm -f *.toc
-	rm -f *.bbl
-	rm -f *.blg
-	rm -f *.lof
-	rm -f *.idx
-	rm -f *.ilg
-	rm -f *.ind
-	rm -f *.fdb_latexmk
-	rm -f *.fls
+	@for d in 00_preface  01_graph_theory  02_higher_combinatorics  03_number_theory  04_polynomials_over_ff; \
+	do \
+		@for i in test; \
+		do \
+			ls; \
+		done \
+	done
+#	rm -f *.aux
+#	rm -f *.log
+#	rm -f *.pdf
+#	rm -f *.nav
+#	rm -f *.out
+#	rm -f *.snm
+#	rm -f *.toc
+#	rm -f *.bbl
+#	rm -f *.blg
+#	rm -f *.lof
+#	rm -f *.idx
+#	rm -f *.ilg
+#	rm -f *.ind
+#	rm -f *.fdb_latexmk
+#	rm -f *.fls
 
 document: clean all
 	cp $(MAIN_TEX).pdf ../$(DOCUMENT).pdf
